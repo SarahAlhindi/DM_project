@@ -1,9 +1,8 @@
-Source of data
+Source of data:
 https://www.kaggle.com/datasets/deepcontractor/cyber-security-salarie
 
-General information about the dataset
+General information about the dataset:
+
 No. of attributes: 11
-
 Type of attributes: Ordinal , Nominal, and Numeric
-
 No. of objects: 1247
