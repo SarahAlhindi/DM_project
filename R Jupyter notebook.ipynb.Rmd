@@ -1,0 +1,77 @@
+---
+title: "Cybersecurity salaries"
+output: pdf_document
+---
+
+### Problem
+
+We are living in the "information age" or rather the "data age", meaning that everything around us revolves around data. The data has become one of the most valuable assets that a person or an organisation can have, since it has a significant value, losing it will lead to significant damages. Thus, most of the attacks nowadays are directed toward the data. To guard against such damages, organisations have realised the importance of protecting their digital assets, leading them to hire cybersecurity specialists. This made cybersecurity gain popularity among people so there's a growing tendency to study cybersecurity. Consequently this resulted in the emergence of plentiful professionals with various experience levels and skills in this field. As a result, organisations may find it difficult to decide a salary for job candidates solely based on the CV. also, since the attacks improve rapidly, organisations need to hire more employees in the far future to defend against such attacks but it's not an easy matter to predict the future payroll which may hinders some of the organisation's plans. Another issue arises when the decision makers in the organisation aren't fully aware of the trends on salary. Their lack of awareness gives a chance for the competitor organisations to attract their employees to them by offering a better salary that match current trends
+
+### Goal
+
+##f Given the problems we discussed and In order to better understand this field, we decided to analyse a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analysing this dataset can provide insightful predictions regarding the salary range of a cybersecurity employee, which can help in
+
+-   Making better decisions
+-   Making recruitment and hiring process easier and more efficient
+-   Predicting the future payroll
+-   Increasing loyalty
+-   Increasing the satisfaction rate
+-   Achieving fairness
+
+## Source of data:
+
+<https://www.kaggle.com/datasets/deepcontractor/cyber-security-salarie>
+
+```{r}
+dataset= read.csv(url("https://raw.githubusercontent.com/SarahAlhindi/DM_project/main/Data%20Set/salaries_cyber.csv"), header=TRUE)
+View(dataset)
+
+```
+
+## General information about the dataset:
+
+No. of attributes: 11\
+Type of attributes: Ordinal , Nominal, and Numeric\
+No. of objects: 1247\
+Class label: salary_in_usd
+
+```{r}
+ncol(dataset)
+nrow(dataset)
+names(dataset)
+str(dataset)
+```
+
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| **Attribute Name** | **Description**                                             | **Data Type** | **Possible values**                                      |
++:==================:+:===========================================================:+:=============:+:========================================================:+
+| work_year          | The year in which salary was recorded                       | Numerical     | 2020 to 2022                                             |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| experience_level   | Expertise level of the employee                             | Ordinal       | En "Entry level"\                                        |
+|                    |                                                             |               | MI "Mid level"\                                          |
+|                    |                                                             |               | SE "Senior level"\                                       |
+|                    |                                                             |               | EX "Executive level"                                     |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| employment_type    | Sort of employment                                          | Nominal       | PT "Part time"\                                          |
+|                    |                                                             |               | FT "Full time"\                                          |
+|                    |                                                             |               | CT "Contract\                                            |
+|                    |                                                             |               | FL"Freelancer"                                           |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| job_title          | The role worked in during the year                          | Nominal       | Different titles                                         |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| salary             | The total gross salary amount paid                          | Numerical     | 1740-50001566                                            |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| salary_currency    | The currency of the salary paid to the employee             | Nominal       | Different currencies according to ISO 4217 currency code |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| salary_in_usd      | The salary paid in United states dollar                     | Numerical     | 2000 to 365596.40                                        |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| employee_residence | Employee's primary country of residence                     | Nominal       | Different countries                                      |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| remote_ratio       | Percentage of online work by employee in the specified year | Numerical     | 0 "No remote work"\                                      |
+|                    |                                                             |               | 50 "Partially remote"\                                   |
+|                    |                                                             |               | 100 "Fully remote"                                       |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| company_location   | The country of the employer's main office                   | Nominal       | Different countries                                      |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
+| company_size       | How big/small is the company                                | Ordinal       | S , M or L                                               |
++--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
