@@ -11,7 +11,7 @@ We are living in the "information age" or rather the "data age", meaning that ev
 
 
 
-### Darta mining task
+### Data mining task
 Prediction of the cyber security employees' salaries using regression
 
 
