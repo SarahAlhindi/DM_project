@@ -29,7 +29,11 @@ organisations to attract their employees to them by offering a better salary tha
 
 ### Goal
 
-##f Given the problems we discussed and In order to better understand this field, we decided to analyse a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analysing this dataset can provide insightful predictions regarding the salary range of a cybersecurity employee, which can help in
+##f Given the problems we discussed and In order to better understand this field,
+we decided to analyse a dataset of 1247 cybersecurity employees, containing
+information such as salary, job title, and experience level. Analysing this 
+dataset can provide insightful predictions regarding the salary range of a cybersecurity employee,
+which can help in
 
 -   Making better decisions
 -   Making recruitment and hiring process easier and more efficient
