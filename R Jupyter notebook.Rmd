@@ -49,15 +49,15 @@ str(dataset)
 +====================+=============================================================+===============+===========================================================+
 | work_year          | The year in which salary was recorded                       | Numerical     | 2020 to 2022                                              |
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
-| experience_level   | Expertise level of the employee                             | Ordinal       | En \"Entry level\"\                                       |
-|                    |                                                             |               | MI \"Mid level\"\                                         |
-|                    |                                                             |               | SE \"Senior level\"\                                      |
-|                    |                                                             |               | EX \"Executive level\"                                    |
+| experience_level   | Expertise level of the employee                             | Ordinal       | En "Entry level"\                                         |
+|                    |                                                             |               | MI "Mid level"\                                           |
+|                    |                                                             |               | SE "Senior level"\                                        |
+|                    |                                                             |               | EX "Executive level"                                      |
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
-| employment_type    | The nature or category of employee's engagement in the job  | Nominal       | PT \"Part time\"\                                         |
-|                    |                                                             |               | FT \"Full time\"\                                         |
-|                    |                                                             |               | CT \"Contract\                                            |
-|                    |                                                             |               | FL \"Freelancer\"                                         |
+| employment_type    | The nature or category of employee's engagement in the job  | Nominal       | PT "Part time"\                                           |
+|                    |                                                             |               | FT "Full time"\                                           |
+|                    |                                                             |               | CT "Contract\                                             |
+|                    |                                                             |               | FL "Freelancer"                                           |
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
 | job_title          | The role worked in during the year                          | Nominal       | Different titles.                                         |
 |                    |                                                             |               |                                                           |
@@ -75,9 +75,9 @@ str(dataset)
 |                    |                                                             |               |                                                           |
 |                    |                                                             |               | like US,AE                                                |
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
-| remote_ratio       | Percentage of online work by employee in the specified year | Numerical     | 0 \"No remote work\"\                                     |
-|                    |                                                             |               | 50 \"Partially remote\"\                                  |
-|                    |                                                             |               | 100 \"Fully remote\"                                      |
+| remote_ratio       | Percentage of online work by employee in the specified year | Numerical     | 0 "No remote work"\                                       |
+|                    |                                                             |               | 50 "Partially remote"\                                    |
+|                    |                                                             |               | 100 "Fully remote"                                        |
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
 | company_location   | The country of the employer's main office                   | Nominal       | Different countries.                                      |
 |                    |                                                             |               |                                                           |
@@ -86,12 +86,10 @@ str(dataset)
 | company_size       | How big/small is the company                                | Ordinal       | S , M or L                                                |
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
 
-
-
 sample of 20 employees:
+
 ```{r}
 library(dplyr)
 sample=sample_n(dataset,20)
-View(sample)
+print(sample)
 ```
-
