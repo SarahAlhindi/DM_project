@@ -119,5 +119,10 @@ summary(dataset$salary)
 summary(dataset$salary_in_usd)
 summary(dataset$remote_ratio)
 
+var(dataset$work_year)
+var(dataset$salary)
+var(dataset$salary_in_usd)
+var(dataset$remote_ratio)
+
 ```
 
