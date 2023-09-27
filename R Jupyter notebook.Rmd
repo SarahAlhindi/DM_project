@@ -111,6 +111,13 @@ print(sample)
 ```
 
 ```{r}
+is.na(dataset)
+sum(is.na(dataset))
+
+summary(dataset$work_year)
+summary(dataset$salary)
+summary(dataset$salary_in_usd)
+summary(dataset$remote_ratio)
 
 ```
 
