@@ -76,7 +76,7 @@ str(dataset)
 |                    |                                                             |               | SE "Senior level"\                                       |
 |                    |                                                             |               | EX "Executive level"                                     |
 +--------------------+-------------------------------------------------------------+---------------+----------------------------------------------------------+
-| employment_type    | The nature or category of employee's engagement                                           | Nominal       | PT "Part time"\                                          |
+| employment_type    | The nature or category of employee's engagement                                       | Nominal       | PT "Part time"\                                          |
 |                    |                                                             |               | FT "Full time"\                                          |
 |                    |                                                             |               | CT "Contract\                                            |
 |                    |                                                             |               | FL"Freelancer"                                           |
