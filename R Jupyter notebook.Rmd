@@ -111,50 +111,6 @@ print(sample)
 ```
 
 ```{r}
-is.na(dataset)
-sum(is.na(dataset))
 
-
-summary(dataset$work_year)
-summary(dataset$salary)
-summary(dataset$salary_in_usd)
-summary(dataset$remote_ratio)
-
-var(dataset$work_year)
-var(dataset$salary)
-var(dataset$salary_in_usd)
-var(dataset$remote_ratio)
-
-install.packages("outliers")
-library(outliers)
-
-# out_work_year=outlier(dataset$work_year,logical =TRUE)
-sum(out_work_year)#
-outsalary=outlier(dataset$salary ,logical=TRUE)
-sum(outsalary)
-out_salary_in_usd=outlier(dataset$salary_in_usd ,logical=TRUE)
-sum(out_salary_in_usd)
-out_remote_ratio=outlier(dataset$remote_ratio ,logical=TRUE)
-sum(out_remote_ratio)
-
-Find_outlier1 = which(out_work_year ==TRUE, arr.ind = TRUE)
-out_work_year
-Find_outlier1
-dataset=dataset[-Find_outlier1,]
-
-Find_outlier2 = which(outsalary ==TRUE, arr.ind = TRUE)
-outsalary
-Find_outlier2
-dataset=dataset[-Find_outlier2,]
-
-Find_outlier3 = which(out_salary_in_usd ==TRUE, arr.ind = TRUE)
-out_salary_in_usd
-Find_outlier3
-dataset=dataset[-Find_outlier3,]
-
-Find_outlier4 = which(out_remote_ratio ==TRUE, arr.ind = TRUE)
-out_remote_ratio
-Find_outlier4
-dataset=dataset[-Find_outlier4,]
 ```
 
