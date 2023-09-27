@@ -124,5 +124,19 @@ var(dataset$salary)
 var(dataset$salary_in_usd)
 var(dataset$remote_ratio)
 
+install.packages("outliers")
+library(outliers)
+
+# out_work_year=outlier(dataset$work_year,logical =TRUE)
+sum(out_work_year)#
+outsalary=outlier(dataset$salary ,logical=TRUE)
+sum(outsalary)
+out_salary_in_usd=outlier(dataset$salary_in_usd ,logical=TRUE)
+sum(out_salary_in_usd)
+out_remote_ratio=outlier(dataset$remote_ratio ,logical=TRUE)
+sum(out_remote_ratio)
+
+
+
 ```
 
