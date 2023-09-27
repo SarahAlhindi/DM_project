@@ -12,7 +12,9 @@ The data has become one of the most valuable assets that a person
 or an organisation can have, since it has a significant value,
 losing it will lead to significant damages. Thus, most of the 
 attacks nowadays are directed toward the data. To guard against
-such damages, organisations have realised the importance of protecting their digital assets, leading them to hire cybersecurity specialists. This made cybersecurity gain popularity
+such damages, organisations have realised the importance of protecting
+their digital assets, leading them to hire cybersecurity specialists. 
+This made cybersecurity gain popularity
 among people so there's a growing tendency to study cybersecurity.
 Consequently this resulted in the emergence of plentiful professionals
 with various experience levels and skills in this field. As a result, 
