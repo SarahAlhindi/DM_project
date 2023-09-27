@@ -90,6 +90,7 @@ str(dataset)
 
 sample of 20 employees:
 ```{r}
+library(dplyr)
 sample=sample_n(dataset,20)
 View(sample)
 ```
