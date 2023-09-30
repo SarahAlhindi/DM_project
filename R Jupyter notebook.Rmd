@@ -4,24 +4,17 @@ output:
   html_document: default
 ---
 
-
 ### Problem statement
-Prediction of cyber security employees' salaries based on 11 attributes 
 
+Prediction of cyber security employees' salaries based on 11 attributes
 
 ### Problem description
 
 We are living in the "information age" or rather the "data age", meaning that everything around us revolves around data. The data has become one of the most valuable assets that a person or an organisation can have, since it has a significant value, losing it will lead to significant damages. Thus, most of the attacks nowadays are directed toward the data. To guard against such damages, organisations have realised the importance of protecting their digital assets, leading them to hire cybersecurity specialists. This made cybersecurity gain popularity among people so there's a growing tendency to study cybersecurity. Consequently this resulted in the emergence of plentiful professionals with various experience levels and skills in this field. As a result, organisations may find it difficult to decide a salary for job candidates solely based on the CV. also, since the attacks improve rapidly, organisations need to hire more employees in the far future to defend against such attacks but it's not an easy matter to predict the future payroll which may hinders some of the organisation's plans. Another issue arises when the decision makers in the organisation aren't fully aware of the trends on salary. Their lack of awareness gives a chance for the competitor organisations to attract their employees to them by offering a better salary that match current trends
 
-
-
-
 ### Data mining task
+
 Prediction of the cyber security employees' salaries using regression
-
-
-
-
 
 ### Goal
 
@@ -56,7 +49,6 @@ ncol(dataset)
 nrow(dataset)
 names(dataset)
 str(dataset)
-
 ```
 
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
@@ -72,7 +64,7 @@ str(dataset)
 | employment_type    | The nature or category of employee's engagement in the job  | Nominal       | PT "Part time"\                                           |
 |                    |                                                             |               | FT "Full time"\                                           |
 |                    |                                                             |               | CT "Contract\                                             |
-|                    |                                                             |               | FL "Freelancer"                                           |
+|                    |                                                             |               | FL"Freelancer"                                            |
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
 | job_title          | The role worked in during the year                          | Nominal       | Different titles.                                         |
 |                    |                                                             |               |                                                           |
@@ -101,8 +93,7 @@ str(dataset)
 | company_size       | How big/small is the company                                | Ordinal       | S , M or L                                                |
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
 
-sample of 20 employees:
-using sample_n(table,size) function
+sample of 20 employees: using sample_n(table,size) function
 
 ```{r}
 library(dplyr)
@@ -155,42 +146,36 @@ Find_outlier4 = which(out_remote_ratio ==TRUE, arr.ind = TRUE)
 out_remote_ratio
 Find_outlier4
 dataset=dataset[-Find_outlier4,]
-
 ```
 
 ```{r}
-boxplot(salary_in_usd ~ experience_level, data = dataset)
+boxplot(salary_in_usd ~ experience_level, data = dataset , yaxt="n")
 labels<- pretty(dataset$salary_in_usd)
 labels<- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)
-
 ```
 
 ```{r}
-boxplot(salary_in_usd ~ work_year, data = dataset)
+boxplot(salary_in_usd ~ work_year, data = dataset , yaxt="n")
 labels<- pretty(dataset$salary_in_usd)
 labels<- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)
-
-
 ```
 
 ```{r}
-boxplot(salary_in_usd ~ employment_type, data = dataset)
+boxplot(salary_in_usd ~ employment_type, data = dataset , yaxt="n")
 labels<- pretty(dataset$salary_in_usd)
 labels<- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)
-
 ```
 
 ```{r}
-boxplot(salary_in_usd ~ company_size, data = dataset)
+boxplot(salary_in_usd ~ company_size, data = dataset , yaxt="n")
 labels<- pretty(dataset$salary_in_usd)
 labels<- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999) 
 ```
-
