@@ -225,9 +225,9 @@ options(scipen = 999)
 
 
 The "salary" column gives the same information as "salary_in_usd" it's just a matter of currency exchange, and we will eventually transform all the values in "salary" column 
-to a one common currency so we can properly deal with them. To further confirm that the two column are redundant, we will use the exchange rate for USD to the desired currency.
+to a one common currency so we can properly deal with them. To further confirm that the two column are redundant, we will use the latest exchange rate for USD to the desired currency.
 
-we will start by creating a temporary column named "converted_salary" to save the salary that we will get by using the exchange rate(when?) to convert the salary_in_usd to the salary with different currencies to compare with "salary" column
+we will start by creating a temporary column named "converted_salary" to save the salary that we will get by using the exchange rate to convert the salary_in_usd to the salary with different currencies to compare with "salary" column
 
 
 ```{r}
