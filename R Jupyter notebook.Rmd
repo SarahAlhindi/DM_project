@@ -4,6 +4,16 @@ output:
   html_document: default
 ---
 
+```{r}
+library(dplyr)
+library(countrycode)
+
+```
+
+
+
+
+
 ### Problem statement
 
 Prediction of cyber security employees' salaries based on 11 attributes
@@ -208,3 +218,45 @@ labels<- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999) 
 ```
+
+
+## Data Reduction  
+### Dimensionality Reduction 
+
+
+The "salary" column gives the same information as "salary_in_usd" it's just a matter of currency exchange, and we will eventually transform all the values in "salary" column 
+to a one common currency so we can properly deal with them. To further confirm that the two column are redundant, we will use the exchange rate for USD to the desired currency.
+
+we will start by creating a temporary column named "converted_salary" to save the salary that we will get by using the exchange rate(when?) to convert the salary_in_usd to the salary with different currencies to compare with "salary" column
+
+
+```{r}
+convertedDataset=dataset
+
+
+convertedDataset$exchange_rate = factor(convertedDataset$salary_currency, levels=c("USD","BRL","GBP","EUR","INR","CAD","CHF","DKK","SGD","AUD","SEK","MXN","ILS","PLN","NOK","IDR","NZD","HUF","ZAR","TWD","RUB"), labels=c(1/1,1/0.20,1/1.22,1/1.06,1/0.012,1/0.74,1/1.10,1/0.14,1/0.73,1/0.64,1/0.090,1/0.057,1/0.26,1/0.23,1/0.093,1/0.000065,1/0.60,1/0.0027,1/0.053,1/0.031,1/0.010))
+convertedDataset$exchange_rate = as.numeric(as.character(convertedDataset$exchange_rate))
+convertedDataset$converted_salary = convertedDataset$salary_in_usd*convertedDataset$exchange_rate
+
+
+
+set.seed(1)
+salary_sample <- sample_n(convertedDataset[,c("salary","converted_salary")],10)
+
+print(salary_sample)
+```
+
+
+as shown in the sample, the two columns are almost identical. This can be proved by correlation coefficient as well.
+
+
+
+```{r}
+correlation <- cor(convertedDataset$salary , convertedDataset$converted_salary)
+print(correlation)
+```
+It hasn't reached 100% possibly due to rounding in the calculations and slight differences in the exchange rate over time.  
+
+To make the mining process more effiecent and has an improved quality, we decided to remove the "salary" column.
+
+  
