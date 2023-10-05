@@ -187,7 +187,7 @@ Find_outlier4
 dataset=dataset[-Find_outlier4,]
 ```
 
-Here we use boxplot to see the distribution between salary_in_usd and experience_level
+Here we used boxplot to see the distribution between salary_in_usd and experience_level
 We observed that salaries vary depending on the level of experience.
 ```{r}
 boxplot(salary_in_usd ~ experience_level, data = dataset , yaxt="n")
@@ -207,7 +207,7 @@ axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)
 ```
 
-Here we use boxplot to see the distribution between salary_in_usd and employment_type
+Here we used boxplot to see the distribution between salary_in_usd and employment_type
 We observed that Full Time (FT) offers more salary than the other categories.
 ```{r}
 boxplot(salary_in_usd ~ employment_type, data = dataset , yaxt="n")
@@ -217,7 +217,7 @@ axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)
 ``` 
 
-Here we use boxplot to see the distribution between salary_in_usd and company_size
+Here we used boxplot to see the distribution between salary_in_usd and company_size
 We observed that the larger the company is the higher the salary was.
 ```{r}
 boxplot(salary_in_usd ~ company_size, data = dataset , yaxt="n")
