@@ -215,6 +215,8 @@ labels<- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)
 ```
+Here we use boxplot to see the distribution between salary_in_usd and employment_type
+We observed that Full Time (FT) offers more salary than the other categories.
 
 ```{r}
 boxplot(salary_in_usd ~ company_size, data = dataset , yaxt="n")
