@@ -133,19 +133,20 @@ library(dplyr)
 sample=sample_n(dataset,20)
 print(sample)
 ```
-
+Show the missing value if it is FALSE it means no null value,if it is TRUE there is null value.
+In our dataset there is no null values.
 ```{r}
 is.na(dataset)
 sum(is.na(dataset))
 ```
-show the 
+Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric column 
 ```{r}
 summary(dataset$work_year)
 summary(dataset$salary)
 summary(dataset$salary_in_usd)
 summary(dataset$remote_ratio)
 ```
-show the variane of each numeric column
+Show the variane of each numeric column
 ```{r}
 var(dataset$work_year)
 var(dataset$salary)
@@ -153,7 +154,7 @@ var(dataset$salary_in_usd)
 var(dataset$remote_ratio)
 ```
 
-find the outliers and remove them from the dataset
+Find the outliers and remove them from the dataset
 ```{r}
 install.packages("outliers")
 library(outliers)
