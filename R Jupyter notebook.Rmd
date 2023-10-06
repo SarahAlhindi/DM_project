@@ -138,14 +138,14 @@ print(sample)
 is.na(dataset)
 sum(is.na(dataset))
 ```
-
+show the 
 ```{r}
 summary(dataset$work_year)
 summary(dataset$salary)
 summary(dataset$salary_in_usd)
 summary(dataset$remote_ratio)
 ```
-
+show the variane of each numeric column
 ```{r}
 var(dataset$work_year)
 var(dataset$salary)
@@ -153,6 +153,7 @@ var(dataset$salary_in_usd)
 var(dataset$remote_ratio)
 ```
 
+find the outliers and remove them from the dataset
 ```{r}
 install.packages("outliers")
 library(outliers)
