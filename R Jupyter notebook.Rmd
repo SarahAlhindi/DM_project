@@ -265,7 +265,7 @@ as shown in the sample, the two columns are almost identical. This can be proved
 correlation <- cor(convertedDataset$salary , convertedDataset$converted_salary)
 print(correlation)
 ```
-It hasn't reached 100% possibly due to rounding in the calculations and slight differences in the exchange rate over time.  
+The correlation is so high but it hasn't reached 100% possibly due to rounding in the calculations and slight differences in the exchange rate over time.  
 
 To make the mining process more effiecent and has an improved quality, we decided to remove the "salary" column.
 
