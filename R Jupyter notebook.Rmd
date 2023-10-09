@@ -46,7 +46,7 @@ We are living in the "information age" or rather the "data age", meaning that ev
 
 ### Data mining task
 
-Prediction of the cyber security employees' salaries using regression
+Prediction of the cyber security employees' salary categories (Very Low, Low, , High, Very High) using classification methods.
 
 ### Goal
 
