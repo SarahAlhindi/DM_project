@@ -267,6 +267,14 @@ print(correlation)
 ```
 The correlation is so high but it hasn't reached 100% possibly due to rounding in the calculations and slight differences in the exchange rate over time.  
 
-To make the mining process more effiecent and has an improved quality, we decided to remove the "salary" column.
+To make the mining process more effiecent and has an improved quality, we decided to remove the "salary" column.  
+
+
+```{r}
+dataset<-dataset[,-c(5)]
+```
+
+
+
 
   
