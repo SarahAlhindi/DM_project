@@ -319,7 +319,7 @@ dataset[aq,"company_location"]="AQ"
 
 
 
-Concept hierarchy generation can be done for "job_title" as well to improve interpretation and scalability. Also, most job titles are essentially the same job but with different names, so combining them into a higher-level jobs titles such as Architect, Analyst and Engineer etc.
+Concept hierarchy generation can be done for "job_title" as well to improve interpretation and scalability. Also, most job titles are essentially the same job but with different names, so we can combine them into a higher-level jobs titles such as Architect, Analyst and Engineer etc.
 
 
 
