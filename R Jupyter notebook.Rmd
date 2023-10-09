@@ -277,4 +277,33 @@ dataset<-dataset[,-c(5)]
 
 
 
+## Encoding categorical data  
+
+To deal with columns with character type we are going to encode them, because most machine learning algorithms are designed to work with factors data rather than character data and it improves performance and Interpretability of data as well.
+
+
+```{r}
+dataset$job_title  <- factor(dataset$job_title)
+
+dataset$experience_level = factor(dataset$experience_level, levels=c("EN", "MI", "SE", "EX"), labels=c(1,2,3,4))
+
+dataset$employment_type  <- factor(dataset$employment_type)
+
+dataset$employee_residence  <- factor(dataset$employee_residence)
+
+dataset$company_location  <- factor(dataset$company_location)
+
+dataset$salary_currency  <- factor(dataset$salary_currency)
+
+dataset$job_title  <- factor(dataset$job_title)
+
+
+dataset$company_size = factor(dataset$company_size, levels=c("S","M","L"), labels=c(1,2,3))
+
+
+dataset$job_title  <- factor(dataset$job_title)
+
+```
+
+
   
