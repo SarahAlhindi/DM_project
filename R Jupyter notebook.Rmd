@@ -291,12 +291,31 @@ dataset<-dataset[,-c(5)]
 
 ### Find the outliers and remove them from the dataset:
 by bloxPlot
+now we show (salary_in_usd) attributes' outliers and remove them
 ```{r}
-boxplot(dataset$salary_in_usd)  
-out <- boxplot.stats(dataset$salary_in_usd)$out 
-out_ind <- which(dataset$salary_in_usd %in% c(out)) 
-out_ind 
-dataset=dataset[-out_ind,]
+boxplot(dataset$salary_in_usd)
+salary_outliers <- boxplot.stats(dataset$salary_in_usd)$out
+salary_outlier_indices <- which(dataset$salary_in_usd %in% salary_outliers)
+dataset <- dataset[-salary_outlier_indices,]
+
+```
+
+now we show (remote_ratio) attributes' outliers and remove them
+```{r}
+boxplot(dataset$remote_ratio)
+remote_outliers <- boxplot.stats(dataset$remote_ratio)$out
+remote_outlier_indices <- which(dataset$remote_ratio %in% remote_outliers)
+dataset <- dataset[-remote_outlier_indices,]
+
+```
+
+now we show (work_year) attributes' outliers and remove them
+```{r}
+boxplot(dataset$work_year)
+work_year_outliers <- boxplot.stats(dataset$work_year)$out
+work_year_outlier_indices <- which(dataset$work_year %in% work_year_outliers)
+dataset <- dataset[-work_year_outlier_indices,]
+
 ```
 
 
@@ -392,7 +411,7 @@ breaks <- quantile(dataset$salary_in_usd,
                    probs = c(0, .25, .5, .75, .95, 1), 
                    na.rm = TRUE)
 
-# discretize the 'salary_in_usd' column
+
 dataset$salary_in_usd <- cut(dataset$salary_in_usd, 
                                        breaks = breaks, 
                                        include.lowest = TRUE, 
