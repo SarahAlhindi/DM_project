@@ -6,6 +6,7 @@ output: html_notebook
 ```{r}
 library(dplyr)
 library(countrycode)
+library(outliers)
 
 ```
 
@@ -128,7 +129,7 @@ str(dataset)
 sample of 20 employees: using sample_n(table,size) function
 
 ```{r}
-library(dplyr)
+
 sample=sample_n(dataset,20)
 print(sample)
 ```
@@ -156,7 +157,7 @@ var(dataset$remote_ratio)
 Find the outliers and remove them from the dataset
 ```{r}
 install.packages("outliers")
-library(outliers)
+
 
 # out_work_year=outlier (dataset$work_year,logical =TRUE)
 sum(out_work_year)#
