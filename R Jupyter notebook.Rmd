@@ -189,7 +189,7 @@ dataset=dataset[-Find_outlier4,]
 ```
 
 Here we used boxplot to see the distribution between salary_in_usd and experience_level
-We observed that salaries vary depending on the level of experience.
+We observed that salaries vary depending on the level of experience,they are positively correlated.
 ```{r}
 boxplot(salary_in_usd ~ experience_level, data = dataset , yaxt="n")
 labels<- pretty(dataset$salary_in_usd)
