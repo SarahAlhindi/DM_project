@@ -12,11 +12,11 @@ We are living in the “information age” or rather the “data age”, meaning
 ## Summary
 
 ### First steps
-1.Define data mining task
-2.Read and view dataset
-3.Save original dataset
-4.Describe dataset and attributes
-5.Show sample of the dataset
+1. Define data mining task
+2. Read and view dataset
+3. Save original dataset
+4. Describe dataset and attributes
+5. Show sample of the dataset
 
 
 ### Missing values 
