@@ -70,6 +70,14 @@ View(dataset)
 
 ```
 
+we will keep a copy of the original dataset before data preprocessing to use if needed at any time
+
+```{r}
+originalDataset= dataset
+```
+
+
+
 ## General information about the dataset:
 
 No. of attributes: 11\
