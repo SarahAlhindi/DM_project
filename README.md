@@ -10,6 +10,22 @@ Shahad Shukri Bin Makhashen  443204385
 We are living in the “information age” or rather the “data age”, meaning that everything around us revolves around data. The data has become one of the most valuable assets that a person or an organization can have, Thus, most of the attacks nowadays are directed toward the data. To guard against such damage, organizations have realized the importance of protecting their digital assets, leading them to hire cybersecurity specialists. As a result, the demand for these professionals is higher now than ever before. In order to better understand this field, we decided to analyze a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analyzing this dataset can provide insightful predictions regarding the salary range of cybersecurity employees.
 
 ## Summary
+
+### First steps
+1.Define data mining task
+2.Read and view dataset
+3.Save original dataset
+4.Describe dataset and attributes
+5.Show sample of the dataset
+
+
+### Missing values 
+In this section we have written codes that aims to find missing values in the dataset. We concluded from the results that we have no missing values or NULLS in all of our attributes.
+
+### Central tendency measures
+We summerized our numeric attributes (salary, remote_ratio, salary_in_usd, and work_year) with some statistical measures. i.e: variance, mean, median, quartiles, maximum and minimum. 
+
+### Graph visualization
 In the graphs we used the box plot to see the variables distribution. 
 We used salary_in_usd with 4 other attribute to see the distribution for each. 
 Firstly, We noticed that there is a positive correlation between salaries and the level of experience, meaning that salaries tend to increase as experience levels go up. Secondly, we observed that in 2021, salaries were relatively similar among individuals, but in 2022, we observed a widening gap between them. Turning to employment type Our observation indicates that Full-Time (FT) positions offer higher salaries compared to other categories. Lastly, observation revealed that larger companies tend to offer higher salaries.
@@ -81,6 +97,10 @@ We excluded the salary and employment type columns from the model duo to redunda
 6. remote ratio
 7. company_location
 8. company_size
+
+### Finding and removing outliers
+Through creating a box plot to visualize outliers for numeric attributes (remote_ratio, salary_in_usd, and work_year) then removing them from the dataset.
+We noticed that remote_ratio and work_year have no outliers , while salary_in_usd have many exceptionally high values.
 
 
 ### Discretization  
