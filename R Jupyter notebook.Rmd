@@ -3,16 +3,14 @@ title: "Cybersecurity salaries"
 output: html_notebook
 ---
 
+### Import needed libraries
+
 ```{r}
 library(dplyr)
 library(countrycode)
 library(outliers)
 
 ```
-
-
-
-
 
 ### Problem statement
 
@@ -44,7 +42,6 @@ Prediction of cyber security employees' salaries based on 11 attributes
 
 We are living in the "information age" or rather the "data age", meaning that everything around us revolves around data. The data has become one of the most valuable assets that a person or an organisation can have, since it has a significant value, losing it will lead to significant damages. Thus, most of the attacks nowadays are directed toward the data. To guard against such damages, organisations have realised the importance of protecting their digital assets, leading them to hire cybersecurity specialists. This made cybersecurity gain popularity among people so there's a growing tendency to study cybersecurity. Consequently this resulted in the emergence of plentiful professionals with various experience levels and skills in this field. As a result, organisations may find it difficult to decide a salary for job candidates solely based on the CV. also, since the attacks improve rapidly, organisations need to hire more employees in the far future to defend against such attacks but it's not an easy matter to predict the future payroll which may hinders some of the organisation's plans. Another issue arises when the decision makers in the organisation aren't fully aware of the trends on salary. Their lack of awareness gives a chance for the competitor organisations to attract their employees to them by offering a better salary that match current trends
 
-
 ### Data mining task
 
 Prediction of the cyber security employees' salary categories (Very Low, Low, , High, Very High) using classification methods.
@@ -64,19 +61,21 @@ Given the problems we discussed and In order to better understand this field, we
 
 <https://www.kaggle.com/datasets/deepcontractor/cyber-security-salaries>
 
+### Reading and viewing dataset
+
 ```{r}
 dataset= read.csv(url("https://raw.githubusercontent.com/SarahAlhindi/DM_project/main/Data%20Set/salaries_cyber.csv"), header=TRUE)
 View(dataset)
 
 ```
 
+### Original dataset
+
 we will keep a copy of the original dataset before data preprocessing to use if needed at any time
 
 ```{r}
 originalDataset= dataset
 ```
-
-
 
 ## General information about the dataset:
 
@@ -91,6 +90,8 @@ nrow(dataset)
 names(dataset)
 str(dataset)
 ```
+
+### Attributes' description table
 
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
 | **Attribute Name** | **Description**                                             | **Data Type** | **Possible values**                                       |
@@ -134,27 +135,36 @@ str(dataset)
 | company_size       | How big/small is the company                                | Ordinal       | S , M or L                                                |
 +--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
 
-sample of 20 employees: using sample_n(table,size) function
+### sample of 20 employees from the dataset:
+
+using sample_n(table,size) function
 
 ```{r}
-
+set.seed(30)
 sample=sample_n(dataset,20)
 print(sample)
 ```
-Show the missing value if it is FALSE it means no null value,if it is TRUE there is null value.
-In our dataset there is no null values.
+
+### Show the missing value:
+
+if it is FALSE it means no null value,if it is TRUE there is null value. In our dataset there is no null values.
+
 ```{r}
 is.na(dataset)
 sum(is.na(dataset))
 ```
-Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric column 
+
+### Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric column
+
 ```{r}
 summary(dataset$work_year)
 summary(dataset$salary)
 summary(dataset$salary_in_usd)
 summary(dataset$remote_ratio)
 ```
-Show the variane of each numeric column
+
+### Show the variane of each numeric column
+
 ```{r}
 var(dataset$work_year)
 var(dataset$salary)
@@ -162,7 +172,8 @@ var(dataset$salary_in_usd)
 var(dataset$remote_ratio)
 ```
 
-Find the outliers and remove them from the dataset
+### Find the outliers and remove them from the dataset
+
 ```{r}
 install.packages("outliers")
 
@@ -197,8 +208,10 @@ Find_outlier4
 dataset=dataset[-Find_outlier4,]
 ```
 
-Here we used boxplot to see the distribution between salary_in_usd and experience_level
-We observed that salaries vary depending on the level of experience,they are positively correlated.
+### Visualization of relationship between some pairs of attributes:
+
+Here we used boxplot to see the distribution between salary_in_usd and experience_level We observed that salaries vary depending on the level of experience,they are positively correlated.
+
 ```{r}
 boxplot(salary_in_usd ~ experience_level, data = dataset , yaxt="n")
 labels<- pretty(dataset$salary_in_usd)
@@ -207,8 +220,8 @@ axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)
 ```
 
-Here we used boxplot to see the distribution between salary_in_usd and work_year
-We observed that 2021 salaries were close to each other but in 2022 the gap between them getting bigger.
+Here we used boxplot to see the distribution between salary_in_usd and work_year We observed that 2021 salaries were close to each other but in 2022 the gap between them getting bigger.
+
 ```{r}
 boxplot(salary_in_usd ~ work_year, data = dataset , yaxt="n")
 labels<- pretty(dataset$salary_in_usd)
@@ -217,18 +230,18 @@ axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)
 ```
 
-Here we used boxplot to see the distribution between salary_in_usd and employment_type
-We observed that Full Time (FT) offers more salary than the other categories.
+Here we used boxplot to see the distribution between salary_in_usd and employment_type We observed that Full Time (FT) offers more salary than the other categories.
+
 ```{r}
 boxplot(salary_in_usd ~ employment_type, data = dataset , yaxt="n")
 labels<- pretty(dataset$salary_in_usd)
 labels<- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)
-``` 
+```
 
-Here we used boxplot to see the distribution between salary_in_usd and company_size
-We observed that the larger the company is the higher the salary was.
+Here we used boxplot to see the distribution between salary_in_usd and company_size We observed that the larger the company is the higher the salary was.
+
 ```{r}
 boxplot(salary_in_usd ~ company_size, data = dataset , yaxt="n")
 labels<- pretty(dataset$salary_in_usd)
@@ -237,16 +250,13 @@ axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999) 
 ```
 
+## Data Reduction
 
-## Data Reduction  
-### Dimensionality Reduction 
+### Dimensionality Reduction
 
-
-The "salary" column gives the same information as "salary_in_usd" it's just a matter of currency exchange, and we will eventually transform all the values in "salary" column 
-to one common currency so we can properly deal with them. To further confirm that the two column are redundant, we will use the latest exchange rate for USD to the desired currency.
+The "salary" column gives the same information as "salary_in_usd" it's just a matter of currency exchange, and we will eventually transform all the values in "salary" column to one common currency so we can properly deal with them. To further confirm that the two column are redundant, we will use the latest exchange rate for USD to the desired currency.
 
 we will start by creating a temporary column named "converted_salary" to save the salary that we will get by using the exchange rate to convert the salary_in_usd to the salary with different currencies to compare with "salary" column
-
 
 ```{r}
 convertedDataset=dataset
@@ -264,51 +274,42 @@ salary_sample <- sample_n(convertedDataset[,c("salary","converted_salary")],10)
 print(salary_sample)
 ```
 
-
 as shown in the sample, the two columns are almost identical. This can be proved by correlation coefficient as well.
-
-
 
 ```{r}
 correlation <- cor(convertedDataset$salary , convertedDataset$converted_salary)
 print(correlation)
 ```
-The correlation is so high but it hasn't reached 100% possibly due to rounding in the calculations and slight differences in the exchange rate over time.  
 
-To make the mining process more effiecent and has an improved quality, we decided to remove the "salary" column.  
+The correlation is so high but it hasn't reached 100% possibly due to rounding in the calculations and slight differences in the exchange rate over time.
 
+To make the mining process more effiecent and has an improved quality, we decided to remove the "salary" column.
 
 ```{r}
 dataset<-dataset[,-c(5)]
 ```
 
-
-
-
-
-
 ## Concept hierarchy generation for nominal data
 
-the columns "company_location" and "employee_residence" have the name of countries for the company and employee respectively. And these attributes can be generalized to higher-level concept that is region to help understand and analyze the dataset better and improve algorithm performance.  
+the columns "company_location" and "employee_residence" have the name of countries for the company and employee respectively. And these attributes can be generalized to higher-level concept that is region to help understand and analyze the dataset better and improve algorithm performance.
 
 We will use the 7 regions as defined in the World Bank Development Indicators. These regions are:
 
-1. East Asia and Pacific: This region includes countries like China, Australia, Indonesia, Thailand, etc.
+1.  East Asia and Pacific: This region includes countries like China, Australia, Indonesia, Thailand, etc.
 
-2. Europe and Central Asia: This region includes countries like Germany, UK, Russia, Turkey, etc.
+2.  Europe and Central Asia: This region includes countries like Germany, UK, Russia, Turkey, etc.
 
-3. Latin America & Caribbean: This region includes countries like Brazil, Mexico, Argentina, Cuba, etc.
+3.  Latin America & Caribbean: This region includes countries like Brazil, Mexico, Argentina, Cuba, etc.
 
-4. Middle East and North Africa: This region includes countries like Saudi Arabia, Egypt, Iran, Iraq, etc.
+4.  Middle East and North Africa: This region includes countries like Saudi Arabia, Egypt, Iran, Iraq, etc.
 
-5. North America: This is predominantly United States and Canada.
+5.  North America: This is predominantly United States and Canada.
 
-6. South Asia: This region includes countries like India, Pakistan, Bangladesh, Sri Lanka, etc.
+6.  South Asia: This region includes countries like India, Pakistan, Bangladesh, Sri Lanka, etc.
 
-7. Sub-Saharan Africa: This region includes countries like Nigeria, South Africa, Ethiopia, Kenya, etc.
+7.  Sub-Saharan Africa: This region includes countries like Nigeria, South Africa, Ethiopia, Kenya, etc.
 
 Note: UM(The United States Minor Outlying Islands) and AQ(Antarctica) don't belong to any of these regions, thus, they will be used as they are.
-
 
 ```{r}
 
@@ -325,13 +326,7 @@ dataset[aq,"company_location"]="AQ"
 
 ```
 
-
-
-
 Concept hierarchy generation can be done for "job_title" as well to improve interpretation and scalability. Also, most job titles are essentially the same job but with different names, so we can combine them into a higher-level jobs titles such as Architect, Analyst and Engineer etc.
-
-
-
 
 ```{r}
 
@@ -348,15 +343,9 @@ dataset$job_title[grepl('Consultant', dataset$job_title)] <- 'Consultant'
 dataset$job_title[is.na(dataset$job_title)] <- 'Other'
 ```
 
-
-
-
-
-
-## Encoding categorical data  
+## Encoding categorical data
 
 To deal with columns with character type we are going to encode them, because most machine learning algorithms are designed to work with factors data rather than character data and it improves performance and Interpretability of data as well.
-
 
 ```{r}
 dataset$job_title  <- factor(dataset$job_title)
@@ -381,14 +370,11 @@ dataset$job_title  <- factor(dataset$job_title)
 
 ```
 
+### Discretization of salaray_in_usd attribute
 
-
-
+by calculating breaks based on quartiles
 
 ```{r}
-
-
-# calculate breaks based on quartiles
 breaks <- quantile(dataset$salary_in_usd, 
                    probs = c(0, .25, .5, .75, .95, 1), 
                    na.rm = TRUE)
@@ -401,4 +387,11 @@ dataset$salary_in_usd <- cut(dataset$salary_in_usd,
 
 
 ```
-  
+
+### Normalization:
+
+to change the scale of numeric attributes (remote_ratio and work_year) to a scale of [-1,1] to give them equal weight
+
+```{r}
+dataset [, c("work_year" , "remote_ratio")] = scale(dataset [, c("work_year" , "remote_ratio")])
+```
