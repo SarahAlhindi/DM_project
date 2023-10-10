@@ -3,7 +3,7 @@ title: "Cybersecurity salaries"
 output: html_notebook
 ---
 
-### Import needed libraries
+### Needed libraries
 
 ```{r}
 library(dplyr)
@@ -137,7 +137,7 @@ str(dataset)
 
 ### sample of 20 employees from the dataset:
 
-using sample_n(table,size) function
+using sample_n(table,size) function and using (set_seed())
 
 ```{r}
 set.seed(30)
@@ -292,6 +292,7 @@ dataset<-dataset[,-c(5)]
 ### Find the outliers and remove them from the dataset:
 by bloxPlot
 now we show (salary_in_usd) attributes' outliers and remove them
+we can see that there are many outliers with exceptionally high values
 ```{r}
 boxplot(dataset$salary_in_usd)
 salary_outliers <- boxplot.stats(dataset$salary_in_usd)$out
@@ -301,6 +302,7 @@ dataset <- dataset[-salary_outlier_indices,]
 ```
 
 now we show (remote_ratio) attributes' outliers and remove them
+we can see there aren't outliers in remote_ratio
 ```{r}
 boxplot(dataset$remote_ratio)
 remote_outliers <- boxplot.stats(dataset$remote_ratio)$out
@@ -310,6 +312,7 @@ dataset <- dataset[-remote_outlier_indices,]
 ```
 
 now we show (work_year) attributes' outliers and remove them
+we can see there aren't outliers in work_year
 ```{r}
 boxplot(dataset$work_year)
 work_year_outliers <- boxplot.stats(dataset$work_year)$out
