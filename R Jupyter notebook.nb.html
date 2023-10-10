@@ -1756,85 +1756,83 @@ display: none;
 <h3>Import needed libraries</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoY291bnRyeWNvZGUpXG5saWJyYXJ5KG91dGxpZXJzKVxuXG5gYGAifQ== -->
-<pre class="r"><code>library(dplyr)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoY291bnRyeWNvZGUpXG5saWJyYXJ5KG91dGxpZXJzKVxuXG5gYGBcbmBgYCJ9 -->
+<pre class="r"><code>```r
+library(dplyr)
 library(countrycode)
 library(outliers)
 </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="problem-statement" class="section level3">
-<h3>Problem statement</h3>
-<p>Prediction of cyber security employees’ salaries based on 11
-attributes</p>
-<p>1.work_year</p>
-<p>2.experience_level</p>
-<p>3.employment_type</p>
-<p>4.job_title</p>
-<p>5.salary</p>
-<p>6.salary_currency</p>
-<p>7.salary_in_usd</p>
-<p>8.employee_residence</p>
-<p>9.remote_ratio</p>
-<p>10.company_location</p>
-<p>11.company_size</p>
-</div>
-<div id="problem-description" class="section level3">
-<h3>Problem description</h3>
-<p>We are living in the “information age” or rather the “data age”,
-meaning that everything around us revolves around data. The data has
-become one of the most valuable assets that a person or an organisation
-can have, since it has a significant value, losing it will lead to
-significant damages. Thus, most of the attacks nowadays are directed
-toward the data. To guard against such damages, organisations have
-realised the importance of protecting their digital assets, leading them
-to hire cybersecurity specialists. This made cybersecurity gain
-popularity among people so there’s a growing tendency to study
-cybersecurity. Consequently this resulted in the emergence of plentiful
-professionals with various experience levels and skills in this field.
-As a result, organisations may find it difficult to decide a salary for
-job candidates solely based on the CV. also, since the attacks improve
-rapidly, organisations need to hire more employees in the far future to
-defend against such attacks but it’s not an easy matter to predict the
-future payroll which may hinders some of the organisation’s plans.
-Another issue arises when the decision makers in the organisation aren’t
-fully aware of the trends on salary. Their lack of awareness gives a
-chance for the competitor organisations to attract their employees to
-them by offering a better salary that match current trends</p>
-</div>
-<div id="data-mining-task" class="section level3">
-<h3>Data mining task</h3>
-<p>Prediction of the cyber security employees’ salary categories (Very
-Low, Low, , High, Very High) using classification methods.</p>
-</div>
-<div id="goal" class="section level3">
-<h3>Goal</h3>
-<p>Given the problems we discussed and In order to better understand
-this field, we decided to analyse a dataset of 1247 cybersecurity
-employees, containing information such as salary, job title, and
-experience level. Analysing this dataset can provide insightful
-predictions regarding the salary range of a cybersecurity employee,
-which can help in</p>
-<ul>
-<li>Making better decisions</li>
-<li>Making recruitment and hiring process easier and more efficient</li>
-<li>Predicting the future payroll</li>
-<li>Increasing loyalty</li>
-<li>Increasing the satisfaction rate</li>
-<li>Achieving fairness</li>
-</ul>
-</div>
-<div id="source-of-data" class="section level2">
-<h2>Source of data:</h2>
-<p><a href="https://www.kaggle.com/datasets/deepcontractor/cyber-security-salaries" class="uri">https://www.kaggle.com/datasets/deepcontractor/cyber-security-salaries</a></p>
-<div id="reading-and-viewing-dataset" class="section level3">
-<h3>Reading and viewing dataset</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YXNldD0gcmVhZC5jc3YodXJsKFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1NhcmFoQWxoaW5kaS9ETV9wcm9qZWN0L21haW4vRGF0YSUyMFNldC9zYWxhcmllc19jeWJlci5jc3ZcIiksIGhlYWRlcj1UUlVFKVxuVmlldyhkYXRhc2V0KVxuXG5gYGAifQ== -->
-<pre class="r"><code>dataset= read.csv(url(&quot;https://raw.githubusercontent.com/SarahAlhindi/DM_project/main/Data%20Set/salaries_cyber.csv&quot;), header=TRUE)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Problem statement
+
+Prediction of cyber security employees&#39; salaries based on 11 attributes
+
+1.work_year
+
+2.experience_level
+
+3.employment_type
+
+4.job_title
+
+5.salary
+
+6.salary_currency
+
+7.salary_in_usd
+
+8.employee_residence
+
+9.remote_ratio
+
+10.company_location
+
+11.company_size
+
+### Problem description
+
+We are living in the &quot;information age&quot; or rather the &quot;data age&quot;, meaning that everything around us revolves around data. The data has become one of the most valuable assets that a person or an organisation can have, since it has a significant value, losing it will lead to significant damages. Thus, most of the attacks nowadays are directed toward the data. To guard against such damages, organisations have realised the importance of protecting their digital assets, leading them to hire cybersecurity specialists. This made cybersecurity gain popularity among people so there&#39;s a growing tendency to study cybersecurity. Consequently this resulted in the emergence of plentiful professionals with various experience levels and skills in this field. As a result, organisations may find it difficult to decide a salary for job candidates solely based on the CV. also, since the attacks improve rapidly, organisations need to hire more employees in the far future to defend against such attacks but it&#39;s not an easy matter to predict the future payroll which may hinders some of the organisation&#39;s plans. Another issue arises when the decision makers in the organisation aren&#39;t fully aware of the trends on salary. Their lack of awareness gives a chance for the competitor organisations to attract their employees to them by offering a better salary that match current trends
+
+### Data mining task
+
+Prediction of the cyber security employees&#39; salary categories (Very Low, Low, , High, Very High) using classification methods.
+
+### Goal
+
+Given the problems we discussed and In order to better understand this field, we decided to analyse a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analysing this dataset can provide insightful predictions regarding the salary range of a cybersecurity employee, which can help in
+
+-   Making better decisions
+-   Making recruitment and hiring process easier and more efficient
+-   Predicting the future payroll
+-   Increasing loyalty
+-   Increasing the satisfaction rate
+-   Achieving fairness
+
+## Source of data:
+
+&lt;https://www.kaggle.com/datasets/deepcontractor/cyber-security-salaries&gt;
+
+### Reading and viewing dataset
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YXNldD0gcmVhZC5jc3YodXJsKFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1NhcmFoQWxoaW5kaS9ETV9wcm9qZWN0L21haW4vRGF0YSUyMFNldC9zYWxhcmllc19jeWJlci5jc3ZcIiksIGhlYWRlcj1UUlVFKVxuVmlldyhkYXRhc2V0KVxuXG5gYGAifQ== --&gt;
+
+```r
+dataset= read.csv(url(&quot;https://raw.githubusercontent.com/SarahAlhindi/DM_project/main/Data%20Set/salaries_cyber.csv&quot;), header=TRUE)
 View(dataset)
 </code></pre>
 <!-- rnb-source-end -->
@@ -1847,187 +1845,212 @@ View(dataset)
 to use if needed at any time</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3JpZ2luYWxEYXRhc2V0PSBkYXRhc2V0XG5gYGAifQ== -->
-<pre class="r"><code>originalDataset= dataset</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-</div>
-<div id="general-information-about-the-dataset" class="section level2">
-<h2>General information about the dataset:</h2>
-<p>No. of attributes: 11<br />
-Type of attributes: Ordinal , Nominal, and Numeric<br />
-No. of objects: 1247<br />
-Class label: salary_in_usd</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmNvbChkYXRhc2V0KVxubnJvdyhkYXRhc2V0KVxubmFtZXMoZGF0YXNldClcbnN0cihkYXRhc2V0KVxuYGBgIn0= -->
-<pre class="r"><code>ncol(dataset)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxub3JpZ2luYWxEYXRhc2V0PSBkYXRhc2V0XG5gYGBcbmBgYCJ9 -->
+<pre class="r"><code>```r
+originalDataset= dataset</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+## General information about the dataset:
+
+No. of attributes: 11\
+Type of attributes: Ordinal , Nominal, and Numeric\
+No. of objects: 1247\
+Class label: salary_in_usd
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubmNvbChkYXRhc2V0KVxubnJvdyhkYXRhc2V0KVxubmFtZXMoZGF0YXNldClcbnN0cihkYXRhc2V0KVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+ncol(dataset)
 nrow(dataset)
 names(dataset)
 str(dataset)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<div id="attributes-description-table" class="section level3">
-<h3>Attributes’ description table</h3>
-<table style="width:99%;">
-<colgroup>
-<col width="13%" />
-<col width="38%" />
-<col width="9%" />
-<col width="37%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Attribute Name</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Possible values</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>work_year</td>
-<td>The year in which salary was recorded</td>
-<td>Numerical</td>
-<td>2020 to 2022</td>
-</tr>
-<tr class="even">
-<td>experience_level</td>
-<td>Expertise level of the employee</td>
-<td>Ordinal</td>
-<td>En “Entry level”<br />
-MI “Mid level”<br />
-SE “Senior level”<br />
-EX “Executive level”</td>
-</tr>
-<tr class="odd">
-<td>employment_type</td>
-<td>The nature or category of employee’s engagement in the job</td>
-<td>Nominal</td>
-<td>PT “Part time”<br />
-FT “Full time”<br />
-CT “Contract<br />
-FL”Freelancer”</td>
-</tr>
-<tr class="even">
-<td>job_title</td>
-<td>The role worked in during the year</td>
-<td>Nominal</td>
-<td><p>Different titles.</p>
-<p>like Security Analyst, security researcher</p></td>
-</tr>
-<tr class="odd">
-<td>salary</td>
-<td>The total gross salary amount paid</td>
-<td>Numerical</td>
-<td>1740-50001566</td>
-</tr>
-<tr class="even">
-<td>salary_currency</td>
-<td>The currency of the salary paid to the employee</td>
-<td>Nominal</td>
-<td><p>Different currencies according to ISO 4217 currency code.</p>
-<p>like DE,CA</p></td>
-</tr>
-<tr class="odd">
-<td>salary_in_usd</td>
-<td>The salary paid in United states dollar</td>
-<td>Numerical</td>
-<td>2000 to 365596.40</td>
-</tr>
-<tr class="even">
-<td>employee_residence</td>
-<td>Employee’s primary country of residence</td>
-<td>Nominal</td>
-<td><p>Different countries.</p>
-<p>like US,AE</p></td>
-</tr>
-<tr class="odd">
-<td>remote_ratio</td>
-<td>Percentage of online work by employee in the specified year</td>
-<td>Numerical</td>
-<td>0 “No remote work”<br />
-50 “Partially remote”<br />
-100 “Fully remote”</td>
-</tr>
-<tr class="even">
-<td>company_location</td>
-<td>The country of the employer’s main office</td>
-<td>Nominal</td>
-<td><p>Different countries.</p>
-<p>like BR,BW</p></td>
-</tr>
-<tr class="odd">
-<td>company_size</td>
-<td>How big/small is the company</td>
-<td>Ordinal</td>
-<td>S , M or L</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="sample-of-20-employees-from-the-dataset" class="section level3">
-<h3>sample of 20 employees from the dataset:</h3>
-<p>using sample_n(table,size) function</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMzApXG5zYW1wbGU9c2FtcGxlX24oZGF0YXNldCwyMClcbnByaW50KHNhbXBsZSlcbmBgYCJ9 -->
-<pre class="r"><code>set.seed(30)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Attributes&#39; description table
+
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| **Attribute Name** | **Description**                                             | **Data Type** | **Possible values**                                       |
++====================+=============================================================+===============+===========================================================+
+| work_year          | The year in which salary was recorded                       | Numerical     | 2020 to 2022                                              |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| experience_level   | Expertise level of the employee                             | Ordinal       | En &quot;Entry level&quot;\                                         |
+|                    |                                                             |               | MI &quot;Mid level&quot;\                                           |
+|                    |                                                             |               | SE &quot;Senior level&quot;\                                        |
+|                    |                                                             |               | EX &quot;Executive level&quot;                                      |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| employment_type    | The nature or category of employee&#39;s engagement in the job  | Nominal       | PT &quot;Part time&quot;\                                           |
+|                    |                                                             |               | FT &quot;Full time&quot;\                                           |
+|                    |                                                             |               | CT &quot;Contract\                                             |
+|                    |                                                             |               | FL&quot;Freelancer&quot;                                            |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| job_title          | The role worked in during the year                          | Nominal       | Different titles.                                         |
+|                    |                                                             |               |                                                           |
+|                    |                                                             |               | like Security Analyst, security researcher                |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| salary             | The total gross salary amount paid                          | Numerical     | 1740-50001566                                             |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| salary_currency    | The currency of the salary paid to the employee             | Nominal       | Different currencies according to ISO 4217 currency code. |
+|                    |                                                             |               |                                                           |
+|                    |                                                             |               | like DE,CA                                                |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| salary_in_usd      | The salary paid in United states dollar                     | Numerical     | 2000 to 365596.40                                         |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| employee_residence | Employee&#39;s primary country of residence                     | Nominal       | Different countries.                                      |
+|                    |                                                             |               |                                                           |
+|                    |                                                             |               | like US,AE                                                |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| remote_ratio       | Percentage of online work by employee in the specified year | Numerical     | 0 &quot;No remote work&quot;\                                       |
+|                    |                                                             |               | 50 &quot;Partially remote&quot;\                                    |
+|                    |                                                             |               | 100 &quot;Fully remote&quot;                                        |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| company_location   | The country of the employer&#39;s main office                   | Nominal       | Different countries.                                      |
+|                    |                                                             |               |                                                           |
+|                    |                                                             |               | like BR,BW                                                |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+| company_size       | How big/small is the company                                | Ordinal       | S , M or L                                                |
++--------------------+-------------------------------------------------------------+---------------+-----------------------------------------------------------+
+
+### sample of 20 employees from the dataset:
+
+using sample_n(table,size) function
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2V0LnNlZWQoMzApXG5zYW1wbGU9c2FtcGxlX24oZGF0YXNldCwyMClcbnByaW50KHNhbXBsZSlcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+set.seed(30)
 sample=sample_n(dataset,20)
 print(sample)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="show-the-missing-value" class="section level3">
-<h3>Show the missing value:</h3>
-<p>if it is FALSE it means no null value,if it is TRUE there is null
-value. In our dataset there is no null values.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaXMubmEoZGF0YXNldClcbnN1bShpcy5uYShkYXRhc2V0KSlcbmBgYCJ9 -->
-<pre class="r"><code>is.na(dataset)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Show the missing value:
+
+if it is FALSE it means no null value,if it is TRUE there is null value. In our dataset there is no null values.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaXMubmEoZGF0YXNldClcbnN1bShpcy5uYShkYXRhc2V0KSlcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+is.na(dataset)
 sum(is.na(dataset))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="show-the-min.1st-qu.medianmean-3rd-qu.max.-for-each-numeric-column" class="section level3">
-<h3>Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric
-column</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShkYXRhc2V0JHdvcmtfeWVhcilcbnN1bW1hcnkoZGF0YXNldCRzYWxhcnkpXG5zdW1tYXJ5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZClcbnN1bW1hcnkoZGF0YXNldCRyZW1vdGVfcmF0aW8pXG5gYGAifQ== -->
-<pre class="r"><code>summary(dataset$work_year)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric column
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3VtbWFyeShkYXRhc2V0JHdvcmtfeWVhcilcbnN1bW1hcnkoZGF0YXNldCRzYWxhcnkpXG5zdW1tYXJ5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZClcbnN1bW1hcnkoZGF0YXNldCRyZW1vdGVfcmF0aW8pXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+summary(dataset$work_year)
 summary(dataset$salary)
 summary(dataset$salary_in_usd)
 summary(dataset$remote_ratio)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="show-the-variane-of-each-numeric-column" class="section level3">
-<h3>Show the variane of each numeric column</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFyKGRhdGFzZXQkd29ya195ZWFyKVxudmFyKGRhdGFzZXQkc2FsYXJ5KVxudmFyKGRhdGFzZXQkc2FsYXJ5X2luX3VzZClcbnZhcihkYXRhc2V0JHJlbW90ZV9yYXRpbylcbmBgYCJ9 -->
-<pre class="r"><code>var(dataset$work_year)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Show the variane of each numeric column
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxudmFyKGRhdGFzZXQkd29ya195ZWFyKVxudmFyKGRhdGFzZXQkc2FsYXJ5KVxudmFyKGRhdGFzZXQkc2FsYXJ5X2luX3VzZClcbnZhcihkYXRhc2V0JHJlbW90ZV9yYXRpbylcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+var(dataset$work_year)
 var(dataset$salary)
 var(dataset$salary_in_usd)
 var(dataset$remote_ratio)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="find-the-outliers-and-remove-them-from-the-dataset" class="section level3">
-<h3>Find the outliers and remove them from the dataset</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcIm91dGxpZXJzXCIpXG5cblxuIyBvdXRfd29ya195ZWFyPW91dGxpZXIgKGRhdGFzZXQkd29ya195ZWFyLGxvZ2ljYWwgPVRSVUUpXG5zdW0ob3V0X3dvcmtfeWVhcikjXG5vdXRzYWxhcnk9b3V0bGllcihkYXRhc2V0JHNhbGFyeSAsbG9naWNhbD1UUlVFKVxuc3VtKG91dHNhbGFyeSlcbm91dF9zYWxhcnlfaW5fdXNkPW91dGxpZXIoZGF0YXNldCRzYWxhcnlfaW5fdXNkICxsb2dpY2FsPVRSVUUpXG5zdW0ob3V0X3NhbGFyeV9pbl91c2QpXG5vdXRfcmVtb3RlX3JhdGlvPW91dGxpZXIoZGF0YXNldCRyZW1vdGVfcmF0aW8gLGxvZ2ljYWw9VFJVRSlcbnN1bShvdXRfcmVtb3RlX3JhdGlvKVxuXG5GaW5kX291dGxpZXIxID0gd2hpY2gob3V0X3dvcmtfeWVhciA9PVRSVUUsIGFyci5pbmQgPSBUUlVFKVxub3V0X3dvcmtfeWVhclxuRmluZF9vdXRsaWVyMVxuZGF0YXNldD1kYXRhc2V0Wy1GaW5kX291dGxpZXIxLF1cblxuRmluZF9vdXRsaWVyMiA9IHdoaWNoKG91dHNhbGFyeSA9PVRSVUUsIGFyci5pbmQgPSBUUlVFKVxub3V0c2FsYXJ5XG5GaW5kX291dGxpZXIyXG5kYXRhc2V0PWRhdGFzZXRbLUZpbmRfb3V0bGllcjIsXVxuXG5GaW5kX291dGxpZXIzID0gd2hpY2gob3V0X3NhbGFyeV9pbl91c2QgPT1UUlVFLCBhcnIuaW5kID0gVFJVRSlcbm91dF9zYWxhcnlfaW5fdXNkXG5GaW5kX291dGxpZXIzXG5kYXRhc2V0PWRhdGFzZXRbLUZpbmRfb3V0bGllcjMsXVxuXG5GaW5kX291dGxpZXI0ID0gd2hpY2gob3V0X3JlbW90ZV9yYXRpbyA9PVRSVUUsIGFyci5pbmQgPSBUUlVFKVxub3V0X3JlbW90ZV9yYXRpb1xuRmluZF9vdXRsaWVyNFxuZGF0YXNldD1kYXRhc2V0Wy1GaW5kX291dGxpZXI0LF1cbmBgYCJ9 -->
-<pre class="r"><code>install.packages(&quot;outliers&quot;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Find the outliers and remove them from the dataset
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcXG91dGxpZXJzXFwpXG5cblxuIyBvdXRfd29ya195ZWFyPW91dGxpZXIgKGRhdGFzZXQkd29ya195ZWFyLGxvZ2ljYWwgPVRSVUUpXG5zdW0ob3V0X3dvcmtfeWVhcikjXG5vdXRzYWxhcnk9b3V0bGllcihkYXRhc2V0JHNhbGFyeSAsbG9naWNhbD1UUlVFKVxuc3VtKG91dHNhbGFyeSlcbm91dF9zYWxhcnlfaW5fdXNkPW91dGxpZXIoZGF0YXNldCRzYWxhcnlfaW5fdXNkICxsb2dpY2FsPVRSVUUpXG5zdW0ob3V0X3NhbGFyeV9pbl91c2QpXG5vdXRfcmVtb3RlX3JhdGlvPW91dGxpZXIoZGF0YXNldCRyZW1vdGVfcmF0aW8gLGxvZ2ljYWw9VFJVRSlcbnN1bShvdXRfcmVtb3RlX3JhdGlvKVxuXG5GaW5kX291dGxpZXIxID0gd2hpY2gob3V0X3dvcmtfeWVhciA9PVRSVUUsIGFyci5pbmQgPSBUUlVFKVxub3V0X3dvcmtfeWVhclxuRmluZF9vdXRsaWVyMVxuZGF0YXNldD1kYXRhc2V0Wy1GaW5kX291dGxpZXIxLF1cblxuRmluZF9vdXRsaWVyMiA9IHdoaWNoKG91dHNhbGFyeSA9PVRSVUUsIGFyci5pbmQgPSBUUlVFKVxub3V0c2FsYXJ5XG5GaW5kX291dGxpZXIyXG5kYXRhc2V0PWRhdGFzZXRbLUZpbmRfb3V0bGllcjIsXVxuXG5GaW5kX291dGxpZXIzID0gd2hpY2gob3V0X3NhbGFyeV9pbl91c2QgPT1UUlVFLCBhcnIuaW5kID0gVFJVRSlcbm91dF9zYWxhcnlfaW5fdXNkXG5GaW5kX291dGxpZXIzXG5kYXRhc2V0PWRhdGFzZXRbLUZpbmRfb3V0bGllcjMsXVxuXG5GaW5kX291dGxpZXI0ID0gd2hpY2gob3V0X3JlbW90ZV9yYXRpbyA9PVRSVUUsIGFyci5pbmQgPSBUUlVFKVxub3V0X3JlbW90ZV9yYXRpb1xuRmluZF9vdXRsaWVyNFxuZGF0YXNldD1kYXRhc2V0Wy1GaW5kX291dGxpZXI0LF1cbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+install.packages(\outliers\)
 
 
 # out_work_year=outlier (dataset$work_year,logical =TRUE)
@@ -2058,129 +2081,251 @@ Find_outlier4 = which(out_remote_ratio ==TRUE, arr.ind = TRUE)
 out_remote_ratio
 Find_outlier4
 dataset=dataset[-Find_outlier4,]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="visualization-of-relationship-between-some-pairs-of-attributes" class="section level3">
-<h3>Visualization of relationship between some pairs of attributes:</h3>
-<p>Here we used boxplot to see the distribution between salary_in_usd
-and experience_level We observed that salaries vary depending on the
-level of experience,they are positively correlated.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gZXhwZXJpZW5jZV9sZXZlbCwgZGF0YSA9IGRhdGFzZXQgLCB5YXh0PVwiblwiKVxubGFiZWxzPC0gcHJldHR5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZClcbmxhYmVsczwtIHNhcHBseShsYWJlbHMsIGZ1bmN0aW9uKHgpIGZvcm1hdCh4LCBzY2llbnRpZmljID0gRkFMU0UpKVxuYXhpcyhzaWRlID0gMiwgYXQ9cHJldHR5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCksIGxhYmVscyA9IGxhYmVscyApXG5vcHRpb25zKHNjaXBlbiA9IDk5OSlcbmBgYCJ9 -->
-<pre class="r"><code>boxplot(salary_in_usd ~ experience_level, data = dataset , yaxt=&quot;n&quot;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Visualization of relationship between some pairs of attributes:
+
+Here we used boxplot to see the distribution between salary_in_usd and experience_level We observed that salaries vary depending on the level of experience,they are positively correlated.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gZXhwZXJpZW5jZV9sZXZlbCwgZGF0YSA9IGRhdGFzZXQgLCB5YXh0PVxcblxcKVxubGFiZWxzPC0gcHJldHR5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZClcbmxhYmVsczwtIHNhcHBseShsYWJlbHMsIGZ1bmN0aW9uKHgpIGZvcm1hdCh4LCBzY2llbnRpZmljID0gRkFMU0UpKVxuYXhpcyhzaWRlID0gMiwgYXQ9cHJldHR5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCksIGxhYmVscyA9IGxhYmVscyApXG5vcHRpb25zKHNjaXBlbiA9IDk5OSlcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+boxplot(salary_in_usd ~ experience_level, data = dataset , yaxt=\n\)
 labels&lt;- pretty(dataset$salary_in_usd)
 labels&lt;- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Here we used boxplot to see the distribution between salary_in_usd
-and work_year We observed that 2021 salaries were close to each other
-but in 2022 the gap between them getting bigger.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gd29ya195ZWFyLCBkYXRhID0gZGF0YXNldCAsIHlheHQ9XCJuXCIpXG5sYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKVxubGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpXG5heGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzIClcbm9wdGlvbnMoc2NpcGVuID0gOTk5KVxuYGBgIn0= -->
-<pre class="r"><code>boxplot(salary_in_usd ~ work_year, data = dataset , yaxt=&quot;n&quot;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+Here we used boxplot to see the distribution between salary_in_usd and work_year We observed that 2021 salaries were close to each other but in 2022 the gap between them getting bigger.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gd29ya195ZWFyLCBkYXRhID0gZGF0YXNldCAsIHlheHQ9XFxuXFwpXG5sYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKVxubGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpXG5heGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzIClcbm9wdGlvbnMoc2NpcGVuID0gOTk5KVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+boxplot(salary_in_usd ~ work_year, data = dataset , yaxt=\n\)
 labels&lt;- pretty(dataset$salary_in_usd)
 labels&lt;- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Here we used boxplot to see the distribution between salary_in_usd
-and employment_type We observed that Full Time (FT) offers more salary
-than the other categories.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gZW1wbG95bWVudF90eXBlLCBkYXRhID0gZGF0YXNldCAsIHlheHQ9XCJuXCIpXG5sYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKVxubGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpXG5heGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzIClcbm9wdGlvbnMoc2NpcGVuID0gOTk5KVxuYGBgIn0= -->
-<pre class="r"><code>boxplot(salary_in_usd ~ employment_type, data = dataset , yaxt=&quot;n&quot;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+Here we used boxplot to see the distribution between salary_in_usd and employment_type We observed that Full Time (FT) offers more salary than the other categories.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gZW1wbG95bWVudF90eXBlLCBkYXRhID0gZGF0YXNldCAsIHlheHQ9XFxuXFwpXG5sYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKVxubGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpXG5heGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzIClcbm9wdGlvbnMoc2NpcGVuID0gOTk5KVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+boxplot(salary_in_usd ~ employment_type, data = dataset , yaxt=\n\)
 labels&lt;- pretty(dataset$salary_in_usd)
 labels&lt;- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Here we used boxplot to see the distribution between salary_in_usd
-and company_size We observed that the larger the company is the higher
-the salary was.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gY29tcGFueV9zaXplLCBkYXRhID0gZGF0YXNldCAsIHlheHQ9XCJuXCIpXG5sYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKVxubGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpXG5heGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzIClcbm9wdGlvbnMoc2NpcGVuID0gOTk5KSBcbmBgYCJ9 -->
-<pre class="r"><code>boxplot(salary_in_usd ~ company_size, data = dataset , yaxt=&quot;n&quot;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+Here we used boxplot to see the distribution between salary_in_usd and company_size We observed that the larger the company is the higher the salary was.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gY29tcGFueV9zaXplLCBkYXRhID0gZGF0YXNldCAsIHlheHQ9XFxuXFwpXG5sYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKVxubGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpXG5heGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzIClcbm9wdGlvbnMoc2NpcGVuID0gOTk5KSBcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+boxplot(salary_in_usd ~ company_size, data = dataset , yaxt=\n\)
 labels&lt;- pretty(dataset$salary_in_usd)
 labels&lt;- sapply(labels, function(x) format(x, scientific = FALSE))
 axis(side = 2, at=pretty(dataset$salary_in_usd), labels = labels )
 options(scipen = 999) </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-</div>
-<div id="data-reduction" class="section level2">
-<h2>Data Reduction</h2>
-<div id="dimensionality-reduction" class="section level3">
-<h3>Dimensionality Reduction</h3>
-<p>The “salary” column gives the same information as “salary_in_usd”
-it’s just a matter of currency exchange, and we will eventually
-transform all the values in “salary” column to one common currency so we
-can properly deal with them. To further confirm that the two column are
-redundant, we will use the latest exchange rate for USD to the desired
-currency.</p>
-<p>we will start by creating a temporary column named “converted_salary”
-to save the salary that we will get by using the exchange rate to
-convert the salary_in_usd to the salary with different currencies to
-compare with “salary” column</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29udmVydGVkRGF0YXNldD1kYXRhc2V0XG5cblxuY29udmVydGVkRGF0YXNldCRleGNoYW5nZV9yYXRlID0gZmFjdG9yKGNvbnZlcnRlZERhdGFzZXQkc2FsYXJ5X2N1cnJlbmN5LCBsZXZlbHM9YyhcIlVTRFwiLFwiQlJMXCIsXCJHQlBcIixcIkVVUlwiLFwiSU5SXCIsXCJDQURcIixcIkNIRlwiLFwiREtLXCIsXCJTR0RcIixcIkFVRFwiLFwiU0VLXCIsXCJNWE5cIixcIklMU1wiLFwiUExOXCIsXCJOT0tcIixcIklEUlwiLFwiTlpEXCIsXCJIVUZcIixcIlpBUlwiLFwiVFdEXCIsXCJSVUJcIiksIGxhYmVscz1jKDEvMSwxLzAuMjAsMS8xLjIyLDEvMS4wNiwxLzAuMDEyLDEvMC43NCwxLzEuMTAsMS8wLjE0LDEvMC43MywxLzAuNjQsMS8wLjA5MCwxLzAuMDU3LDEvMC4yNiwxLzAuMjMsMS8wLjA5MywxLzAuMDAwMDY1LDEvMC42MCwxLzAuMDAyNywxLzAuMDUzLDEvMC4wMzEsMS8wLjAxMCkpXG5jb252ZXJ0ZWREYXRhc2V0JGV4Y2hhbmdlX3JhdGUgPSBhcy5udW1lcmljKGFzLmNoYXJhY3Rlcihjb252ZXJ0ZWREYXRhc2V0JGV4Y2hhbmdlX3JhdGUpKVxuY29udmVydGVkRGF0YXNldCRjb252ZXJ0ZWRfc2FsYXJ5ID0gY29udmVydGVkRGF0YXNldCRzYWxhcnlfaW5fdXNkKmNvbnZlcnRlZERhdGFzZXQkZXhjaGFuZ2VfcmF0ZVxuXG5cblxuc2V0LnNlZWQoMSlcbnNhbGFyeV9zYW1wbGUgPC0gc2FtcGxlX24oY29udmVydGVkRGF0YXNldFssYyhcInNhbGFyeVwiLFwiY29udmVydGVkX3NhbGFyeVwiKV0sMTApXG5cbnByaW50KHNhbGFyeV9zYW1wbGUpXG5gYGAifQ== -->
-<pre class="r"><code>convertedDataset=dataset
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
 
 
-convertedDataset$exchange_rate = factor(convertedDataset$salary_currency, levels=c(&quot;USD&quot;,&quot;BRL&quot;,&quot;GBP&quot;,&quot;EUR&quot;,&quot;INR&quot;,&quot;CAD&quot;,&quot;CHF&quot;,&quot;DKK&quot;,&quot;SGD&quot;,&quot;AUD&quot;,&quot;SEK&quot;,&quot;MXN&quot;,&quot;ILS&quot;,&quot;PLN&quot;,&quot;NOK&quot;,&quot;IDR&quot;,&quot;NZD&quot;,&quot;HUF&quot;,&quot;ZAR&quot;,&quot;TWD&quot;,&quot;RUB&quot;), labels=c(1/1,1/0.20,1/1.22,1/1.06,1/0.012,1/0.74,1/1.10,1/0.14,1/0.73,1/0.64,1/0.090,1/0.057,1/0.26,1/0.23,1/0.093,1/0.000065,1/0.60,1/0.0027,1/0.053,1/0.031,1/0.010))
+&lt;!-- rnb-text-begin --&gt;
+
+
+## Data Reduction
+
+### Dimensionality Reduction
+
+The &quot;salary&quot; column gives the same information as &quot;salary_in_usd&quot; it&#39;s just a matter of currency exchange, and we will eventually transform all the values in &quot;salary&quot; column to one common currency so we can properly deal with them. To further confirm that the two column are redundant, we will use the latest exchange rate for USD to the desired currency.
+
+we will start by creating a temporary column named &quot;converted_salary&quot; to save the salary that we will get by using the exchange rate to convert the salary_in_usd to the salary with different currencies to compare with &quot;salary&quot; column
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuY29udmVydGVkRGF0YXNldD1kYXRhc2V0XG5cblxuY29udmVydGVkRGF0YXNldCRleGNoYW5nZV9yYXRlID0gZmFjdG9yKGNvbnZlcnRlZERhdGFzZXQkc2FsYXJ5X2N1cnJlbmN5LCBsZXZlbHM9YyhcXFVTRFxcLFxcQlJMXFwsXFxHQlBcXCxcXEVVUlxcLFxcSU5SXFwsXFxDQURcXCxcXENIRlxcLFxcREtLXFwsXFxTR0RcXCxcXEFVRFxcLFxcU0VLXFwsXFxNWE5cXCxcXElMU1xcLFxcUExOXFwsXFxOT0tcXCxcXElEUlxcLFxcTlpEXFwsXFxIVUZcXCxcXFpBUlxcLFxcVFdEXFwsXFxSVUJcXCksIGxhYmVscz1jKDEvMSwxLzAuMjAsMS8xLjIyLDEvMS4wNiwxLzAuMDEyLDEvMC43NCwxLzEuMTAsMS8wLjE0LDEvMC43MywxLzAuNjQsMS8wLjA5MCwxLzAuMDU3LDEvMC4yNiwxLzAuMjMsMS8wLjA5MywxLzAuMDAwMDY1LDEvMC42MCwxLzAuMDAyNywxLzAuMDUzLDEvMC4wMzEsMS8wLjAxMCkpXG5jb252ZXJ0ZWREYXRhc2V0JGV4Y2hhbmdlX3JhdGUgPSBhcy5udW1lcmljKGFzLmNoYXJhY3Rlcihjb252ZXJ0ZWREYXRhc2V0JGV4Y2hhbmdlX3JhdGUpKVxuY29udmVydGVkRGF0YXNldCRjb252ZXJ0ZWRfc2FsYXJ5ID0gY29udmVydGVkRGF0YXNldCRzYWxhcnlfaW5fdXNkKmNvbnZlcnRlZERhdGFzZXQkZXhjaGFuZ2VfcmF0ZVxuXG5cblxuc2V0LnNlZWQoMSlcbnNhbGFyeV9zYW1wbGUgPC0gc2FtcGxlX24oY29udmVydGVkRGF0YXNldFssYyhcXHNhbGFyeVxcLFxcY29udmVydGVkX3NhbGFyeVxcKV0sMTApXG5cbnByaW50KHNhbGFyeV9zYW1wbGUpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+convertedDataset=dataset
+
+
+convertedDataset$exchange_rate = factor(convertedDataset$salary_currency, levels=c(\USD\,\BRL\,\GBP\,\EUR\,\INR\,\CAD\,\CHF\,\DKK\,\SGD\,\AUD\,\SEK\,\MXN\,\ILS\,\PLN\,\NOK\,\IDR\,\NZD\,\HUF\,\ZAR\,\TWD\,\RUB\), labels=c(1/1,1/0.20,1/1.22,1/1.06,1/0.012,1/0.74,1/1.10,1/0.14,1/0.73,1/0.64,1/0.090,1/0.057,1/0.26,1/0.23,1/0.093,1/0.000065,1/0.60,1/0.0027,1/0.053,1/0.031,1/0.010))
 convertedDataset$exchange_rate = as.numeric(as.character(convertedDataset$exchange_rate))
 convertedDataset$converted_salary = convertedDataset$salary_in_usd*convertedDataset$exchange_rate
 
 
 
 set.seed(1)
-salary_sample &lt;- sample_n(convertedDataset[,c(&quot;salary&quot;,&quot;converted_salary&quot;)],10)
+salary_sample &lt;- sample_n(convertedDataset[,c(\salary\,\converted_salary\)],10)
 
 print(salary_sample)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>as shown in the sample, the two columns are almost identical. This
-can be proved by correlation coefficient as well.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29ycmVsYXRpb24gPC0gY29yKGNvbnZlcnRlZERhdGFzZXQkc2FsYXJ5ICwgY29udmVydGVkRGF0YXNldCRjb252ZXJ0ZWRfc2FsYXJ5KVxucHJpbnQoY29ycmVsYXRpb24pXG5gYGAifQ== -->
-<pre class="r"><code>correlation &lt;- cor(convertedDataset$salary , convertedDataset$converted_salary)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+as shown in the sample, the two columns are almost identical. This can be proved by correlation coefficient as well.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuY29ycmVsYXRpb24gPC0gY29yKGNvbnZlcnRlZERhdGFzZXQkc2FsYXJ5ICwgY29udmVydGVkRGF0YXNldCRjb252ZXJ0ZWRfc2FsYXJ5KVxucHJpbnQoY29ycmVsYXRpb24pXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+correlation &lt;- cor(convertedDataset$salary , convertedDataset$converted_salary)
 print(correlation)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+The correlation is so high but it hasn&#39;t reached 100% possibly due to rounding in the calculations and slight differences in the exchange rate over time.
+
+To make the mining process more effiecent and has an improved quality, we decided to remove the &quot;salary&quot; column.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZGF0YXNldDwtZGF0YXNldFssLWMoNSldXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+dataset&lt;-dataset[,-c(5)]</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Find the outliers and remove them from the dataset:
+by bloxPlot
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYm94cGxvdChkYXRhc2V0JHNhbGFyeV9pbl91c2QpICBcbmBgYCJ9 --&gt;
+
+```r
+boxplot(dataset$salary_in_usd)  </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>The correlation is so high but it hasn’t reached 100% possibly due to
-rounding in the calculations and slight differences in the exchange rate
-over time.</p>
-<p>To make the mining process more effiecent and has an improved
-quality, we decided to remove the “salary” column.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YXNldDwtZGF0YXNldFssLWMoNSldXG5gYGAifQ== -->
-<pre class="r"><code>dataset&lt;-dataset[,-c(5)]</code></pre>
+<!-- rnb-plot-begin eyJoZWlnaHQiOjI5Mi4zMzYyLCJ3aWR0aCI6NDczLCJzaXplX2JlaGF2aW9yIjowLCJjb25kaXRpb25zIjpbXX0= -->
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsUAAAG2CAMAAACgSwvYAAAArlBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZrY6AAA6OgA6Ojo6OmY6ZmY6ZpA6ZrY6kLY6kNtmAABmOgBmOjpmZjpmZpBmkJBmkLZmtttmtv+QOgCQZjqQZmaQkLaQ2/+2ZgC2Zjq2kGa2kJC2kLa2tpC2tra2ttu227a229u22/+2///T09PbkDrbtmbbtpDbtrbb27bb29vb2//b////tmb/25D/27b/29v//7b//9v///9+d3JfAAAACXBIWXMAABYlAAAWJQFJUiTwAAAKnklEQVR4nO3dbXfbRAKGYSVQQkJZnMJCC6Utrynbl5gmxPb//2MbK0oil92DksqeedTrOoc6+dAzML6PkaWRpllBuqb0vwB8MBWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTL5CFTew6YNyGqvLiGGr84Hv3oSoOFWbsI5bKg7VvPf6UVNxKBX3qDhT8z9++nipOJOK+1ScScV9Kg7luLhHxaFU3KPiVM4X31JxLtfurqmYfComn4rJp2LyqZh8KiafismnYvKpmHwqJp+Kyadi8qmYfComX0TFYz4JhgmKqLiOYalWPRVfzOclhmUCSle8fPvbu/Xr64P1ocLRyx0Ny6SUrngx2//j8uX5ZcJ7638e72ZYJqWOis+a5l+XH8nL583ejzsZlkmpouLlk+arq1+fNZ/tZFgmpYqKF7Prj+Dzg/YAY+vDMimVVHzd7u1P2x2WSami4tUzn8V8gPIVN5/8++TNwYP2fJvjYu6jgoqvPLj8DH5z7BwF91C64tVqefri0UHTtIfHzhdzH+UrvnL687vV4tG3f+54WCahlooDhqValVQ8X9v9sExDBRUvXxx03/D2vn23u2GZjvIVn7UN7x1evfh2x90Vr/j8oDk66X4+daaN+yhe8eZ1Dlc9uIfSFd8uBGq5As09lK94I1urgbiH0hUvn2x8Fp81D/75NIWK2VS64tWr5tPbm+3+ml0vl9/2sExJ8YoXx01z9PTX+Xz+9pdH7XKKnQzLlBSveLX8vve8lIdDLnuomE3lK16tLn76+nDti6eDFgOpmPfUUHHIsFRLxeSrpeLFo6MB3+tGH5ZJqKbiIZc7xh82mqeHXlNxqjZhHbdUHKp57/WjVkPFF/P5/HS2f3L54r67oVTcU0HFNzfzN8Mu3XnjVv05MBshFdsR4W9U3FdBxS3HxXej4j4Vh3Jc3KPiUCruUXEq54tv1VLx8odvBj2LYuRho/mee62WigOGpVrVVHzRbRm242GZgkoqft0++3Uxc68H91BHxc+b5vO24iG3QKuY91RR8Vmz/7I9SeEeaO6jhoqXT5rHN9s3eh4Fd1ZDxb3dwjwb6A6cabum4lSuetyqoeL2KVdX/Z4fOKIYxhXonhoqbp/3er0htCe/DqPinioqXsyah7/P9k/sdzeYlZl9VVS8fqB8t7PHgIi9bysVb6qj4tXyxeFlw5/YnWYoFfdVUnHCsHVxXNxTUcUX84HLgbxxq3YS2vPFJmNVQ8XLF+tnW11terf33c6GjedO2lvFK14+aW98ftasFwQ1zZc7GjaeG8J7ilf8qv0Avvpz9bppBmzb6I1bOS7eULridiXQ+s+rtWyvrAYa5uYz2IfxqnzF7y2fsI5iIGfa+lScScV9pSu+PqLoLtpZDTSQI4q+0hVfHglfrY5vVwFZDTSY88U9xStezJq9795dxvzlfH56bL+7oZpufbHJWFVQ8eqv4/VZz0Orge7G+eKe8hWvVm+Or1e0fekp3EOpuKeGilfrNRRvfxu6jELFK9/uNlVSccKwVVFxn4oz3X61MxshFdsR4W+am3MUZiOk4jqGrYojij4Vh/I/ph4VZ3J81afiTI6L+1ScqblZR2E2VJzKt7s+FWdScZ+KMzU390CbDRXHcoqiR8WhVNyj4lAq7lFxJlc9+lScScV9Ks6k4j4VZ1Jxn4ozqbhPxZlU3KfiTCruU3EmFfepOJOK+1ScScV9Ks6k4j4VZ1Jxn4ozqbhPxfVotq/0f+KWqDjU1MO8ExWnEvEtFefS8DUVBzMRHRWTT8XkUzH5VBzMRHRUHMxEdCIq/kiuQN2ZiehEVFzHsPUxER0VBzMRnUoqnq/tflimoYKKly8OuuPdvW8HbT+qYjaVr/isbXjv8Orl8a6GZUKKV3x+0ByddD+fHjd7P+5m2EkwEZ3iFT9rPvu/v21x2EkwEZ3SFS9mG5++5wf7f+xi2GkwEZ3yFW9k+96vWxt2F7Z779GOlJ7EYUpXvHyy8Vl81jz459MUKVP7n3wpU13sL3deNZ++vPnlr1nz1W6G3QEV70zxihfHTXP09Nf5fP72l0dNM+CAQsW7kzLVxf7yteX3vcOwh0Mue6RMbekER5Ay1cX+8q2Ln74+XPvi6Z+7HHbbin0jG1PpSRymhopDhr2r0gGOovQkDlNJxVNcDVQ6wFGUnsRhKqh4qquBitY3ltKTOEz5iie7Gsi3u50pXvF0VwOpeGeKVzzd1UAq3pnSFU94NZCKd6Z8xVYD1az0JA5TuuIJrwbaPhPRKV3xhFcDbZ+J6BSveLqrgbbPRHSKVzzd1UDbZyI65Sue7Gqg7TMRnRoqDhmWaqmYfLVUvHh0NOB73ejDMgnVVDzkcsf4w2YzER0VBzMRHRUHMxGdGiq+mM/np7P9k8uXQafavHkdE9GpoOLF7Paqx6AP5Km+eRb33FdExR/Je8F9VVBxy3Ex96di8qmYfComXy0VL3/4ZtCzKEYelkmopeI7DQubPiinsbq8dPH2t8EfxjCe8Sp+fbA+V7yYDbrXA0Y0WsXPm+bztuIht0DDmMaq+KzZf9mepBh2DzSMaKSKl0+ax92ptkHPo4ARjVRxG/BVxXc5bQxjUDH5Rjui2Pux6/f8wBEFuzXWt7v1817bii+PkAc8+RVGNFbFi1nz8PfZ/smbYU/hhhGNdr74/GZnDxGzY+Ndu1u+OLxs+JNhu9PAiCwuI1+h/e5gRIX2u4MRFdrvDkZUaL87GFGh/e5gRIX2u4MRFdrvDkZUaL87GFGh/e5gRIX2u4MRFdrvDkZUaL87GJHVQORTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeRTMflUTD4Vk0/F5FMx+VRMPhWTT8XkUzH5VEw+FZNPxeT7L6HLR+RvpfhDAAAAAElFTkSuQmCC" /></p>
+<!-- rnb-plot-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3V0IDwtIGJveHBsb3Quc3RhdHMoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSRvdXQgXG5vdXRfaW5kIDwtIHdoaWNoKGRhdGFzZXQkc2FsYXJ5X2luX3VzZCAlaW4lIGMob3V0KSkgXG5vdXRfaW5kIFxuYGBgIn0= -->
+<pre class="r"><code>out &lt;- boxplot.stats(dataset$salary_in_usd)$out 
+out_ind &lt;- which(dataset$salary_in_usd %in% c(out)) 
+out_ind </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAgICA2ICAgMTAgICAxNSAgIDI4ICAxMTEgIDEzNiAgMTY0ICAyOTMgIDMwNyAgMzM5XG5bMTFdICAzNTkgIDQwNSAgNDE4ICA0NzAgIDQ5OCAgNTEyICA1MTMgIDUyMyAgNTI0ICA1MjhcblsyMV0gIDU1MyAgNTY3ICA2MTMgIDY0OCAgNjgyICA3MTYgIDgxNSAgODMzICA4ODcgIDg5MVxuWzMxXSAxMDA0IDEwOTkgMTEwNCAxMTA3IDExNjEgMTE3MyAxMjE1IDEyNDJcbiJ9 -->
+<pre><code> [1]    6   10   15   28  111  136  164  293  307  339
+[11]  359  405  418  470  498  512  513  523  524  528
+[21]  553  567  613  648  682  716  815  833  887  891
+[31] 1004 1099 1104 1107 1161 1173 1215 1242</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YXNldD1kYXRhc2V0Wy1vdXRfaW5kLF1cbmBgYCJ9 -->
+<pre class="r"><code>dataset=dataset[-out_ind,]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-</div>
-<div id="concept-hierarchy-generation-for-nominal-data" class="section level2">
-<h2>Concept hierarchy generation for nominal data</h2>
+<div id="concept-hierarchy-generation-for-nominal-data" class="section level3">
+<h3>Concept hierarchy generation for nominal data</h3>
 <p>the columns “company_location” and “employee_residence” have the name
 of countries for the company and employee respectively. And these
 attributes can be generalized to higher-level concept that is region to
@@ -2209,31 +2354,43 @@ don’t belong to any of these regions, thus, they will be used as they
 are.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cbnVtPXdoaWNoKGRhdGFzZXQkY29tcGFueV9sb2NhdGlvbj09XCJVTVwiKVxuYXE9d2hpY2goZGF0YXNldCRjb21wYW55X2xvY2F0aW9uPT1cIkFRXCIpXG5cblxuZGF0YXNldCRjb21wYW55X2xvY2F0aW9uIDwtIGNvdW50cnljb2RlKGRhdGFzZXQkY29tcGFueV9sb2NhdGlvbiwgXCJpc28yY1wiLCBcInJlZ2lvblwiKVxuZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UgPC0gY291bnRyeWNvZGUoZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UsIFwiaXNvMmNcIiwgXCJyZWdpb25cIilcblxuZGF0YXNldFt1bSxcImNvbXBhbnlfbG9jYXRpb25cIl09XCJVTVwiXG5kYXRhc2V0W2FxLFwiY29tcGFueV9sb2NhdGlvblwiXT1cIkFRXCJcblxuYGBgIn0= -->
-<pre class="r"><code>
-
-um=which(dataset$company_location==&quot;UM&quot;)
-aq=which(dataset$company_location==&quot;AQ&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG5cbnVtPXdoaWNoKGRhdGFzZXQkY29tcGFueV9sb2NhdGlvbj09XFxVTVxcKVxuYXE9d2hpY2goZGF0YXNldCRjb21wYW55X2xvY2F0aW9uPT1cXEFRXFwpXG5cblxuZGF0YXNldCRjb21wYW55X2xvY2F0aW9uIDwtIGNvdW50cnljb2RlKGRhdGFzZXQkY29tcGFueV9sb2NhdGlvbiwgXFxpc28yY1xcLCBcXHJlZ2lvblxcKVxuZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UgPC0gY291bnRyeWNvZGUoZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UsIFxcaXNvMmNcXCwgXFxyZWdpb25cXClcblxuZGF0YXNldFt1bSxcXGNvbXBhbnlfbG9jYXRpb25cXF09XFxVTVxcXG5kYXRhc2V0W2FxLFxcY29tcGFueV9sb2NhdGlvblxcXT1cXEFRXFxcblxuYGBgXG5gYGAifQ== -->
+<pre class="r"><code>```r
 
 
-dataset$company_location &lt;- countrycode(dataset$company_location, &quot;iso2c&quot;, &quot;region&quot;)
-dataset$employee_residence &lt;- countrycode(dataset$employee_residence, &quot;iso2c&quot;, &quot;region&quot;)
+um=which(dataset$company_location==\UM\)
+aq=which(dataset$company_location==\AQ\)
 
-dataset[um,&quot;company_location&quot;]=&quot;UM&quot;
-dataset[aq,&quot;company_location&quot;]=&quot;AQ&quot;
+
+dataset$company_location &lt;- countrycode(dataset$company_location, \iso2c\, \region\)
+dataset$employee_residence &lt;- countrycode(dataset$employee_residence, \iso2c\, \region\)
+
+dataset[um,\company_location\]=\UM\
+dataset[aq,\company_location\]=\AQ\
 </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Concept hierarchy generation can be done for “job_title” as well to
-improve interpretation and scalability. Also, most job titles are
-essentially the same job but with different names, so we can combine
-them into a higher-level jobs titles such as Architect, Analyst and
-Engineer etc.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnQW5hbHlzdCcsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ0FuYWx5c3QnXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnRW5naW5lZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdFbmdpbmVlcidcbmRhdGFzZXQkam9iX3RpdGxlW2dyZXBsKCdBcmNoaXRlY3QnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdBcmNoaXRlY3QnXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnTWFuYWdlcicsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ01hbmFnZXInXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnU3BlY2lhbGlzdCcsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ1NwZWNpYWxpc3QnXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnVGVzdGVyJywgZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnVGVzdGVyJ1xuZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ0xlYWQnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdMZWFkJ1xuZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ09mZmljZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdPZmZpY2VyJ1xuZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ1Jlc2VhcmNoZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdSZXNlYXJjaGVyJ1xuZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ0NvbnN1bHRhbnQnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdDb25zdWx0YW50J1xuZGF0YXNldCRqb2JfdGl0bGVbaXMubmEoZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnT3RoZXInXG5gYGAifQ== -->
-<pre class="r"><code>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+Concept hierarchy generation can be done for &quot;job_title&quot; as well to improve interpretation and scalability. Also, most job titles are essentially the same job but with different names, so we can combine them into a higher-level jobs titles such as Architect, Analyst and Engineer etc.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnQW5hbHlzdCcsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ0FuYWx5c3QnXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnRW5naW5lZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdFbmdpbmVlcidcbmRhdGFzZXQkam9iX3RpdGxlW2dyZXBsKCdBcmNoaXRlY3QnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdBcmNoaXRlY3QnXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnTWFuYWdlcicsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ01hbmFnZXInXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnU3BlY2lhbGlzdCcsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ1NwZWNpYWxpc3QnXG5kYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnVGVzdGVyJywgZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnVGVzdGVyJ1xuZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ0xlYWQnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdMZWFkJ1xuZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ09mZmljZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdPZmZpY2VyJ1xuZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ1Jlc2VhcmNoZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdSZXNlYXJjaGVyJ1xuZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ0NvbnN1bHRhbnQnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdDb25zdWx0YW50J1xuZGF0YXNldCRqb2JfdGl0bGVbaXMubmEoZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnT3RoZXInXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+
 dataset$job_title[grepl(&#39;Analyst&#39;, dataset$job_title)] &lt;- &#39;Analyst&#39;
 dataset$job_title[grepl(&#39;Engineer&#39;, dataset$job_title)] &lt;- &#39;Engineer&#39;
 dataset$job_title[grepl(&#39;Architect&#39;, dataset$job_title)] &lt;- &#39;Architect&#39;
@@ -2245,22 +2402,33 @@ dataset$job_title[grepl(&#39;Officer&#39;, dataset$job_title)] &lt;- &#39;Office
 dataset$job_title[grepl(&#39;Researcher&#39;, dataset$job_title)] &lt;- &#39;Researcher&#39;
 dataset$job_title[grepl(&#39;Consultant&#39;, dataset$job_title)] &lt;- &#39;Consultant&#39;
 dataset$job_title[is.na(dataset$job_title)] &lt;- &#39;Other&#39;</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="encoding-categorical-data" class="section level2">
-<h2>Encoding categorical data</h2>
-<p>To deal with columns with character type we are going to encode them,
-because most machine learning algorithms are designed to work with
-factors data rather than character data and it improves performance and
-Interpretability of data as well.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YXNldCRqb2JfdGl0bGUgIDwtIGZhY3RvcihkYXRhc2V0JGpvYl90aXRsZSlcblxuZGF0YXNldCRleHBlcmllbmNlX2xldmVsID0gZmFjdG9yKGRhdGFzZXQkZXhwZXJpZW5jZV9sZXZlbCwgbGV2ZWxzPWMoXCJFTlwiLCBcIk1JXCIsIFwiU0VcIiwgXCJFWFwiKSwgbGFiZWxzPWMoMSwyLDMsNCkpXG5cbmRhdGFzZXQkZW1wbG95bWVudF90eXBlICA8LSBmYWN0b3IoZGF0YXNldCRlbXBsb3ltZW50X3R5cGUpXG5cbmRhdGFzZXQkZW1wbG95ZWVfcmVzaWRlbmNlICA8LSBmYWN0b3IoZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UpXG5cbmRhdGFzZXQkY29tcGFueV9sb2NhdGlvbiAgPC0gZmFjdG9yKGRhdGFzZXQkY29tcGFueV9sb2NhdGlvbilcblxuZGF0YXNldCRzYWxhcnlfY3VycmVuY3kgIDwtIGZhY3RvcihkYXRhc2V0JHNhbGFyeV9jdXJyZW5jeSlcblxuZGF0YXNldCRqb2JfdGl0bGUgIDwtIGZhY3RvcihkYXRhc2V0JGpvYl90aXRsZSlcblxuXG5kYXRhc2V0JGNvbXBhbnlfc2l6ZSA9IGZhY3RvcihkYXRhc2V0JGNvbXBhbnlfc2l6ZSwgbGV2ZWxzPWMoXCJTXCIsXCJNXCIsXCJMXCIpLCBsYWJlbHM9YygxLDIsMykpXG5cblxuZGF0YXNldCRqb2JfdGl0bGUgIDwtIGZhY3RvcihkYXRhc2V0JGpvYl90aXRsZSlcblxuYGBgIn0= -->
-<pre class="r"><code>dataset$job_title  &lt;- factor(dataset$job_title)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
 
-dataset$experience_level = factor(dataset$experience_level, levels=c(&quot;EN&quot;, &quot;MI&quot;, &quot;SE&quot;, &quot;EX&quot;), labels=c(1,2,3,4))
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+## Encoding categorical data
+
+To deal with columns with character type we are going to encode them, because most machine learning algorithms are designed to work with factors data rather than character data and it improves performance and Interpretability of data as well.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZGF0YXNldCRqb2JfdGl0bGUgIDwtIGZhY3RvcihkYXRhc2V0JGpvYl90aXRsZSlcblxuZGF0YXNldCRleHBlcmllbmNlX2xldmVsID0gZmFjdG9yKGRhdGFzZXQkZXhwZXJpZW5jZV9sZXZlbCwgbGV2ZWxzPWMoXFxFTlxcLCBcXE1JXFwsIFxcU0VcXCwgXFxFWFxcKSwgbGFiZWxzPWMoMSwyLDMsNCkpXG5cbmRhdGFzZXQkZW1wbG95bWVudF90eXBlICA8LSBmYWN0b3IoZGF0YXNldCRlbXBsb3ltZW50X3R5cGUpXG5cbmRhdGFzZXQkZW1wbG95ZWVfcmVzaWRlbmNlICA8LSBmYWN0b3IoZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UpXG5cbmRhdGFzZXQkY29tcGFueV9sb2NhdGlvbiAgPC0gZmFjdG9yKGRhdGFzZXQkY29tcGFueV9sb2NhdGlvbilcblxuZGF0YXNldCRzYWxhcnlfY3VycmVuY3kgIDwtIGZhY3RvcihkYXRhc2V0JHNhbGFyeV9jdXJyZW5jeSlcblxuZGF0YXNldCRqb2JfdGl0bGUgIDwtIGZhY3RvcihkYXRhc2V0JGpvYl90aXRsZSlcblxuXG5kYXRhc2V0JGNvbXBhbnlfc2l6ZSA9IGZhY3RvcihkYXRhc2V0JGNvbXBhbnlfc2l6ZSwgbGV2ZWxzPWMoXFxTXFwsXFxNXFwsXFxMXFwpLCBsYWJlbHM9YygxLDIsMykpXG5cblxuZGF0YXNldCRqb2JfdGl0bGUgIDwtIGZhY3RvcihkYXRhc2V0JGpvYl90aXRsZSlcblxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+dataset$job_title  &lt;- factor(dataset$job_title)
+
+dataset$experience_level = factor(dataset$experience_level, levels=c(\EN\, \MI\, \SE\, \EX\), labels=c(1,2,3,4))
 
 dataset$employment_type  &lt;- factor(dataset$employment_type)
 
@@ -2273,21 +2441,36 @@ dataset$salary_currency  &lt;- factor(dataset$salary_currency)
 dataset$job_title  &lt;- factor(dataset$job_title)
 
 
-dataset$company_size = factor(dataset$company_size, levels=c(&quot;S&quot;,&quot;M&quot;,&quot;L&quot;), labels=c(1,2,3))
+dataset$company_size = factor(dataset$company_size, levels=c(\S\,\M\,\L\), labels=c(1,2,3))
 
 
 dataset$job_title  &lt;- factor(dataset$job_title)
 </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<div id="discretization-of-salaray_in_usd-attribute" class="section level3">
-<h3>Discretization of salaray_in_usd attribute</h3>
-<p>by calculating breaks based on quartiles</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYnJlYWtzIDwtIHF1YW50aWxlKGRhdGFzZXQkc2FsYXJ5X2luX3VzZCwgXG4gICAgICAgICAgICAgICAgICAgcHJvYnMgPSBjKDAsIC4yNSwgLjUsIC43NSwgLjk1LCAxKSwgXG4gICAgICAgICAgICAgICAgICAgbmEucm0gPSBUUlVFKVxuXG4jIGRpc2NyZXRpemUgdGhlICdzYWxhcnlfaW5fdXNkJyBjb2x1bW5cbmRhdGFzZXQkc2FsYXJ5X2luX3VzZCA8LSBjdXQoZGF0YXNldCRzYWxhcnlfaW5fdXNkLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyZWFrcyA9IGJyZWFrcywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpbmNsdWRlLmxvd2VzdCA9IFRSVUUsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzPWMoXCJWZXJ5IExvd1wiLCBcIkxvd1wiLCBcIk1lZGl1bVwiLCBcIkhpZ2hcIiwgXCJWZXJ5IEhpZ2hcIikpXG5cblxuYGBgIn0= -->
-<pre class="r"><code>breaks &lt;- quantile(dataset$salary_in_usd, 
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Discretization of salaray_in_usd attribute
+
+by calculating breaks based on quartiles
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYnJlYWtzIDwtIHF1YW50aWxlKGRhdGFzZXQkc2FsYXJ5X2luX3VzZCwgXG4gICAgICAgICAgICAgICAgICAgcHJvYnMgPSBjKDAsIC4yNSwgLjUsIC43NSwgLjk1LCAxKSwgXG4gICAgICAgICAgICAgICAgICAgbmEucm0gPSBUUlVFKVxuXG4jIGRpc2NyZXRpemUgdGhlICdzYWxhcnlfaW5fdXNkJyBjb2x1bW5cbmRhdGFzZXQkc2FsYXJ5X2luX3VzZCA8LSBjdXQoZGF0YXNldCRzYWxhcnlfaW5fdXNkLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyZWFrcyA9IGJyZWFrcywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpbmNsdWRlLmxvd2VzdCA9IFRSVUUsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzPWMoXFxWZXJ5IExvd1xcLCBcXExvd1xcLCBcXE1lZGl1bVxcLCBcXEhpZ2hcXCwgXFxWZXJ5IEhpZ2hcXCkpXG5cblxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+breaks &lt;- quantile(dataset$salary_in_usd, 
                    probs = c(0, .25, .5, .75, .95, 1), 
                    na.rm = TRUE)
 
@@ -2295,26 +2478,39 @@ dataset$job_title  &lt;- factor(dataset$job_title)
 dataset$salary_in_usd &lt;- cut(dataset$salary_in_usd, 
                                        breaks = breaks, 
                                        include.lowest = TRUE, 
-                                       labels=c(&quot;Very Low&quot;, &quot;Low&quot;, &quot;Medium&quot;, &quot;High&quot;, &quot;Very High&quot;))
+                                       labels=c(\Very Low\, \Low\, \Medium\, \High\, \Very High\))
 </code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+### Normalization:
+
+to change the scale of numeric attributes (remote_ratio and work_year) to a scale of [-1,1] to give them equal weight
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YXNldCBbLCBjKFwid29ya195ZWFyXCIgLCBcInJlbW90ZV9yYXRpb1wiKV0gPSBzY2FsZShkYXRhc2V0IFssIGMoXCJ3b3JrX3llYXJcIiAsIFwicmVtb3RlX3JhdGlvXCIpXSlcbmBgYCJ9 --&gt;
+
+```r
+dataset [, c(&quot;work_year&quot; , &quot;remote_ratio&quot;)] = scale(dataset [, c(&quot;work_year&quot; , &quot;remote_ratio&quot;)])</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-</div>
-<div id="normalization" class="section level3">
-<h3>Normalization:</h3>
-<p>to change the scale of numeric attributes (remote_ratio and
-work_year) to a scale of [-1,1] to give them equal weight</p>
 <!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YXNldCBbLCBjKFwid29ya195ZWFyXCIgLCBcInJlbW90ZV9yYXRpb1wiKV0gPSBzY2FsZShkYXRhc2V0IFssIGMoXCJ3b3JrX3llYXJcIiAsIFwicmVtb3RlX3JhdGlvXCIpXSlcbmBgYCJ9 -->
-<pre class="r"><code>dataset [, c(&quot;work_year&quot; , &quot;remote_ratio&quot;)] = scale(dataset [, c(&quot;work_year&quot; , &quot;remote_ratio&quot;)])</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-</div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkN5YmVyc2VjdXJpdHkgc2FsYXJpZXMiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIyMgSW1wb3J0IG5lZWRlZCBsaWJyYXJpZXMNCg0KYGBge3J9DQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShjb3VudHJ5Y29kZSkNCmxpYnJhcnkob3V0bGllcnMpDQoNCmBgYA0KDQojIyMgUHJvYmxlbSBzdGF0ZW1lbnQNCg0KUHJlZGljdGlvbiBvZiBjeWJlciBzZWN1cml0eSBlbXBsb3llZXMnIHNhbGFyaWVzIGJhc2VkIG9uIDExIGF0dHJpYnV0ZXMNCg0KMS53b3JrX3llYXINCg0KMi5leHBlcmllbmNlX2xldmVsDQoNCjMuZW1wbG95bWVudF90eXBlDQoNCjQuam9iX3RpdGxlDQoNCjUuc2FsYXJ5DQoNCjYuc2FsYXJ5X2N1cnJlbmN5DQoNCjcuc2FsYXJ5X2luX3VzZA0KDQo4LmVtcGxveWVlX3Jlc2lkZW5jZQ0KDQo5LnJlbW90ZV9yYXRpbw0KDQoxMC5jb21wYW55X2xvY2F0aW9uDQoNCjExLmNvbXBhbnlfc2l6ZQ0KDQojIyMgUHJvYmxlbSBkZXNjcmlwdGlvbg0KDQpXZSBhcmUgbGl2aW5nIGluIHRoZSAiaW5mb3JtYXRpb24gYWdlIiBvciByYXRoZXIgdGhlICJkYXRhIGFnZSIsIG1lYW5pbmcgdGhhdCBldmVyeXRoaW5nIGFyb3VuZCB1cyByZXZvbHZlcyBhcm91bmQgZGF0YS4gVGhlIGRhdGEgaGFzIGJlY29tZSBvbmUgb2YgdGhlIG1vc3QgdmFsdWFibGUgYXNzZXRzIHRoYXQgYSBwZXJzb24gb3IgYW4gb3JnYW5pc2F0aW9uIGNhbiBoYXZlLCBzaW5jZSBpdCBoYXMgYSBzaWduaWZpY2FudCB2YWx1ZSwgbG9zaW5nIGl0IHdpbGwgbGVhZCB0byBzaWduaWZpY2FudCBkYW1hZ2VzLiBUaHVzLCBtb3N0IG9mIHRoZSBhdHRhY2tzIG5vd2FkYXlzIGFyZSBkaXJlY3RlZCB0b3dhcmQgdGhlIGRhdGEuIFRvIGd1YXJkIGFnYWluc3Qgc3VjaCBkYW1hZ2VzLCBvcmdhbmlzYXRpb25zIGhhdmUgcmVhbGlzZWQgdGhlIGltcG9ydGFuY2Ugb2YgcHJvdGVjdGluZyB0aGVpciBkaWdpdGFsIGFzc2V0cywgbGVhZGluZyB0aGVtIHRvIGhpcmUgY3liZXJzZWN1cml0eSBzcGVjaWFsaXN0cy4gVGhpcyBtYWRlIGN5YmVyc2VjdXJpdHkgZ2FpbiBwb3B1bGFyaXR5IGFtb25nIHBlb3BsZSBzbyB0aGVyZSdzIGEgZ3Jvd2luZyB0ZW5kZW5jeSB0byBzdHVkeSBjeWJlcnNlY3VyaXR5LiBDb25zZXF1ZW50bHkgdGhpcyByZXN1bHRlZCBpbiB0aGUgZW1lcmdlbmNlIG9mIHBsZW50aWZ1bCBwcm9mZXNzaW9uYWxzIHdpdGggdmFyaW91cyBleHBlcmllbmNlIGxldmVscyBhbmQgc2tpbGxzIGluIHRoaXMgZmllbGQuIEFzIGEgcmVzdWx0LCBvcmdhbmlzYXRpb25zIG1heSBmaW5kIGl0IGRpZmZpY3VsdCB0byBkZWNpZGUgYSBzYWxhcnkgZm9yIGpvYiBjYW5kaWRhdGVzIHNvbGVseSBiYXNlZCBvbiB0aGUgQ1YuIGFsc28sIHNpbmNlIHRoZSBhdHRhY2tzIGltcHJvdmUgcmFwaWRseSwgb3JnYW5pc2F0aW9ucyBuZWVkIHRvIGhpcmUgbW9yZSBlbXBsb3llZXMgaW4gdGhlIGZhciBmdXR1cmUgdG8gZGVmZW5kIGFnYWluc3Qgc3VjaCBhdHRhY2tzIGJ1dCBpdCdzIG5vdCBhbiBlYXN5IG1hdHRlciB0byBwcmVkaWN0IHRoZSBmdXR1cmUgcGF5cm9sbCB3aGljaCBtYXkgaGluZGVycyBzb21lIG9mIHRoZSBvcmdhbmlzYXRpb24ncyBwbGFucy4gQW5vdGhlciBpc3N1ZSBhcmlzZXMgd2hlbiB0aGUgZGVjaXNpb24gbWFrZXJzIGluIHRoZSBvcmdhbmlzYXRpb24gYXJlbid0IGZ1bGx5IGF3YXJlIG9mIHRoZSB0cmVuZHMgb24gc2FsYXJ5LiBUaGVpciBsYWNrIG9mIGF3YXJlbmVzcyBnaXZlcyBhIGNoYW5jZSBmb3IgdGhlIGNvbXBldGl0b3Igb3JnYW5pc2F0aW9ucyB0byBhdHRyYWN0IHRoZWlyIGVtcGxveWVlcyB0byB0aGVtIGJ5IG9mZmVyaW5nIGEgYmV0dGVyIHNhbGFyeSB0aGF0IG1hdGNoIGN1cnJlbnQgdHJlbmRzDQoNCiMjIyBEYXRhIG1pbmluZyB0YXNrDQoNClByZWRpY3Rpb24gb2YgdGhlIGN5YmVyIHNlY3VyaXR5IGVtcGxveWVlcycgc2FsYXJ5IGNhdGVnb3JpZXMgKFZlcnkgTG93LCBMb3csICwgSGlnaCwgVmVyeSBIaWdoKSB1c2luZyBjbGFzc2lmaWNhdGlvbiBtZXRob2RzLg0KDQojIyMgR29hbA0KDQpHaXZlbiB0aGUgcHJvYmxlbXMgd2UgZGlzY3Vzc2VkIGFuZCBJbiBvcmRlciB0byBiZXR0ZXIgdW5kZXJzdGFuZCB0aGlzIGZpZWxkLCB3ZSBkZWNpZGVkIHRvIGFuYWx5c2UgYSBkYXRhc2V0IG9mIDEyNDcgY3liZXJzZWN1cml0eSBlbXBsb3llZXMsIGNvbnRhaW5pbmcgaW5mb3JtYXRpb24gc3VjaCBhcyBzYWxhcnksIGpvYiB0aXRsZSwgYW5kIGV4cGVyaWVuY2UgbGV2ZWwuIEFuYWx5c2luZyB0aGlzIGRhdGFzZXQgY2FuIHByb3ZpZGUgaW5zaWdodGZ1bCBwcmVkaWN0aW9ucyByZWdhcmRpbmcgdGhlIHNhbGFyeSByYW5nZSBvZiBhIGN5YmVyc2VjdXJpdHkgZW1wbG95ZWUsIHdoaWNoIGNhbiBoZWxwIGluDQoNCi0gICBNYWtpbmcgYmV0dGVyIGRlY2lzaW9ucw0KLSAgIE1ha2luZyByZWNydWl0bWVudCBhbmQgaGlyaW5nIHByb2Nlc3MgZWFzaWVyIGFuZCBtb3JlIGVmZmljaWVudA0KLSAgIFByZWRpY3RpbmcgdGhlIGZ1dHVyZSBwYXlyb2xsDQotICAgSW5jcmVhc2luZyBsb3lhbHR5DQotICAgSW5jcmVhc2luZyB0aGUgc2F0aXNmYWN0aW9uIHJhdGUNCi0gICBBY2hpZXZpbmcgZmFpcm5lc3MNCg0KIyMgU291cmNlIG9mIGRhdGE6DQoNCjxodHRwczovL3d3dy5rYWdnbGUuY29tL2RhdGFzZXRzL2RlZXBjb250cmFjdG9yL2N5YmVyLXNlY3VyaXR5LXNhbGFyaWVzPg0KDQojIyMgUmVhZGluZyBhbmQgdmlld2luZyBkYXRhc2V0DQoNCmBgYHtyfQ0KZGF0YXNldD0gcmVhZC5jc3YodXJsKCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vU2FyYWhBbGhpbmRpL0RNX3Byb2plY3QvbWFpbi9EYXRhJTIwU2V0L3NhbGFyaWVzX2N5YmVyLmNzdiIpLCBoZWFkZXI9VFJVRSkNClZpZXcoZGF0YXNldCkNCg0KYGBgDQoNCiMjIyBPcmlnaW5hbCBkYXRhc2V0DQoNCndlIHdpbGwga2VlcCBhIGNvcHkgb2YgdGhlIG9yaWdpbmFsIGRhdGFzZXQgYmVmb3JlIGRhdGEgcHJlcHJvY2Vzc2luZyB0byB1c2UgaWYgbmVlZGVkIGF0IGFueSB0aW1lDQoNCmBgYHtyfQ0Kb3JpZ2luYWxEYXRhc2V0PSBkYXRhc2V0DQpgYGANCg0KIyMgR2VuZXJhbCBpbmZvcm1hdGlvbiBhYm91dCB0aGUgZGF0YXNldDoNCg0KTm8uIG9mIGF0dHJpYnV0ZXM6IDExXA0KVHlwZSBvZiBhdHRyaWJ1dGVzOiBPcmRpbmFsICwgTm9taW5hbCwgYW5kIE51bWVyaWNcDQpOby4gb2Ygb2JqZWN0czogMTI0N1wNCkNsYXNzIGxhYmVsOiBzYWxhcnlfaW5fdXNkDQoNCmBgYHtyfQ0KbmNvbChkYXRhc2V0KQ0KbnJvdyhkYXRhc2V0KQ0KbmFtZXMoZGF0YXNldCkNCnN0cihkYXRhc2V0KQ0KYGBgDQoNCiMjIyBBdHRyaWJ1dGVzJyBkZXNjcmlwdGlvbiB0YWJsZQ0KDQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8ICoqQXR0cmlidXRlIE5hbWUqKiB8ICoqRGVzY3JpcHRpb24qKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgKipEYXRhIFR5cGUqKiB8ICoqUG9zc2libGUgdmFsdWVzKiogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorPT09PT09PT09PT09PT09PT09PT0rPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSs9PT09PT09PT09PT09PT0rPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0rDQp8IHdvcmtfeWVhciAgICAgICAgICB8IFRoZSB5ZWFyIGluIHdoaWNoIHNhbGFyeSB3YXMgcmVjb3JkZWQgICAgICAgICAgICAgICAgICAgICAgIHwgTnVtZXJpY2FsICAgICB8IDIwMjAgdG8gMjAyMiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGV4cGVyaWVuY2VfbGV2ZWwgICB8IEV4cGVydGlzZSBsZXZlbCBvZiB0aGUgZW1wbG95ZWUgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgT3JkaW5hbCAgICAgICB8IEVuICJFbnRyeSBsZXZlbCJcICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IE1JICJNaWQgbGV2ZWwiXCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IFNFICJTZW5pb3IgbGV2ZWwiXCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IEVYICJFeGVjdXRpdmUgbGV2ZWwiICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGVtcGxveW1lbnRfdHlwZSAgICB8IFRoZSBuYXR1cmUgb3IgY2F0ZWdvcnkgb2YgZW1wbG95ZWUncyBlbmdhZ2VtZW50IGluIHRoZSBqb2IgIHwgTm9taW5hbCAgICAgICB8IFBUICJQYXJ0IHRpbWUiXCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IEZUICJGdWxsIHRpbWUiXCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IENUICJDb250cmFjdFwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IEZMIkZyZWVsYW5jZXIiICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGpvYl90aXRsZSAgICAgICAgICB8IFRoZSByb2xlIHdvcmtlZCBpbiBkdXJpbmcgdGhlIHllYXIgICAgICAgICAgICAgICAgICAgICAgICAgIHwgTm9taW5hbCAgICAgICB8IERpZmZlcmVudCB0aXRsZXMuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IGxpa2UgU2VjdXJpdHkgQW5hbHlzdCwgc2VjdXJpdHkgcmVzZWFyY2hlciAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IHNhbGFyeSAgICAgICAgICAgICB8IFRoZSB0b3RhbCBncm9zcyBzYWxhcnkgYW1vdW50IHBhaWQgICAgICAgICAgICAgICAgICAgICAgICAgIHwgTnVtZXJpY2FsICAgICB8IDE3NDAtNTAwMDE1NjYgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IHNhbGFyeV9jdXJyZW5jeSAgICB8IFRoZSBjdXJyZW5jeSBvZiB0aGUgc2FsYXJ5IHBhaWQgdG8gdGhlIGVtcGxveWVlICAgICAgICAgICAgIHwgTm9taW5hbCAgICAgICB8IERpZmZlcmVudCBjdXJyZW5jaWVzIGFjY29yZGluZyB0byBJU08gNDIxNyBjdXJyZW5jeSBjb2RlLiB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IGxpa2UgREUsQ0EgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IHNhbGFyeV9pbl91c2QgICAgICB8IFRoZSBzYWxhcnkgcGFpZCBpbiBVbml0ZWQgc3RhdGVzIGRvbGxhciAgICAgICAgICAgICAgICAgICAgIHwgTnVtZXJpY2FsICAgICB8IDIwMDAgdG8gMzY1NTk2LjQwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGVtcGxveWVlX3Jlc2lkZW5jZSB8IEVtcGxveWVlJ3MgcHJpbWFyeSBjb3VudHJ5IG9mIHJlc2lkZW5jZSAgICAgICAgICAgICAgICAgICAgIHwgTm9taW5hbCAgICAgICB8IERpZmZlcmVudCBjb3VudHJpZXMuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IGxpa2UgVVMsQUUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IHJlbW90ZV9yYXRpbyAgICAgICB8IFBlcmNlbnRhZ2Ugb2Ygb25saW5lIHdvcmsgYnkgZW1wbG95ZWUgaW4gdGhlIHNwZWNpZmllZCB5ZWFyIHwgTnVtZXJpY2FsICAgICB8IDAgIk5vIHJlbW90ZSB3b3JrIlwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IDUwICJQYXJ0aWFsbHkgcmVtb3RlIlwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IDEwMCAiRnVsbHkgcmVtb3RlIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGNvbXBhbnlfbG9jYXRpb24gICB8IFRoZSBjb3VudHJ5IG9mIHRoZSBlbXBsb3llcidzIG1haW4gb2ZmaWNlICAgICAgICAgICAgICAgICAgIHwgTm9taW5hbCAgICAgICB8IERpZmZlcmVudCBjb3VudHJpZXMuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IGxpa2UgQlIsQlcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGNvbXBhbnlfc2l6ZSAgICAgICB8IEhvdyBiaWcvc21hbGwgaXMgdGhlIGNvbXBhbnkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgT3JkaW5hbCAgICAgICB8IFMgLCBNIG9yIEwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQoNCiMjIyBzYW1wbGUgb2YgMjAgZW1wbG95ZWVzIGZyb20gdGhlIGRhdGFzZXQ6DQoNCnVzaW5nIHNhbXBsZV9uKHRhYmxlLHNpemUpIGZ1bmN0aW9uDQoNCmBgYHtyfQ0Kc2V0LnNlZWQoMzApDQpzYW1wbGU9c2FtcGxlX24oZGF0YXNldCwyMCkNCnByaW50KHNhbXBsZSkNCmBgYA0KDQojIyMgU2hvdyB0aGUgbWlzc2luZyB2YWx1ZToNCg0KaWYgaXQgaXMgRkFMU0UgaXQgbWVhbnMgbm8gbnVsbCB2YWx1ZSxpZiBpdCBpcyBUUlVFIHRoZXJlIGlzIG51bGwgdmFsdWUuIEluIG91ciBkYXRhc2V0IHRoZXJlIGlzIG5vIG51bGwgdmFsdWVzLg0KDQpgYGB7cn0NCmlzLm5hKGRhdGFzZXQpDQpzdW0oaXMubmEoZGF0YXNldCkpDQpgYGANCg0KIyMjIFNob3cgdGhlIE1pbi4sMXN0IFF1LixNZWRpYW4sTWVhbiAsM3JkIFF1LixNYXguIGZvciBlYWNoIG51bWVyaWMgY29sdW1uDQoNCmBgYHtyfQ0Kc3VtbWFyeShkYXRhc2V0JHdvcmtfeWVhcikNCnN1bW1hcnkoZGF0YXNldCRzYWxhcnkpDQpzdW1tYXJ5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCkNCnN1bW1hcnkoZGF0YXNldCRyZW1vdGVfcmF0aW8pDQpgYGANCg0KIyMjIFNob3cgdGhlIHZhcmlhbmUgb2YgZWFjaCBudW1lcmljIGNvbHVtbg0KDQpgYGB7cn0NCnZhcihkYXRhc2V0JHdvcmtfeWVhcikNCnZhcihkYXRhc2V0JHNhbGFyeSkNCnZhcihkYXRhc2V0JHNhbGFyeV9pbl91c2QpDQp2YXIoZGF0YXNldCRyZW1vdGVfcmF0aW8pDQpgYGANCg0KIyMjIEZpbmQgdGhlIG91dGxpZXJzIGFuZCByZW1vdmUgdGhlbSBmcm9tIHRoZSBkYXRhc2V0DQoNCmBgYHtyfQ0KaW5zdGFsbC5wYWNrYWdlcygib3V0bGllcnMiKQ0KDQoNCiMgb3V0X3dvcmtfeWVhcj1vdXRsaWVyIChkYXRhc2V0JHdvcmtfeWVhcixsb2dpY2FsID1UUlVFKQ0Kc3VtKG91dF93b3JrX3llYXIpIw0Kb3V0c2FsYXJ5PW91dGxpZXIoZGF0YXNldCRzYWxhcnkgLGxvZ2ljYWw9VFJVRSkNCnN1bShvdXRzYWxhcnkpDQpvdXRfc2FsYXJ5X2luX3VzZD1vdXRsaWVyKGRhdGFzZXQkc2FsYXJ5X2luX3VzZCAsbG9naWNhbD1UUlVFKQ0Kc3VtKG91dF9zYWxhcnlfaW5fdXNkKQ0Kb3V0X3JlbW90ZV9yYXRpbz1vdXRsaWVyKGRhdGFzZXQkcmVtb3RlX3JhdGlvICxsb2dpY2FsPVRSVUUpDQpzdW0ob3V0X3JlbW90ZV9yYXRpbykNCg0KRmluZF9vdXRsaWVyMSA9IHdoaWNoKG91dF93b3JrX3llYXIgPT1UUlVFLCBhcnIuaW5kID0gVFJVRSkNCm91dF93b3JrX3llYXINCkZpbmRfb3V0bGllcjENCmRhdGFzZXQ9ZGF0YXNldFstRmluZF9vdXRsaWVyMSxdDQoNCkZpbmRfb3V0bGllcjIgPSB3aGljaChvdXRzYWxhcnkgPT1UUlVFLCBhcnIuaW5kID0gVFJVRSkNCm91dHNhbGFyeQ0KRmluZF9vdXRsaWVyMg0KZGF0YXNldD1kYXRhc2V0Wy1GaW5kX291dGxpZXIyLF0NCg0KRmluZF9vdXRsaWVyMyA9IHdoaWNoKG91dF9zYWxhcnlfaW5fdXNkID09VFJVRSwgYXJyLmluZCA9IFRSVUUpDQpvdXRfc2FsYXJ5X2luX3VzZA0KRmluZF9vdXRsaWVyMw0KZGF0YXNldD1kYXRhc2V0Wy1GaW5kX291dGxpZXIzLF0NCg0KRmluZF9vdXRsaWVyNCA9IHdoaWNoKG91dF9yZW1vdGVfcmF0aW8gPT1UUlVFLCBhcnIuaW5kID0gVFJVRSkNCm91dF9yZW1vdGVfcmF0aW8NCkZpbmRfb3V0bGllcjQNCmRhdGFzZXQ9ZGF0YXNldFstRmluZF9vdXRsaWVyNCxdDQpgYGANCg0KIyMjIFZpc3VhbGl6YXRpb24gb2YgcmVsYXRpb25zaGlwIGJldHdlZW4gc29tZSBwYWlycyBvZiBhdHRyaWJ1dGVzOg0KDQpIZXJlIHdlIHVzZWQgYm94cGxvdCB0byBzZWUgdGhlIGRpc3RyaWJ1dGlvbiBiZXR3ZWVuIHNhbGFyeV9pbl91c2QgYW5kIGV4cGVyaWVuY2VfbGV2ZWwgV2Ugb2JzZXJ2ZWQgdGhhdCBzYWxhcmllcyB2YXJ5IGRlcGVuZGluZyBvbiB0aGUgbGV2ZWwgb2YgZXhwZXJpZW5jZSx0aGV5IGFyZSBwb3NpdGl2ZWx5IGNvcnJlbGF0ZWQuDQoNCmBgYHtyfQ0KYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gZXhwZXJpZW5jZV9sZXZlbCwgZGF0YSA9IGRhdGFzZXQgLCB5YXh0PSJuIikNCmxhYmVsczwtIHByZXR0eShkYXRhc2V0JHNhbGFyeV9pbl91c2QpDQpsYWJlbHM8LSBzYXBwbHkobGFiZWxzLCBmdW5jdGlvbih4KSBmb3JtYXQoeCwgc2NpZW50aWZpYyA9IEZBTFNFKSkNCmF4aXMoc2lkZSA9IDIsIGF0PXByZXR0eShkYXRhc2V0JHNhbGFyeV9pbl91c2QpLCBsYWJlbHMgPSBsYWJlbHMgKQ0Kb3B0aW9ucyhzY2lwZW4gPSA5OTkpDQpgYGANCg0KSGVyZSB3ZSB1c2VkIGJveHBsb3QgdG8gc2VlIHRoZSBkaXN0cmlidXRpb24gYmV0d2VlbiBzYWxhcnlfaW5fdXNkIGFuZCB3b3JrX3llYXIgV2Ugb2JzZXJ2ZWQgdGhhdCAyMDIxIHNhbGFyaWVzIHdlcmUgY2xvc2UgdG8gZWFjaCBvdGhlciBidXQgaW4gMjAyMiB0aGUgZ2FwIGJldHdlZW4gdGhlbSBnZXR0aW5nIGJpZ2dlci4NCg0KYGBge3J9DQpib3hwbG90KHNhbGFyeV9pbl91c2QgfiB3b3JrX3llYXIsIGRhdGEgPSBkYXRhc2V0ICwgeWF4dD0ibiIpDQpsYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKQ0KbGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpDQpheGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzICkNCm9wdGlvbnMoc2NpcGVuID0gOTk5KQ0KYGBgDQoNCkhlcmUgd2UgdXNlZCBib3hwbG90IHRvIHNlZSB0aGUgZGlzdHJpYnV0aW9uIGJldHdlZW4gc2FsYXJ5X2luX3VzZCBhbmQgZW1wbG95bWVudF90eXBlIFdlIG9ic2VydmVkIHRoYXQgRnVsbCBUaW1lIChGVCkgb2ZmZXJzIG1vcmUgc2FsYXJ5IHRoYW4gdGhlIG90aGVyIGNhdGVnb3JpZXMuDQoNCmBgYHtyfQ0KYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gZW1wbG95bWVudF90eXBlLCBkYXRhID0gZGF0YXNldCAsIHlheHQ9Im4iKQ0KbGFiZWxzPC0gcHJldHR5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCkNCmxhYmVsczwtIHNhcHBseShsYWJlbHMsIGZ1bmN0aW9uKHgpIGZvcm1hdCh4LCBzY2llbnRpZmljID0gRkFMU0UpKQ0KYXhpcyhzaWRlID0gMiwgYXQ9cHJldHR5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCksIGxhYmVscyA9IGxhYmVscyApDQpvcHRpb25zKHNjaXBlbiA9IDk5OSkNCmBgYA0KDQpIZXJlIHdlIHVzZWQgYm94cGxvdCB0byBzZWUgdGhlIGRpc3RyaWJ1dGlvbiBiZXR3ZWVuIHNhbGFyeV9pbl91c2QgYW5kIGNvbXBhbnlfc2l6ZSBXZSBvYnNlcnZlZCB0aGF0IHRoZSBsYXJnZXIgdGhlIGNvbXBhbnkgaXMgdGhlIGhpZ2hlciB0aGUgc2FsYXJ5IHdhcy4NCg0KYGBge3J9DQpib3hwbG90KHNhbGFyeV9pbl91c2QgfiBjb21wYW55X3NpemUsIGRhdGEgPSBkYXRhc2V0ICwgeWF4dD0ibiIpDQpsYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKQ0KbGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpDQpheGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzICkNCm9wdGlvbnMoc2NpcGVuID0gOTk5KSANCmBgYA0KDQojIyBEYXRhIFJlZHVjdGlvbg0KDQojIyMgRGltZW5zaW9uYWxpdHkgUmVkdWN0aW9uDQoNClRoZSAic2FsYXJ5IiBjb2x1bW4gZ2l2ZXMgdGhlIHNhbWUgaW5mb3JtYXRpb24gYXMgInNhbGFyeV9pbl91c2QiIGl0J3MganVzdCBhIG1hdHRlciBvZiBjdXJyZW5jeSBleGNoYW5nZSwgYW5kIHdlIHdpbGwgZXZlbnR1YWxseSB0cmFuc2Zvcm0gYWxsIHRoZSB2YWx1ZXMgaW4gInNhbGFyeSIgY29sdW1uIHRvIG9uZSBjb21tb24gY3VycmVuY3kgc28gd2UgY2FuIHByb3Blcmx5IGRlYWwgd2l0aCB0aGVtLiBUbyBmdXJ0aGVyIGNvbmZpcm0gdGhhdCB0aGUgdHdvIGNvbHVtbiBhcmUgcmVkdW5kYW50LCB3ZSB3aWxsIHVzZSB0aGUgbGF0ZXN0IGV4Y2hhbmdlIHJhdGUgZm9yIFVTRCB0byB0aGUgZGVzaXJlZCBjdXJyZW5jeS4NCg0Kd2Ugd2lsbCBzdGFydCBieSBjcmVhdGluZyBhIHRlbXBvcmFyeSBjb2x1bW4gbmFtZWQgImNvbnZlcnRlZF9zYWxhcnkiIHRvIHNhdmUgdGhlIHNhbGFyeSB0aGF0IHdlIHdpbGwgZ2V0IGJ5IHVzaW5nIHRoZSBleGNoYW5nZSByYXRlIHRvIGNvbnZlcnQgdGhlIHNhbGFyeV9pbl91c2QgdG8gdGhlIHNhbGFyeSB3aXRoIGRpZmZlcmVudCBjdXJyZW5jaWVzIHRvIGNvbXBhcmUgd2l0aCAic2FsYXJ5IiBjb2x1bW4NCg0KYGBge3J9DQpjb252ZXJ0ZWREYXRhc2V0PWRhdGFzZXQNCg0KDQpjb252ZXJ0ZWREYXRhc2V0JGV4Y2hhbmdlX3JhdGUgPSBmYWN0b3IoY29udmVydGVkRGF0YXNldCRzYWxhcnlfY3VycmVuY3ksIGxldmVscz1jKCJVU0QiLCJCUkwiLCJHQlAiLCJFVVIiLCJJTlIiLCJDQUQiLCJDSEYiLCJES0siLCJTR0QiLCJBVUQiLCJTRUsiLCJNWE4iLCJJTFMiLCJQTE4iLCJOT0siLCJJRFIiLCJOWkQiLCJIVUYiLCJaQVIiLCJUV0QiLCJSVUIiKSwgbGFiZWxzPWMoMS8xLDEvMC4yMCwxLzEuMjIsMS8xLjA2LDEvMC4wMTIsMS8wLjc0LDEvMS4xMCwxLzAuMTQsMS8wLjczLDEvMC42NCwxLzAuMDkwLDEvMC4wNTcsMS8wLjI2LDEvMC4yMywxLzAuMDkzLDEvMC4wMDAwNjUsMS8wLjYwLDEvMC4wMDI3LDEvMC4wNTMsMS8wLjAzMSwxLzAuMDEwKSkNCmNvbnZlcnRlZERhdGFzZXQkZXhjaGFuZ2VfcmF0ZSA9IGFzLm51bWVyaWMoYXMuY2hhcmFjdGVyKGNvbnZlcnRlZERhdGFzZXQkZXhjaGFuZ2VfcmF0ZSkpDQpjb252ZXJ0ZWREYXRhc2V0JGNvbnZlcnRlZF9zYWxhcnkgPSBjb252ZXJ0ZWREYXRhc2V0JHNhbGFyeV9pbl91c2QqY29udmVydGVkRGF0YXNldCRleGNoYW5nZV9yYXRlDQoNCg0KDQpzZXQuc2VlZCgxKQ0Kc2FsYXJ5X3NhbXBsZSA8LSBzYW1wbGVfbihjb252ZXJ0ZWREYXRhc2V0WyxjKCJzYWxhcnkiLCJjb252ZXJ0ZWRfc2FsYXJ5IildLDEwKQ0KDQpwcmludChzYWxhcnlfc2FtcGxlKQ0KYGBgDQoNCmFzIHNob3duIGluIHRoZSBzYW1wbGUsIHRoZSB0d28gY29sdW1ucyBhcmUgYWxtb3N0IGlkZW50aWNhbC4gVGhpcyBjYW4gYmUgcHJvdmVkIGJ5IGNvcnJlbGF0aW9uIGNvZWZmaWNpZW50IGFzIHdlbGwuDQoNCmBgYHtyfQ0KY29ycmVsYXRpb24gPC0gY29yKGNvbnZlcnRlZERhdGFzZXQkc2FsYXJ5ICwgY29udmVydGVkRGF0YXNldCRjb252ZXJ0ZWRfc2FsYXJ5KQ0KcHJpbnQoY29ycmVsYXRpb24pDQpgYGANCg0KVGhlIGNvcnJlbGF0aW9uIGlzIHNvIGhpZ2ggYnV0IGl0IGhhc24ndCByZWFjaGVkIDEwMCUgcG9zc2libHkgZHVlIHRvIHJvdW5kaW5nIGluIHRoZSBjYWxjdWxhdGlvbnMgYW5kIHNsaWdodCBkaWZmZXJlbmNlcyBpbiB0aGUgZXhjaGFuZ2UgcmF0ZSBvdmVyIHRpbWUuDQoNClRvIG1ha2UgdGhlIG1pbmluZyBwcm9jZXNzIG1vcmUgZWZmaWVjZW50IGFuZCBoYXMgYW4gaW1wcm92ZWQgcXVhbGl0eSwgd2UgZGVjaWRlZCB0byByZW1vdmUgdGhlICJzYWxhcnkiIGNvbHVtbi4NCg0KYGBge3J9DQpkYXRhc2V0PC1kYXRhc2V0WywtYyg1KV0NCmBgYA0KDQojIyBDb25jZXB0IGhpZXJhcmNoeSBnZW5lcmF0aW9uIGZvciBub21pbmFsIGRhdGENCg0KdGhlIGNvbHVtbnMgImNvbXBhbnlfbG9jYXRpb24iIGFuZCAiZW1wbG95ZWVfcmVzaWRlbmNlIiBoYXZlIHRoZSBuYW1lIG9mIGNvdW50cmllcyBmb3IgdGhlIGNvbXBhbnkgYW5kIGVtcGxveWVlIHJlc3BlY3RpdmVseS4gQW5kIHRoZXNlIGF0dHJpYnV0ZXMgY2FuIGJlIGdlbmVyYWxpemVkIHRvIGhpZ2hlci1sZXZlbCBjb25jZXB0IHRoYXQgaXMgcmVnaW9uIHRvIGhlbHAgdW5kZXJzdGFuZCBhbmQgYW5hbHl6ZSB0aGUgZGF0YXNldCBiZXR0ZXIgYW5kIGltcHJvdmUgYWxnb3JpdGhtIHBlcmZvcm1hbmNlLg0KDQpXZSB3aWxsIHVzZSB0aGUgNyByZWdpb25zIGFzIGRlZmluZWQgaW4gdGhlIFdvcmxkIEJhbmsgRGV2ZWxvcG1lbnQgSW5kaWNhdG9ycy4gVGhlc2UgcmVnaW9ucyBhcmU6DQoNCjEuICBFYXN0IEFzaWEgYW5kIFBhY2lmaWM6IFRoaXMgcmVnaW9uIGluY2x1ZGVzIGNvdW50cmllcyBsaWtlIENoaW5hLCBBdXN0cmFsaWEsIEluZG9uZXNpYSwgVGhhaWxhbmQsIGV0Yy4NCg0KMi4gIEV1cm9wZSBhbmQgQ2VudHJhbCBBc2lhOiBUaGlzIHJlZ2lvbiBpbmNsdWRlcyBjb3VudHJpZXMgbGlrZSBHZXJtYW55LCBVSywgUnVzc2lhLCBUdXJrZXksIGV0Yy4NCg0KMy4gIExhdGluIEFtZXJpY2EgJiBDYXJpYmJlYW46IFRoaXMgcmVnaW9uIGluY2x1ZGVzIGNvdW50cmllcyBsaWtlIEJyYXppbCwgTWV4aWNvLCBBcmdlbnRpbmEsIEN1YmEsIGV0Yy4NCg0KNC4gIE1pZGRsZSBFYXN0IGFuZCBOb3J0aCBBZnJpY2E6IFRoaXMgcmVnaW9uIGluY2x1ZGVzIGNvdW50cmllcyBsaWtlIFNhdWRpIEFyYWJpYSwgRWd5cHQsIElyYW4sIElyYXEsIGV0Yy4NCg0KNS4gIE5vcnRoIEFtZXJpY2E6IFRoaXMgaXMgcHJlZG9taW5hbnRseSBVbml0ZWQgU3RhdGVzIGFuZCBDYW5hZGEuDQoNCjYuICBTb3V0aCBBc2lhOiBUaGlzIHJlZ2lvbiBpbmNsdWRlcyBjb3VudHJpZXMgbGlrZSBJbmRpYSwgUGFraXN0YW4sIEJhbmdsYWRlc2gsIFNyaSBMYW5rYSwgZXRjLg0KDQo3LiAgU3ViLVNhaGFyYW4gQWZyaWNhOiBUaGlzIHJlZ2lvbiBpbmNsdWRlcyBjb3VudHJpZXMgbGlrZSBOaWdlcmlhLCBTb3V0aCBBZnJpY2EsIEV0aGlvcGlhLCBLZW55YSwgZXRjLg0KDQpOb3RlOiBVTShUaGUgVW5pdGVkIFN0YXRlcyBNaW5vciBPdXRseWluZyBJc2xhbmRzKSBhbmQgQVEoQW50YXJjdGljYSkgZG9uJ3QgYmVsb25nIHRvIGFueSBvZiB0aGVzZSByZWdpb25zLCB0aHVzLCB0aGV5IHdpbGwgYmUgdXNlZCBhcyB0aGV5IGFyZS4NCg0KYGBge3J9DQoNCg0KdW09d2hpY2goZGF0YXNldCRjb21wYW55X2xvY2F0aW9uPT0iVU0iKQ0KYXE9d2hpY2goZGF0YXNldCRjb21wYW55X2xvY2F0aW9uPT0iQVEiKQ0KDQoNCmRhdGFzZXQkY29tcGFueV9sb2NhdGlvbiA8LSBjb3VudHJ5Y29kZShkYXRhc2V0JGNvbXBhbnlfbG9jYXRpb24sICJpc28yYyIsICJyZWdpb24iKQ0KZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UgPC0gY291bnRyeWNvZGUoZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UsICJpc28yYyIsICJyZWdpb24iKQ0KDQpkYXRhc2V0W3VtLCJjb21wYW55X2xvY2F0aW9uIl09IlVNIg0KZGF0YXNldFthcSwiY29tcGFueV9sb2NhdGlvbiJdPSJBUSINCg0KYGBgDQoNCkNvbmNlcHQgaGllcmFyY2h5IGdlbmVyYXRpb24gY2FuIGJlIGRvbmUgZm9yICJqb2JfdGl0bGUiIGFzIHdlbGwgdG8gaW1wcm92ZSBpbnRlcnByZXRhdGlvbiBhbmQgc2NhbGFiaWxpdHkuIEFsc28sIG1vc3Qgam9iIHRpdGxlcyBhcmUgZXNzZW50aWFsbHkgdGhlIHNhbWUgam9iIGJ1dCB3aXRoIGRpZmZlcmVudCBuYW1lcywgc28gd2UgY2FuIGNvbWJpbmUgdGhlbSBpbnRvIGEgaGlnaGVyLWxldmVsIGpvYnMgdGl0bGVzIHN1Y2ggYXMgQXJjaGl0ZWN0LCBBbmFseXN0IGFuZCBFbmdpbmVlciBldGMuDQoNCmBgYHtyfQ0KDQpkYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnQW5hbHlzdCcsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ0FuYWx5c3QnDQpkYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnRW5naW5lZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdFbmdpbmVlcicNCmRhdGFzZXQkam9iX3RpdGxlW2dyZXBsKCdBcmNoaXRlY3QnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdBcmNoaXRlY3QnDQpkYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnTWFuYWdlcicsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ01hbmFnZXInDQpkYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnU3BlY2lhbGlzdCcsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ1NwZWNpYWxpc3QnDQpkYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnVGVzdGVyJywgZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnVGVzdGVyJw0KZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ0xlYWQnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdMZWFkJw0KZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ09mZmljZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdPZmZpY2VyJw0KZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ1Jlc2VhcmNoZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdSZXNlYXJjaGVyJw0KZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ0NvbnN1bHRhbnQnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdDb25zdWx0YW50Jw0KZGF0YXNldCRqb2JfdGl0bGVbaXMubmEoZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnT3RoZXInDQpgYGANCg0KIyMgRW5jb2RpbmcgY2F0ZWdvcmljYWwgZGF0YQ0KDQpUbyBkZWFsIHdpdGggY29sdW1ucyB3aXRoIGNoYXJhY3RlciB0eXBlIHdlIGFyZSBnb2luZyB0byBlbmNvZGUgdGhlbSwgYmVjYXVzZSBtb3N0IG1hY2hpbmUgbGVhcm5pbmcgYWxnb3JpdGhtcyBhcmUgZGVzaWduZWQgdG8gd29yayB3aXRoIGZhY3RvcnMgZGF0YSByYXRoZXIgdGhhbiBjaGFyYWN0ZXIgZGF0YSBhbmQgaXQgaW1wcm92ZXMgcGVyZm9ybWFuY2UgYW5kIEludGVycHJldGFiaWxpdHkgb2YgZGF0YSBhcyB3ZWxsLg0KDQpgYGB7cn0NCmRhdGFzZXQkam9iX3RpdGxlICA8LSBmYWN0b3IoZGF0YXNldCRqb2JfdGl0bGUpDQoNCmRhdGFzZXQkZXhwZXJpZW5jZV9sZXZlbCA9IGZhY3RvcihkYXRhc2V0JGV4cGVyaWVuY2VfbGV2ZWwsIGxldmVscz1jKCJFTiIsICJNSSIsICJTRSIsICJFWCIpLCBsYWJlbHM9YygxLDIsMyw0KSkNCg0KZGF0YXNldCRlbXBsb3ltZW50X3R5cGUgIDwtIGZhY3RvcihkYXRhc2V0JGVtcGxveW1lbnRfdHlwZSkNCg0KZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UgIDwtIGZhY3RvcihkYXRhc2V0JGVtcGxveWVlX3Jlc2lkZW5jZSkNCg0KZGF0YXNldCRjb21wYW55X2xvY2F0aW9uICA8LSBmYWN0b3IoZGF0YXNldCRjb21wYW55X2xvY2F0aW9uKQ0KDQpkYXRhc2V0JHNhbGFyeV9jdXJyZW5jeSAgPC0gZmFjdG9yKGRhdGFzZXQkc2FsYXJ5X2N1cnJlbmN5KQ0KDQpkYXRhc2V0JGpvYl90aXRsZSAgPC0gZmFjdG9yKGRhdGFzZXQkam9iX3RpdGxlKQ0KDQoNCmRhdGFzZXQkY29tcGFueV9zaXplID0gZmFjdG9yKGRhdGFzZXQkY29tcGFueV9zaXplLCBsZXZlbHM9YygiUyIsIk0iLCJMIiksIGxhYmVscz1jKDEsMiwzKSkNCg0KDQpkYXRhc2V0JGpvYl90aXRsZSAgPC0gZmFjdG9yKGRhdGFzZXQkam9iX3RpdGxlKQ0KDQpgYGANCg0KIyMjIERpc2NyZXRpemF0aW9uIG9mIHNhbGFyYXlfaW5fdXNkIGF0dHJpYnV0ZQ0KDQpieSBjYWxjdWxhdGluZyBicmVha3MgYmFzZWQgb24gcXVhcnRpbGVzDQoNCmBgYHtyfQ0KYnJlYWtzIDwtIHF1YW50aWxlKGRhdGFzZXQkc2FsYXJ5X2luX3VzZCwgDQogICAgICAgICAgICAgICAgICAgcHJvYnMgPSBjKDAsIC4yNSwgLjUsIC43NSwgLjk1LCAxKSwgDQogICAgICAgICAgICAgICAgICAgbmEucm0gPSBUUlVFKQ0KDQojIGRpc2NyZXRpemUgdGhlICdzYWxhcnlfaW5fdXNkJyBjb2x1bW4NCmRhdGFzZXQkc2FsYXJ5X2luX3VzZCA8LSBjdXQoZGF0YXNldCRzYWxhcnlfaW5fdXNkLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyZWFrcyA9IGJyZWFrcywgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpbmNsdWRlLmxvd2VzdCA9IFRSVUUsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzPWMoIlZlcnkgTG93IiwgIkxvdyIsICJNZWRpdW0iLCAiSGlnaCIsICJWZXJ5IEhpZ2giKSkNCg0KDQpgYGANCg0KIyMjIE5vcm1hbGl6YXRpb246DQoNCnRvIGNoYW5nZSB0aGUgc2NhbGUgb2YgbnVtZXJpYyBhdHRyaWJ1dGVzIChyZW1vdGVfcmF0aW8gYW5kIHdvcmtfeWVhcikgdG8gYSBzY2FsZSBvZiBbLTEsMV0gdG8gZ2l2ZSB0aGVtIGVxdWFsIHdlaWdodA0KDQpgYGB7cn0NCmRhdGFzZXQgWywgYygid29ya195ZWFyIiAsICJyZW1vdGVfcmF0aW8iKV0gPSBzY2FsZShkYXRhc2V0IFssIGMoIndvcmtfeWVhciIgLCAicmVtb3RlX3JhdGlvIildKQ0KYGBgDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkN5YmVyc2VjdXJpdHkgc2FsYXJpZXMiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIyMgSW1wb3J0IG5lZWRlZCBsaWJyYXJpZXMNCg0KYGBge3J9DQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShjb3VudHJ5Y29kZSkNCmxpYnJhcnkob3V0bGllcnMpDQoNCmBgYA0KDQojIyMgUHJvYmxlbSBzdGF0ZW1lbnQNCg0KUHJlZGljdGlvbiBvZiBjeWJlciBzZWN1cml0eSBlbXBsb3llZXMnIHNhbGFyaWVzIGJhc2VkIG9uIDExIGF0dHJpYnV0ZXMNCg0KMS53b3JrX3llYXINCg0KMi5leHBlcmllbmNlX2xldmVsDQoNCjMuZW1wbG95bWVudF90eXBlDQoNCjQuam9iX3RpdGxlDQoNCjUuc2FsYXJ5DQoNCjYuc2FsYXJ5X2N1cnJlbmN5DQoNCjcuc2FsYXJ5X2luX3VzZA0KDQo4LmVtcGxveWVlX3Jlc2lkZW5jZQ0KDQo5LnJlbW90ZV9yYXRpbw0KDQoxMC5jb21wYW55X2xvY2F0aW9uDQoNCjExLmNvbXBhbnlfc2l6ZQ0KDQojIyMgUHJvYmxlbSBkZXNjcmlwdGlvbg0KDQpXZSBhcmUgbGl2aW5nIGluIHRoZSAiaW5mb3JtYXRpb24gYWdlIiBvciByYXRoZXIgdGhlICJkYXRhIGFnZSIsIG1lYW5pbmcgdGhhdCBldmVyeXRoaW5nIGFyb3VuZCB1cyByZXZvbHZlcyBhcm91bmQgZGF0YS4gVGhlIGRhdGEgaGFzIGJlY29tZSBvbmUgb2YgdGhlIG1vc3QgdmFsdWFibGUgYXNzZXRzIHRoYXQgYSBwZXJzb24gb3IgYW4gb3JnYW5pc2F0aW9uIGNhbiBoYXZlLCBzaW5jZSBpdCBoYXMgYSBzaWduaWZpY2FudCB2YWx1ZSwgbG9zaW5nIGl0IHdpbGwgbGVhZCB0byBzaWduaWZpY2FudCBkYW1hZ2VzLiBUaHVzLCBtb3N0IG9mIHRoZSBhdHRhY2tzIG5vd2FkYXlzIGFyZSBkaXJlY3RlZCB0b3dhcmQgdGhlIGRhdGEuIFRvIGd1YXJkIGFnYWluc3Qgc3VjaCBkYW1hZ2VzLCBvcmdhbmlzYXRpb25zIGhhdmUgcmVhbGlzZWQgdGhlIGltcG9ydGFuY2Ugb2YgcHJvdGVjdGluZyB0aGVpciBkaWdpdGFsIGFzc2V0cywgbGVhZGluZyB0aGVtIHRvIGhpcmUgY3liZXJzZWN1cml0eSBzcGVjaWFsaXN0cy4gVGhpcyBtYWRlIGN5YmVyc2VjdXJpdHkgZ2FpbiBwb3B1bGFyaXR5IGFtb25nIHBlb3BsZSBzbyB0aGVyZSdzIGEgZ3Jvd2luZyB0ZW5kZW5jeSB0byBzdHVkeSBjeWJlcnNlY3VyaXR5LiBDb25zZXF1ZW50bHkgdGhpcyByZXN1bHRlZCBpbiB0aGUgZW1lcmdlbmNlIG9mIHBsZW50aWZ1bCBwcm9mZXNzaW9uYWxzIHdpdGggdmFyaW91cyBleHBlcmllbmNlIGxldmVscyBhbmQgc2tpbGxzIGluIHRoaXMgZmllbGQuIEFzIGEgcmVzdWx0LCBvcmdhbmlzYXRpb25zIG1heSBmaW5kIGl0IGRpZmZpY3VsdCB0byBkZWNpZGUgYSBzYWxhcnkgZm9yIGpvYiBjYW5kaWRhdGVzIHNvbGVseSBiYXNlZCBvbiB0aGUgQ1YuIGFsc28sIHNpbmNlIHRoZSBhdHRhY2tzIGltcHJvdmUgcmFwaWRseSwgb3JnYW5pc2F0aW9ucyBuZWVkIHRvIGhpcmUgbW9yZSBlbXBsb3llZXMgaW4gdGhlIGZhciBmdXR1cmUgdG8gZGVmZW5kIGFnYWluc3Qgc3VjaCBhdHRhY2tzIGJ1dCBpdCdzIG5vdCBhbiBlYXN5IG1hdHRlciB0byBwcmVkaWN0IHRoZSBmdXR1cmUgcGF5cm9sbCB3aGljaCBtYXkgaGluZGVycyBzb21lIG9mIHRoZSBvcmdhbmlzYXRpb24ncyBwbGFucy4gQW5vdGhlciBpc3N1ZSBhcmlzZXMgd2hlbiB0aGUgZGVjaXNpb24gbWFrZXJzIGluIHRoZSBvcmdhbmlzYXRpb24gYXJlbid0IGZ1bGx5IGF3YXJlIG9mIHRoZSB0cmVuZHMgb24gc2FsYXJ5LiBUaGVpciBsYWNrIG9mIGF3YXJlbmVzcyBnaXZlcyBhIGNoYW5jZSBmb3IgdGhlIGNvbXBldGl0b3Igb3JnYW5pc2F0aW9ucyB0byBhdHRyYWN0IHRoZWlyIGVtcGxveWVlcyB0byB0aGVtIGJ5IG9mZmVyaW5nIGEgYmV0dGVyIHNhbGFyeSB0aGF0IG1hdGNoIGN1cnJlbnQgdHJlbmRzDQoNCiMjIyBEYXRhIG1pbmluZyB0YXNrDQoNClByZWRpY3Rpb24gb2YgdGhlIGN5YmVyIHNlY3VyaXR5IGVtcGxveWVlcycgc2FsYXJ5IGNhdGVnb3JpZXMgKFZlcnkgTG93LCBMb3csICwgSGlnaCwgVmVyeSBIaWdoKSB1c2luZyBjbGFzc2lmaWNhdGlvbiBtZXRob2RzLg0KDQojIyMgR29hbA0KDQpHaXZlbiB0aGUgcHJvYmxlbXMgd2UgZGlzY3Vzc2VkIGFuZCBJbiBvcmRlciB0byBiZXR0ZXIgdW5kZXJzdGFuZCB0aGlzIGZpZWxkLCB3ZSBkZWNpZGVkIHRvIGFuYWx5c2UgYSBkYXRhc2V0IG9mIDEyNDcgY3liZXJzZWN1cml0eSBlbXBsb3llZXMsIGNvbnRhaW5pbmcgaW5mb3JtYXRpb24gc3VjaCBhcyBzYWxhcnksIGpvYiB0aXRsZSwgYW5kIGV4cGVyaWVuY2UgbGV2ZWwuIEFuYWx5c2luZyB0aGlzIGRhdGFzZXQgY2FuIHByb3ZpZGUgaW5zaWdodGZ1bCBwcmVkaWN0aW9ucyByZWdhcmRpbmcgdGhlIHNhbGFyeSByYW5nZSBvZiBhIGN5YmVyc2VjdXJpdHkgZW1wbG95ZWUsIHdoaWNoIGNhbiBoZWxwIGluDQoNCi0gICBNYWtpbmcgYmV0dGVyIGRlY2lzaW9ucw0KLSAgIE1ha2luZyByZWNydWl0bWVudCBhbmQgaGlyaW5nIHByb2Nlc3MgZWFzaWVyIGFuZCBtb3JlIGVmZmljaWVudA0KLSAgIFByZWRpY3RpbmcgdGhlIGZ1dHVyZSBwYXlyb2xsDQotICAgSW5jcmVhc2luZyBsb3lhbHR5DQotICAgSW5jcmVhc2luZyB0aGUgc2F0aXNmYWN0aW9uIHJhdGUNCi0gICBBY2hpZXZpbmcgZmFpcm5lc3MNCg0KIyMgU291cmNlIG9mIGRhdGE6DQoNCjxodHRwczovL3d3dy5rYWdnbGUuY29tL2RhdGFzZXRzL2RlZXBjb250cmFjdG9yL2N5YmVyLXNlY3VyaXR5LXNhbGFyaWVzPg0KDQojIyMgUmVhZGluZyBhbmQgdmlld2luZyBkYXRhc2V0DQoNCmBgYHtyfQ0KZGF0YXNldD0gcmVhZC5jc3YodXJsKCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vU2FyYWhBbGhpbmRpL0RNX3Byb2plY3QvbWFpbi9EYXRhJTIwU2V0L3NhbGFyaWVzX2N5YmVyLmNzdiIpLCBoZWFkZXI9VFJVRSkNClZpZXcoZGF0YXNldCkNCg0KYGBgDQoNCiMjIyBPcmlnaW5hbCBkYXRhc2V0DQoNCndlIHdpbGwga2VlcCBhIGNvcHkgb2YgdGhlIG9yaWdpbmFsIGRhdGFzZXQgYmVmb3JlIGRhdGEgcHJlcHJvY2Vzc2luZyB0byB1c2UgaWYgbmVlZGVkIGF0IGFueSB0aW1lDQoNCmBgYHtyfQ0Kb3JpZ2luYWxEYXRhc2V0PSBkYXRhc2V0DQpgYGANCg0KIyMgR2VuZXJhbCBpbmZvcm1hdGlvbiBhYm91dCB0aGUgZGF0YXNldDoNCg0KTm8uIG9mIGF0dHJpYnV0ZXM6IDExXA0KVHlwZSBvZiBhdHRyaWJ1dGVzOiBPcmRpbmFsICwgTm9taW5hbCwgYW5kIE51bWVyaWNcDQpOby4gb2Ygb2JqZWN0czogMTI0N1wNCkNsYXNzIGxhYmVsOiBzYWxhcnlfaW5fdXNkDQoNCmBgYHtyfQ0KbmNvbChkYXRhc2V0KQ0KbnJvdyhkYXRhc2V0KQ0KbmFtZXMoZGF0YXNldCkNCnN0cihkYXRhc2V0KQ0KYGBgDQoNCiMjIyBBdHRyaWJ1dGVzJyBkZXNjcmlwdGlvbiB0YWJsZQ0KDQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8ICoqQXR0cmlidXRlIE5hbWUqKiB8ICoqRGVzY3JpcHRpb24qKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgKipEYXRhIFR5cGUqKiB8ICoqUG9zc2libGUgdmFsdWVzKiogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorPT09PT09PT09PT09PT09PT09PT0rPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSs9PT09PT09PT09PT09PT0rPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0rDQp8IHdvcmtfeWVhciAgICAgICAgICB8IFRoZSB5ZWFyIGluIHdoaWNoIHNhbGFyeSB3YXMgcmVjb3JkZWQgICAgICAgICAgICAgICAgICAgICAgIHwgTnVtZXJpY2FsICAgICB8IDIwMjAgdG8gMjAyMiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGV4cGVyaWVuY2VfbGV2ZWwgICB8IEV4cGVydGlzZSBsZXZlbCBvZiB0aGUgZW1wbG95ZWUgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgT3JkaW5hbCAgICAgICB8IEVuICJFbnRyeSBsZXZlbCJcICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IE1JICJNaWQgbGV2ZWwiXCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IFNFICJTZW5pb3IgbGV2ZWwiXCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IEVYICJFeGVjdXRpdmUgbGV2ZWwiICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGVtcGxveW1lbnRfdHlwZSAgICB8IFRoZSBuYXR1cmUgb3IgY2F0ZWdvcnkgb2YgZW1wbG95ZWUncyBlbmdhZ2VtZW50IGluIHRoZSBqb2IgIHwgTm9taW5hbCAgICAgICB8IFBUICJQYXJ0IHRpbWUiXCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IEZUICJGdWxsIHRpbWUiXCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IENUICJDb250cmFjdFwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IEZMIkZyZWVsYW5jZXIiICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGpvYl90aXRsZSAgICAgICAgICB8IFRoZSByb2xlIHdvcmtlZCBpbiBkdXJpbmcgdGhlIHllYXIgICAgICAgICAgICAgICAgICAgICAgICAgIHwgTm9taW5hbCAgICAgICB8IERpZmZlcmVudCB0aXRsZXMuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IGxpa2UgU2VjdXJpdHkgQW5hbHlzdCwgc2VjdXJpdHkgcmVzZWFyY2hlciAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IHNhbGFyeSAgICAgICAgICAgICB8IFRoZSB0b3RhbCBncm9zcyBzYWxhcnkgYW1vdW50IHBhaWQgICAgICAgICAgICAgICAgICAgICAgICAgIHwgTnVtZXJpY2FsICAgICB8IDE3NDAtNTAwMDE1NjYgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IHNhbGFyeV9jdXJyZW5jeSAgICB8IFRoZSBjdXJyZW5jeSBvZiB0aGUgc2FsYXJ5IHBhaWQgdG8gdGhlIGVtcGxveWVlICAgICAgICAgICAgIHwgTm9taW5hbCAgICAgICB8IERpZmZlcmVudCBjdXJyZW5jaWVzIGFjY29yZGluZyB0byBJU08gNDIxNyBjdXJyZW5jeSBjb2RlLiB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IGxpa2UgREUsQ0EgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IHNhbGFyeV9pbl91c2QgICAgICB8IFRoZSBzYWxhcnkgcGFpZCBpbiBVbml0ZWQgc3RhdGVzIGRvbGxhciAgICAgICAgICAgICAgICAgICAgIHwgTnVtZXJpY2FsICAgICB8IDIwMDAgdG8gMzY1NTk2LjQwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGVtcGxveWVlX3Jlc2lkZW5jZSB8IEVtcGxveWVlJ3MgcHJpbWFyeSBjb3VudHJ5IG9mIHJlc2lkZW5jZSAgICAgICAgICAgICAgICAgICAgIHwgTm9taW5hbCAgICAgICB8IERpZmZlcmVudCBjb3VudHJpZXMuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IGxpa2UgVVMsQUUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IHJlbW90ZV9yYXRpbyAgICAgICB8IFBlcmNlbnRhZ2Ugb2Ygb25saW5lIHdvcmsgYnkgZW1wbG95ZWUgaW4gdGhlIHNwZWNpZmllZCB5ZWFyIHwgTnVtZXJpY2FsICAgICB8IDAgIk5vIHJlbW90ZSB3b3JrIlwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IDUwICJQYXJ0aWFsbHkgcmVtb3RlIlwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IDEwMCAiRnVsbHkgcmVtb3RlIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGNvbXBhbnlfbG9jYXRpb24gICB8IFRoZSBjb3VudHJ5IG9mIHRoZSBlbXBsb3llcidzIG1haW4gb2ZmaWNlICAgICAgICAgICAgICAgICAgIHwgTm9taW5hbCAgICAgICB8IERpZmZlcmVudCBjb3VudHJpZXMuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQp8ICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICB8IGxpa2UgQlIsQlcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQp8IGNvbXBhbnlfc2l6ZSAgICAgICB8IEhvdyBiaWcvc21hbGwgaXMgdGhlIGNvbXBhbnkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgT3JkaW5hbCAgICAgICB8IFMgLCBNIG9yIEwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8DQorLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQoNCiMjIyBzYW1wbGUgb2YgMjAgZW1wbG95ZWVzIGZyb20gdGhlIGRhdGFzZXQ6DQoNCnVzaW5nIHNhbXBsZV9uKHRhYmxlLHNpemUpIGZ1bmN0aW9uDQoNCmBgYHtyfQ0Kc2V0LnNlZWQoMzApDQpzYW1wbGU9c2FtcGxlX24oZGF0YXNldCwyMCkNCnByaW50KHNhbXBsZSkNCmBgYA0KDQojIyMgU2hvdyB0aGUgbWlzc2luZyB2YWx1ZToNCg0KaWYgaXQgaXMgRkFMU0UgaXQgbWVhbnMgbm8gbnVsbCB2YWx1ZSxpZiBpdCBpcyBUUlVFIHRoZXJlIGlzIG51bGwgdmFsdWUuIEluIG91ciBkYXRhc2V0IHRoZXJlIGlzIG5vIG51bGwgdmFsdWVzLg0KDQpgYGB7cn0NCmlzLm5hKGRhdGFzZXQpDQpzdW0oaXMubmEoZGF0YXNldCkpDQpgYGANCg0KIyMjIFNob3cgdGhlIE1pbi4sMXN0IFF1LixNZWRpYW4sTWVhbiAsM3JkIFF1LixNYXguIGZvciBlYWNoIG51bWVyaWMgY29sdW1uDQoNCmBgYHtyfQ0Kc3VtbWFyeShkYXRhc2V0JHdvcmtfeWVhcikNCnN1bW1hcnkoZGF0YXNldCRzYWxhcnkpDQpzdW1tYXJ5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCkNCnN1bW1hcnkoZGF0YXNldCRyZW1vdGVfcmF0aW8pDQpgYGANCg0KIyMjIFNob3cgdGhlIHZhcmlhbmUgb2YgZWFjaCBudW1lcmljIGNvbHVtbg0KDQpgYGB7cn0NCnZhcihkYXRhc2V0JHdvcmtfeWVhcikNCnZhcihkYXRhc2V0JHNhbGFyeSkNCnZhcihkYXRhc2V0JHNhbGFyeV9pbl91c2QpDQp2YXIoZGF0YXNldCRyZW1vdGVfcmF0aW8pDQpgYGANCg0KIyMjIEZpbmQgdGhlIG91dGxpZXJzIGFuZCByZW1vdmUgdGhlbSBmcm9tIHRoZSBkYXRhc2V0DQoNCmBgYHtyfQ0KaW5zdGFsbC5wYWNrYWdlcygib3V0bGllcnMiKQ0KDQoNCiMgb3V0X3dvcmtfeWVhcj1vdXRsaWVyIChkYXRhc2V0JHdvcmtfeWVhcixsb2dpY2FsID1UUlVFKQ0Kc3VtKG91dF93b3JrX3llYXIpIw0Kb3V0c2FsYXJ5PW91dGxpZXIoZGF0YXNldCRzYWxhcnkgLGxvZ2ljYWw9VFJVRSkNCnN1bShvdXRzYWxhcnkpDQpvdXRfc2FsYXJ5X2luX3VzZD1vdXRsaWVyKGRhdGFzZXQkc2FsYXJ5X2luX3VzZCAsbG9naWNhbD1UUlVFKQ0Kc3VtKG91dF9zYWxhcnlfaW5fdXNkKQ0Kb3V0X3JlbW90ZV9yYXRpbz1vdXRsaWVyKGRhdGFzZXQkcmVtb3RlX3JhdGlvICxsb2dpY2FsPVRSVUUpDQpzdW0ob3V0X3JlbW90ZV9yYXRpbykNCg0KRmluZF9vdXRsaWVyMSA9IHdoaWNoKG91dF93b3JrX3llYXIgPT1UUlVFLCBhcnIuaW5kID0gVFJVRSkNCm91dF93b3JrX3llYXINCkZpbmRfb3V0bGllcjENCmRhdGFzZXQ9ZGF0YXNldFstRmluZF9vdXRsaWVyMSxdDQoNCkZpbmRfb3V0bGllcjIgPSB3aGljaChvdXRzYWxhcnkgPT1UUlVFLCBhcnIuaW5kID0gVFJVRSkNCm91dHNhbGFyeQ0KRmluZF9vdXRsaWVyMg0KZGF0YXNldD1kYXRhc2V0Wy1GaW5kX291dGxpZXIyLF0NCg0KRmluZF9vdXRsaWVyMyA9IHdoaWNoKG91dF9zYWxhcnlfaW5fdXNkID09VFJVRSwgYXJyLmluZCA9IFRSVUUpDQpvdXRfc2FsYXJ5X2luX3VzZA0KRmluZF9vdXRsaWVyMw0KZGF0YXNldD1kYXRhc2V0Wy1GaW5kX291dGxpZXIzLF0NCg0KRmluZF9vdXRsaWVyNCA9IHdoaWNoKG91dF9yZW1vdGVfcmF0aW8gPT1UUlVFLCBhcnIuaW5kID0gVFJVRSkNCm91dF9yZW1vdGVfcmF0aW8NCkZpbmRfb3V0bGllcjQNCmRhdGFzZXQ9ZGF0YXNldFstRmluZF9vdXRsaWVyNCxdDQpgYGANCg0KIyMjIFZpc3VhbGl6YXRpb24gb2YgcmVsYXRpb25zaGlwIGJldHdlZW4gc29tZSBwYWlycyBvZiBhdHRyaWJ1dGVzOg0KDQpIZXJlIHdlIHVzZWQgYm94cGxvdCB0byBzZWUgdGhlIGRpc3RyaWJ1dGlvbiBiZXR3ZWVuIHNhbGFyeV9pbl91c2QgYW5kIGV4cGVyaWVuY2VfbGV2ZWwgV2Ugb2JzZXJ2ZWQgdGhhdCBzYWxhcmllcyB2YXJ5IGRlcGVuZGluZyBvbiB0aGUgbGV2ZWwgb2YgZXhwZXJpZW5jZSx0aGV5IGFyZSBwb3NpdGl2ZWx5IGNvcnJlbGF0ZWQuDQoNCmBgYHtyfQ0KYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gZXhwZXJpZW5jZV9sZXZlbCwgZGF0YSA9IGRhdGFzZXQgLCB5YXh0PSJuIikNCmxhYmVsczwtIHByZXR0eShkYXRhc2V0JHNhbGFyeV9pbl91c2QpDQpsYWJlbHM8LSBzYXBwbHkobGFiZWxzLCBmdW5jdGlvbih4KSBmb3JtYXQoeCwgc2NpZW50aWZpYyA9IEZBTFNFKSkNCmF4aXMoc2lkZSA9IDIsIGF0PXByZXR0eShkYXRhc2V0JHNhbGFyeV9pbl91c2QpLCBsYWJlbHMgPSBsYWJlbHMgKQ0Kb3B0aW9ucyhzY2lwZW4gPSA5OTkpDQpgYGANCg0KSGVyZSB3ZSB1c2VkIGJveHBsb3QgdG8gc2VlIHRoZSBkaXN0cmlidXRpb24gYmV0d2VlbiBzYWxhcnlfaW5fdXNkIGFuZCB3b3JrX3llYXIgV2Ugb2JzZXJ2ZWQgdGhhdCAyMDIxIHNhbGFyaWVzIHdlcmUgY2xvc2UgdG8gZWFjaCBvdGhlciBidXQgaW4gMjAyMiB0aGUgZ2FwIGJldHdlZW4gdGhlbSBnZXR0aW5nIGJpZ2dlci4NCg0KYGBge3J9DQpib3hwbG90KHNhbGFyeV9pbl91c2QgfiB3b3JrX3llYXIsIGRhdGEgPSBkYXRhc2V0ICwgeWF4dD0ibiIpDQpsYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKQ0KbGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpDQpheGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzICkNCm9wdGlvbnMoc2NpcGVuID0gOTk5KQ0KYGBgDQoNCkhlcmUgd2UgdXNlZCBib3hwbG90IHRvIHNlZSB0aGUgZGlzdHJpYnV0aW9uIGJldHdlZW4gc2FsYXJ5X2luX3VzZCBhbmQgZW1wbG95bWVudF90eXBlIFdlIG9ic2VydmVkIHRoYXQgRnVsbCBUaW1lIChGVCkgb2ZmZXJzIG1vcmUgc2FsYXJ5IHRoYW4gdGhlIG90aGVyIGNhdGVnb3JpZXMuDQoNCmBgYHtyfQ0KYm94cGxvdChzYWxhcnlfaW5fdXNkIH4gZW1wbG95bWVudF90eXBlLCBkYXRhID0gZGF0YXNldCAsIHlheHQ9Im4iKQ0KbGFiZWxzPC0gcHJldHR5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCkNCmxhYmVsczwtIHNhcHBseShsYWJlbHMsIGZ1bmN0aW9uKHgpIGZvcm1hdCh4LCBzY2llbnRpZmljID0gRkFMU0UpKQ0KYXhpcyhzaWRlID0gMiwgYXQ9cHJldHR5KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCksIGxhYmVscyA9IGxhYmVscyApDQpvcHRpb25zKHNjaXBlbiA9IDk5OSkNCmBgYA0KDQpIZXJlIHdlIHVzZWQgYm94cGxvdCB0byBzZWUgdGhlIGRpc3RyaWJ1dGlvbiBiZXR3ZWVuIHNhbGFyeV9pbl91c2QgYW5kIGNvbXBhbnlfc2l6ZSBXZSBvYnNlcnZlZCB0aGF0IHRoZSBsYXJnZXIgdGhlIGNvbXBhbnkgaXMgdGhlIGhpZ2hlciB0aGUgc2FsYXJ5IHdhcy4NCg0KYGBge3J9DQpib3hwbG90KHNhbGFyeV9pbl91c2QgfiBjb21wYW55X3NpemUsIGRhdGEgPSBkYXRhc2V0ICwgeWF4dD0ibiIpDQpsYWJlbHM8LSBwcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKQ0KbGFiZWxzPC0gc2FwcGx5KGxhYmVscywgZnVuY3Rpb24oeCkgZm9ybWF0KHgsIHNjaWVudGlmaWMgPSBGQUxTRSkpDQpheGlzKHNpZGUgPSAyLCBhdD1wcmV0dHkoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSwgbGFiZWxzID0gbGFiZWxzICkNCm9wdGlvbnMoc2NpcGVuID0gOTk5KSANCmBgYA0KDQojIyBEYXRhIFJlZHVjdGlvbg0KDQojIyMgRGltZW5zaW9uYWxpdHkgUmVkdWN0aW9uDQoNClRoZSAic2FsYXJ5IiBjb2x1bW4gZ2l2ZXMgdGhlIHNhbWUgaW5mb3JtYXRpb24gYXMgInNhbGFyeV9pbl91c2QiIGl0J3MganVzdCBhIG1hdHRlciBvZiBjdXJyZW5jeSBleGNoYW5nZSwgYW5kIHdlIHdpbGwgZXZlbnR1YWxseSB0cmFuc2Zvcm0gYWxsIHRoZSB2YWx1ZXMgaW4gInNhbGFyeSIgY29sdW1uIHRvIG9uZSBjb21tb24gY3VycmVuY3kgc28gd2UgY2FuIHByb3Blcmx5IGRlYWwgd2l0aCB0aGVtLiBUbyBmdXJ0aGVyIGNvbmZpcm0gdGhhdCB0aGUgdHdvIGNvbHVtbiBhcmUgcmVkdW5kYW50LCB3ZSB3aWxsIHVzZSB0aGUgbGF0ZXN0IGV4Y2hhbmdlIHJhdGUgZm9yIFVTRCB0byB0aGUgZGVzaXJlZCBjdXJyZW5jeS4NCg0Kd2Ugd2lsbCBzdGFydCBieSBjcmVhdGluZyBhIHRlbXBvcmFyeSBjb2x1bW4gbmFtZWQgImNvbnZlcnRlZF9zYWxhcnkiIHRvIHNhdmUgdGhlIHNhbGFyeSB0aGF0IHdlIHdpbGwgZ2V0IGJ5IHVzaW5nIHRoZSBleGNoYW5nZSByYXRlIHRvIGNvbnZlcnQgdGhlIHNhbGFyeV9pbl91c2QgdG8gdGhlIHNhbGFyeSB3aXRoIGRpZmZlcmVudCBjdXJyZW5jaWVzIHRvIGNvbXBhcmUgd2l0aCAic2FsYXJ5IiBjb2x1bW4NCg0KYGBge3J9DQpjb252ZXJ0ZWREYXRhc2V0PWRhdGFzZXQNCg0KDQpjb252ZXJ0ZWREYXRhc2V0JGV4Y2hhbmdlX3JhdGUgPSBmYWN0b3IoY29udmVydGVkRGF0YXNldCRzYWxhcnlfY3VycmVuY3ksIGxldmVscz1jKCJVU0QiLCJCUkwiLCJHQlAiLCJFVVIiLCJJTlIiLCJDQUQiLCJDSEYiLCJES0siLCJTR0QiLCJBVUQiLCJTRUsiLCJNWE4iLCJJTFMiLCJQTE4iLCJOT0siLCJJRFIiLCJOWkQiLCJIVUYiLCJaQVIiLCJUV0QiLCJSVUIiKSwgbGFiZWxzPWMoMS8xLDEvMC4yMCwxLzEuMjIsMS8xLjA2LDEvMC4wMTIsMS8wLjc0LDEvMS4xMCwxLzAuMTQsMS8wLjczLDEvMC42NCwxLzAuMDkwLDEvMC4wNTcsMS8wLjI2LDEvMC4yMywxLzAuMDkzLDEvMC4wMDAwNjUsMS8wLjYwLDEvMC4wMDI3LDEvMC4wNTMsMS8wLjAzMSwxLzAuMDEwKSkNCmNvbnZlcnRlZERhdGFzZXQkZXhjaGFuZ2VfcmF0ZSA9IGFzLm51bWVyaWMoYXMuY2hhcmFjdGVyKGNvbnZlcnRlZERhdGFzZXQkZXhjaGFuZ2VfcmF0ZSkpDQpjb252ZXJ0ZWREYXRhc2V0JGNvbnZlcnRlZF9zYWxhcnkgPSBjb252ZXJ0ZWREYXRhc2V0JHNhbGFyeV9pbl91c2QqY29udmVydGVkRGF0YXNldCRleGNoYW5nZV9yYXRlDQoNCg0KDQpzZXQuc2VlZCgxKQ0Kc2FsYXJ5X3NhbXBsZSA8LSBzYW1wbGVfbihjb252ZXJ0ZWREYXRhc2V0WyxjKCJzYWxhcnkiLCJjb252ZXJ0ZWRfc2FsYXJ5IildLDEwKQ0KDQpwcmludChzYWxhcnlfc2FtcGxlKQ0KYGBgDQoNCmFzIHNob3duIGluIHRoZSBzYW1wbGUsIHRoZSB0d28gY29sdW1ucyBhcmUgYWxtb3N0IGlkZW50aWNhbC4gVGhpcyBjYW4gYmUgcHJvdmVkIGJ5IGNvcnJlbGF0aW9uIGNvZWZmaWNpZW50IGFzIHdlbGwuDQoNCmBgYHtyfQ0KY29ycmVsYXRpb24gPC0gY29yKGNvbnZlcnRlZERhdGFzZXQkc2FsYXJ5ICwgY29udmVydGVkRGF0YXNldCRjb252ZXJ0ZWRfc2FsYXJ5KQ0KcHJpbnQoY29ycmVsYXRpb24pDQpgYGANCg0KVGhlIGNvcnJlbGF0aW9uIGlzIHNvIGhpZ2ggYnV0IGl0IGhhc24ndCByZWFjaGVkIDEwMCUgcG9zc2libHkgZHVlIHRvIHJvdW5kaW5nIGluIHRoZSBjYWxjdWxhdGlvbnMgYW5kIHNsaWdodCBkaWZmZXJlbmNlcyBpbiB0aGUgZXhjaGFuZ2UgcmF0ZSBvdmVyIHRpbWUuDQoNClRvIG1ha2UgdGhlIG1pbmluZyBwcm9jZXNzIG1vcmUgZWZmaWVjZW50IGFuZCBoYXMgYW4gaW1wcm92ZWQgcXVhbGl0eSwgd2UgZGVjaWRlZCB0byByZW1vdmUgdGhlICJzYWxhcnkiIGNvbHVtbi4NCg0KYGBge3J9DQpkYXRhc2V0PC1kYXRhc2V0WywtYyg1KV0NCmBgYA0KDQojIyMgRmluZCB0aGUgb3V0bGllcnMgYW5kIHJlbW92ZSB0aGVtIGZyb20gdGhlIGRhdGFzZXQ6DQpieSBibG94UGxvdA0KYGBge3J9DQpib3hwbG90KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCkgIA0Kb3V0IDwtIGJveHBsb3Quc3RhdHMoZGF0YXNldCRzYWxhcnlfaW5fdXNkKSRvdXQgDQpvdXRfaW5kIDwtIHdoaWNoKGRhdGFzZXQkc2FsYXJ5X2luX3VzZCAlaW4lIGMob3V0KSkgDQpvdXRfaW5kIA0KZGF0YXNldD1kYXRhc2V0Wy1vdXRfaW5kLF0NCmBgYA0KDQoNCg0KDQojIyMgQ29uY2VwdCBoaWVyYXJjaHkgZ2VuZXJhdGlvbiBmb3Igbm9taW5hbCBkYXRhDQoNCnRoZSBjb2x1bW5zICJjb21wYW55X2xvY2F0aW9uIiBhbmQgImVtcGxveWVlX3Jlc2lkZW5jZSIgaGF2ZSB0aGUgbmFtZSBvZiBjb3VudHJpZXMgZm9yIHRoZSBjb21wYW55IGFuZCBlbXBsb3llZSByZXNwZWN0aXZlbHkuIEFuZCB0aGVzZSBhdHRyaWJ1dGVzIGNhbiBiZSBnZW5lcmFsaXplZCB0byBoaWdoZXItbGV2ZWwgY29uY2VwdCB0aGF0IGlzIHJlZ2lvbiB0byBoZWxwIHVuZGVyc3RhbmQgYW5kIGFuYWx5emUgdGhlIGRhdGFzZXQgYmV0dGVyIGFuZCBpbXByb3ZlIGFsZ29yaXRobSBwZXJmb3JtYW5jZS4NCg0KV2Ugd2lsbCB1c2UgdGhlIDcgcmVnaW9ucyBhcyBkZWZpbmVkIGluIHRoZSBXb3JsZCBCYW5rIERldmVsb3BtZW50IEluZGljYXRvcnMuIFRoZXNlIHJlZ2lvbnMgYXJlOg0KDQoxLiAgRWFzdCBBc2lhIGFuZCBQYWNpZmljOiBUaGlzIHJlZ2lvbiBpbmNsdWRlcyBjb3VudHJpZXMgbGlrZSBDaGluYSwgQXVzdHJhbGlhLCBJbmRvbmVzaWEsIFRoYWlsYW5kLCBldGMuDQoNCjIuICBFdXJvcGUgYW5kIENlbnRyYWwgQXNpYTogVGhpcyByZWdpb24gaW5jbHVkZXMgY291bnRyaWVzIGxpa2UgR2VybWFueSwgVUssIFJ1c3NpYSwgVHVya2V5LCBldGMuDQoNCjMuICBMYXRpbiBBbWVyaWNhICYgQ2FyaWJiZWFuOiBUaGlzIHJlZ2lvbiBpbmNsdWRlcyBjb3VudHJpZXMgbGlrZSBCcmF6aWwsIE1leGljbywgQXJnZW50aW5hLCBDdWJhLCBldGMuDQoNCjQuICBNaWRkbGUgRWFzdCBhbmQgTm9ydGggQWZyaWNhOiBUaGlzIHJlZ2lvbiBpbmNsdWRlcyBjb3VudHJpZXMgbGlrZSBTYXVkaSBBcmFiaWEsIEVneXB0LCBJcmFuLCBJcmFxLCBldGMuDQoNCjUuICBOb3J0aCBBbWVyaWNhOiBUaGlzIGlzIHByZWRvbWluYW50bHkgVW5pdGVkIFN0YXRlcyBhbmQgQ2FuYWRhLg0KDQo2LiAgU291dGggQXNpYTogVGhpcyByZWdpb24gaW5jbHVkZXMgY291bnRyaWVzIGxpa2UgSW5kaWEsIFBha2lzdGFuLCBCYW5nbGFkZXNoLCBTcmkgTGFua2EsIGV0Yy4NCg0KNy4gIFN1Yi1TYWhhcmFuIEFmcmljYTogVGhpcyByZWdpb24gaW5jbHVkZXMgY291bnRyaWVzIGxpa2UgTmlnZXJpYSwgU291dGggQWZyaWNhLCBFdGhpb3BpYSwgS2VueWEsIGV0Yy4NCg0KTm90ZTogVU0oVGhlIFVuaXRlZCBTdGF0ZXMgTWlub3IgT3V0bHlpbmcgSXNsYW5kcykgYW5kIEFRKEFudGFyY3RpY2EpIGRvbid0IGJlbG9uZyB0byBhbnkgb2YgdGhlc2UgcmVnaW9ucywgdGh1cywgdGhleSB3aWxsIGJlIHVzZWQgYXMgdGhleSBhcmUuDQoNCmBgYHtyfQ0KDQoNCnVtPXdoaWNoKGRhdGFzZXQkY29tcGFueV9sb2NhdGlvbj09IlVNIikNCmFxPXdoaWNoKGRhdGFzZXQkY29tcGFueV9sb2NhdGlvbj09IkFRIikNCg0KDQpkYXRhc2V0JGNvbXBhbnlfbG9jYXRpb24gPC0gY291bnRyeWNvZGUoZGF0YXNldCRjb21wYW55X2xvY2F0aW9uLCAiaXNvMmMiLCAicmVnaW9uIikNCmRhdGFzZXQkZW1wbG95ZWVfcmVzaWRlbmNlIDwtIGNvdW50cnljb2RlKGRhdGFzZXQkZW1wbG95ZWVfcmVzaWRlbmNlLCAiaXNvMmMiLCAicmVnaW9uIikNCg0KZGF0YXNldFt1bSwiY29tcGFueV9sb2NhdGlvbiJdPSJVTSINCmRhdGFzZXRbYXEsImNvbXBhbnlfbG9jYXRpb24iXT0iQVEiDQoNCmBgYA0KDQpDb25jZXB0IGhpZXJhcmNoeSBnZW5lcmF0aW9uIGNhbiBiZSBkb25lIGZvciAiam9iX3RpdGxlIiBhcyB3ZWxsIHRvIGltcHJvdmUgaW50ZXJwcmV0YXRpb24gYW5kIHNjYWxhYmlsaXR5LiBBbHNvLCBtb3N0IGpvYiB0aXRsZXMgYXJlIGVzc2VudGlhbGx5IHRoZSBzYW1lIGpvYiBidXQgd2l0aCBkaWZmZXJlbnQgbmFtZXMsIHNvIHdlIGNhbiBjb21iaW5lIHRoZW0gaW50byBhIGhpZ2hlci1sZXZlbCBqb2JzIHRpdGxlcyBzdWNoIGFzIEFyY2hpdGVjdCwgQW5hbHlzdCBhbmQgRW5naW5lZXIgZXRjLg0KDQpgYGB7cn0NCg0KZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ0FuYWx5c3QnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdBbmFseXN0Jw0KZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ0VuZ2luZWVyJywgZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnRW5naW5lZXInDQpkYXRhc2V0JGpvYl90aXRsZVtncmVwbCgnQXJjaGl0ZWN0JywgZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnQXJjaGl0ZWN0Jw0KZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ01hbmFnZXInLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdNYW5hZ2VyJw0KZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ1NwZWNpYWxpc3QnLCBkYXRhc2V0JGpvYl90aXRsZSldIDwtICdTcGVjaWFsaXN0Jw0KZGF0YXNldCRqb2JfdGl0bGVbZ3JlcGwoJ1Rlc3RlcicsIGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ1Rlc3RlcicNCmRhdGFzZXQkam9iX3RpdGxlW2dyZXBsKCdMZWFkJywgZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnTGVhZCcNCmRhdGFzZXQkam9iX3RpdGxlW2dyZXBsKCdPZmZpY2VyJywgZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnT2ZmaWNlcicNCmRhdGFzZXQkam9iX3RpdGxlW2dyZXBsKCdSZXNlYXJjaGVyJywgZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnUmVzZWFyY2hlcicNCmRhdGFzZXQkam9iX3RpdGxlW2dyZXBsKCdDb25zdWx0YW50JywgZGF0YXNldCRqb2JfdGl0bGUpXSA8LSAnQ29uc3VsdGFudCcNCmRhdGFzZXQkam9iX3RpdGxlW2lzLm5hKGRhdGFzZXQkam9iX3RpdGxlKV0gPC0gJ090aGVyJw0KYGBgDQoNCiMjIEVuY29kaW5nIGNhdGVnb3JpY2FsIGRhdGENCg0KVG8gZGVhbCB3aXRoIGNvbHVtbnMgd2l0aCBjaGFyYWN0ZXIgdHlwZSB3ZSBhcmUgZ29pbmcgdG8gZW5jb2RlIHRoZW0sIGJlY2F1c2UgbW9zdCBtYWNoaW5lIGxlYXJuaW5nIGFsZ29yaXRobXMgYXJlIGRlc2lnbmVkIHRvIHdvcmsgd2l0aCBmYWN0b3JzIGRhdGEgcmF0aGVyIHRoYW4gY2hhcmFjdGVyIGRhdGEgYW5kIGl0IGltcHJvdmVzIHBlcmZvcm1hbmNlIGFuZCBJbnRlcnByZXRhYmlsaXR5IG9mIGRhdGEgYXMgd2VsbC4NCg0KYGBge3J9DQpkYXRhc2V0JGpvYl90aXRsZSAgPC0gZmFjdG9yKGRhdGFzZXQkam9iX3RpdGxlKQ0KDQpkYXRhc2V0JGV4cGVyaWVuY2VfbGV2ZWwgPSBmYWN0b3IoZGF0YXNldCRleHBlcmllbmNlX2xldmVsLCBsZXZlbHM9YygiRU4iLCAiTUkiLCAiU0UiLCAiRVgiKSwgbGFiZWxzPWMoMSwyLDMsNCkpDQoNCmRhdGFzZXQkZW1wbG95bWVudF90eXBlICA8LSBmYWN0b3IoZGF0YXNldCRlbXBsb3ltZW50X3R5cGUpDQoNCmRhdGFzZXQkZW1wbG95ZWVfcmVzaWRlbmNlICA8LSBmYWN0b3IoZGF0YXNldCRlbXBsb3llZV9yZXNpZGVuY2UpDQoNCmRhdGFzZXQkY29tcGFueV9sb2NhdGlvbiAgPC0gZmFjdG9yKGRhdGFzZXQkY29tcGFueV9sb2NhdGlvbikNCg0KZGF0YXNldCRzYWxhcnlfY3VycmVuY3kgIDwtIGZhY3RvcihkYXRhc2V0JHNhbGFyeV9jdXJyZW5jeSkNCg0KZGF0YXNldCRqb2JfdGl0bGUgIDwtIGZhY3RvcihkYXRhc2V0JGpvYl90aXRsZSkNCg0KDQpkYXRhc2V0JGNvbXBhbnlfc2l6ZSA9IGZhY3RvcihkYXRhc2V0JGNvbXBhbnlfc2l6ZSwgbGV2ZWxzPWMoIlMiLCJNIiwiTCIpLCBsYWJlbHM9YygxLDIsMykpDQoNCg0KZGF0YXNldCRqb2JfdGl0bGUgIDwtIGZhY3RvcihkYXRhc2V0JGpvYl90aXRsZSkNCg0KYGBgDQoNCiMjIyBEaXNjcmV0aXphdGlvbiBvZiBzYWxhcmF5X2luX3VzZCBhdHRyaWJ1dGUNCg0KYnkgY2FsY3VsYXRpbmcgYnJlYWtzIGJhc2VkIG9uIHF1YXJ0aWxlcw0KDQpgYGB7cn0NCmJyZWFrcyA8LSBxdWFudGlsZShkYXRhc2V0JHNhbGFyeV9pbl91c2QsIA0KICAgICAgICAgICAgICAgICAgIHByb2JzID0gYygwLCAuMjUsIC41LCAuNzUsIC45NSwgMSksIA0KICAgICAgICAgICAgICAgICAgIG5hLnJtID0gVFJVRSkNCg0KIyBkaXNjcmV0aXplIHRoZSAnc2FsYXJ5X2luX3VzZCcgY29sdW1uDQpkYXRhc2V0JHNhbGFyeV9pbl91c2QgPC0gY3V0KGRhdGFzZXQkc2FsYXJ5X2luX3VzZCwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBicmVha3MgPSBicmVha3MsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaW5jbHVkZS5sb3dlc3QgPSBUUlVFLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscz1jKCJWZXJ5IExvdyIsICJMb3ciLCAiTWVkaXVtIiwgIkhpZ2giLCAiVmVyeSBIaWdoIikpDQoNCg0KYGBgDQoNCiMjIyBOb3JtYWxpemF0aW9uOg0KDQp0byBjaGFuZ2UgdGhlIHNjYWxlIG9mIG51bWVyaWMgYXR0cmlidXRlcyAocmVtb3RlX3JhdGlvIGFuZCB3b3JrX3llYXIpIHRvIGEgc2NhbGUgb2YgWy0xLDFdIHRvIGdpdmUgdGhlbSBlcXVhbCB3ZWlnaHQNCg0KYGBge3J9DQpkYXRhc2V0IFssIGMoIndvcmtfeWVhciIgLCAicmVtb3RlX3JhdGlvIildID0gc2NhbGUoZGF0YXNldCBbLCBjKCJ3b3JrX3llYXIiICwgInJlbW90ZV9yYXRpbyIpXSkNCmBgYA0KDQoNCg==</div>
 
 
 

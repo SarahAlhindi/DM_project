@@ -289,7 +289,20 @@ To make the mining process more effiecent and has an improved quality, we decide
 dataset<-dataset[,-c(5)]
 ```
 
-## Concept hierarchy generation for nominal data
+### Find the outliers and remove them from the dataset:
+by bloxPlot
+```{r}
+boxplot(dataset$salary_in_usd)  
+out <- boxplot.stats(dataset$salary_in_usd)$out 
+out_ind <- which(dataset$salary_in_usd %in% c(out)) 
+out_ind 
+dataset=dataset[-out_ind,]
+```
+
+
+
+
+### Concept hierarchy generation for nominal data
 
 the columns "company_location" and "employee_residence" have the name of countries for the company and employee respectively. And these attributes can be generalized to higher-level concept that is region to help understand and analyze the dataset better and improve algorithm performance.
 
@@ -395,3 +408,5 @@ to change the scale of numeric attributes (remote_ratio and work_year) to a scal
 ```{r}
 dataset [, c("work_year" , "remote_ratio")] = scale(dataset [, c("work_year" , "remote_ratio")])
 ```
+
+
