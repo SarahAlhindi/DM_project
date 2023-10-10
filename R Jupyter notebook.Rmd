@@ -289,6 +289,7 @@ To make the mining process more effiecent and has an improved quality, we decide
 dataset<-dataset[,-c(5)]
 ```
 
+
 ### Find the outliers and remove them from the dataset:
 by bloxPlot
 now we show (salary_in_usd) attributes' outliers and remove them
@@ -302,22 +303,16 @@ dataset <- dataset[-salary_outlier_indices,]
 ```
 
 now we show (remote_ratio) attributes' outliers and remove them
-we can see there aren't outliers in remote_ratio
+we can see there aren't outliers in remote_ratio, thus we don't need the last step i.e: removing outliers' rows
 ```{r}
 boxplot(dataset$remote_ratio)
-remote_outliers <- boxplot.stats(dataset$remote_ratio)$out
-remote_outlier_indices <- which(dataset$remote_ratio %in% remote_outliers)
-dataset <- dataset[-remote_outlier_indices,]
 
 ```
 
 now we show (work_year) attributes' outliers and remove them
-we can see there aren't outliers in work_year
+we can see there aren't outliers in work_year, thus we don't need the last step i.e: removing outliers' rows
 ```{r}
 boxplot(dataset$work_year)
-work_year_outliers <- boxplot.stats(dataset$work_year)$out
-work_year_outlier_indices <- which(dataset$work_year %in% work_year_outliers)
-dataset <- dataset[-work_year_outlier_indices,]
 
 ```
 
@@ -430,5 +425,7 @@ to change the scale of numeric attributes (remote_ratio and work_year) to a scal
 ```{r}
 dataset [, c("work_year" , "remote_ratio")] = scale(dataset [, c("work_year" , "remote_ratio")])
 ```
+
+
 
 
