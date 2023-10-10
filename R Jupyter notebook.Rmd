@@ -382,4 +382,23 @@ dataset$job_title  <- factor(dataset$job_title)
 ```
 
 
+
+
+
+```{r}
+
+
+# calculate breaks based on quartiles
+breaks <- quantile(dataset$salary_in_usd, 
+                   probs = c(0, .25, .5, .75, .95, 1), 
+                   na.rm = TRUE)
+
+# discretize the 'salary_in_usd' column
+dataset$salary_in_usd <- cut(dataset$salary_in_usd, 
+                                       breaks = breaks, 
+                                       include.lowest = TRUE, 
+                                       labels=c("Very Low", "Low", "Medium", "High", "Very High"))
+
+
+```
   
