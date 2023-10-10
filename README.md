@@ -50,3 +50,49 @@ We have done Concept hierarchy generation for "job_title" as well to improve int
 9.	Researcher
 10.	Consultant
 11.	Other
+
+
+### Encoding categorical data  
+To deal with columns with character type we have encoded them, because most machine learning algorithms are designed to work with factors data rather than character data and it improves performance and Interpretability of data as well.
+
+These columns are:
+1.	experience_level
+2.	employment_type
+3.	employee_residence
+4.	company_location
+5.	salary_currency
+6.	job_title
+7.	company_size
+
+For example, experience_level has become a factor with 4 levels,
+1.	EN(Entry-level)
+2.	MI(Mid level)
+3.	SE(Senior level)
+4.	EX(Executive level)
+
+
+### Feature selection and dimensionality reduction
+We excluded the salary and employment type columns from the model duo to redundancies and low variance. This leaves these columns to predict the salary_in_usd:
+1. work_year
+2. experience_level
+3. job_title
+4. salary_currency
+5. employee_residence
+6. remote ratio
+7. company_location
+8. company_size
+
+
+### Discretization  
+We have divided the range of salary_in_usd into continuous intervals labeled and organized as concepts, to enhance interpretability and possibly avoid overfitting. 
+1.	Very Low,
+2.	Low
+3.	High
+4.	Very High
+Now we can classify the employees’ salary into these intervals.
+
+
+### Normalization  
+
+The attributes that are numeric of the remaining attributes are work_year and remote_ratio, but these two have different scales, and to avoid giving one attribute greater weight, we must normalize them. We used Z-scaling to normalize them.
+
