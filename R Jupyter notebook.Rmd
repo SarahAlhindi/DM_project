@@ -466,4 +466,8 @@ The results show that all the remaining attributes, except for "employment_type"
 table(dataset$employment_type)
 ```
 
+```{r}
+dataset<-dataset[,-which(names(dataset)=="employment_type")]
+```
+
 
