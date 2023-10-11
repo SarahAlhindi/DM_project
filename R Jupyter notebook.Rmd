@@ -9,6 +9,7 @@ output: html_notebook
 library(dplyr)
 library(countrycode)
 library(outliers)
+library(caret)
 
 ```
 
@@ -174,39 +175,7 @@ var(dataset$remote_ratio)
 
 ### Find the outliers and remove them from the dataset
 
-```{r}
-install.packages("outliers")
 
-
-# out_work_year=outlier (dataset$work_year,logical =TRUE)
-sum(out_work_year)#
-outsalary=outlier(dataset$salary ,logical=TRUE)
-sum(outsalary)
-out_salary_in_usd=outlier(dataset$salary_in_usd ,logical=TRUE)
-sum(out_salary_in_usd)
-out_remote_ratio=outlier(dataset$remote_ratio ,logical=TRUE)
-sum(out_remote_ratio)
-
-Find_outlier1 = which(out_work_year ==TRUE, arr.ind = TRUE)
-out_work_year
-Find_outlier1
-dataset=dataset[-Find_outlier1,]
-
-Find_outlier2 = which(outsalary ==TRUE, arr.ind = TRUE)
-outsalary
-Find_outlier2
-dataset=dataset[-Find_outlier2,]
-
-Find_outlier3 = which(out_salary_in_usd ==TRUE, arr.ind = TRUE)
-out_salary_in_usd
-Find_outlier3
-dataset=dataset[-Find_outlier3,]
-
-Find_outlier4 = which(out_remote_ratio ==TRUE, arr.ind = TRUE)
-out_remote_ratio
-Find_outlier4
-dataset=dataset[-Find_outlier4,]
-```
 
 ### Visualization of relationship between some pairs of attributes:
 
@@ -297,8 +266,11 @@ we can see that there are many outliers with exceptionally high values
 ```{r}
 boxplot(dataset$salary_in_usd)
 salary_outliers <- boxplot.stats(dataset$salary_in_usd)$out
-salary_outlier_indices <- which(dataset$salary_in_usd %in% salary_outliers)
-dataset <- dataset[-salary_outlier_indices,]
+
+
+OutSalary = outlier(dataset$salary_in_usd, logical =TRUE)
+Find_outlier = which(OutSalary ==TRUE, arr.ind = TRUE)
+dataset= dataset[-Find_outlier,]
 
 ```
 
@@ -358,20 +330,24 @@ dataset[aq,"company_location"]="AQ"
 
 Concept hierarchy generation can be done for "job_title" as well to improve interpretation and scalability. Also, most job titles are essentially the same job but with different names, so we can combine them into a higher-level jobs titles such as Architect, Analyst and Engineer etc.
 
-```{r}
 
-dataset$job_title[grepl('Analyst', dataset$job_title)] <- 'Analyst'
-dataset$job_title[grepl('Engineer', dataset$job_title)] <- 'Engineer'
-dataset$job_title[grepl('Architect', dataset$job_title)] <- 'Architect'
-dataset$job_title[grepl('Manager', dataset$job_title)] <- 'Manager'
-dataset$job_title[grepl('Specialist', dataset$job_title)] <- 'Specialist'
-dataset$job_title[grepl('Tester', dataset$job_title)] <- 'Tester'
-dataset$job_title[grepl('Lead', dataset$job_title)] <- 'Lead'
-dataset$job_title[grepl('Officer', dataset$job_title)] <- 'Officer'
-dataset$job_title[grepl('Researcher', dataset$job_title)] <- 'Researcher'
-dataset$job_title[grepl('Consultant', dataset$job_title)] <- 'Consultant'
-dataset$job_title[is.na(dataset$job_title)] <- 'Other'
+
+```{r}
+## Create the categories based on job rank 
+dataset$job_title <- ifelse(grepl("Analyst", dataset$job_title), "Analyst",
+                                ifelse(grepl("Architect", dataset$job_title), "Architect",
+                                       ifelse(grepl("Engineer", dataset$job_title), "Engineer",
+                                              ifelse(grepl("Manager|Officer|Director|Leader", dataset$job_title), "Leadership",
+                                                     ifelse(grepl("Consultant|Specialist", dataset$job_title), "Consultant/Specialist",
+                                                            ifelse(grepl("Cyber", dataset$job_title), "Cyber Security",
+                                                                   "Others"))))))
+
 ```
+
+
+
+
+
 
 ## Encoding categorical data
 
@@ -427,5 +403,67 @@ dataset [, c("work_year" , "remote_ratio")] = scale(dataset [, c("work_year" , "
 ```
 
 
+
+
+## Feature Selection
+
+we will implement feature selection to remove redundant or irrelevant attributes from the data set to get the smallest subset that can help us get the most accurate predictions for our target class(salary_in_usd) and decrease the time that it takes the classifier to process the data.  
+
+we will use RFE(Recursive feature elimination) which is a wrapper method for the feature selection. Since the RFE function have multiple control options we need to specify the options that we want. We will choose "Random Forest" because it has high accuracy, can handle categorical data.  
+
+
+```{r}
+control <- rfeControl(functions = rfFuncs, 
+                      method = "repeatedcv",
+                      repeats = 5, 
+                      number = 10)
+```
+
+
+First we save the features to be used in the feature selection(every attributes except the class label "salary_in_usd") in variable x, and the class label in variable y. Then split the data to 80% training and 20% test.
+
+
+```{r}
+x <- dataset %>%
+  select(-salary_in_usd) %>%
+  as.data.frame()
+
+# Target variable
+y <- dataset$salary_in_usd
+
+# Training: 80%; Test: 20%
+set.seed(2021)
+inTrain <- createDataPartition(y, p = .80, list = FALSE)[,1]
+
+x_train <- x[ inTrain, ]
+x_test  <- x[-inTrain, ]
+
+y_train <- y[ inTrain]
+y_test  <- y[-inTrain]
+
+```
+
+after splitting the data, now we can perform the selection using rfe
+
+
+```{r}
+set.seed(1)
+result_rfe1 <- rfe(x = x_train, 
+                   y = y_train, 
+                   sizes = c(1:9),
+                   rfeControl = control)
+
+result_rfe1
+
+predictors(result_rfe1)
+
+```
+
+
+The results show that all the remaining attributes, except for "employment_type", are selected. This is logical, as 98% of the rows have the value "FT", as shown in the table below. Due to the low variance, we decided to remove this attribute.
+
+```{r}
+table(dataset$employment_type)
+```
 
 
