@@ -259,10 +259,11 @@ dataset<-dataset[,-c(5)]
 ```
 
 
-### Find the outliers and remove them from the dataset:
-by bloxPlot
-now we show (salary_in_usd) attributes' outliers and remove them
-we can see that there are many outliers with exceptionally high values
+### Find the outliers and remove them:
+We will show outliers with boxPlots and then remove them, to minimize noise and to get better analytical results when applying data mining techniques.
+
+now we show (salary_in_usd) attributes' outliers.
+we can see that there are many outliers with exceptionally high values, thus we will remove them.
 ```{r}
 boxplot(dataset$salary_in_usd)
 
@@ -274,15 +275,15 @@ dataset= dataset[-Find_outlier,]
 
 ```
 
-now we show (remote_ratio) attributes' outliers and remove them
-we can see there aren't outliers in remote_ratio, thus we don't need the last step i.e: removing outliers' rows
+now we show (remote_ratio) attributes' outliers.
+we can see there aren't outliers in remote_ratio, thus we don't need the last step i.e: removing outliers' rows.
 ```{r}
 boxplot(dataset$remote_ratio)
 
 ```
 
-now we show (work_year) attributes' outliers and remove them
-we can see there aren't outliers in work_year, thus we don't need the last step i.e: removing outliers' rows
+now we show (work_year) attributes' outliers.
+we can see there aren't outliers in work_year, thus we don't need the last step i.e: removing outliers' rows.
 ```{r}
 boxplot(dataset$work_year)
 
