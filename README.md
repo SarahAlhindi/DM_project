@@ -99,7 +99,7 @@ We excluded the salary and employment type columns from the model duo to redunda
 8. company_size
 
 ### Finding and removing outliers
-Through creating a box plot to visualize outliers for numeric attributes (remote_ratio, salary_in_usd, and work_year) then removing them from the dataset.
+Through creating a box plot to visualize outliers for numeric attributes (remote_ratio, salary_in_usd, and work_year) then removing them to minimize noise and to get better analytical resutlts when applying data mining techniques.
 We noticed that remote_ratio and work_year have no outliers , while salary_in_usd have many exceptionally high values.
 
 
