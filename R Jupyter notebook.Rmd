@@ -265,7 +265,7 @@ now we show (salary_in_usd) attributes' outliers and remove them
 we can see that there are many outliers with exceptionally high values
 ```{r}
 boxplot(dataset$salary_in_usd)
-salary_outliers <- boxplot.stats(dataset$salary_in_usd)$out
+
 
 
 OutSalary = outlier(dataset$salary_in_usd, logical =TRUE)
