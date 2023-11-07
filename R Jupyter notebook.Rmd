@@ -11,6 +11,7 @@ library(countrycode)
 library(outliers)
 library(caret)
 library(cluster)
+library(NbClust)
 ```
 
 # phase 1
@@ -177,10 +178,6 @@ var(dataset$salary_in_usd)
 var(dataset$remote_ratio)
 ```
 
-
-
-
-
 ### Visualization of relationship between some pairs of attributes:
 
 Here we used boxplot to see the distribution between salary_in_usd and experience_level We observed that salaries vary depending on the level of experience,they are positively correlated.
@@ -262,12 +259,12 @@ To make the mining process more effiecent and has an improved quality, we decide
 dataset<-dataset[,-c(5)]
 ```
 
-
 ### Find the outliers and remove them:
+
 We will show outliers with boxPlots and then remove them, to minimize noise and to get better analytical results when applying data mining techniques.
 
-now we show (salary_in_usd) attributes' outliers.
-we can see that there are many outliers with exceptionally high values, thus we will remove them.
+now we show (salary_in_usd) attributes' outliers. we can see that there are many outliers with exceptionally high values, thus we will remove them.
+
 ```{r}
 boxplot(dataset$salary_in_usd)
 
@@ -279,22 +276,19 @@ dataset= dataset[-Find_outlier,]
 
 ```
 
-now we show (remote_ratio) attributes' outliers.
-we can see there aren't outliers in remote_ratio, thus we don't need the last step i.e: removing outliers' rows.
+now we show (remote_ratio) attributes' outliers. we can see there aren't outliers in remote_ratio, thus we don't need the last step i.e: removing outliers' rows.
+
 ```{r}
 boxplot(dataset$remote_ratio)
 
 ```
 
-now we show (work_year) attributes' outliers.
-we can see there aren't outliers in work_year, thus we don't need the last step i.e: removing outliers' rows.
+now we show (work_year) attributes' outliers. we can see there aren't outliers in work_year, thus we don't need the last step i.e: removing outliers' rows.
+
 ```{r}
 boxplot(dataset$work_year)
 
 ```
-
-
-
 
 ### Concept hierarchy generation for nominal data
 
@@ -335,8 +329,6 @@ dataset[aq,"company_location"]="AQ"
 
 Concept hierarchy generation can be done for "job_title" as well to improve interpretation and scalability. Also, most job titles are essentially the same job but with different names, so we can combine them into a higher-level jobs titles such as Architect, Analyst and Engineer etc.
 
-
-
 ```{r}
 ## Create the categories based on job rank 
 dataset$job_title <- ifelse(grepl("Analyst", dataset$job_title), "Analyst",
@@ -348,11 +340,6 @@ dataset$job_title <- ifelse(grepl("Analyst", dataset$job_title), "Analyst",
                                                                    "Others"))))))
 
 ```
-
-
-
-
-
 
 ## Encoding categorical data
 
@@ -407,15 +394,11 @@ to change the scale of numeric attributes (remote_ratio and work_year) to a scal
 dataset [, c("work_year" , "remote_ratio")] = scale(dataset [, c("work_year" , "remote_ratio")])
 ```
 
-
-
-
 ## Feature Selection
 
-we will implement feature selection to remove redundant or irrelevant attributes from the data set to get the smallest subset that can help us get the most accurate predictions for our target class(salary_in_usd) and decrease the time that it takes the classifier to process the data.  
+we will implement feature selection to remove redundant or irrelevant attributes from the data set to get the smallest subset that can help us get the most accurate predictions for our target class(salary_in_usd) and decrease the time that it takes the classifier to process the data.
 
-we will use RFE(Recursive feature elimination) which is a wrapper method for the feature selection. Since the RFE function have multiple control options we need to specify the options that we want. We will choose "Random Forest" because it has high accuracy, can handle categorical data.  
-
+we will use RFE(Recursive feature elimination) which is a wrapper method for the feature selection. Since the RFE function have multiple control options we need to specify the options that we want. We will choose "Random Forest" because it has high accuracy, can handle categorical data.
 
 ```{r}
 control <- rfeControl(functions = rfFuncs, 
@@ -424,9 +407,7 @@ control <- rfeControl(functions = rfFuncs,
                       number = 10)
 ```
 
-
 First we save the features to be used in the feature selection(every attributes except the class label "salary_in_usd") in variable x, and the class label in variable y. Then split the data to 80% training and 20% test.
-
 
 ```{r}
 x <- dataset %>%
@@ -450,7 +431,6 @@ y_test  <- y[-inTrain]
 
 after splitting the data, now we can perform the selection using rfe
 
-
 ```{r}
 set.seed(1)
 result_rfe1 <- rfe(x = x_train, 
@@ -463,7 +443,6 @@ result_rfe1
 predictors(result_rfe1)
 
 ```
-
 
 The results show that all the remaining attributes, except for "employment_type", are selected. This is logical, as 98% of the rows have the value "FT", as shown in the table below. Due to the low variance, we decided to remove this attribute.
 
@@ -478,10 +457,13 @@ dataset<-dataset[,-which(names(dataset)=="employment_type")]
 # phase 3
 
 ## Clustering
-Firstly, we will decide the number of clusters, we will use different methods to obtain 3 different number of cluster 
+
+Firstly, we will decide the number of clusters, we will use different methods to obtain 3 different number of cluster
 
 ### Empirical method
+
 which obtains approximate the number of clusters according to a mathematical formula
+
 ```{r}
 # n=No. of objects in the dataset
 n <- nrow(dataset)
@@ -502,4 +484,14 @@ print(num_clusters)
 
 so, we obtained the first number of clusters which equals 24, significantly this number is large, now let's try another method
 
+### Silhouette method
+
+```{r}
+#a)fviz_nbclust() with silhouette method using library(factoextra) 
+fviz_nbclust(dataset, kmeans, method = "silhouette")+
+  labs(subtitle = "Silhouette method")
+#b) NbClust validation
+fres.nbclust <- NbClust(dataset, distance="euclidean", min.nc = 2, max.nc = 10, method="kmeans", index="all")
+
+```
 
