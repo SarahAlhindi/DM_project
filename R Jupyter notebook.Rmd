@@ -11,6 +11,7 @@ library(countrycode)
 library(outliers)
 library(caret)
 library(cluster)
+library(factoextra)
 library(NbClust)
 ```
 
