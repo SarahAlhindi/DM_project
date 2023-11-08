@@ -488,6 +488,7 @@ so, we obtained the first number of clusters which equals 25, significantly this
 ### Elbow method
 This method determines the number of clusters according to the turning point in a curve, the curve is plotted using the total within-cluster sum of square (WSS) as in y-axis , and No. clusters in x-axis
 ```{r}
+# Plot the curve using fviz_nbclust
 fviz_nbclust(dataset, kmeans, method = "wss") +
   geom_vline(xintercept = 4, linetype = 2)+
   labs(subtitle = "Elbow method")
