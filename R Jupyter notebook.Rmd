@@ -676,47 +676,6 @@ caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
 
 
 
-
-
-
-## Clustering
-
-Firstly, we will decide the number of clusters, we will use different methods to obtain 3 different number of cluster
-
-### Empirical method
-
-which obtains approximate the number of clusters according to a mathematical formula
-
-```{r}
-# n=No. of objects in the dataset
-n <- nrow(dataset)
-
-
-#Empirical method formula
-num_clusters <- sqrt(n / 2)
-
-
-#Round the number of clusters to the nearest integer
-num_clusters <- round(num_clusters)
-
-
-# Print number of clusters
-print(num_clusters)
-
-```
-
-so, we obtained the first number of clusters which equals 25, significantly this number is large, now let's try another method which is the elbow method
-
-### Elbow method
-This method determines the number of clusters according to the turning point in a curve, the curve is plotted using the total within-cluster sum of square (WSS) as in y-axis , and No. clusters in x-axis
-```{r}
-# Plot the curve using fviz_nbclust
-fviz_nbclust(dataset, kmeans, method = "wss") +
-  geom_vline(xintercept = 4, linetype = 2)+
-  labs(subtitle = "Elbow method")
-```
-so, we obtained the second number of clusters which equals TODO, now let's try another method which is the Silhouette method
-
 ### Silhouette method
 
 ```{r}
