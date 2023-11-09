@@ -507,7 +507,7 @@ since our dataset is small, we decided to use K-fold Cross-validation. for each 
 
 
 
-the following function will be used to copute average sensitivity and Specificity
+the following function will be used to compute average sensitivity and Specificity
 ```{r}
 
 
