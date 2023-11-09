@@ -457,6 +457,228 @@ dataset<-dataset[,-which(names(dataset)=="employment_type")]
 
 # phase 3
 
+
+
+
+
+
+
+
+
+
+```{r}
+dataset2= read.csv(url("https://raw.githubusercontent.com/SarahAlhindi/DM_project/main/Data%20Set/preprocessedDataset.csv"), header=TRUE)
+
+
+char_vars <- sapply(dataset2, is.character)
+dataset2[char_vars] <- lapply(dataset2[char_vars], as.factor)
+
+```
+
+
+
+
+
+
+## balancing data
+
+To resolve the problem of class imbalance in the dataset, we will use SMOTE() method that oversample the minority class by creating synthetic samples using the existing minority class samples
+
+```{r}
+data_balanced <- SMOTE(salary_in_usd ~ ., dataset2, perc.over = 300, perc.under=500, k = 10)
+```
+
+## Classification
+
+The goal of all preceding steps is to properly prepare the dataset for the classification phase, which constitutes one of our primary mining objectives. In this section, we will employ various attribute selection methods such as the Gini index, Gain ratio, and information gain to construct a decision tree model. We will thoroughly evaluate its performance, and if it proves effective, it can subsequently be utilized to classify new instances with unknown class labels.
+
+since our dataset is small, we decided to use K-fold Cross-validation. for each attribute selection method we will try different K size (10,5, and 3)
+
+### Gini index
+
+Gini index measures the impurity of the dataset. The partitioning that yields the most substantial reduction in impurity is selected as the splitting attribute. To apply the Gini index, we will employ the "rpart" method, which utilizes the Gini index as the criteria for splitting.
+
+##### 10 Folds
+
+```{r}
+set.seed(10)
+ctrl <- trainControl(method = "cv", number = 10, returnResamp="all", savePredictions="final")
+
+giniIndex10 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "rpart",trControl = ctrl)
+
+prp(giniIndex10$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
+
+
+
+
+```
+
+```{r}
+
+caret::confusionMatrix(giniIndex10$pred$obs,giniIndex10$pred$pred)
+
+```
+
+##### 5 Folds
+
+```{r}
+set.seed(10)
+ctrl <- trainControl(method = "cv", number = 5, returnResamp="all", savePredictions="final")
+
+giniIndex5 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "rpart",trControl = ctrl)
+
+prp(giniIndex5$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
+
+
+```
+
+```{r}
+
+caret::confusionMatrix(giniIndex5$pred$obs,giniIndex5$pred$pred)
+
+```
+
+##### 3 Folds
+
+```{r}
+set.seed(10)
+ctrl <- trainControl(method = "cv", number = 3, returnResamp="all", savePredictions="final")
+
+giniIndex3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "rpart",trControl = ctrl)
+
+prp(giniIndex3$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
+
+
+```
+
+```{r}
+
+caret::confusionMatrix(giniIndex3$pred$obs,giniIndex3$pred$pred)
+
+```
+
+### Gain ratio
+
+#### 10 Folds
+
+```{r}
+set.seed(10)
+ctrl <- trainControl(method = "cv", number = 10)
+gainRatio10 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",trControl = ctrl)
+plot(gainRatio10$finalModel)
+```
+
+```{r}
+caret::confusionMatrix(balanced_dataset$salary_in_usd,gainRatio10$finalModel$predictions)
+
+```
+
+
+
+#### 5 Folds
+
+```{r}
+set.seed(10)
+ctrl <- trainControl(method = "cv", number = 5)
+gainRatio5 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",trControl = ctrl)
+plot(gainRatio5$finalModel)
+```
+
+```{r}
+
+caret::confusionMatrix(balanced_dataset$salary_in_usd,gainRatio5$finalModel$predictions)
+
+```
+
+#### 3 Folds
+
+```{r}
+set.seed(10)
+ctrl <- trainControl(method = "cv", number = 3)
+gainRatio3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",trControl = ctrl)
+plot(gainRatio3$finalModel)
+```
+
+```{r}
+
+caret::confusionMatrix(balanced_dataset$salary_in_usd,gainRatio3$finalModel$predictions)
+
+```
+
+### Information gain
+
+#### 10 Folds
+
+```{r}
+set.seed(10)
+ctrl <- trainControl(method = "cv", number = 10, returnResamp="all", savePredictions="final")
+
+
+infoGain10 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "C5.0",trControl = ctrl)
+
+c5model <- C5.0(salary_in_usd ~ .,
+                       data = data_balanced,
+                       trials = infoGain10$bestTune$trials, 
+                       rules = FALSE,
+                       control = C5.0Control(winnow = infoGain10$bestTune$winnow))
+plot(c5model)
+```
+
+```{r}
+caret::confusionMatrix(infoGain10$pred$obs, infoGain10$pred$pred)
+
+```
+
+#### 5 Folds
+
+```{r}
+set.seed(10)
+ctrl <- trainControl(method = "cv", number = 5, returnResamp="all", savePredictions="final")
+
+
+infoGain5 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "C5.0",trControl = ctrl)
+
+c5model <- C5.0(salary_in_usd ~ .,
+                       data = data_balanced,
+                       trials = infoGain5$bestTune$trials, 
+                       rules = FALSE,
+                       control = C5.0Control(winnow = infoGain5$bestTune$winnow))
+plot(c5model)
+```
+
+```{r}
+caret::confusionMatrix(infoGain5$pred$obs, infoGain5$pred$pred)
+
+```
+
+#### 3 Folds
+
+```{r}
+set.seed(10)
+ctrl <- trainControl(method = "cv", number = 3, returnResamp="all", savePredictions="final")
+
+
+infoGain3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "C5.0",trControl = ctrl)
+
+c5model <- C5.0(salary_in_usd ~ .,
+                       data = data_balanced,
+                       trials = infoGain3$bestTune$trials, 
+                       rules = FALSE,
+                       control = C5.0Control(winnow = infoGain3$bestTune$winnow))
+plot(c5model)
+```
+
+```{r}
+caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
+
+```
+
+
+
+
+
+
+
 ## Clustering
 
 Firstly, we will decide the number of clusters, we will use different methods to obtain 3 different number of cluster
