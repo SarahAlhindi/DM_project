@@ -812,6 +812,24 @@ kmeans.result
 # visualize clustering
 fviz_cluster(kmeans.result, data = dataset3)
 
+
+#average silhouette for each clusters
+avg_sil <- silhouette(kmeans.result$cluster,dist(dataset3)) 
+fviz_silhouette(avg_sil)
+
+#Within-cluster sum of squares wss 
+wss <- kmeans.result$tot.withinss
+print(wss)
+
+#calculate precision 
+
+precision <- bcubed_precision(kmeans.result, classLabel)
+print(precision)
+
+#calculate recall
+
+recall <- bcubed_recall(kmeans.result, classLabel)
+print(recall)
 ```
 
 
@@ -828,6 +846,24 @@ kmeans.result
 
 # visualize clustering
 fviz_cluster(kmeans.result, data = dataset3)
+
+#average silhouette for each clusters
+avg_sil <- silhouette(kmeans.result$cluster,dist(dataset3)) 
+fviz_silhouette(avg_sil)
+
+#Within-cluster sum of squares wss 
+wss <- kmeans.result$tot.withinss
+print(wss)
+
+#calculate precision 
+
+precision <- bcubed_precision(kmeans.result, classLabel)
+print(precision)
+
+#calculate recall
+
+recall <- bcubed_recall(kmeans.result, classLabel)
+print(recall)
 ```
 
 
@@ -843,6 +879,24 @@ kmeans.result
 
 # visualize clustering
 fviz_cluster(kmeans.result, data = dataset3)
+
+#average silhouette for each clusters
+avg_sil <- silhouette(kmeans.result$cluster,dist(dataset3)) 
+fviz_silhouette(avg_sil)
+
+#Within-cluster sum of squares wss 
+wss <- kmeans.result$tot.withinss
+print(wss)
+
+#calculate precision 
+
+precision <- bcubed_precision(kmeans.result, classLabel)
+print(precision)
+
+#calculate recall
+
+recall <- bcubed_recall(kmeans.result, classLabel)
+print(recall)
 ```
 
 
@@ -867,3 +921,48 @@ fviz_nbclust(dataset3, kmeans, method = "wss") +
   labs(subtitle = "Elbow method")
 
 ```
+
+
+
+### 5- Bcubed precision
+
+```{r}
+bcubed_precision <- function(kmeans.result, classLabel) {
+  n <- length(kmeans.result)
+  precision <- 0
+  
+  kmeans.result <- as.character(kmeans.result)
+  for (i in 1:n) {
+    cluster_size <- sum(kmeans.result == kmeans.result[i])
+    common_elements <- sum(classLabel == classLabel[i] & kmeans.result == kmeans.result[i])
+    
+    if (cluster_size > 1) {
+      precision <- precision + common_elements / cluster_size
+    }
+  }
+  
+  return(precision / n)
+}
+```
+
+
+### 6- Bcubed recall
+
+```{r}
+bcubed_recall <- function(kmeans.result, classLabel) {
+  n <- length(kmeans.result)
+  recall <- 0
+  
+  for (i in 1:n) {
+    cluster_size <- sum(classLabel == classLabel[i])
+    common_elements <- sum(classLabel == classLabel[i] & kmeans.result == kmeans.result[i])
+    
+    if (cluster_size > 1) {
+      recall <- recall + common_elements / cluster_size
+    }
+  }
+  
+  return(recall / n)
+}
+```
+
