@@ -804,14 +804,5 @@ caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
 
 
 
-### Silhouette method
 
-```{r}
-#a)fviz_nbclust() with silhouette method using library(factoextra) 
-fviz_nbclust(dataset, kmeans, method = "silhouette")+
-  labs(subtitle = "Silhouette method")
-#b) NbClust validation
-fres.nbclust <- NbClust(dataset, distance="euclidean", min.nc = 2, max.nc = 10, method="kmeans", index="all")
-
-```
 
