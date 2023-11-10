@@ -3,15 +3,11 @@ title: "Cybersecurity salaries"
 output: html_notebook
 ---
 
-
-
 ```{r}
 
 knitr::opts_chunk$set(warning=FALSE)
 
 ```
-
-
 
 ### Needed libraries
 
@@ -473,17 +469,7 @@ table(dataset$employment_type)
 dataset<-dataset[,-which(names(dataset)=="employment_type")]
 ```
 
-
 # phase 3
-
-
-
-
-
-
-
-
-
 
 ```{r}
 dataset2= read.csv(url("https://raw.githubusercontent.com/SarahAlhindi/DM_project/main/Data%20Set/preprocessedDataset.csv"), header=TRUE)
@@ -493,11 +479,6 @@ char_vars <- sapply(dataset2, is.character)
 dataset2[char_vars] <- lapply(dataset2[char_vars], as.factor)
 
 ```
-
-
-
-
-
 
 ## balancing data
 
@@ -513,9 +494,8 @@ The goal of all preceding steps is to properly prepare the dataset for the class
 
 since our dataset is small, we decided to use K-fold Cross-validation. for each attribute selection method we will try different K size (10,5, and 3)
 
-
-
 the following function will be used to compute average sensitivity and Specificity
+
 ```{r}
 
 
@@ -545,7 +525,6 @@ macro = function(matrix){
 }
 
 ```
-
 
 ### Gini index
 
@@ -610,17 +589,11 @@ caret::confusionMatrix(giniIndex3$pred$obs,giniIndex3$pred$pred)
 
 ```
 
-
-
-
 ### Gain ratio
-
 
 The gain ratio, a normalized measure of information gain, is calculated by dividing information gain by the split information. The attribute that yields the highest gain ratio is chosen as the splitting attribute. The C4.5 algorithm employs the gain ratio.
 
 The J48 is the Java-based open-source implementation of the C4.5 algorithm, and it is included in the Weka package. This implementation allows users to conveniently apply the C4.5 decision tree.
-
-
 
 #### 10 Folds
 
@@ -631,10 +604,6 @@ gainRatio10 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",
 plot(gainRatio10$finalModel)
 ```
 
-
-
-
-
 ```{r}
 gainRatio10cm = caret::confusionMatrix(gainRatio10$pred$obs, gainRatio10$pred$pred)
 
@@ -642,13 +611,6 @@ gainRatio10cm
 
 
 ```
-
-
-
-
-
-
-
 
 #### 5 Folds
 
@@ -659,10 +621,6 @@ gainRatio5 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",t
 plot(gainRatio5$finalModel)
 ```
 
-
-
-
-
 ```{r}
 
 gainRatio5cm=caret::confusionMatrix(gainRatio5$pred$obs, gainRatio5$pred$pred)
@@ -670,8 +628,6 @@ gainRatio5cm=caret::confusionMatrix(gainRatio5$pred$obs, gainRatio5$pred$pred)
 gainRatio5cm
 
 ```
-
-
 
 #### 3 Folds
 
@@ -682,7 +638,6 @@ gainRatio3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",t
 plot(gainRatio3$finalModel)
 ```
 
-
 ```{r}
 gainRatio3cm=caret::confusionMatrix(gainRatio3$pred$obs, gainRatio3$pred$pred)
 
@@ -690,50 +645,29 @@ gainRatio3cm
 
 ```
 
-
-
-
-
 ### analasys of the gain ratio classification
 
 all 3 trees seem to have the same structure that is
 
-the attribute that was first selected at the node is the experience level, it has divided the tree into :
-right subtree : SE(Senior level) EX(Executive level)
-left subtree : EN(Entry-level)   MI(Mid level)
+the attribute that was first selected at the node is the experience level, it has divided the tree into : right subtree : SE(Senior level) EX(Executive level) left subtree : EN(Entry-level) MI(Mid level)
 
 Each of these subtrees further refines the classification based on the attribute "employee residence." However, there are different criteria for splitting in the right and left subtrees:
 
 In the Right Subtree:
 
-The split is based on whether the tuple has the value "Latin America & Caribbean."
-In the Left Subtree:
+The split is based on whether the tuple has the value "Latin America & Caribbean." In the Left Subtree:
 
-If the experience level is 1, the tree further partitions based on whether the tuple has the value "North America."
-If the experience level is 2, the split is based on "employee residence" being "Latin America & Caribbean."
-
-
+If the experience level is 1, the tree further partitions based on whether the tuple has the value "North America." If the experience level is 2, the split is based on "employee residence" being "Latin America & Caribbean."
 
 ```{r}
 rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=macro(gainRatio3cm)  )
 ```
 
-
-
 Based on the evaluation metrics of average Sensitivity, Specificity, and Accuracy, it is evident that the gain ratio model, built using a 10-fold cross-validation approach, exhibits superior performance compared to the other two models. However, it's worth noting that the difference in performance between the models is relatively small. Notably, as the number of folds decreases, a corresponding decline in the model's performance becomes apparent.
 
-
-
-
-
-
-
-
-
 ### Information gain
-Information Gain is a metric used to decide which attribute to choose for splitting the data at each node in the decision tree.
-For a given dataset, the Information Gain of an attribute is calculated by comparing the entropy before and after the dataset is split based on that attribute.
-The attribute with the highest Information Gain is chosen as the splitting attribute.
+
+Information Gain is a metric used to decide which attribute to choose for splitting the data at each node in the decision tree. For a given dataset, the Information Gain of an attribute is calculated by comparing the entropy before and after the dataset is split based on that attribute. The attribute with the highest Information Gain is chosen as the splitting attribute.
 
 #### 10 Folds
 
@@ -801,8 +735,135 @@ caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
 
 ```
 
+## Clustering
+
+### 1- prepreocessing
+
+we encoding the rest of factor columns to transformed into numeric types before clustering
+
+```{r}
+
+# view data
+
+dataset3 <- dataset
+View(dataset3)
+
+# Reserve the salary_in_usd (the class label) column in an attribute before removing it from the dataset for clustering
+
+classLabel <- dataset3[, 5] 
+
+
+# Remove the class lable from the dataset
+
+dataset3 <- dataset3[, -5]
+
+# encoding job_title variable
+
+dataset3$job_title = factor(dataset3$job_title, levels=c("Analyst", "Architect", "Engineer", "Leadership", "Consultant/Specialist","Cyber Security","Others" ), labels=c(4,1,2,5,3,6,7))
+
+# encoding salary_currency variable
+
+dataset3$salary_currency = factor(dataset3$salary_currency, levels=c("USD","BRL","GBP","EUR","INR","CAD","CHF","DKK","SGD","AUD","SEK","MXN","ILS","PLN","NOK","IDR","NZD","HUF","ZAR","TWD","RUB"), labels=c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21))
+
+# encoding employee_residence variable
+
+dataset3$employee_residence = factor(dataset3$employee_residence, levels=c("North America","Latin America & Caribbean","Sub-Saharan Africa", "Europe & Central Asia","East Asia & Pacific","South Asia","Middle East & North Africa"), labels=c(1,2,3,4,5,6,7))
+
+# encoding company_location variable
+
+dataset3$company_location = factor(dataset3$company_location, levels=c("North America","Latin America & Caribbean","Sub-Saharan Africa", "Europe & Central Asia","East Asia & Pacific","South Asia","Middle East & North Africa", "AQ", "UM"), labels=c(1,2,3,4,5,6,7,8,9))
+
+
+# Data types should be transformed into numeric types before clustering. 
+
+dataset3$experience_level <- as.numeric(as.character(dataset3$experience_level))
+
+dataset3$job_title <- as.numeric(as.character(dataset3$job_title))
+
+dataset3$salary_currency <- as.numeric(as.character(dataset3$salary_currency))
+
+dataset3$employee_residence <- as.numeric(as.character(dataset3$employee_residence))
+
+dataset3$company_location <- as.numeric(as.character(dataset3$company_location))
+
+dataset3$company_size <- as.numeric(as.character(dataset3$company_size))
+
+# viwe the class of variables to ensure it's transformed to numeric
+sapply(dataset3, class)
+
+dataset3 <- scale(dataset3)
+
+```
+
+
+### 2- K-means
+
+
+#### k-means clustering 1 and visualization the clustering
+
+```{r}
+# run k-means clustering to find 2 clusters
+set.seed(8953)
+kmeans.result <- kmeans(dataset3, 2)
+
+# print the clusterng result
+kmeans.result
+
+# visualize clustering
+fviz_cluster(kmeans.result, data = dataset3)
+
+```
 
 
 
+#### k-means clustering 2 and visualization the clustering
+
+```{r}
+# run k-means clustering to find 3 clusters
+set.seed(8953)
+kmeans.result <- kmeans(dataset3, 3)
+
+# print the clusterng result
+kmeans.result
+
+# visualize clustering
+fviz_cluster(kmeans.result, data = dataset3)
+```
 
 
+#### k-means clustering 3 and visualization the clustering
+
+```{r}
+# run k-means clustering to find 4 clusters
+set.seed(8953)
+kmeans.result <- kmeans(dataset3, 4)
+
+# print the clusterng result
+kmeans.result
+
+# visualize clustering
+fviz_cluster(kmeans.result, data = dataset3)
+```
+
+
+
+### 3- Silhouette method
+
+```{r}
+
+fviz_nbclust(dataset3, kmeans, method = "silhouette")+
+  labs(subtitle = "Silhouette method")
+
+```
+
+
+
+### 4- Elbow method
+
+```{r}
+
+fviz_nbclust(dataset3, kmeans, method = "wss") +
+  geom_vline(xintercept = 4, linetype = 2)+
+  labs(subtitle = "Elbow method")
+
+```
