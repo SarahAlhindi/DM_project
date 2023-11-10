@@ -731,6 +731,9 @@ Based on the evaluation metrics of average Sensitivity, Specificity, and Accurac
 
 
 ### Information gain
+Information Gain is a metric used to decide which attribute to choose for splitting the data at each node in the decision tree.
+For a given dataset, the Information Gain of an attribute is calculated by comparing the entropy before and after the dataset is split based on that attribute.
+The attribute with the highest Information Gain is chosen as the splitting attribute.
 
 #### 10 Folds
 
