@@ -743,7 +743,9 @@ plot(c5model)
 ```
 
 ```{r}
-caret::confusionMatrix(infoGain10$pred$obs, infoGain10$pred$pred)
+infoGain10cm= caret::confusionMatrix(infoGain10$pred$obs, infoGain10$pred$pred)
+
+infoGain10cm
 
 ```
 
@@ -765,7 +767,9 @@ plot(c5model)
 ```
 
 ```{r}
-caret::confusionMatrix(infoGain5$pred$obs, infoGain5$pred$pred)
+infoGain5cm = caret::confusionMatrix(infoGain5$pred$obs, infoGain5$pred$pred)
+
+infoGain5cm
 
 ```
 
@@ -787,7 +791,9 @@ plot(c5model)
 ```
 
 ```{r}
-caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
+infoGain3cm = caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
+
+infoGain3cm
 
 ```
 
