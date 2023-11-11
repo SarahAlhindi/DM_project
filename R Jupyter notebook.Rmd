@@ -676,7 +676,7 @@ The split is based on whether the tuple has the value "Latin America & Caribbean
 If the experience level is 1, the tree further partitions based on whether the tuple has the value "North America." If the experience level is 2, the split is based on "employee residence" being "Latin America & Caribbean."
 
 ```{r}
-rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=macro(gainRatio3cm)  )
+rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=macro(gainRatio3cm)  ) 
 ```
 
 Based on the evaluation metrics of average Sensitivity,Precision ,Specificity, and Accuracy, it is evident that the gain ratio model, built using a 10-fold cross-validation approach, exhibits superior performance compared to the other two models. However, it's worth noting that the difference in performance between the models is relatively small. Notably, as the number of folds decreases, a corresponding decline in the model's performance becomes apparent.
