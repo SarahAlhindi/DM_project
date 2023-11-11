@@ -495,9 +495,12 @@ data_balanced <- SMOTE(salary_in_usd ~ ., dataset2, perc.over = 300, perc.under=
 
 The goal of all preceding steps is to properly prepare the dataset for the classification phase, which constitutes one of our primary mining objectives. In this section, we will employ various attribute selection methods such as the Gini index, Gain ratio, and information gain to construct a decision tree model. We will thoroughly evaluate its performance, and if it proves effective, it can subsequently be utilized to classify new instances with unknown class labels.
 
-since our dataset is small, we decided to use K-fold Cross-validation. for each attribute selection method we will try different K size (10,5, and 3)
+since our dataset is small, we decided to use K-fold Cross-validation. for each attribute selection method we will try different K size (10,5, and 3).
 
-the following function will be used to compute average sensitivity and Specificity
+
+in all this section we will be using train and trainControl functions of caret package to produce decision trees. for Gini index the method will be "rpart" and for Gain ratio it's "j48" as for information gain the method is "C5.0".
+
+the following function will be used to compute average sensitivity and Specificity:
 
 ```{r}
 
