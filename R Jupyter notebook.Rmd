@@ -188,7 +188,7 @@ summary(dataset$remote_ratio)
 ```
 
 ### Show the variane of each numeric column
-
+variance is to understand the spread or dispersion of the values in each column. A higher variance indicates that the values are more spread out from the mean and in our dataset the highest attribute is salary, while a lower variance indicates that the values are closer to the mean which in our datas it is work year attribute.
 ```{r}
 var(dataset$work_year)
 var(dataset$salary)
