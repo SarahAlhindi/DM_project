@@ -552,40 +552,64 @@ Gini index measures the impurity of the dataset. The partitioning that yields th
 ##### 10 Folds
 
 ```{r}
+
 set.seed(10)
 ctrl <- trainControl(method = "cv", number = 10, returnResamp="all", savePredictions="final")
 
-giniIndex10 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "rpart",trControl = ctrl)
+tuneGrid <- expand.grid(cp = c(0.001, 0.005, 0.01))
+
+giniIndex10 <- train(
+  salary_in_usd ~ .,
+  data = balanced_dataset,
+  method = "rpart",
+  trControl = ctrl,tuneGrid=tuneGrid,
+  control = list(
+    minsplit = 10,
+    minbucket = 5,
+    xval = 10,
+    cp = 0.0001
+  )
+
+)
+
 
 prp(giniIndex10$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
-
-
-
 
 ```
 
 ```{r}
 
-caret::confusionMatrix(giniIndex10$pred$obs,giniIndex10$pred$pred)
+giniIndex10cm = caret::confusionMatrix(giniIndex10$pred$obs,giniIndex10$pred$pred)
+
+giniIndex10cm
 
 ```
 
 ##### 5 Folds
-
 ```{r}
 set.seed(10)
 ctrl <- trainControl(method = "cv", number = 5, returnResamp="all", savePredictions="final")
 
-giniIndex5 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "rpart",trControl = ctrl)
 
-prp(giniIndex5$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
+tuneGrid <- expand.grid(cp = c(0.001, 0.005, 0.01))
+
+giniIndex5 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "rpart", trControl = ctrl,tuneGrid=tuneGrid,
+  control = list(
+    minsplit = 10,
+    minbucket = 5,
+    xval = 10,
+    cp = 0.0001
+  ))
+
+prp(giniIndex5$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex = 0.15)
 
 
 ```
 
 ```{r}
+giniIndex5cm = caret::confusionMatrix(giniIndex5$pred$obs,giniIndex5$pred$pred)
 
-caret::confusionMatrix(giniIndex5$pred$obs,giniIndex5$pred$pred)
+giniIndex5cm
 
 ```
 
@@ -595,16 +619,27 @@ caret::confusionMatrix(giniIndex5$pred$obs,giniIndex5$pred$pred)
 set.seed(10)
 ctrl <- trainControl(method = "cv", number = 3, returnResamp="all", savePredictions="final")
 
-giniIndex3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "rpart",trControl = ctrl)
 
-prp(giniIndex3$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
+tuneGrid <- expand.grid(cp = c(0.001, 0.005, 0.01))
+
+giniIndex3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "rpart", trControl = ctrl,tuneGrid=tuneGrid,
+  control = list(
+    minsplit = 10,
+    minbucket = 5,
+    xval = 10,
+    cp = 0.0001
+  ))
+
+prp(giniIndex3$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex = 0.15)
 
 
 ```
 
 ```{r}
 
-caret::confusionMatrix(giniIndex3$pred$obs,giniIndex3$pred$pred)
+giniIndex3cm = caret::confusionMatrix(giniIndex3$pred$obs,giniIndex3$pred$pred)
+
+giniIndex3cm
 
 ```
 
