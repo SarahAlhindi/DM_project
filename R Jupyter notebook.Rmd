@@ -521,11 +521,24 @@ macro = function(matrix){
   avgSpec = sumSpec/5
   
   
-  avgs = data.frame(Sensitivity=avgSen , Specificity=avgSpec, Accuracy= unname( matrix$overall[1]) )
+  
+  
+  sumPrec=0
+  
+  for (i in 1:5) {
+   sumPrec = sumPrec + matrix$byClass[i,3] 
+  }
+  avgPrec = sumPrec/5
+  
+  
+  
+  
+  avgs = data.frame(Sensitivity=avgSen , Specificity=avgSpec, Precision=avgPrec ,Accuracy= unname( matrix$overall[1]) )
   print(avgs)
   
   
 }
+
 
 ```
 
@@ -666,7 +679,7 @@ If the experience level is 1, the tree further partitions based on whether the t
 rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=macro(gainRatio3cm)  )
 ```
 
-Based on the evaluation metrics of average Sensitivity, Specificity, and Accuracy, it is evident that the gain ratio model, built using a 10-fold cross-validation approach, exhibits superior performance compared to the other two models. However, it's worth noting that the difference in performance between the models is relatively small. Notably, as the number of folds decreases, a corresponding decline in the model's performance becomes apparent.
+Based on the evaluation metrics of average Sensitivity,Precision ,Specificity, and Accuracy, it is evident that the gain ratio model, built using a 10-fold cross-validation approach, exhibits superior performance compared to the other two models. However, it's worth noting that the difference in performance between the models is relatively small. Notably, as the number of folds decreases, a corresponding decline in the model's performance becomes apparent.
 
 ### Information gain
 
