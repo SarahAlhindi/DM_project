@@ -675,6 +675,8 @@ The split is based on whether the tuple has the value "Latin America & Caribbean
 
 If the experience level is 1, the tree further partitions based on whether the tuple has the value "North America." If the experience level is 2, the split is based on "employee residence" being "Latin America & Caribbean."
 
+The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
+
 ```{r}
 rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=macro(gainRatio3cm)  ) 
 ```
