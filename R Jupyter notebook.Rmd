@@ -801,6 +801,11 @@ infoGain3cm
 
 ```
 
+```{r}
+rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=macro(infoGain3cm)  ) 
+```  
+
+
 ## Clustering
 
 ### 1- prepreocessing
