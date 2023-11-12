@@ -643,6 +643,10 @@ giniIndex3cm
 
 ```
 
+```{r}
+rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=macro(giniIndex3cm)  ) 
+```
+
 ### Gain ratio
 
 The gain ratio, a normalized measure of information gain, is calculated by dividing information gain by the split information. The attribute that yields the highest gain ratio is chosen as the splitting attribute. The C4.5 algorithm employs the gain ratio.
