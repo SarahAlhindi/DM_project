@@ -67,8 +67,10 @@ Prediction of the cyber security employees' salary categories (Very Low, Low, , 
 
 ### Goal
 
-Given the problems we discussed and In order to better understand this field, we decided to analyse a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analysing this dataset can provide insightful predictions regarding the salary range of a cybersecurity employee, which can help in
+Given the problems we discussed and In order to better understand this field, we decided to analyse a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analysing this dataset can provide insightful predictions regarding the salary range of a cybersecurity employee and description of the cybersecurity market behavior, which can help in
 
+-   Describing cybersecurity market behavior
+-   Specifying common charactrestics among cybersecurity employees
 -   Making better decisions
 -   Making recruitment and hiring process easier and more efficient
 -   Predicting the future payroll
@@ -176,11 +178,12 @@ sum(is.na(dataset))
 ```
 
 ### Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric column
-
-in work_year Most data falls within the years 2021, with some in 2020 and 2022.
-In salary Salaries vary widely, with a high average and an exceptionally high maximum. 
-In salary_in_usd, salaries range from a minimum to a maximum.
-In remote_ratio Indicates the percentage of remote work, with a median and 3rd quartile at 100%, but a mean slightly below, suggesting some variability.
+The summary statistics for the dataset variables provide insights into the distribution of features.
+we can conclude the following:
+In work_year: The data spans from the year 2020 to 2022 with Most data falling within the years 2021 and 2022, as indicated by both the median and mean being centered around 2021.
+In salary: Salaries vary widely with a minimum of $1,740 and a maximum of $500 million. The median is $120,000 which is a mid value, but the mean is notably higher at $560,852 which might be duo to extreme values or notable skewness.
+In salary_in_usd: The data has a median of $110,000, and a mean of $120,278, and the spread of salaries is observable in the difference between the median and mean.
+In remote_ratio: Indicates the percentage of remote work ranging from 0% to 100%, with a median and 3rd quartile at 100%, and a mean of 71.49%, indicating a notable presence of remote work in the dataset, suggesting some variability. 
 
 ```{r}
 summary(dataset$work_year)
@@ -188,6 +191,8 @@ summary(dataset$salary)
 summary(dataset$salary_in_usd)
 summary(dataset$remote_ratio)
 ```
+By now, we concluded some of the main statistical measures for the numerical columns
+
 
 ### Show the variane of each numeric column
 
