@@ -59,18 +59,19 @@ Prediction of cyber security employees' salaries based on 11 attributes
 
 ### Problem description
 
-We are living in the "information age" or rather the "data age", meaning that everything around us revolves around data. The data has become one of the most valuable assets that a person or an organisation can have, since it has a significant value, losing it will lead to significant damages. Thus, most of the attacks nowadays are directed toward the data. To guard against such damages, organisations have realised the importance of protecting their digital assets, leading them to hire cybersecurity specialists. This made cybersecurity gain popularity among people so there's a growing tendency to study cybersecurity. Consequently this resulted in the emergence of plentiful professionals with various experience levels and skills in this field. As a result, organisations may find it difficult to decide a salary for job candidates solely based on the CV. also, since the attacks improve rapidly, organisations need to hire more employees in the far future to defend against such attacks but it's not an easy matter to predict the future payroll which may hinders some of the organisation's plans. Another issue arises when the decision makers in the organisation aren't fully aware of the trends on salary. Their lack of awareness gives a chance for the competitor organisations to attract their employees to them by offering a better salary that match current trends
+We are living in the "information age" or rather the "data age", meaning that everything around us revolves around data. The data has become one of the most valuable assets that a person or an organisation can have, since it has a significant value, losing it will lead to significant damages. Thus, most of the attacks nowadays are directed toward the data. To guard against such damages, organisations have realised the importance of protecting their digital assets, leading them to hire cybersecurity specialists. This made cybersecurity gain popularity among people so there's a growing tendency to study cybersecurity. Consequently this resulted in the emergence of plentiful professionals with various experience levels and skills in this field. As a result, organisations may find it difficult to decide a salary for job candidates solely based on the CV. also, since the attacks improve rapidly, organisations need to hire more employees in the far future to defend against such attacks but it's not an easy matter to predict the future payroll which may hinders some of the organisation's plans. Another issue arises when the decision makers in the organisation aren't fully aware of the trends on salary and groups of employees and their differint needs. Their lack of awareness gives a chance for the competitor organisations to attract their employees to them by offering a better salary that match current trends.
 
 ### Data mining task
 
-Prediction of the cyber security employees' salary categories (Very Low, Low, , High, Very High) using classification and description of data characteristics and behavior using clustering methods.
+Prediction of the cyber security employees' salary categories (Very Low, Low, , High, Very High) using classification and description of data characteristics and behavior and grouping data using clustering methods.
 
 ### Goal
 
-Given the problems we discussed and In order to better understand this field, we decided to analyse a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analysing this dataset can provide insightful predictions regarding the salary range of a cybersecurity employee and description of the cybersecurity market behavior, which can help in
+Given the problems we discussed and In order to better understand this field, we decided to analyse a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analysing this dataset can provide insightful predictions regarding the salary range of a cybersecurity employee and description of the cybersecurity market behavior by grouping the data, which can help in
 
 -   Describing cybersecurity market behavior
 -   Specifying common charactrestics among cybersecurity employees
+-   Identify the main cybersecurity employee groups for better understanding their needs
 -   Making better decisions
 -   Making recruitment and hiring process easier and more efficient
 -   Predicting the future payroll
