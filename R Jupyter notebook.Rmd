@@ -506,6 +506,7 @@ dataset2[char_vars] <- lapply(dataset2[char_vars], as.factor)
 To resolve the problem of class imbalance in the dataset, we will use SMOTE() method that oversample the minority class by creating synthetic samples using the existing minority class samples
 
 ```{r}
+set.seed(10)
 balanced_dataset <- SMOTE(salary_in_usd ~ ., dataset2, perc.over = 300, perc.under=500, k = 10)
 ```
 
@@ -566,7 +567,7 @@ macro = function(matrix){
 
 Gini index measures the impurity of the dataset. The partitioning that yields the most substantial reduction in impurity is selected as the splitting attribute. To apply the Gini index, we will employ the "rpart" method, which utilizes the Gini index as the criteria for splitting.
 
-##### 10 Folds
+#### 10 Folds
 
 ```{r}
 
@@ -594,7 +595,7 @@ prp(giniIndex10$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
 
 ```
 
-##Confusion matrix of 10 folds using Gini Index
+#####Confusion matrix of 10 folds using Gini Index
 
 ```{r}
 
@@ -604,7 +605,7 @@ giniIndex10cm
 
 ```
 
-##### 5 Folds
+#### 5 Folds
 
 ```{r}
 set.seed(10)
@@ -626,7 +627,7 @@ prp(giniIndex5$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 ```
 
-##Confusion matrix of 5 folds using Gini Index
+#####Confusion matrix of 5 folds using Gini Index
 
 ```{r}
 giniIndex5cm = caret::confusionMatrix(giniIndex5$pred$obs,giniIndex5$pred$pred)
@@ -635,7 +636,7 @@ giniIndex5cm
 
 ```
 
-##### 3 Folds
+#### 3 Folds
 
 ```{r}
 set.seed(10)
@@ -657,7 +658,7 @@ prp(giniIndex3$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 ```
 
-##Confusion matrix of 3 folds using Gini Index
+#####Confusion matrix of 3 folds using Gini Index
 
 ```{r}
 
@@ -666,7 +667,7 @@ giniIndex3cm = caret::confusionMatrix(giniIndex3$pred$obs,giniIndex3$pred$pred)
 giniIndex3cm
 
 ```
-### Analysis of the gini index classification
+##### Analysis of the gini index classification
 All three trees seem to be alike in their 
 arrangement and form.
 
@@ -684,7 +685,7 @@ The decision criterion is:
     - If experience level is >=2: The next attribute examined is "experience level."
     - If experience level is NOT >=2: The next attribute also will examined is "experience level."
 
-## Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gini Index
+##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gini Index
 
 ```{r}
 rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=macro(giniIndex3cm)  ) 
@@ -707,7 +708,7 @@ gainRatio10 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",
 plot(gainRatio10$finalModel)
 ```
 
-##Confusion matrix of 10 folds using Gain ratio
+#####Confusion matrix of 10 folds using Gain ratio
 
 ```{r}
 gainRatio10cm = caret::confusionMatrix(gainRatio10$pred$obs, gainRatio10$pred$pred)
@@ -726,7 +727,7 @@ gainRatio5 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",t
 plot(gainRatio5$finalModel)
 ```
 
-##Confusion matrix of 5 folds using Gain ratio
+#####Confusion matrix of 5 folds using Gain ratio
 
 ```{r}
 
@@ -745,7 +746,7 @@ gainRatio3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",t
 plot(gainRatio3$finalModel)
 ```
 
-## Confusion matrix of 3 folds using Gain ratio
+##### Confusion matrix of 3 folds using Gain ratio
 
 ```{r}
 gainRatio3cm=caret::confusionMatrix(gainRatio3$pred$obs, gainRatio3$pred$pred)
@@ -754,7 +755,7 @@ gainRatio3cm
 
 ```
 
-### Analysis of the gain ratio classification
+##### Analysis of the gain ratio classification
 
 The observed structure of the three decision trees seems to be the same and it can be summarized as follows:
 
@@ -762,24 +763,24 @@ The observed structure of the three decision trees seems to be the same and it c
     - Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
     - Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
 
-2. Right Subtree - Company Location: The next attribute used to further classify the right subtree is "company location." The decision criterion is whether the location is "North America":
-    - If Company Location is "North America": The next attribute examined is "employee residence."
-    - If Company Location is NOT "North America": Unlike the left subtree, the classification is based on "salary_currency."
+2. Within the right subtree:
+   - If the 'experience level' is 4 (EX, Executive level) , the tree splits based on the 'Employee_residence' attribute. It checks whether the 'Employee_residence' is 'Latin America.'
+   - If 'Employee_residence' does not equal 'Latin America,' the differentiation continues with the 'remote_ratio' attribute, further dividing the tree.
 
-3. Left Subtree - Salary Currency: On the left side of the tree, the attribute "salary_currency" is used to further bifurcate the instances:
-    - If Salary Currency is "USD": A new left subtree is created and will be subject to further refinement.
-    - If Salary Currency is "EUR": Instances are directed to a right subtree, where they undergo additional classification.
-    - Subsequent Splits - Employee Residence**: Both subtrees resulting from the "salary_currency" split ("USD" and "EUR") are then subdivided based on the "employee residence" attribute, leading to a more granular classification.
+3. Within the left subtree:
+   - If the 'experience level' is 1 (EN, Entry level), the tree divide based on the 'Employee_residence' attribute, specifically checking for 'Sub-Saharan Africa.'
+   - If the 'experience level' is 2 (MI, Mid level), it also branches based on 'Employee_residence,' but in this case, looking to see if it equals 'North America.'
 
 The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
 
-## Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gain ratio
+
+##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gain ratio
 
 ```{r}
 rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=macro(gainRatio3cm)  ) 
 ```
 
-Based on the evaluation metrics of average Sensitivity,Precision ,Specificity, and Accuracy, it is evident that the gain ratio model, built using a 10-fold cross-validation approach, exhibits superior performance compared to the other two models. However, it's worth noting that the difference in performance between the models is relatively small. Notably, as the number of folds decreases, a corresponding decline in the model's performance becomes apparent.
+Based on the evaluation metrics of average Sensitivity,Precision ,Specificity, and Accuracy, it is evident that the gain ratio model, built using a 10-fold cross-validation approach, exhibits superior performance compared to the other two models. However, it's worth noting that the difference in performance between the models is relatively small.
 
 A detailed examination of the results from the 10-fold cross-validation reveals that the model has a notably high specificity compared to other metrics. This high specificity suggests that the model is particularly effective at correctly identifying instances that do not pertain to the target class—essentially, it accurately recognizes when examples are not members of the specified class. For example, if the positive class in question is “High” then the model is able to correctly classify tuples that belong to “Very Low”, “Medium”, and “Very High”.
 
@@ -791,7 +792,7 @@ Information Gain is a metric used to decide which attribute to choose for splitt
 
 #### 10 Folds
 
-```{r}
+```{r, fig.height=70, fig.width=90}
 set.seed(10)
 ctrl <- trainControl(method = "cv", number = 10, returnResamp="all", savePredictions="final")
 
@@ -806,7 +807,7 @@ c5model <- C5.0(salary_in_usd ~ .,
 plot(c5model)
 ```
 
-## Confusion matrix of 10 folds using Information gain
+##### Confusion matrix of 10 folds using Information gain
 
 ```{r}
 infoGain10cm= caret::confusionMatrix(infoGain10$pred$obs, infoGain10$pred$pred)
@@ -817,7 +818,7 @@ infoGain10cm
 
 #### 5 Folds
 
-```{r}
+```{r, fig.height=70, fig.width=90}
 set.seed(10)
 ctrl <- trainControl(method = "cv", number = 5, returnResamp="all", savePredictions="final")
 
@@ -832,7 +833,7 @@ c5model <- C5.0(salary_in_usd ~ .,
 plot(c5model)
 ```
 
-## Confusion matrix of 5 folds using Information gain
+##### Confusion matrix of 5 folds using Information gain
 
 ```{r}
 infoGain5cm = caret::confusionMatrix(infoGain5$pred$obs, infoGain5$pred$pred)
@@ -843,7 +844,7 @@ infoGain5cm
 
 #### 3 Folds
 
-```{r}
+```{r, fig.height=70, fig.width=90}
 set.seed(10)
 ctrl <- trainControl(method = "cv", number = 3, returnResamp="all", savePredictions="final")
 
@@ -858,7 +859,7 @@ c5model <- C5.0(salary_in_usd ~ .,
 plot(c5model)
 ```
 
-## Confusion matrix of 3 folds using Information gain
+##### Confusion matrix of 3 folds using Information gain
 
 ```{r}
 infoGain3cm = caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
@@ -866,27 +867,39 @@ infoGain3cm = caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
 infoGain3cm
 
 ```
-### Analysis of the information gain classification
-1. Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." 
-This divides the tree into two main branches or subtrees:
+##### Analysis of the information gain classification
+The observed structure of the three decision trees seems to be the same and it can be summarized as follows:
+
+1. Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." This divides the tree into two main branches or subtrees:
     - Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
     - Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
 
-2. Right Subtree - Experience Level: The next attribute used to further classify the right subtree is "experience level." 
-The decision criterion is:
-    - If experience level is <=3: The next attribute examined is "experience level."
-    - If experience level is >3: The next attribute examined is "company location."
+2. Within the right subtree:
+In the right sub tree if the experience level is 4(EX) the tree will be divided based on “Company location”
 
-3. Left Subtree - Experience Level: On the left side of the tree, the attribute "experience level." is used to further bifurcate the instances:
-    - If experience level is <=1: The next attribute examined is "employee residence."
-    - If experience level is >1: The next attribute also will examined is "employee residence."
+3. Within the left subtree:
+In the left subtree it will divide the tree for both two experience levels 1(EN) and 2(MI) based on “employee residence”
+and when the “employee residence” is “North America” the tree will be further divided based on “salary currency” and when this attribute is equal to “USD” the division will be based on the “job title” attribute
 
-## Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Information gain
+The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
+
+
+##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Information gain
 
 ```{r}
 rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=macro(infoGain3cm)  ) 
 ```
-Based on the provided sensitivity, specificity, precision, and accuracy values there isn't a clear indication of the superiority of one fold over another for Information Gain model .we may need to consider additional factors or conduct further analysis to make a well-informed decision.
+Based on the provided sensitivity, specificity, precision, and accuracy values there isn't a clear indication of the superiority of one fold over another for Information Gain model .we may need to consider additional factors or conduct further analysis to make a well-informed decision. as can be seen in the table the 10 folds has the best Specificity and Precision, meanwhile the 5 folds has the best Sensitivity and Accuracy.
+
+
+
+
+### Analasys of the three classification methods
+
+The gain ratio evaluated with 10-fold cross-validation appears to has the best performance among all the decision tree models. This might be due to the fact that the gain ratio tends to favor unbalanced splits, where one partition is significantly smaller than others. In our dataset, if an attribute has a rare value, the gain ratio might prioritize splitting on this attribute despite the resulting unbalance. 
+
+Despite the superiority of the 10-fold, the performance metrics of all three fold sizes (3-fold, 5-fold, and 10-fold) using Gini index, gain ratio, and information gain are relatively similar, suggesting that all three measures are robust within the context of this dataset. A likely contributing factor to this performance consistency is the balanced distribution of class labels in the dataset. When classes are balanced, each splitting criterion is more or less equally likely to encounter informative splits, which serves to decrease performance variability across different splitting methods.
+
 
 
 ## Clustering
