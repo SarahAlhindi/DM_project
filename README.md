@@ -145,4 +145,4 @@ after that we choose 3 different numbers to perform the k-means clustering using
 
 then we perform k-means clustering and visualize its result using three different k’s that have been chosen beforehand, and we compute WSS and Bcubed preceision and recall and average silhouette for each cluster as methods of evaluating clustering results.
 
-we can conclude from the graph and the results where k=2 is that the performance is best than k=2 and k=3 because k=2 is the optimal k, since there is no overlapping between the two clusters, and the data in a cluster are close “similar” to each other and dissimilar to data in the other cluster.
+we can conclude from the graph and the results where k=2 is that the performance is best than k=3 and k=4 because k=2 is the optimal k, since there is no overlapping between the two clusters, and the data in a cluster are close “similar” to each other and dissimilar to data in the other cluster.
