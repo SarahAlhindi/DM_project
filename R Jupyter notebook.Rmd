@@ -608,7 +608,7 @@ prp(giniIndex10$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
 
 ```
 
-#####Confusion matrix of 10 folds using Gini Index
+##### Confusion matrix of 10 folds using Gini Index
 
 ```{r}
 
@@ -640,7 +640,7 @@ prp(giniIndex5$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 ```
 
-#####Confusion matrix of 5 folds using Gini Index
+##### Confusion matrix of 5 folds using Gini Index
 
 ```{r}
 giniIndex5cm = caret::confusionMatrix(giniIndex5$pred$obs,giniIndex5$pred$pred)
