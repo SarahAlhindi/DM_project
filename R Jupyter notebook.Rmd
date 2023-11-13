@@ -585,6 +585,8 @@ prp(giniIndex10$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
 
 ```
 
+##Confusion matrix of 10 folds using Gini Index
+
 ```{r}
 
 giniIndex10cm = caret::confusionMatrix(giniIndex10$pred$obs,giniIndex10$pred$pred)
@@ -615,6 +617,8 @@ prp(giniIndex5$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 ```
 
+##Confusion matrix of 5 folds using Gini Index
+
 ```{r}
 giniIndex5cm = caret::confusionMatrix(giniIndex5$pred$obs,giniIndex5$pred$pred)
 
@@ -644,6 +648,8 @@ prp(giniIndex3$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 ```
 
+##Confusion matrix of 3 folds using Gini Index
+
 ```{r}
 
 giniIndex3cm = caret::confusionMatrix(giniIndex3$pred$obs,giniIndex3$pred$pred)
@@ -651,6 +657,8 @@ giniIndex3cm = caret::confusionMatrix(giniIndex3$pred$obs,giniIndex3$pred$pred)
 giniIndex3cm
 
 ```
+
+## Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gini Index
 
 ```{r}
 rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=macro(giniIndex3cm)  ) 
@@ -671,6 +679,8 @@ gainRatio10 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",
 plot(gainRatio10$finalModel)
 ```
 
+##Confusion matrix of 10 folds using Gain ratio
+
 ```{r}
 gainRatio10cm = caret::confusionMatrix(gainRatio10$pred$obs, gainRatio10$pred$pred)
 
@@ -687,6 +697,8 @@ ctrl <- trainControl(method = "cv", number = 5, returnResamp="all", savePredicti
 gainRatio5 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",trControl = ctrl)
 plot(gainRatio5$finalModel)
 ```
+
+##Confusion matrix of 5 folds using Gain ratio
 
 ```{r}
 
@@ -705,6 +717,8 @@ gainRatio3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",t
 plot(gainRatio3$finalModel)
 ```
 
+## Confusion matrix of 3 folds using Gain ratio
+
 ```{r}
 gainRatio3cm=caret::confusionMatrix(gainRatio3$pred$obs, gainRatio3$pred$pred)
 
@@ -712,7 +726,7 @@ gainRatio3cm
 
 ```
 
-### analasys of the gain ratio classification
+### Analysis of the gain ratio classification
 
 all 3 trees seem to have the same structure that is
 
@@ -727,6 +741,8 @@ The split is based on whether the tuple has the value "Latin America & Caribbean
 If the experience level is 1, the tree further partitions based on whether the tuple has the value "North America." If the experience level is 2, the split is based on "employee residence" being "Latin America & Caribbean."
 
 The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
+
+## Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gain ratio
 
 ```{r}
 rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=macro(gainRatio3cm)  ) 
@@ -755,6 +771,8 @@ c5model <- C5.0(salary_in_usd ~ .,
 plot(c5model)
 ```
 
+## Confusion matrix of 10 folds using Information gain
+
 ```{r}
 infoGain10cm= caret::confusionMatrix(infoGain10$pred$obs, infoGain10$pred$pred)
 
@@ -778,6 +796,8 @@ c5model <- C5.0(salary_in_usd ~ .,
                        control = C5.0Control(winnow = infoGain5$bestTune$winnow))
 plot(c5model)
 ```
+
+## Confusion matrix of 5 folds using Information gain
 
 ```{r}
 infoGain5cm = caret::confusionMatrix(infoGain5$pred$obs, infoGain5$pred$pred)
@@ -803,6 +823,8 @@ c5model <- C5.0(salary_in_usd ~ .,
 plot(c5model)
 ```
 
+## Confusion matrix of 3 folds using Information gain
+
 ```{r}
 infoGain3cm = caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
 
@@ -810,9 +832,13 @@ infoGain3cm
 
 ```
 
+## Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Information gain
+
 ```{r}
 rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=macro(infoGain3cm)  ) 
 ```
+
+
 
 ## Clustering
 
@@ -820,7 +846,7 @@ Data clustering is a process to partition data into groups or clusters,it is an 
 
 ### 1- prepreocessing
 
-we will encode the rest of factor columns to transforme them into numeric types before clustering, enabling meaningful distance calculations using kmeans and other formulas. we will also remove the class label from the dataset as clustering is an unsupervised learning process, and we will preserve this class label in an attribute for later use. lastly, we will scale all numeric attributes in the dataset so they will be standarized.
+we will encode the rest of factor columns to transform them into numeric types before clustering, enabling meaningful distance calculations using kmeans and other formulas. we will also remove the class label from the dataset as clustering is an unsupervised learning process, and we will preserve this class label in an attribute for later use. lastly, we will scale all numeric attributes in the dataset so they will be standarized.
 
 ```{r}
 
@@ -881,17 +907,16 @@ dataset3 <- scale(dataset3)
 
 ```
 
-now all columns are numeric and scaled
+now all columns are numeric and scaled, so we are ready to perform k-means clustering
 
 ### 2- K-means
 
 After preprocessing the data, now we are ready to perform the clustering process, we will use the k-means clustering, it is a clustering method that aims to minimize the sum of squared distances between each data point and the centroid of its assigned cluster by iteratively updating cluster assignments and centroids.
 
-we will perform the k-means clustering with three different number of clusters "k" , we will choose k to be 2,3 and 4 as they are the suggested No. clusters by elbow method and average Silhouette coefficient, which we will discuss later.
 
-### 3- Validation
+### 3- Choosing number of clusters (k)
 
-we can conclude from the graph and the results where k=4 is that the performance is worse than k=2 and k=3, because there is a noticeable overlapping between clusters. Also, the clusers' space is pretty wide which results in a large distance between objects in the same cluster.
+We will choose 3 different numbers to perform the k-means clustering on, one of the numbers should be relatevily large, the second should be in the middle and the last should be small. This way we will cover the possible outcomes and clustering results.
 
 #### a- Silhouette method
 
@@ -904,7 +929,7 @@ fviz_nbclust(dataset3, kmeans, method = "silhouette")+
 
 ```
 
-as seen by the graph, the number of clusters k that maximizes the average Silhouette coefficient is 2, which has been used for k-means clustering and discussed above. Thus the optimal number of clusters is 2.
+as seen by the graph, the number of clusters k that maximizes the average Silhouette coefficient is 2, so we will use it for clustering.
 
 #### b- Elbow method
 
@@ -918,9 +943,15 @@ fviz_nbclust(dataset3, kmeans, method = "wss") +
 
 ```
 
-As shown, the number of clusters k that represents the turning point in the curve is 4, which has been used for k-means clustering and discussed above.
+As shown, the number of clusters k that represents the turning point in the curve is 4, so we will use it for clustering.
 
-#### k-means clustering and visualization with k=2
+Lastly, we will use k=3 since it acheives the second highest average Silhouette coefficient, and since it's in the middle between 2 and 4 it will strike a balance between having too few clusters (k=2), and having several clusters (k=4), Thus, this choice will have an acceptable acuuracy.
+
+
+### k-means clustering, visualization and evaluation
+In this section, we will perform k-means clustering and visualize its result using three different k's that have been chosen beforehand, then we will compute WSS and Bcubed preceision and recall and average silhouette for each cluster as methods of evaluating clustering results.
+
+#### k=2
 
 ```{r}
 
@@ -995,9 +1026,12 @@ cat("BCubed Precision:", precision, "\n")
 cat("BCubed Recall:", recall, "\n")
 ```
 
-we can conclude from the graph and the results that this k=2 is possible to be the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster.
+we can conclude from the graph and the results that this k=2 is possible to be the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster. Also, the recall is relatively high (0.71) and is the highest among the k's chosen, the Precision is intermediate (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
+We can also note that the WSS is 26.8%, which is an excellent percentage indicating a good compactness of clusters, and that objects in a cluster are similar to one another.
+Lastly, the average silhouette width is 0.34 which is cnsidered high.
 
-#### k-means clustering and visualization with k=3
+
+#### k=3
 
 ```{r}
 
@@ -1071,9 +1105,11 @@ cat("BCubed Precision:", precision, "\n")
 cat("BCubed Recall:", recall, "\n")
 ```
 
-we can conclude from the graph and the results where k=3 is that the performance is good but worse than k=2, because there is overlapping between clusters
+we can conclude from the graph and the results where k=3 is that the performance is good but worse than k=2, because there is overlapping between clusters. Also, the recall is relatively high (0.68), However, the Precision is intermediate (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
+We can also note that the WSS is 32%, which is a good percentage indicating an intermidiate compactness of clusters, and that objects in a cluster are to some extent similar to one another.
+Lastly, the average silhouette width is 0.31 which is good.
 
-#### k-means clustering and visualization with k=4
+#### k=4
 
 ```{r}
 #Use seed to guarantee replicability of random processes
@@ -1146,5 +1182,9 @@ cat("BCubed Precision:", precision, "\n")
 cat("BCubed Recall:", recall, "\n")
 ```
 
+we can conclude from the graph and the results where k=4 is that the performance is worse than k=2 and k=3, because there is a noticeable overlapping between clusters. Also, the clusers' space is pretty wide which results in a large distance between objects in the same cluster.
+Also, the recall is relatively low (0.40) which might be a result of the overlapping and large distances between data objects. In addition, the Precision is intermediate (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
+We can also note that the WSS is 40.7%, which is an acceptable percentage indicating a lower compactness of clusters.
+Lastly, the average silhouette width is 0.2 which is low.
 
 
