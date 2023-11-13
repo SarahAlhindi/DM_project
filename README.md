@@ -141,6 +141,7 @@ Data clustering is a process to partition data into groups or clusters, it is an
 
 First we prepreocessed our data and transformed the rest of attributes into numeric types before clustering, enabling meaningful distance calculations using kmeans and other formulas, and allowing for maximum flexibility in data processing and interpretation. 
 Also we removed the class label from the dataset as clustering is an unsupervised learning process.
+And lastly we scaled all attributes.
 
 
 After that we chose 3 different numbers to perform the k-means clustering using silhouette method to find the optimal number of clusters k and also we used elbow method to determines the number of clusters according to the turning point in a curve, and Lastly chose 2 which strikes a balance between having too few clusters (k=2), and having several clusters (k=4).
