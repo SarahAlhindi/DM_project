@@ -1261,7 +1261,7 @@ cat("BCubed Recall is:", recall, "\n")
 ```
 
 we can conclude from the graph and the results that the k=2 is the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster. Also, the recall is relatively high (0.71) and is the highest among the k's chosen, the Precision is low (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
-We can also note that the WSS is 26.8%, which is an excellent percentage indicating a good compactness of clusters, and that objects in a cluster are similar to one another.
+We can also note that the WSS is 7287.657, indicating a good compactness of clusters, and that objects in a cluster are similar to one another noting that the higher the k, the lower the WSS.
 Lastly, the average silhouette width is 0.34 which is considered high reflecting high intra-cluster similarity.
 
 
@@ -1338,9 +1338,9 @@ cat("BCubed Precision is:", precision, "\n")
 cat("BCubed Recall is:", recall, "\n")
 ```
 
-we can conclude from the graph and the results where k=3 is that the performance is good but worse than k=2, because there is overlapping between clusters. In addition, the recall is relatively high (0.68), However, the Precision is low (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
-We can also note that the WSS is 32%, which is a good percentage indicating an intermidiate compactness of clusters, and that objects in a cluster are to some extent similar to one another.
-Lastly, the average silhouette width is 0.31 which is good reflecting a good intra-cluster similarity.
+we can conclude from the graph and the results where k=3 is that the performance is good but worse than k=2, because there is overlapping between clusters. In addition, the recall is relatively low (0.45), However, the Precision is low (0.31) which could be duo to presence of outliers or sensitivity to Initial Centroid.
+We can also note that the WSS is 6451.51, indicating an intermidiate compactness of clusters, and that objects in a cluster are to some extent similar to one another.
+Lastly, the average silhouette width is 0.19 which reflects high inter-cluster similarity.
 
 #### k=4
 
@@ -1416,8 +1416,8 @@ cat("BCubed Recall is:", recall, "\n")
 ```
 
 we can conclude from the graph and the results where k=4 is that the performance is worse than k=2 and k=3, because there is a noticeable overlapping between clusters. Also, the clusers' space is pretty wide which results in a large distance between objects in the same cluster.
-In addition, the recall is relatively low (0.40) which might be a result of the overlapping and large distances between data objects. Furthermore, the Precision is low (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
-We can also note that the WSS is 40.7%, which is an acceptable percentage indicating a lower compactness of clusters.
-Lastly, the average silhouette width is 0.2 which is low reflecting high inter-cluster similarity.
+In addition, the recall is relatively low (0.43) which might be a result of the overlapping and large distances between data objects. Furthermore, the Precision is low (0.29) which could be duo to presence of outliers or sensitivity to Initial Centroid.
+We can also note that the WSS is 5911.05 indicating a lower compactness of clusters.
+Lastly, the average silhouette width is 0.22 which is low reflecting high inter-cluster similarity.
 
 
