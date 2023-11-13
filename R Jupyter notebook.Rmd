@@ -823,7 +823,7 @@ lastly, we will scale all numeric attributes in the dataset so they will be stan
 
 # view data
 
-dataset3 <- dataset
+dataset3 <- dataset2
 View(dataset3)
 
 # Reserve the salary_in_usd (the class label) column in an attribute before removing it from the dataset for clustering
@@ -913,24 +913,24 @@ wss <- kmeans.result$tot.withinss
 print(wss)
 
 #BCubed
-cluster_assignments <- c(kmeans.result$cluster)
+kmeans_cluster <- c(kmeans.result$cluster)
 
-ground_truth_labels <- c(classLabel)
+ground_truth <- c(classLabel)
 
-data <- data.frame(cluster = cluster_assignments, label = ground_truth_labels)
+data <- data.frame(cluster = kmeans_cluster, label = ground_truth)
 
 # Function to calculate BCubed precision and recall
-calculate_bcubed_metrics <- function(data) {
+  bcubed <- function(data) {
   n <- nrow(data)
-  precision_sum <- 0
-  recall_sum <- 0
+  total_precesion <- 0
+  total_recall <- 0
 
   for (i in 1:n) {
     cluster <- data$cluster[i]
     label <- data$label[i]
     
 # Count the number of items from the same category within the same cluster
-same_category_same_cluster <- sum(data$label[data$cluster == cluster] == label)
+intersection <- sum(data$label[data$cluster == cluster] == label)
     
 # Count the total number of items in the same cluster
 total_same_cluster <- sum(data$cluster == cluster)
@@ -939,19 +939,19 @@ total_same_cluster <- sum(data$cluster == cluster)
 total_same_category <- sum(data$label == label)
     
 # Calculate precision and recall for the current item and add them to the sums
-precision_sum <- precision_sum + same_category_same_cluster /total_same_cluster
-recall_sum <- recall_sum + same_category_same_cluster / total_same_category
+total_precesion <- total_precesion + intersection /total_same_cluster
+total_recall <- total_recall + intersection / total_same_category
   }
 
   # Calculate average precision and recall
-  precision <- precision_sum / n
-  recall <- recall_sum / n
+  precision <- total_precesion / n
+  recall <- total_recall / n
 
   return(list(precision = precision, recall = recall))
 }
 
 # Calculate BCubed precision and recall
-metrics <- calculate_bcubed_metrics(data)
+metrics <- bcubed(data)
 
 # Extract precision and recall from the metrics
 precision <- metrics$precision
@@ -991,24 +991,24 @@ wss <- kmeans.result$tot.withinss
 print(wss)
 
 #BCubed
-cluster_assignments <- c(kmeans.result$cluster)
+kmeans_cluster <- c(kmeans.result$cluster)
 
-ground_truth_labels <- c(classLabel)
+ground_truth <- c(classLabel)
 
-data <- data.frame(cluster = cluster_assignments, label = ground_truth_labels)
+data <- data.frame(cluster = kmeans_cluster, label = ground_truth)
 
 # Function to calculate BCubed precision and recall
-calculate_bcubed_metrics <- function(data) {
+  bcubed <- function(data) {
   n <- nrow(data)
-  precision_sum <- 0
-  recall_sum <- 0
+  total_precesion <- 0
+  total_recall <- 0
 
   for (i in 1:n) {
     cluster <- data$cluster[i]
     label <- data$label[i]
     
 # Count the number of items from the same category within the same cluster
-same_category_same_cluster <- sum(data$label[data$cluster == cluster] == label)
+intersection <- sum(data$label[data$cluster == cluster] == label)
     
 # Count the total number of items in the same cluster
 total_same_cluster <- sum(data$cluster == cluster)
@@ -1017,19 +1017,19 @@ total_same_cluster <- sum(data$cluster == cluster)
 total_same_category <- sum(data$label == label)
     
 # Calculate precision and recall for the current item and add them to the sums
-precision_sum <- precision_sum + same_category_same_cluster /total_same_cluster
-recall_sum <- recall_sum + same_category_same_cluster / total_same_category
+total_precesion <- total_precesion + intersection /total_same_cluster
+total_recall <- total_recall + intersection / total_same_category
   }
 
   # Calculate average precision and recall
-  precision <- precision_sum / n
-  recall <- recall_sum / n
+  precision <- total_precesion / n
+  recall <- total_recall / n
 
   return(list(precision = precision, recall = recall))
 }
 
 # Calculate BCubed precision and recall
-metrics <- calculate_bcubed_metrics(data)
+metrics <- bcubed(data)
 
 # Extract precision and recall from the metrics
 precision <- metrics$precision
@@ -1066,24 +1066,24 @@ wss <- kmeans.result$tot.withinss
 print(wss)
 
 #BCubed
-cluster_assignments <- c(kmeans.result$cluster)
+kmeans_cluster <- c(kmeans.result$cluster)
 
-ground_truth_labels <- c(classLabel)
+ground_truth <- c(classLabel)
 
-data <- data.frame(cluster = cluster_assignments, label = ground_truth_labels)
+data <- data.frame(cluster = kmeans_cluster, label = ground_truth)
 
 # Function to calculate BCubed precision and recall
-calculate_bcubed_metrics <- function(data) {
+  bcubed <- function(data) {
   n <- nrow(data)
-  precision_sum <- 0
-  recall_sum <- 0
+  total_precesion <- 0
+  total_recall <- 0
 
   for (i in 1:n) {
     cluster <- data$cluster[i]
     label <- data$label[i]
     
 # Count the number of items from the same category within the same cluster
-same_category_same_cluster <- sum(data$label[data$cluster == cluster] == label)
+intersection <- sum(data$label[data$cluster == cluster] == label)
     
 # Count the total number of items in the same cluster
 total_same_cluster <- sum(data$cluster == cluster)
@@ -1092,19 +1092,19 @@ total_same_cluster <- sum(data$cluster == cluster)
 total_same_category <- sum(data$label == label)
     
 # Calculate precision and recall for the current item and add them to the sums
-precision_sum <- precision_sum + same_category_same_cluster /total_same_cluster
-recall_sum <- recall_sum + same_category_same_cluster / total_same_category
+total_precesion <- total_precesion + intersection /total_same_cluster
+total_recall <- total_recall + intersection / total_same_category
   }
 
   # Calculate average precision and recall
-  precision <- precision_sum / n
-  recall <- recall_sum / n
+  precision <- total_precesion / n
+  recall <- total_recall / n
 
   return(list(precision = precision, recall = recall))
 }
 
 # Calculate BCubed precision and recall
-metrics <- calculate_bcubed_metrics(data)
+metrics <- bcubed(data)
 
 # Extract precision and recall from the metrics
 precision <- metrics$precision
