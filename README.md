@@ -137,12 +137,15 @@ We concluded that 10-fold cross-validation using the gain ratio criterion yielde
 
 ### Clustering
 
-Data clustering is a process to partition data into groups or clusters,it is an unsupervised learning process, which is excuted without knowing the class label of the training data. And for this data mining task We used k-means clustering.
+Data clustering is a process to partition data into groups or clusters, it is an unsupervised learning process, which is excuted without knowing the class label of the training data. And for this data mining task We used k-means clustering.
 
-First we prepreocessed our data and transform the rest of attributes into numeric types before clustering also we remove the class label from the dataset as clustering is an unsupervised learning process.
+First we prepreocessed our data and transformed the rest of attributes into numeric types before clustering, enabling meaningful distance calculations using kmeans and other formulas, and allowing for maximum flexibility in data processing and interpretation. 
+Also we removed the class label from the dataset as clustering is an unsupervised learning process.
 
-after that we choose 3 different numbers to perform the k-means clustering using silhouette method to find the optimal number of clusters k and also we used elbow method to determines the number of clusters according to the turning point in a curve. we choose 2 , 3 and 4 as numbers of clusters.
 
-then we perform k-means clustering and visualize its result using three different k’s that have been chosen beforehand, and we compute WSS and Bcubed preceision and recall and average silhouette for each cluster as methods of evaluating clustering results.
+After that we chose 3 different numbers to perform the k-means clustering using silhouette method to find the optimal number of clusters k and also we used elbow method to determines the number of clusters according to the turning point in a curve, and Lastly chose 2 which strikes a balance between having too few clusters (k=2), and having several clusters (k=4).
+So we chose 2 , 3 and 4 as numbers of clusters.
 
-we can conclude from the graph and the results where k=2 is that the performance is best than k=3 and k=4 because k=2 is the optimal k, since there is no overlapping between the two clusters, and the data in a cluster are close “similar” to each other and dissimilar to data in the other cluster.
+Then we performed k-means clustering and visualize its result using three different k’s that have been chosen beforehand, and we compute WSS and Bcubed preceision and recall and average silhouette for each cluster as methods of evaluating clustering results. 
+
+We can conclude from the graph and the results where k=2 is that the performance is the best, better than k=3 and k=4 because k=2 is the optimal k, since there is no overlapping between the two clusters, and the data in a cluster are close “similar” to each other and dissimilar to data in the other cluster.
