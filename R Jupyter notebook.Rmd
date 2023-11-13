@@ -886,7 +886,7 @@ The decision criterion is:
 ```{r}
 rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=macro(infoGain3cm)  ) 
 ```
-Based on the provided sensitivity, specificity, precision, and accuracy values for different numbers of folds in cross-validation, it appears that there isn't a clear and consistent trend indicating the superiority of one fold over another when considering the evaluation metric values alone.
+Based on the provided sensitivity, specificity, precision, and accuracy values there isn't a clear indication of the superiority of one fold over another for Information Gain model .we may need to consider additional factors or conduct further analysis to make a well-informed decision.
 
 
 ## Clustering
