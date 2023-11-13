@@ -474,11 +474,19 @@ dataset<-dataset[,-which(names(dataset)=="employment_type")]
 
 # phase 3
 
+During this phase, our focus will be on clustering and classification techniques to analyze the data. The primary objectives are to identify distinct groups within the dataset through clustering, classify data objects into meaningful categories, and apply different evaluation methods to assess the accuracy and precision of both classification and clustering results. We aim to gain deeper insights into the data and discover patterns.
+
+## Retreive our preprocessed dataset
+
 ```{r}
+
+# Read the CSV file from github
 dataset2= read.csv(url("https://raw.githubusercontent.com/SarahAlhindi/DM_project/main/Data%20Set/preprocessedDataset.csv"), header=TRUE)
 
-
+# Identify the character variables in the dataset2
 char_vars <- sapply(dataset2, is.character)
+
+# Convert the identified character variables in dataset2 to factors
 dataset2[char_vars] <- lapply(dataset2[char_vars], as.factor)
 
 ```
