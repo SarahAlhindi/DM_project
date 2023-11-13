@@ -666,6 +666,14 @@ giniIndex3cm = caret::confusionMatrix(giniIndex3$pred$obs,giniIndex3$pred$pred)
 giniIndex3cm
 
 ```
+### Analysis of the gini index classification
+All three trees seem to be alike in their 
+arrangement and form.
+
+the tree has been divided based on the experiance level=3 which it is SE(Senior level)
+then it divided to work year and experiance level=2 which it is MI(Mid level)
+The decision tree iteratively chooses the best features to divide the dataset at each node
+until it reaches the leaves, where it decides what category or label to assign.
 
 ## Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gini Index
 
