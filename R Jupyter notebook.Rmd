@@ -580,9 +580,10 @@ macro = function(matrix){
 
 Gini index measures the impurity of the dataset. The partitioning that yields the most substantial reduction in impurity is selected as the splitting attribute. To apply the Gini index, we will employ the "rpart" method, which utilizes the Gini index as the criteria for splitting.
 
+
 #### 10 Folds
 
-The tree of the gini index tree using 10 folds
+The tree of the gini index using 10 folds
 
 ```{r}
 
@@ -636,7 +637,7 @@ the metrics shown for each class indicate the value of that metric when treating
 
 
 #### 5 Folds
-The tree of the gini index tree using 5 folds
+The tree of the gini index using 5 folds
 
 ```{r}
 set.seed(10)
@@ -662,6 +663,7 @@ this tree has the same structure as the previous tree that used 10 folds. so in 
 
 
 
+
 ##### Confusion matrix of 5 folds using Gini Index
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
@@ -683,7 +685,7 @@ the results are very close to the 10 folds tree, so here as well the classifier 
 
 #### 3 Folds
 
-The tree of the gini index tree using 3 folds
+The tree of the gini index using 3 folds
 
 ```{r}
 set.seed(10)
@@ -757,6 +759,11 @@ rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=
 The higher values for sensitivity, specificity, precision, and accuracy in the 10-fold case indicate better overall performance according to these metrics.
 so,Gini Index model performs better with a 10-fold cross-validation compared to 5 and 3 folds.
 
+
+
+
+
+
 ### Gain ratio
 
 The gain ratio, a normalized measure of information gain, is calculated by dividing information gain by the split information. The attribute that yields the highest gain ratio is chosen as the splitting attribute. The C4.5 algorithm employs the gain ratio.
@@ -765,7 +772,7 @@ The J48 is the Java-based open-source implementation of the C4.5 algorithm, and 
 
 #### 10 Folds
 
-The tree of the gain ratio tree using 10 folds
+The tree of the gain ratio using 10 folds
 
 ```{r , fig.height=70, fig.width=90}
 set.seed(10)
@@ -775,6 +782,8 @@ plot(gainRatio10$finalModel)
 ```
 
 the first splitting attribute that was choosen is the "Expeirence level" attribute meaning that it probably has a high information gain and low splitInfo(Entropy of distribution of tuples into partition)
+
+
 
 
 ##### Confusion matrix of 10 folds using Gain ratio
@@ -795,7 +804,7 @@ here the classifier shows better performance when treating "very high" and "very
 
 
 #### 5 Folds
-The tree of the gain ratio tree using 5 folds
+The tree of the gain ratio using 5 folds
 
 
 ```{r , fig.height=70, fig.width=90}
@@ -806,6 +815,9 @@ plot(gainRatio5$finalModel)
 ```
 
 the tree is similar to the tree that was resulted from 10 folds. it has choose "Experience level" as the first splitting attribute and and seem to show similar behavior.
+
+
+
 
 
 ##### Confusion matrix of 5 folds using Gain ratio
@@ -822,8 +834,13 @@ gainRatio5cm
 unlike the 10 folds, here the classifier has the best overall performance when considering the "very high" as the positive class.
 
 
+
+
+
+
 #### 3 Folds
 
+The tree of the gain ratio using 3 folds
 ```{r, fig.height=70, fig.width=90}
 set.seed(10)
 ctrl <- trainControl(method = "cv", number = 3, returnResamp="all", savePredictions="final")
@@ -831,7 +848,16 @@ gainRatio3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "J48",t
 plot(gainRatio3$finalModel)
 ```
 
+the tree shows similar behavior as the previous 2 trees that resulted from using 10 and 5 folds.
+
+
+
+
+
+
 ##### Confusion matrix of 3 folds using Gain ratio
+
+The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
 ```{r}
 gainRatio3cm=caret::confusionMatrix(gainRatio3$pred$obs, gainRatio3$pred$pred)
@@ -839,6 +865,12 @@ gainRatio3cm=caret::confusionMatrix(gainRatio3$pred$obs, gainRatio3$pred$pred)
 gainRatio3cm
 
 ```
+
+similar to teh 5 folds, the "very high" class has the best metrics.
+
+
+
+
 
 ##### Analysis of the gain ratio classification
 
@@ -859,6 +891,7 @@ The observed structure of the three decision trees seems to be the same and it c
 The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
 
 
+
 ##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gain ratio
 
 ```{r}
@@ -871,11 +904,18 @@ A detailed examination of the results from the 10-fold cross-validation reveals 
 
 However, possessing high specificity alone does not guarantee the overall effectiveness of the model, as a well-rounded model also requires balanced performance across other metrics. In this case, its ability to capture and classify instances that do belong to the positive class (as measured by sensitivity) is not as robust. For a model to be considered truly effective, it would need to demonstrate strong performance in all metrics specificity and sensitivity, ensuring it can accurately distinguish both negative and positive instances as well as accuracy precision.
 
+
+
+
+
+
 ### Information gain
 
 Information Gain is a metric used to decide which attribute to choose for splitting the data at each node in the decision tree. For a given dataset, the Information Gain of an attribute is calculated by comparing the entropy before and after the dataset is split based on that attribute. The attribute with the highest Information Gain is chosen as the splitting attribute.
 
 #### 10 Folds
+
+The tree of the information gain using 10 folds
 
 ```{r, fig.height=70, fig.width=90}
 set.seed(10)
@@ -892,7 +932,14 @@ c5model <- C5.0(salary_in_usd ~ .,
 plot(c5model)
 ```
 
+from the tree, the "experince level" attribute was the first selected splitting attribute meaning that it has the highest information gain among all attributes
+
+
+
+
 ##### Confusion matrix of 10 folds using Information gain
+
+The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
 ```{r}
 infoGain10cm= caret::confusionMatrix(infoGain10$pred$obs, infoGain10$pred$pred)
@@ -901,7 +948,15 @@ infoGain10cm
 
 ```
 
+similar to the trees from the gini index and gain ratio, the classifier seem to have better performance when treating the "very high" class as the positive class
+
+
+
+
+
 #### 5 Folds
+
+The tree of the information gain using 5 folds
 
 ```{r, fig.height=70, fig.width=90}
 set.seed(10)
@@ -918,7 +973,16 @@ c5model <- C5.0(salary_in_usd ~ .,
 plot(c5model)
 ```
 
+the tree has similar behavior as the 10 folds information gain tree
+
+
+
+
+
+
 ##### Confusion matrix of 5 folds using Information gain
+
+The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
 ```{r}
 infoGain5cm = caret::confusionMatrix(infoGain5$pred$obs, infoGain5$pred$pred)
@@ -927,7 +991,16 @@ infoGain5cm
 
 ```
 
+the classifier shows very close performance to the 10 folds information gain model
+
+
+
+
+
+
 #### 3 Folds
+
+The tree of the information gain using 3 folds
 
 ```{r, fig.height=70, fig.width=90}
 set.seed(10)
@@ -944,7 +1017,14 @@ c5model <- C5.0(salary_in_usd ~ .,
 plot(c5model)
 ```
 
+the visisble parts of the tree seem to behave the same as the prevoius 2 fold sizes- 10 and 5.
+
+
+
+
 ##### Confusion matrix of 3 folds using Information gain
+
+The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
 ```{r}
 infoGain3cm = caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
@@ -952,6 +1032,13 @@ infoGain3cm = caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
 infoGain3cm
 
 ```
+
+since the tree is essentially similar to the previous two information gain trees the results that this tree shows is very close in performance to them as well.
+
+
+
+
+
 
 ##### Analysis of the information gain classification
 The observed structure of the three decision trees seems to be the same and it can be summarized as follows:
