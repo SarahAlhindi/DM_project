@@ -670,10 +670,19 @@ giniIndex3cm
 All three trees seem to be alike in their 
 arrangement and form.
 
-the tree has been divided based on the experiance level=3 which it is SE(Senior level)
-then it divided to work year and experiance level=2 which it is MI(Mid level)
-The decision tree iteratively chooses the best features to divide the dataset at each node
-until it reaches the leaves, where it decides what category or label to assign.
+1. Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." 
+This divides the tree into two main branches or subtrees:
+    - Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
+    - Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
+
+2. Right Subtree - work year: The next attribute used to further classify the right subtree is "work year." 
+The decision criterion is:
+    - If work year is <-1.8: Then it is high.
+    - If work year is NOT <-1.8: The next attribute examined is "experience level."
+
+3. Left Subtree - Experience Level: On the left side of the tree, the attribute "experience level." is used to further bifurcate the instances:
+    - If experience level is >=2: The next attribute examined is "experience level."
+    - If experience level is NOT >=2: The next attribute also will examined is "experience level."
 
 ## Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gini Index
 
@@ -855,6 +864,20 @@ infoGain3cm = caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
 infoGain3cm
 
 ```
+### Analysis of the information gain classification
+1. Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." 
+This divides the tree into two main branches or subtrees:
+    - Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
+    - Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
+
+2. Right Subtree - Experience Level: The next attribute used to further classify the right subtree is "experience level." 
+The decision criterion is:
+    - If experience level is <=3: The next attribute examined is "experience level."
+    - If experience level is >3: The next attribute examined is "company location."
+
+3. Left Subtree - Experience Level: On the left side of the tree, the attribute "experience level." is used to further bifurcate the instances:
+    - If experience level is <=1: The next attribute examined is "employee residence."
+    - If experience level is >1: The next attribute also will examined is "employee residence."
 
 ## Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Information gain
 
