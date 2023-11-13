@@ -176,10 +176,9 @@ sum(is.na(dataset))
 ```
 
 ### Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric column
-in work_year Most data falls within the years 2021, with some in 2020 and 2022.
-in salary Salaries vary widely, with a high average and an exceptionally high maximum.
-in salary_in_usd Represents salaries in USD, ranging from a minimum to a maximum.
-in remote_ratio Indicates the percentage of remote work, with a median and 3rd quartile at 100%, but a mean slightly below, suggesting some variability.
+
+in work_year Most data falls within the years 2021, with some in 2020 and 2022. in salary Salaries vary widely, with a high average and an exceptionally high maximum. in salary_in_usd Represents salaries in USD, ranging from a minimum to a maximum. in remote_ratio Indicates the percentage of remote work, with a median and 3rd quartile at 100%, but a mean slightly below, suggesting some variability.
+
 ```{r}
 summary(dataset$work_year)
 summary(dataset$salary)
@@ -188,7 +187,9 @@ summary(dataset$remote_ratio)
 ```
 
 ### Show the variane of each numeric column
+
 variance is to understand the spread or dispersion of the values in each column. A higher variance indicates that the values are more spread out from the mean and in our dataset the highest attribute is salary, while a lower variance indicates that the values are closer to the mean which in our datas it is work year attribute.
+
 ```{r}
 var(dataset$work_year)
 var(dataset$salary)
@@ -505,7 +506,6 @@ The goal of all preceding steps is to properly prepare the dataset for the class
 
 since our dataset is small, we decided to use K-fold Cross-validation. for each attribute selection method we will try different K size (10,5, and 3).
 
-
 in all this section we will be using train and trainControl functions of caret package to produce decision trees. for Gini index the method will be "rpart" and for Gain ratio it's "j48" as for information gain the method is "C5.0".
 
 the following function will be used to compute average sensitivity and Specificity:
@@ -594,6 +594,7 @@ giniIndex10cm
 ```
 
 ##### 5 Folds
+
 ```{r}
 set.seed(10)
 ctrl <- trainControl(method = "cv", number = 5, returnResamp="all", savePredictions="final")
@@ -811,21 +812,15 @@ infoGain3cm
 
 ```{r}
 rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=macro(infoGain3cm)  ) 
-```  
-
+```
 
 ## Clustering
 
-Data clustering is a process to partition data into groups or clusters,it is an unsupervised learning process, which is excuted without knowing the class label of the training data.
-The data in the same group "cluster" are similar to one another and different from data in other clusters.
-we will utilize k-means clustering.
-
+Data clustering is a process to partition data into groups or clusters,it is an unsupervised learning process, which is excuted without knowing the class label of the training data. The data in the same group "cluster" are similar to one another and different from data in other clusters. we will utilize k-means clustering.
 
 ### 1- prepreocessing
 
-we will encode the rest of factor columns to transforme them into numeric types before clustering, enabling meaningful distance calculations using kmeans and other formulas.
-we will also remove the class label from the dataset as clustering is an unsupervised learning process, and we will preserve this class label in an attribute for later use.
-lastly, we will scale all numeric attributes in the dataset so they will be standarized.
+we will encode the rest of factor columns to transforme them into numeric types before clustering, enabling meaningful distance calculations using kmeans and other formulas. we will also remove the class label from the dataset as clustering is an unsupervised learning process, and we will preserve this class label in an attribute for later use. lastly, we will scale all numeric attributes in the dataset so they will be standarized.
 
 ```{r}
 
@@ -890,12 +885,42 @@ now all columns are numeric and scaled
 
 ### 2- K-means
 
-After preprocessing the data, now we are ready to perform the clustering process, we will use the k-means clustering, it is a clustering method that aims to  minimize the sum of squared distances between each data point and the centroid of its assigned cluster by iteratively updating cluster assignments and centroids.
+After preprocessing the data, now we are ready to perform the clustering process, we will use the k-means clustering, it is a clustering method that aims to minimize the sum of squared distances between each data point and the centroid of its assigned cluster by iteratively updating cluster assignments and centroids.
 
 we will perform the k-means clustering with three different number of clusters "k" , we will choose k to be 2,3 and 4 as they are the suggested No. clusters by elbow method and average Silhouette coefficient, which we will discuss later.
 
-#### k-means clustering and visualization with k=2
+### 3- Validation
 
+we can conclude from the graph and the results where k=4 is that the performance is worse than k=2 and k=3, because there is a noticeable overlapping between clusters. Also, the clusers' space is pretty wide which results in a large distance between objects in the same cluster.
+
+#### a- Silhouette method
+
+Now we will apply Silhouette method to find the average Silhouette coefficient and optimal number of clusters k, we will also plot a graph where x-axis represent the number of clusters and y-axis represent the average Silhouette coefficient
+
+```{r}
+
+fviz_nbclust(dataset3, kmeans, method = "silhouette")+
+  labs(subtitle = "Silhouette method")
+
+```
+
+as seen by the graph, the number of clusters k that maximizes the average Silhouette coefficient is 2, which has been used for k-means clustering and discussed above. Thus the optimal number of clusters is 2.
+
+#### b- Elbow method
+
+This method determines the number of clusters according to the turning point in a curve, the curve is plotted using the total within-cluster sum of square (WSS) as in y-axis , and No. clusters in x-axis
+
+```{r}
+
+fviz_nbclust(dataset3, kmeans, method = "wss") +
+  geom_vline(xintercept = 4, linetype = 2)+
+  labs(subtitle = "Elbow method")
+
+```
+
+As shown, the number of clusters k that represents the turning point in the curve is 4, which has been used for k-means clustering and discussed above.
+
+#### k-means clustering and visualization with k=2
 
 ```{r}
 
@@ -970,9 +995,7 @@ cat("BCubed Precision:", precision, "\n")
 cat("BCubed Recall:", recall, "\n")
 ```
 
-we can conclude from the graph and the results that this k=2 is possible to be the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster. 
-
-
+we can conclude from the graph and the results that this k=2 is possible to be the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster.
 
 #### k-means clustering and visualization with k=3
 
@@ -1123,37 +1146,5 @@ cat("BCubed Precision:", precision, "\n")
 cat("BCubed Recall:", recall, "\n")
 ```
 
-we can conclude from the graph and the results where k=4 is that the performance is worse than k=2 and k=3, because there is a noticeable overlapping between clusters. Also, the clusers' space is pretty wide which results in a large distance between objects in the same cluster. 
-
-
-
-### 3- Silhouette method
-
-Now we will apply Silhouette method to find the average Silhouette coefficient and optimal number of clusters k, we will also plot a graph where x-axis represent the number of clusters and y-axis represent the average Silhouette coefficient
-
-```{r}
-
-fviz_nbclust(dataset3, kmeans, method = "silhouette")+
-  labs(subtitle = "Silhouette method")
-
-```
-
-as seen by the graph, the number of clusters k that maximizes the average Silhouette coefficient is 2, which has been used for k-means clustering and discussed above. Thus the optimal number of clusters is 2.
-
-
-
-### 4- Elbow method
-
-This method determines the number of clusters according to the turning point in a curve, the curve is plotted using the total within-cluster sum of square (WSS) as in y-axis , and No. clusters in x-axis
-
-```{r}
-
-fviz_nbclust(dataset3, kmeans, method = "wss") +
-  geom_vline(xintercept = 4, linetype = 2)+
-  labs(subtitle = "Elbow method")
-
-```
-
-As shown, the number of clusters k that represents the turning point in the curve is 4, which has been used for k-means clustering and discussed above.
 
 
