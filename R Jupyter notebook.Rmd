@@ -63,7 +63,7 @@ We are living in the "information age" or rather the "data age", meaning that ev
 
 ### Data mining task
 
-Prediction of the cyber security employees' salary categories (Very Low, Low, , High, Very High) using classification methods.
+Prediction of the cyber security employees' salary categories (Very Low, Low, , High, Very High) using classification and description of data characteristics and behavior using clustering methods.
 
 ### Goal
 
@@ -177,7 +177,10 @@ sum(is.na(dataset))
 
 ### Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric column
 
-in work_year Most data falls within the years 2021, with some in 2020 and 2022. in salary Salaries vary widely, with a high average and an exceptionally high maximum. in salary_in_usd Represents salaries in USD, ranging from a minimum to a maximum. in remote_ratio Indicates the percentage of remote work, with a median and 3rd quartile at 100%, but a mean slightly below, suggesting some variability.
+in work_year Most data falls within the years 2021, with some in 2020 and 2022.
+In salary Salaries vary widely, with a high average and an exceptionally high maximum. 
+In salary_in_usd, salaries range from a minimum to a maximum.
+In remote_ratio Indicates the percentage of remote work, with a median and 3rd quartile at 100%, but a mean slightly below, suggesting some variability.
 
 ```{r}
 summary(dataset$work_year)
