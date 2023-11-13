@@ -689,8 +689,8 @@ The decision criterion is:
 ```{r}
 rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=macro(giniIndex3cm)  ) 
 ```
-Gini Index model performs better with a 10-fold cross-validation compared to 5 and 3 folds.
 The higher values for sensitivity, specificity, precision, and accuracy in the 10-fold case indicate better overall performance according to these metrics.
+so,Gini Index model performs better with a 10-fold cross-validation compared to 5 and 3 folds.
 
 ### Gain ratio
 
@@ -886,7 +886,7 @@ The decision criterion is:
 ```{r}
 rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=macro(infoGain3cm)  ) 
 ```
-
+Based on the provided sensitivity, specificity, precision, and accuracy values for different numbers of folds in cross-validation, it appears that there isn't a clear and consistent trend indicating the superiority of one fold over another when considering the evaluation metric values alone.
 
 
 ## Clustering
