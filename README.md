@@ -135,3 +135,14 @@ We tested the performance of each method using the following metrics:
 We concluded that 10-fold cross-validation using the gain ratio criterion yielded the best performance for our dataset.
 
 
+### Clustering
+
+Data clustering is a process to partition data into groups or clusters,it is an unsupervised learning process, which is excuted without knowing the class label of the training data. And for this data mining task We used k-means clustering.
+
+First we prepreocessed our data and transform the rest of attributes into numeric types before clustering also we remove the class label from the dataset as clustering is an unsupervised learning process.
+
+after that we choose 3 different numbers to perform the k-means clustering using silhouette method to find the optimal number of clusters k and also we used elbow method to determines the number of clusters according to the turning point in a curve. we choose 2 , 3 and 4 as numbers of clusters.
+
+then we perform k-means clustering and visualize its result using three different k’s that have been chosen beforehand, and we compute WSS and Bcubed preceision and recall and average silhouette for each cluster as methods of evaluating clustering results.
+
+we can conclude from the graph and the results where k=2 is that the performance is best than k=2 and k=3 because k=2 is the optimal k, since there is no overlapping between the two clusters, and the data in a cluster are close “similar” to each other and dissimilar to data in the other cluster.
