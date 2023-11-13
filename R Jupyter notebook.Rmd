@@ -689,6 +689,8 @@ The decision criterion is:
 ```{r}
 rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=macro(giniIndex3cm)  ) 
 ```
+Gini Index model performs better with a 10-fold cross-validation compared to 5 and 3 folds.
+The higher values for sensitivity, specificity, precision, and accuracy in the 10-fold case indicate better overall performance according to these metrics.
 
 ### Gain ratio
 
