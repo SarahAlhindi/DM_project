@@ -116,3 +116,22 @@ Now we can classify the employees’ salary into these intervals.
 
 The attributes that are numeric of the remaining attributes are work_year and remote_ratio, but these two have different scales, and to avoid giving one attribute greater weight, we must normalize them. We used Z-scaling to normalize them.
 
+
+### Classification
+
+We have developed and evaluated decision tree classifiers for the classification task using three distinct splitting criteria: 
+1. Gini index
+2. gain ratio
+3. information gain. 
+
+To ensure the reliability and robustness of our classifiers, we applied k-fold cross-validation for partitioning the data into training and test sets. This was done using three different fold sizes: 10, 5, and 3.  
+  
+We tested the performance of each method using the following metrics:
+1. Accuracy: Percentage of test set tuples that are correctly classified
+2. Precision(also know as exactness): What % of tuples labeled as positive are actually positive.
+3. Sensitivity (also known as Recall): The proportion of actual positive cases that were correctly identified.
+4. Specificity: The proportion of actual negative cases that were correctly identified.
+
+We concluded that 10-fold cross-validation using the gain ratio criterion yielded the best performance for our dataset.
+
+
