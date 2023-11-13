@@ -33,7 +33,7 @@ library(RColorBrewer)
 
 ### Problem statement
 
-Prediction of cyber security employees' salaries based on 11 attributes
+Prediction of cyber security employees' salaries based on 11 attributes & grouping employees based on shared characteristics.
 
 1.work_year
 
@@ -59,17 +59,18 @@ Prediction of cyber security employees' salaries based on 11 attributes
 
 ### Problem description
 
-We are living in the "information age" or rather the "data age", meaning that everything around us revolves around data. The data has become one of the most valuable assets that a person or an organisation can have, since it has a significant value, losing it will lead to significant damages. Thus, most of the attacks nowadays are directed toward the data. To guard against such damages, organisations have realised the importance of protecting their digital assets, leading them to hire cybersecurity specialists. This made cybersecurity gain popularity among people so there's a growing tendency to study cybersecurity. Consequently this resulted in the emergence of plentiful professionals with various experience levels and skills in this field. As a result, organisations may find it difficult to decide a salary for job candidates solely based on the CV. also, since the attacks improve rapidly, organisations need to hire more employees in the far future to defend against such attacks but it's not an easy matter to predict the future payroll which may hinders some of the organisation's plans. Another issue arises when the decision makers in the organisation aren't fully aware of the trends on salary and groups of employees and their differint needs. Their lack of awareness gives a chance for the competitor organisations to attract their employees to them by offering a better salary that match current trends.
+We are living in the "information age" or rather the "data age", meaning that everything around us revolves around data. The data has become one of the most valuable assets that a person or an organisation can have, since it has a significant value, losing it will lead to significant damages. Thus, most of the attacks nowadays are directed toward the data. To guard against such damages, organisations have realised the importance of protecting their digital assets, leading them to hire cybersecurity specialists. This made cybersecurity gain popularity among people so there's a growing tendency to study cybersecurity. Consequently this resulted in the emergence of plentiful professionals with various experience levels and skills in this field. As a result, organisations may find it difficult to decide a salary for job candidates solely based on the CV. also, since the attacks improve rapidly, organisations need to hire more employees in the far future to defend against such attacks but it's not an easy matter to predict the future payroll which may hinders some of the organisation's plans. Another issue arises when the decision makers in the organisation aren't fully aware of the different groups of employees and their differint needs. Their lack of awareness gives a chance for the competitor organisations to attract their employees to them by offering a better salary and privilages that match their needs.
 
 ### Data mining task
 
-Prediction of the cyber security employees' salary categories (Very Low, Low, , High, Very High) using classification and description of data characteristics and behavior and grouping data using clustering methods.
+Prediction of the cyber security employees' salary categories (Very Low, Low, , High, Very High) using classification, and description of data characteristics and behavior and grouping data using clustering methods.
 
 ### Goal
 
-Given the problems we discussed and In order to better understand this field, we decided to analyse a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analysing this dataset can provide insightful predictions regarding the salary range of a cybersecurity employee and description of the cybersecurity market behavior by grouping the data, which can help in
+Given the problems we discussed and In order to better understand this field, we decided to analyse a dataset of 1247 cybersecurity employees, containing information such as salary, job title, and experience level. Analysing this dataset can provide insightful predictions regarding the salary range of a cybersecurity employee and description of the cybersecurity market behavior by grouping the data, which can help in:
 
--   Describing cybersecurity market behavior
+-   Market segmentation
+-   Identify trends
 -   Specifying common charactrestics among cybersecurity employees
 -   Identify the main cybersecurity employee groups for better understanding their needs
 -   Making better decisions
@@ -179,11 +180,16 @@ sum(is.na(dataset))
 ```
 
 ### Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric column
+
 The summary statistics for the dataset variables provide insights into the distribution of features.
 we can conclude the following:
+
 In work_year: The data spans from the year 2020 to 2022 with Most data falling within the years 2021 and 2022, as indicated by both the median and mean being centered around 2021.
+
 In salary: Salaries vary widely with a minimum of $1,740 and a maximum of $500 million. The median is $120,000 which is a mid value, but the mean is notably higher at $560,852 which might be duo to extreme values or notable skewness.
+
 In salary_in_usd: The data has a median of $110,000, and a mean of $120,278, and the spread of salaries is observable in the difference between the median and mean.
+
 In remote_ratio: Indicates the percentage of remote work ranging from 0% to 100%, with a median and 3rd quartile at 100%, and a mean of 71.49%, indicating a notable presence of remote work in the dataset, suggesting some variability. 
 
 ```{r}
@@ -192,12 +198,19 @@ summary(dataset$salary)
 summary(dataset$salary_in_usd)
 summary(dataset$remote_ratio)
 ```
-By now, we concluded some of the main statistical measures for the numerical columns
+
 
 
 ### Show the variane of each numeric column
 
-variance is to understand the spread or dispersion of the values in each column. A higher variance indicates that the values are more spread out from the mean and in our dataset the highest attribute is salary, while a lower variance indicates that the values are closer to the mean which in our datas it is work year attribute.
+variance is to understand the spread or dispersion of the values in each column. A higher variance indicates that the values are more spread out from the mean and in our dataset the highest varied attribute is salary, while a lower variance indicates that the values are closer to the mean which in our datas it is work year attribute.
+
+Variance results reveal that:
+-work years are to some extent consistent 
+-salaries show notable variability and possible outliers
+-salaries in USD have a stable distribution 
+-remote work ratio have moderate variability
+
 
 ```{r}
 var(dataset$work_year)
@@ -512,9 +525,9 @@ balanced_dataset <- SMOTE(salary_in_usd ~ ., dataset2, perc.over = 300, perc.und
 
 ## Classification
 
-The goal of all preceding steps is to properly prepare the dataset for the classification phase, which constitutes one of our primary mining objectives. In this section, we will employ various attribute selection methods such as the Gini index, Gain ratio, and information gain to construct a decision tree model. We will thoroughly evaluate its performance, and if it proves effective, it can subsequently be utilized to classify new instances with unknown class labels.
+The goal of all preceding steps is to properly prepare the dataset for the classification and later clustering phase, which constitutes one of our primary mining objectives. In this section, we will employ various attribute selection methods such as the Gini index, Gain ratio, and information gain to construct a decision tree model. We will thoroughly evaluate its performance, and if it proves effective, it can subsequently be utilized to classify new instances with unknown class labels.
 
-since our dataset is small, we decided to use K-fold Cross-validation. for each attribute selection method we will try different K size (10,5, and 3).
+since our dataset is small, we decided to use K-fold Cross-validation as a dataset partioning method. for each attribute selection method we will try different K size (10,5, and 3)
 
 in all this section we will be using train and trainControl functions of caret package to produce decision trees. for Gini index the method will be "rpart" and for Gain ratio it's "j48" as for information gain the method is "C5.0".
 
@@ -658,7 +671,7 @@ prp(giniIndex3$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 ```
 
-#####Confusion matrix of 3 folds using Gini Index
+##### Confusion matrix of 3 folds using Gini Index
 
 ```{r}
 
@@ -667,6 +680,7 @@ giniIndex3cm = caret::confusionMatrix(giniIndex3$pred$obs,giniIndex3$pred$pred)
 giniIndex3cm
 
 ```
+
 ##### Analysis of the gini index classification
 All three trees seem to be alike in their 
 arrangement and form.
@@ -690,6 +704,7 @@ The decision criterion is:
 ```{r}
 rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=macro(giniIndex3cm)  ) 
 ```
+
 The higher values for sensitivity, specificity, precision, and accuracy in the 10-fold case indicate better overall performance according to these metrics.
 so,Gini Index model performs better with a 10-fold cross-validation compared to 5 and 3 folds.
 
@@ -867,6 +882,7 @@ infoGain3cm = caret::confusionMatrix(infoGain3$pred$obs, infoGain3$pred$pred)
 infoGain3cm
 
 ```
+
 ##### Analysis of the information gain classification
 The observed structure of the three decision trees seems to be the same and it can be summarized as follows:
 
@@ -904,11 +920,11 @@ Despite the superiority of the 10-fold, the performance metrics of all three fol
 
 ## Clustering
 
-Data clustering is a process to partition data into groups or clusters,it is an unsupervised learning process, which is excuted without knowing the class label of the training data. The data in the same group "cluster" are similar to one another and different from data in other clusters. we will utilize k-means clustering.
+Data clustering is a process to partition data into groups or clusters,it is an unsupervised learning process, which is excuted without knowing the class label of the training data. The data in the same group "cluster" are similar to one another and different from data in other clusters. And for this data mining task We will utilize k-means clustering.
 
 ### 1- prepreocessing
 
-we will encode the rest of factor columns to transform them into numeric types before clustering, enabling meaningful distance calculations using kmeans and other formulas. we will also remove the class label from the dataset as clustering is an unsupervised learning process, and we will preserve this class label in an attribute for later use. lastly, we will scale all numeric attributes in the dataset so they will be standarized.
+we will encode the rest of factor columns to transform them into numeric types before clustering, enabling meaningful distance calculations using kmeans and other formulas, and allowing for maximum flexibility in data processing and interpretation. we will also remove the class label from the dataset as clustering is an unsupervised learning process, and we will preserve this class label in an attribute for later use. lastly, we will scale all numeric attributes in the dataset so they will be standarized.
 
 ```{r}
 
@@ -944,7 +960,7 @@ dataset3$company_location = factor(dataset3$company_location, levels=c("North Am
 
 
  
-#Data types should be transformed into numeric types before clustering
+#Data types to be transformed into numeric types before clustering
 #Transforming all non-numeric attributes to numeric type
 
 
@@ -969,7 +985,6 @@ dataset3 <- scale(dataset3)
 
 ```
 
-now all columns are numeric and scaled, so we are ready to perform k-means clustering
 
 ### 2- K-means
 
@@ -982,7 +997,7 @@ We will choose 3 different numbers to perform the k-means clustering on, one of 
 
 #### a- Silhouette method
 
-Now we will apply Silhouette method to find the average Silhouette coefficient and optimal number of clusters k, we will also plot a graph where x-axis represent the number of clusters and y-axis represent the average Silhouette coefficient
+Now we will apply Silhouette method to find the optimal number of clusters k, we will also plot a graph where x-axis represent the number of clusters and y-axis represent the average Silhouette coefficient
 
 ```{r}
 
@@ -1045,52 +1060,52 @@ ground_truth <- c(classLabel)
 
 data <- data.frame(cluster = kmeans_cluster, label = ground_truth)
 
-# Function to calculate BCubed precision and recall
+
   bcubed <- function(data) {
   n <- nrow(data)
   total_precesion <- 0
   total_recall <- 0
 
-  for (i in 1:n) {
-    cluster <- data$cluster[i]
-    label <- data$label[i]
+for (i in 1:n) {
+  cluster <- data$cluster[i]
+  label <- data$label[i]
     
-# Count the number of items from the same category within the same cluster
+# Number of objects in the same category and cluster
 intersection <- sum(data$label[data$cluster == cluster] == label)
     
-# Count the total number of items in the same cluster
+# Number of objects that are in the same cluster
 total_same_cluster <- sum(data$cluster == cluster)
     
-# Count the total number of items with the same category
+# Number of objects that have the same category
 total_same_category <- sum(data$label == label)
     
-# Calculate precision and recall for the current item and add them to the sums
+
 total_precesion <- total_precesion + intersection /total_same_cluster
 total_recall <- total_recall + intersection / total_same_category
   }
 
-  # Calculate average precision and recall
+  # compute avg precision and recall
   precision <- total_precesion / n
   recall <- total_recall / n
 
-  return(list(precision = precision, recall = recall))
-}
+  return(list(precision = precision, recall = recall)) }
 
-# Calculate BCubed precision and recall
+
+# compute BCubed precision and recall
 metrics <- bcubed(data)
 
-# Extract precision and recall from the metrics
+
 precision <- metrics$precision
 recall <- metrics$recall
 
-# Print the results
-cat("BCubed Precision:", precision, "\n")
-cat("BCubed Recall:", recall, "\n")
+# Print results
+cat("BCubed Precision is:", precision, "\n")
+cat("BCubed Recall is:", recall, "\n")
 ```
 
-we can conclude from the graph and the results that this k=2 is possible to be the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster. Also, the recall is relatively high (0.71) and is the highest among the k's chosen, the Precision is intermediate (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
+we can conclude from the graph and the results that the k=2 is the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster. Also, the recall is relatively high (0.71) and is the highest among the k's chosen, the Precision is low (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
 We can also note that the WSS is 26.8%, which is an excellent percentage indicating a good compactness of clusters, and that objects in a cluster are similar to one another.
-Lastly, the average silhouette width is 0.34 which is cnsidered high.
+Lastly, the average silhouette width is 0.34 which is considered high reflecting high intra-cluster similarity.
 
 
 #### k=3
@@ -1117,14 +1132,13 @@ fviz_silhouette(avg_sil)
 wss <- kmeans.result$tot.withinss
 print(wss)
 
-#BCubed
+#BCubed 
 kmeans_cluster <- c(kmeans.result$cluster)
 
 ground_truth <- c(classLabel)
 
 data <- data.frame(cluster = kmeans_cluster, label = ground_truth)
 
-# Function to calculate BCubed precision and recall
   bcubed <- function(data) {
   n <- nrow(data)
   total_precesion <- 0
@@ -1134,42 +1148,42 @@ data <- data.frame(cluster = kmeans_cluster, label = ground_truth)
     cluster <- data$cluster[i]
     label <- data$label[i]
     
-# Count the number of items from the same category within the same cluster
+# Number of objects in the same category and cluster
 intersection <- sum(data$label[data$cluster == cluster] == label)
     
-# Count the total number of items in the same cluster
+# Number of objects that are in the same cluster
 total_same_cluster <- sum(data$cluster == cluster)
     
-# Count the total number of items with the same category
+# Number of objects that have the same category
 total_same_category <- sum(data$label == label)
     
-# Calculate precision and recall for the current item and add them to the sums
+
 total_precesion <- total_precesion + intersection /total_same_cluster
 total_recall <- total_recall + intersection / total_same_category
   }
 
-  # Calculate average precision and recall
+  # compute avg precision and recall
   precision <- total_precesion / n
   recall <- total_recall / n
 
   return(list(precision = precision, recall = recall))
 }
 
-# Calculate BCubed precision and recall
+# compute BCubed precision and recall
 metrics <- bcubed(data)
 
-# Extract precision and recall from the metrics
+
 precision <- metrics$precision
 recall <- metrics$recall
 
-# Print the results
-cat("BCubed Precision:", precision, "\n")
-cat("BCubed Recall:", recall, "\n")
+# Print results
+cat("BCubed Precision is:", precision, "\n")
+cat("BCubed Recall is:", recall, "\n")
 ```
 
-we can conclude from the graph and the results where k=3 is that the performance is good but worse than k=2, because there is overlapping between clusters. Also, the recall is relatively high (0.68), However, the Precision is intermediate (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
+we can conclude from the graph and the results where k=3 is that the performance is good but worse than k=2, because there is overlapping between clusters. In addition, the recall is relatively high (0.68), However, the Precision is low (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
 We can also note that the WSS is 32%, which is a good percentage indicating an intermidiate compactness of clusters, and that objects in a cluster are to some extent similar to one another.
-Lastly, the average silhouette width is 0.31 which is good.
+Lastly, the average silhouette width is 0.31 which is good reflecting a good intra-cluster similarity.
 
 #### k=4
 
@@ -1201,7 +1215,7 @@ ground_truth <- c(classLabel)
 
 data <- data.frame(cluster = kmeans_cluster, label = ground_truth)
 
-# Function to calculate BCubed precision and recall
+
   bcubed <- function(data) {
   n <- nrow(data)
   total_precesion <- 0
@@ -1211,13 +1225,13 @@ data <- data.frame(cluster = kmeans_cluster, label = ground_truth)
     cluster <- data$cluster[i]
     label <- data$label[i]
     
-# Count the number of items from the same category within the same cluster
+# Number of objects in the same category and cluster
 intersection <- sum(data$label[data$cluster == cluster] == label)
     
-# Count the total number of items in the same cluster
+# Number of objects in the same  cluster
 total_same_cluster <- sum(data$cluster == cluster)
     
-# Count the total number of items with the same category
+# Number of objects that have the same category
 total_same_category <- sum(data$label == label)
     
 # Calculate precision and recall for the current item and add them to the sums
@@ -1225,28 +1239,28 @@ total_precesion <- total_precesion + intersection /total_same_cluster
 total_recall <- total_recall + intersection / total_same_category
   }
 
-  # Calculate average precision and recall
+  # Compute avg precision and recall
   precision <- total_precesion / n
   recall <- total_recall / n
 
   return(list(precision = precision, recall = recall))
 }
 
-# Calculate BCubed precision and recall
+# compute BCubed precision and recall
 metrics <- bcubed(data)
 
-# Extract precision and recall from the metrics
+
 precision <- metrics$precision
 recall <- metrics$recall
 
-# Print the results
-cat("BCubed Precision:", precision, "\n")
-cat("BCubed Recall:", recall, "\n")
+# Print results
+cat("BCubed Precision is:", precision, "\n")
+cat("BCubed Recall is:", recall, "\n")
 ```
 
 we can conclude from the graph and the results where k=4 is that the performance is worse than k=2 and k=3, because there is a noticeable overlapping between clusters. Also, the clusers' space is pretty wide which results in a large distance between objects in the same cluster.
-Also, the recall is relatively low (0.40) which might be a result of the overlapping and large distances between data objects. In addition, the Precision is intermediate (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
+In addition, the recall is relatively low (0.40) which might be a result of the overlapping and large distances between data objects. Furthermore, the Precision is low (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
 We can also note that the WSS is 40.7%, which is an acceptable percentage indicating a lower compactness of clusters.
-Lastly, the average silhouette width is 0.2 which is low.
+Lastly, the average silhouette width is 0.2 which is low reflecting high inter-cluster similarity.
 
 
