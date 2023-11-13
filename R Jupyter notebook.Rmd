@@ -506,7 +506,7 @@ dataset2[char_vars] <- lapply(dataset2[char_vars], as.factor)
 To resolve the problem of class imbalance in the dataset, we will use SMOTE() method that oversample the minority class by creating synthetic samples using the existing minority class samples
 
 ```{r}
-data_balanced <- SMOTE(salary_in_usd ~ ., dataset2, perc.over = 300, perc.under=500, k = 10)
+balanced_dataset <- SMOTE(salary_in_usd ~ ., dataset2, perc.over = 300, perc.under=500, k = 10)
 ```
 
 ## Classification
@@ -737,17 +737,20 @@ gainRatio3cm
 
 ### Analysis of the gain ratio classification
 
-all 3 trees seem to have the same structure that is
+The observed structure of the three decision trees seems to be the same and it can be summarized as follows:
 
-the attribute that was first selected at the node is the experience level, it has divided the tree into : right subtree : SE(Senior level) EX(Executive level) left subtree : EN(Entry-level) MI(Mid level)
+1. Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." This divides the tree into two main branches or subtrees:
+    - Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
+    - Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
 
-Each of these subtrees further refines the classification based on the attribute "employee residence." However, there are different criteria for splitting in the right and left subtrees:
+2. Right Subtree - Company Location: The next attribute used to further classify the right subtree is "company location." The decision criterion is whether the location is "North America":
+    - If Company Location is "North America": The next attribute examined is "employee residence."
+    - If Company Location is NOT "North America": Unlike the left subtree, the classification is based on "salary_currency."
 
-In the Right Subtree:
-
-The split is based on whether the tuple has the value "Latin America & Caribbean." In the Left Subtree:
-
-If the experience level is 1, the tree further partitions based on whether the tuple has the value "North America." If the experience level is 2, the split is based on "employee residence" being "Latin America & Caribbean."
+3. Left Subtree - Salary Currency: On the left side of the tree, the attribute "salary_currency" is used to further bifurcate the instances:
+    - If Salary Currency is "USD": A new left subtree is created and will be subject to further refinement.
+    - If Salary Currency is "EUR": Instances are directed to a right subtree, where they undergo additional classification.
+    - Subsequent Splits - Employee Residence**: Both subtrees resulting from the "salary_currency" split ("USD" and "EUR") are then subdivided based on the "employee residence" attribute, leading to a more granular classification.
 
 The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
 
@@ -758,6 +761,10 @@ rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=
 ```
 
 Based on the evaluation metrics of average Sensitivity,Precision ,Specificity, and Accuracy, it is evident that the gain ratio model, built using a 10-fold cross-validation approach, exhibits superior performance compared to the other two models. However, it's worth noting that the difference in performance between the models is relatively small. Notably, as the number of folds decreases, a corresponding decline in the model's performance becomes apparent.
+
+A detailed examination of the results from the 10-fold cross-validation reveals that the model has a notably high specificity compared to other metrics. This high specificity suggests that the model is particularly effective at correctly identifying instances that do not pertain to the target class—essentially, it accurately recognizes when examples are not members of the specified class. For example, if the positive class in question is “High” then the model is able to correctly classify tuples that belong to “Very Low”, “Medium”, and “Very High”.
+
+However, possessing high specificity alone does not guarantee the overall effectiveness of the model, as a well-rounded model also requires balanced performance across other metrics. In this case, its ability to capture and classify instances that do belong to the positive class (as measured by sensitivity) is not as robust. For a model to be considered truly effective, it would need to demonstrate strong performance in all metrics specificity and sensitivity, ensuring it can accurately distinguish both negative and positive instances as well as accuracy precision.
 
 ### Information gain
 
@@ -773,7 +780,7 @@ ctrl <- trainControl(method = "cv", number = 10, returnResamp="all", savePredict
 infoGain10 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "C5.0",trControl = ctrl)
 
 c5model <- C5.0(salary_in_usd ~ .,
-                       data = data_balanced,
+                       data = balanced_dataset,
                        trials = infoGain10$bestTune$trials, 
                        rules = FALSE,
                        control = C5.0Control(winnow = infoGain10$bestTune$winnow))
@@ -799,7 +806,7 @@ ctrl <- trainControl(method = "cv", number = 5, returnResamp="all", savePredicti
 infoGain5 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "C5.0",trControl = ctrl)
 
 c5model <- C5.0(salary_in_usd ~ .,
-                       data = data_balanced,
+                       data = balanced_dataset,
                        trials = infoGain5$bestTune$trials, 
                        rules = FALSE,
                        control = C5.0Control(winnow = infoGain5$bestTune$winnow))
@@ -825,7 +832,7 @@ ctrl <- trainControl(method = "cv", number = 3, returnResamp="all", savePredicti
 infoGain3 <- train(salary_in_usd ~ ., data = balanced_dataset, method = "C5.0",trControl = ctrl)
 
 c5model <- C5.0(salary_in_usd ~ .,
-                       data = data_balanced,
+                       data = balanced_dataset,
                        trials = infoGain3$bestTune$trials, 
                        rules = FALSE,
                        control = C5.0Control(winnow = infoGain3$bestTune$winnow))
