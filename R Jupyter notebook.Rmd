@@ -1305,6 +1305,38 @@ we can conclude from the graph and the results where k=4 is that the performance
 
 # Evaluation and Comparison
 
+
+## Classificaation results
+this table displays all results of the three classification algorithms with 3 different fold sizes
+
+```{r}
+
+ 
+
+print( 
+  rbind("10 Folds" = c(" ", " ", "", ""), 
+        "gini index" = macro(giniIndex10cm), 
+        "Gain ratio" = macro(gainRatio10cm), 
+        "Information gain" = macro(infoGain10cm), 
+        "5 Folds" = c(" ", " ", "", ""), 
+        "gini index" = macro(giniIndex5cm), 
+        "Gain ratio" = macro(gainRatio5cm), 
+        "Information gain" = macro(infoGain5cm), 
+        "3 Folds" = c(" ", " ", "", ""), 
+        "gini index" = macro(giniIndex3cm), 
+        "Gain ratio" = macro(gainRatio3cm), 
+        "Information gain" = macro(infoGain3cm))
+
+)
+
+
+
+
+
+```
+
+
+
 ## Clustering results
 
 This table displays the results of clustering using various algorithms for each K.
