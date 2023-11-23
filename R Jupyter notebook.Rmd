@@ -181,16 +181,15 @@ sum(is.na(dataset))
 
 ### Show the Min.,1st Qu.,Median,Mean ,3rd Qu.,Max. for each numeric column
 
-The summary statistics for the dataset variables provide insights into the distribution of features.
-we can conclude the following:
+The summary statistics for the dataset variables provide insights into the distribution of features. we can conclude the following:
 
 In work_year: The data spans from the year 2020 to 2022 with Most data falling within the years 2021 and 2022, as indicated by both the median and mean being centered around 2021.
 
-In salary: Salaries vary widely with a minimum of $1,740 and a maximum of $500 million. The median is $120,000 which is a mid value, but the mean is notably higher at $560,852 which might be duo to extreme values or notable skewness.
+In salary: Salaries vary widely with a minimum of \$1,740 and a maximum of \$500 million. The median is \$120,000 which is a mid value, but the mean is notably higher at \$560,852 which might be duo to extreme values or notable skewness.
 
-In salary_in_usd: The data has a median of $110,000, and a mean of $120,278, and the spread of salaries is observable in the difference between the median and mean.
+In salary_in_usd: The data has a median of \$110,000, and a mean of \$120,278, and the spread of salaries is observable in the difference between the median and mean.
 
-In remote_ratio: Indicates the percentage of remote work ranging from 0% to 100%, with a median and 3rd quartile at 100%, and a mean of 71.49%, indicating a notable presence of remote work in the dataset, suggesting some variability. 
+In remote_ratio: Indicates the percentage of remote work ranging from 0% to 100%, with a median and 3rd quartile at 100%, and a mean of 71.49%, indicating a notable presence of remote work in the dataset, suggesting some variability.
 
 ```{r}
 summary(dataset$work_year)
@@ -199,18 +198,11 @@ summary(dataset$salary_in_usd)
 summary(dataset$remote_ratio)
 ```
 
-
-
 ### Show the variane of each numeric column
 
 variance is to understand the spread or dispersion of the values in each column. A higher variance indicates that the values are more spread out from the mean and in our dataset the highest varied attribute is salary, while a lower variance indicates that the values are closer to the mean which in our datas it is work year attribute.
 
-Variance results reveal that:
--work years are to some extent consistent 
--salaries show notable variability and possible outliers
--salaries in USD have a stable distribution 
--remote work ratio have moderate variability
-
+Variance results reveal that: -work years are to some extent consistent -salaries show notable variability and possible outliers -salaries in USD have a stable distribution -remote work ratio have moderate variability
 
 ```{r}
 var(dataset$work_year)
@@ -580,7 +572,6 @@ macro = function(matrix){
 
 Gini index measures the impurity of the dataset. The partitioning that yields the most substantial reduction in impurity is selected as the splitting attribute. To apply the Gini index, we will employ the "rpart" method, which utilizes the Gini index as the criteria for splitting.
 
-
 #### 10 Folds
 
 The tree of the gini index using 10 folds
@@ -611,10 +602,7 @@ prp(giniIndex10$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
 
 ```
 
-
 the "experince level" attribute was selected as the first splitting attribute meaning that it has the largest impurity reduction.
-
-
 
 ##### Confusion matrix of 10 folds using Gini Index
 
@@ -630,13 +618,8 @@ giniIndex10cm
 
 the metrics shown for each class indicate the value of that metric when treating this class as the positive class and the other classes as the negative class. here the classifier showed best performance when using the "very high" class as the positive class but this value in its own doesn't hold much value since all classes should be taken into consideration.
 
-
-
-
-
-
-
 #### 5 Folds
+
 The tree of the gini index using 5 folds
 
 ```{r}
@@ -661,9 +644,6 @@ prp(giniIndex5$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 this tree has the same structure as the previous tree that used 10 folds. so in this tree as well "experience level" was choose as the first splitting attribute
 
-
-
-
 ##### Confusion matrix of 5 folds using Gini Index
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
@@ -676,12 +656,6 @@ giniIndex5cm
 ```
 
 the results are very close to the 10 folds tree, so here as well the classifier shows better performance when dealing with the "very high"
-
-
-
-
-
-
 
 #### 3 Folds
 
@@ -709,10 +683,6 @@ prp(giniIndex3$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 The tree shows similar structure as the two previous two trees, whether it's in its choose of the splitting attributes or the leaves.
 
-
-
-
-
 ##### Confusion matrix of 3 folds using Gini Index
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
@@ -727,28 +697,19 @@ giniIndex3cm
 
 here as well the "very high" class has the best overall performance
 
-
-
-
-
-
 ##### Analysis of the gini index classification
-All three trees seem to be alike in their 
-arrangement and form.
 
-1. Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." 
-This divides the tree into two main branches or subtrees:
-    - Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
-    - Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
+All three trees seem to be alike in their arrangement and form.
 
-2. Right Subtree - work year: The next attribute used to further classify the right subtree is "work year." 
-The decision criterion is:
-    - If work year is <-1.8: Then it is high.
-    - If work year is NOT <-1.8: The next attribute examined is "experience level."
-
-3. Left Subtree - Experience Level: On the left side of the tree, the attribute "experience level." is used to further bifurcate the instances:
-    - If experience level is >=2: The next attribute examined is "experience level."
-    - If experience level is NOT >=2: The next attribute also will examined is "experience level."
+1.  Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." This divides the tree into two main branches or subtrees:
+    -   Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
+    -   Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
+2.  Right Subtree - work year: The next attribute used to further classify the right subtree is "work year." The decision criterion is:
+    -   If work year is \<-1.8: Then it is high.
+    -   If work year is NOT \<-1.8: The next attribute examined is "experience level."
+3.  Left Subtree - Experience Level: On the left side of the tree, the attribute "experience level." is used to further bifurcate the instances:
+    -   If experience level is \>=2: The next attribute examined is "experience level."
+    -   If experience level is NOT \>=2: The next attribute also will examined is "experience level."
 
 ##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gini Index
 
@@ -756,13 +717,7 @@ The decision criterion is:
 rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=macro(giniIndex3cm)  ) 
 ```
 
-The higher values for sensitivity, specificity, precision, and accuracy in the 10-fold case indicate better overall performance according to these metrics.
-so,Gini Index model performs better with a 10-fold cross-validation compared to 5 and 3 folds.
-
-
-
-
-
+The higher values for sensitivity, specificity, precision, and accuracy in the 10-fold case indicate better overall performance according to these metrics. so,Gini Index model performs better with a 10-fold cross-validation compared to 5 and 3 folds.
 
 ### Gain ratio
 
@@ -783,13 +738,9 @@ plot(gainRatio10$finalModel)
 
 the first splitting attribute that was choosen is the "Expeirence level" attribute meaning that it probably has a high information gain and low splitInfo(Entropy of distribution of tuples into partition)
 
-
-
-
 ##### Confusion matrix of 10 folds using Gain ratio
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
-
 
 ```{r}
 gainRatio10cm = caret::confusionMatrix(gainRatio10$pred$obs, gainRatio10$pred$pred)
@@ -801,11 +752,9 @@ gainRatio10cm
 
 here the classifier shows better performance when treating "very high" and "very low" attributes as positive class. since the "very high" class is better in Sensitivity and "very low" is better in Specificity and precision (Pos Pred Value)
 
-
-
 #### 5 Folds
-The tree of the gain ratio using 5 folds
 
+The tree of the gain ratio using 5 folds
 
 ```{r , fig.height=70, fig.width=90}
 set.seed(10)
@@ -815,10 +764,6 @@ plot(gainRatio5$finalModel)
 ```
 
 the tree is similar to the tree that was resulted from 10 folds. it has choose "Experience level" as the first splitting attribute and and seem to show similar behavior.
-
-
-
-
 
 ##### Confusion matrix of 5 folds using Gain ratio
 
@@ -831,16 +776,13 @@ gainRatio5cm=caret::confusionMatrix(gainRatio5$pred$obs, gainRatio5$pred$pred)
 gainRatio5cm
 
 ```
+
 unlike the 10 folds, here the classifier has the best overall performance when considering the "very high" as the positive class.
-
-
-
-
-
 
 #### 3 Folds
 
 The tree of the gain ratio using 3 folds
+
 ```{r, fig.height=70, fig.width=90}
 set.seed(10)
 ctrl <- trainControl(method = "cv", number = 3, returnResamp="all", savePredictions="final")
@@ -849,11 +791,6 @@ plot(gainRatio3$finalModel)
 ```
 
 the tree shows similar behavior as the previous 2 trees that resulted from using 10 and 5 folds.
-
-
-
-
-
 
 ##### Confusion matrix of 3 folds using Gain ratio
 
@@ -868,29 +805,21 @@ gainRatio3cm
 
 similar to teh 5 folds, the "very high" class has the best metrics.
 
-
-
-
-
 ##### Analysis of the gain ratio classification
 
 The observed structure of the three decision trees seems to be the same and it can be summarized as follows:
 
-1. Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." This divides the tree into two main branches or subtrees:
-    - Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
-    - Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
-
-2. Within the right subtree:
-   - If the 'experience level' is 4 (EX, Executive level) , the tree splits based on the 'Employee_residence' attribute. It checks whether the 'Employee_residence' is 'Latin America.'
-   - If 'Employee_residence' does not equal 'Latin America,' the differentiation continues with the 'remote_ratio' attribute, further dividing the tree.
-
-3. Within the left subtree:
-   - If the 'experience level' is 1 (EN, Entry level), the tree divide based on the 'Employee_residence' attribute, specifically checking for 'Sub-Saharan Africa.'
-   - If the 'experience level' is 2 (MI, Mid level), it also branches based on 'Employee_residence,' but in this case, looking to see if it equals 'North America.'
+1.  Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." This divides the tree into two main branches or subtrees:
+    -   Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
+    -   Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
+2.  Within the right subtree:
+    -   If the 'experience level' is 4 (EX, Executive level) , the tree splits based on the 'Employee_residence' attribute. It checks whether the 'Employee_residence' is 'Latin America.'
+    -   If 'Employee_residence' does not equal 'Latin America,' the differentiation continues with the 'remote_ratio' attribute, further dividing the tree.
+3.  Within the left subtree:
+    -   If the 'experience level' is 1 (EN, Entry level), the tree divide based on the 'Employee_residence' attribute, specifically checking for 'Sub-Saharan Africa.'
+    -   If the 'experience level' is 2 (MI, Mid level), it also branches based on 'Employee_residence,' but in this case, looking to see if it equals 'North America.'
 
 The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
-
-
 
 ##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gain ratio
 
@@ -900,14 +829,9 @@ rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=
 
 Based on the evaluation metrics of average Sensitivity,Precision ,Specificity, and Accuracy, it is evident that the gain ratio model, built using a 10-fold cross-validation approach, exhibits superior performance compared to the other two models. However, it's worth noting that the difference in performance between the models is relatively small.
 
-A detailed examination of the results from the 10-fold cross-validation reveals that the model has a notably high specificity compared to other metrics. This high specificity suggests that the model is particularly effective at correctly identifying instances that do not pertain to the target class—essentially, it accurately recognizes when examples are not members of the specified class. For example, if the positive class in question is “High” then the model is able to correctly classify tuples that belong to “Very Low”, “Medium”, and “Very High”.
+A detailed examination of the results from the 10-fold cross-validation reveals that the model has a notably high specificity compared to other metrics. This high specificity suggests that the model is particularly effective at correctly identifying instances that do not pertain to the target class---essentially, it accurately recognizes when examples are not members of the specified class. For example, if the positive class in question is "High" then the model is able to correctly classify tuples that belong to "Very Low", "Medium", and "Very High".
 
 However, possessing high specificity alone does not guarantee the overall effectiveness of the model, as a well-rounded model also requires balanced performance across other metrics. In this case, its ability to capture and classify instances that do belong to the positive class (as measured by sensitivity) is not as robust. For a model to be considered truly effective, it would need to demonstrate strong performance in all metrics specificity and sensitivity, ensuring it can accurately distinguish both negative and positive instances as well as accuracy precision.
-
-
-
-
-
 
 ### Information gain
 
@@ -934,9 +858,6 @@ plot(c5model)
 
 from the tree, the "experince level" attribute was the first selected splitting attribute meaning that it has the highest information gain among all attributes
 
-
-
-
 ##### Confusion matrix of 10 folds using Information gain
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
@@ -949,10 +870,6 @@ infoGain10cm
 ```
 
 similar to the trees from the gini index and gain ratio, the classifier seem to have better performance when treating the "very high" class as the positive class
-
-
-
-
 
 #### 5 Folds
 
@@ -975,11 +892,6 @@ plot(c5model)
 
 the tree has similar behavior as the 10 folds information gain tree
 
-
-
-
-
-
 ##### Confusion matrix of 5 folds using Information gain
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
@@ -992,11 +904,6 @@ infoGain5cm
 ```
 
 the classifier shows very close performance to the 10 folds information gain model
-
-
-
-
-
 
 #### 3 Folds
 
@@ -1019,9 +926,6 @@ plot(c5model)
 
 the visisble parts of the tree seem to behave the same as the prevoius 2 fold sizes- 10 and 5.
 
-
-
-
 ##### Confusion matrix of 3 folds using Information gain
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
@@ -1035,45 +939,34 @@ infoGain3cm
 
 since the tree is essentially similar to the previous two information gain trees the results that this tree shows is very close in performance to them as well.
 
-
-
-
-
-
 ##### Analysis of the information gain classification
+
 The observed structure of the three decision trees seems to be the same and it can be summarized as follows:
 
-1. Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." This divides the tree into two main branches or subtrees:
-    - Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
-    - Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
+1.  Root Node - Experience Level: The initial attribute used for splitting the dataset at the root node is the "experience level." This divides the tree into two main branches or subtrees:
 
-2. Within the right subtree:
-In the right sub tree if the experience level is 4(EX) the tree will be divided based on “Company location”
+    -   Right Subtree: This comprises instances with Senior (SE) and Executive (EX) experience levels.
+    -   Left Subtree: This includes individuals with Entry (EN) and Mid (MI) experience levels.
 
-3. Within the left subtree:
-In the left subtree it will divide the tree for both two experience levels 1(EN) and 2(MI) based on “employee residence”
-and when the “employee residence” is “North America” the tree will be further divided based on “salary currency” and when this attribute is equal to “USD” the division will be based on the “job title” attribute
+2.  Within the right subtree: In the right sub tree if the experience level is 4(EX) the tree will be divided based on "Company location"
+
+3.  Within the left subtree: In the left subtree it will divide the tree for both two experience levels 1(EN) and 2(MI) based on "employee residence" and when the "employee residence" is "North America" the tree will be further divided based on "salary currency" and when this attribute is equal to "USD" the division will be based on the "job title" attribute
 
 The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
-
 
 ##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Information gain
 
 ```{r}
 rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=macro(infoGain3cm)  ) 
 ```
+
 Based on the provided sensitivity, specificity, precision, and accuracy values there isn't a clear indication of the superiority of one fold over another for Information Gain model .we may need to consider additional factors or conduct further analysis to make a well-informed decision. as can be seen in the table the 10 folds has the best Specificity and Precision, meanwhile the 5 folds has the best Sensitivity and Accuracy.
-
-
-
 
 ### Analasys of the three classification methods
 
-The gain ratio evaluated with 10-fold cross-validation appears to has the best performance among all the decision tree models. This might be due to the fact that the gain ratio tends to favor unbalanced splits, where one partition is significantly smaller than others. In our dataset, if an attribute has a rare value, the gain ratio might prioritize splitting on this attribute despite the resulting unbalance. 
+The gain ratio evaluated with 10-fold cross-validation appears to has the best performance among all the decision tree models. This might be due to the fact that the gain ratio tends to favor unbalanced splits, where one partition is significantly smaller than others. In our dataset, if an attribute has a rare value, the gain ratio might prioritize splitting on this attribute despite the resulting unbalance.
 
 Despite the superiority of the 10-fold, the performance metrics of all three fold sizes (3-fold, 5-fold, and 10-fold) using Gini index, gain ratio, and information gain are relatively similar, suggesting that all three measures are robust within the context of this dataset. A likely contributing factor to this performance consistency is the balanced distribution of class labels in the dataset. When classes are balanced, each splitting criterion is more or less equally likely to encounter informative splits, which serves to decrease performance variability across different splitting methods.
-
-
 
 ## Clustering
 
@@ -1142,11 +1035,9 @@ dataset3 <- scale(dataset3)
 
 ```
 
-
 ### 2- K-means
 
 After preprocessing the data, now we are ready to perform the clustering process, we will use the k-means clustering, it is a clustering method that aims to minimize the sum of squared distances between each data point and the centroid of its assigned cluster by iteratively updating cluster assignments and centroids.
-
 
 ### 3- Choosing number of clusters (k)
 
@@ -1181,8 +1072,8 @@ As shown, the number of clusters k that represents the turning point in the curv
 
 Lastly, we will use k=3 since it acheives the second highest average Silhouette coefficient, and since it's in the middle between 2 and 4 it will strike a balance between having too few clusters (k=2), and having several clusters (k=4), Thus, this choice will have an acceptable acuuracy.
 
-
 ### k-means clustering, visualization and evaluation
+
 In this section, we will perform k-means clustering and visualize its result using three different k's that have been chosen beforehand, then we will compute WSS and Bcubed preceision and recall and average silhouette for each cluster as methods of evaluating clustering results.
 
 #### k=2
@@ -1260,10 +1151,7 @@ cat("BCubed Precision is:", precision, "\n")
 cat("BCubed Recall is:", recall, "\n")
 ```
 
-we can conclude from the graph and the results that the k=2 is the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster. Also, the recall is relatively high (0.71) and is the highest among the k's chosen, the Precision is low (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid.
-We can also note that the WSS is 7287.657, indicating a good compactness of clusters, and that objects in a cluster are similar to one another noting that the higher the k, the lower the WSS.
-Lastly, the average silhouette width is 0.34 which is considered high reflecting high intra-cluster similarity.
-
+we can conclude from the graph and the results that the k=2 is the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster. Also, the recall is relatively high (0.71) and is the highest among the k's chosen, the Precision is low (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid. We can also note that the WSS is 7287.657, indicating a good compactness of clusters, and that objects in a cluster are similar to one another noting that the higher the k, the lower the WSS. Lastly, the average silhouette width is 0.34 which is considered high reflecting high intra-cluster similarity.
 
 #### k=3
 
@@ -1338,9 +1226,7 @@ cat("BCubed Precision is:", precision, "\n")
 cat("BCubed Recall is:", recall, "\n")
 ```
 
-we can conclude from the graph and the results where k=3 is that the performance is good but worse than k=2, because there is overlapping between clusters. In addition, the recall is relatively low (0.45), However, the Precision is low (0.31) which could be duo to presence of outliers or sensitivity to Initial Centroid.
-We can also note that the WSS is 6451.51, indicating an intermidiate compactness of clusters, and that objects in a cluster are to some extent similar to one another.
-Lastly, the average silhouette width is 0.19 which reflects high inter-cluster similarity.
+we can conclude from the graph and the results where k=3 is that the performance is good but worse than k=2, because there is overlapping between clusters. In addition, the recall is relatively low (0.45), However, the Precision is low (0.31) which could be duo to presence of outliers or sensitivity to Initial Centroid. We can also note that the WSS is 6451.51, indicating an intermidiate compactness of clusters, and that objects in a cluster are to some extent similar to one another. Lastly, the average silhouette width is 0.19 which reflects high inter-cluster similarity.
 
 #### k=4
 
@@ -1415,9 +1301,24 @@ cat("BCubed Precision is:", precision, "\n")
 cat("BCubed Recall is:", recall, "\n")
 ```
 
-we can conclude from the graph and the results where k=4 is that the performance is worse than k=2 and k=3, because there is a noticeable overlapping between clusters. Also, the clusers' space is pretty wide which results in a large distance between objects in the same cluster.
-In addition, the recall is relatively low (0.43) which might be a result of the overlapping and large distances between data objects. Furthermore, the Precision is low (0.29) which could be duo to presence of outliers or sensitivity to Initial Centroid.
-We can also note that the WSS is 5911.05 indicating a lower compactness of clusters.
-Lastly, the average silhouette width is 0.22 which is low reflecting high inter-cluster similarity.
+we can conclude from the graph and the results where k=4 is that the performance is worse than k=2 and k=3, because there is a noticeable overlapping between clusters. Also, the clusers' space is pretty wide which results in a large distance between objects in the same cluster. In addition, the recall is relatively low (0.43) which might be a result of the overlapping and large distances between data objects. Furthermore, the Precision is low (0.29) which could be duo to presence of outliers or sensitivity to Initial Centroid. We can also note that the WSS is 5911.05 indicating a lower compactness of clusters. Lastly, the average silhouette width is 0.22 which is low reflecting high inter-cluster similarity.
 
+# Evaluation and Comparison
 
+## Clustering results
+
+This table displays the results of clustering using various algorithms for each K.
+
++----------------------------------------+-------------------+----------------+-----------------------------+
+|                                        | K=2               | K=3            | K=4                         |
++:======================================:+:=================:+:==============:+:===========================:+
+| **Average Silhouette width**           | 0.34              | 0.31           | 0.2                         |
++----------------------------------------+-------------------+----------------+-----------------------------+
+| **total within-cluster sum of square** | 7295.548          | 6778.046       | 5915.724                    |
++----------------------------------------+-------------------+----------------+-----------------------------+
+| **BCubed precision**                   | 0.2812713         | 0.2807635      | 0.2895803                   |
++----------------------------------------+-------------------+----------------+-----------------------------+
+| **BCubed recall**                      | 0.7064208         | 0.6786707      | 0.401187                    |
++----------------------------------------+-------------------+----------------+-----------------------------+
+| **Visualization**                      | ![](images/k2-01) | ![](images/k3) | ![](images/k4){width="145"} |
++----------------------------------------+-------------------+----------------+-----------------------------+
