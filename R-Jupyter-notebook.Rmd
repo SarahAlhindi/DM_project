@@ -1355,6 +1355,22 @@ This table displays the results of clustering using various algorithms for each 
 | **Visualization**                      | ![](images/k2-01) | ![](images/k3) | ![](images/k4){width="145"} |
 +----------------------------------------+-------------------+----------------+-----------------------------+
 
+
+##Findings
+
+At the onset, our focus was on a dataset representing cyber security professionals' information to predict salary probabilities. The intent was to empower individuals with insights for negotiating better compensation and guiding career decisions in this field.
+To ensure accurate and efficient results, we initiated several preprocessing techniques to refine the data. Employing tools like box plots and histograms, we visually analyzed the dataset to comprehend its nuances better. Through this exploration, we identified and subsequently removed anything that could potentially skew our analysis as outliers. Moreover, we conducted data transformations, normalizing and discretizing certain attributes. This step aimed to standardize attributes, granting them equal weightage, and simplifying data handling during subsequent mining tasks.
+Therefore, we moved forward to implement both classification and clustering as part of our data mining process:
+In the classification we used K-fold Cross-validation method as a dataset partitioning method, for each attribute selection method we used different K size 10,5 and 3. We evaluated each method's effectiveness using Accuracy, Precision, Sensitivity, Specificity metrics.
+our findings led us to determine that among the methods tested, the gain ratio criterion paired with 10-fold cross-validation showcased the most effective performance for our dataset.
+
+In the clustering process using k-means, we experimented with 3 different cluster numbers—2, 3, and 4—assessing their suitability through the silhouette and elbow methods. Opting for 2 clusters struck a balance between simplicity and complexity. Subsequently, we performed k-means clustering based on these numbers, evaluating the outcomes with various metrics. Our analysis highlighted that k=2 displayed superior performance, standing out for its distinct clusters without overlap. The data within each cluster exhibited significant similarity while being notably dissimilar from the other cluster, affirming k=2 as the optimal choice for this clustering scenario.
+
+Ultimately, both models prove valuable in predicting cybersecurity salaries. The choice between classification and clustering hinges on specific objectives. 
+Classification is advantageous for predicting salary ranges or categories based on known employee attributes, aiding individual compensation decisions. When it is essential to predict salary categories, employing the Gain ratio in classification proves beneficial.
+Clustering aids in identifying natural employee groupings, revealing trends and common characteristics, facilitating market segmentation, and informing broader strategic decisions. Pursuing the goal of uncovering natural groupings in salary data, K=2 clustering stands out for its distinct clusters.
+
+
 ## Refrences 
 [1] J. Han, M. Kamber, and J. Pei, "Data Mining: Concepts and Techniques," 3rd ed., The Morgan Kaufmann Series in Data Management Systems.
 [2] Y. Zhao, "R and Data Mining: Examples and Case Studies," 1st ed. Academic Press, 2012. ISBN: 0123969638.
