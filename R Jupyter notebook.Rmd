@@ -1305,8 +1305,8 @@ we can conclude from the graph and the results where k=4 is that the performance
 
 # Evaluation and Comparison
 
-
 ## Classificaation results
+
 this table displays all results of the three classification algorithms with 3 different fold sizes
 
 ```{r}
@@ -1335,11 +1335,9 @@ print(
 
 ```
 
-
-
 ## Clustering results
 
-This table displays the results of clustering using various algorithms for each K.
+This table displays the results of clustering using various methods for each K.
 
 +----------------------------------------+-------------------+----------------+-----------------------------+
 |                                        | K=2               | K=3            | K=4                         |
@@ -1355,8 +1353,18 @@ This table displays the results of clustering using various algorithms for each 
 | **Visualization**                      | ![](images/k2-01) | ![](images/k3) | ![](images/k4){width="145"} |
 +----------------------------------------+-------------------+----------------+-----------------------------+
 
-## Refrences 
-[1] J. Han, M. Kamber, and J. Pei, "Data Mining: Concepts and Techniques," 3rd ed., The Morgan Kaufmann Series in Data Management Systems.
-[2] Y. Zhao, "R and Data Mining: Examples and Case Studies," 1st ed. Academic Press, 2012. ISBN: 0123969638.
-[3] Y. Zhao, "R and Data Mining," RDataMining.com, Available: https://www.rdatamining.com/, Accessed on: November 23, 2023.
-[4] M. Hahsler, "discretize {arules}R Documentation: Convert a Continuous Variable into a Categorical Variable," R Project, Available: https://search.r-project.org/CRAN/refmans/arules/html/discretize.html, Accessed on: November 23, 2023.
+Based on this metrics, we can assess the performance of each K value:
+
+-   Average Silhouette Width: The highest value is achieved at K = 2 (0.34), indicating that the clusters are relatively well-separated compared to the other K values.
+
+-   Total Within-Cluster Sum of Squares: The lowest value is observed at K = 4 (5915.724), indicating better cluster compactness compared to K= 2 and K = 3.
+
+-   BCubed Precision and Recall: Both precision and recall values are highest at K = 2, suggesting a better match between the clustering assignments and the ground truth or desired clustering structure.
+
+-   Visualization: At K = 3 and K = 4, there is an overlap between the clusters, unlike K = 2, which provides two pure clusters.
+
+Considering this metrics, we can conclude that K = 2 is the optimal k and performs comparatively better in terms of average silhouette width, BCubed precision, and BCubed recall. It indicates that the clustering with K = 2 leads to well-separated clusters without overlapping between clusters and with relatively good precision and recall. Which means the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster "reflecting high intra-cluster similarity". And the reason for the overlapping and the low average silhouette width , precision, and recall results in K=3 and K=4 is could be duo to presence of outliers or sensitivity to Initial Centroid and high inter-cluster similarity.
+
+## Refrences
+
+[1] J. Han, M. Kamber, and J. Pei, "Data Mining: Concepts and Techniques," 3rd ed., The Morgan Kaufmann Series in Data Management Systems. [2] Y. Zhao, "R and Data Mining: Examples and Case Studies," 1st ed. Academic Press, 2012. ISBN: 0123969638. [3] Y. Zhao, "R and Data Mining," RDataMining.com, Available: <https://www.rdatamining.com/>, Accessed on: November 23, 2023. [4] M. Hahsler, "discretize {arules}R Documentation: Convert a Continuous Variable into a Categorical Variable," R Project, Available: <https://search.r-project.org/CRAN/refmans/arules/html/discretize.html>, Accessed on: November 23, 2023.
