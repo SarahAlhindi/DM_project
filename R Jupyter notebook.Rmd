@@ -1365,7 +1365,7 @@ Based on this metrics, we can assess the performance of each K value:
 
 Considering this metrics, we can conclude that K = 2 is the optimal k and performs comparatively better in terms of average silhouette width, BCubed precision, and BCubed recall. It indicates that the clustering with K = 2 leads to well-separated clusters without overlapping between clusters and with relatively good precision and recall. Which means the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster "reflecting high intra-cluster similarity". And the reason for the overlapping and the low average silhouette width , precision, and recall results in K=3 and K=4 is could be duo to presence of outliers or sensitivity to Initial Centroid and high inter-cluster similarity.
 
-##Findings
+## Findings
 
 At the onset, our focus was on a dataset representing cyber security professionals' information to predict salary probabilities. The intent was to empower individuals with insights for negotiating better compensation and guiding career decisions in this field.
 To ensure accurate and efficient results, we initiated several preprocessing techniques to refine the data. Employing tools like box plots and histograms, we visually analyzed the dataset to comprehend its nuances better. Through this exploration, we identified and subsequently removed anything that could potentially skew our analysis as outliers. Moreover, we conducted data transformations, normalizing and discretizing certain attributes. This step aimed to standardize attributes, granting them equal weightage, and simplifying data handling during subsequent mining tasks.
