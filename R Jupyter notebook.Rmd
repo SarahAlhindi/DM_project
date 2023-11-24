@@ -1354,3 +1354,8 @@ This table displays the results of clustering using various algorithms for each 
 +----------------------------------------+-------------------+----------------+-----------------------------+
 | **Visualization**                      | ![](images/k2-01) | ![](images/k3) | ![](images/k4){width="145"} |
 +----------------------------------------+-------------------+----------------+-----------------------------+
+
+## Refrences 
+[1] J. Han, M. Kamber, and J. Pei, "Data Mining: Concepts and Techniques," 3rd ed., The Morgan Kaufmann Series in Data Management Systems.
+[2] Y. Zhao, "R and Data Mining," RDataMining.com, Available: https://www.rdatamining.com/, Accessed on: November 23, 2023.
+[3] M. Hahsler, "discretize {arules}R Documentation: Convert a Continuous Variable into a Categorical Variable," R Project, Available: https://search.r-project.org/CRAN/refmans/arules/html/discretize.html, Accessed on: November 23, 2023.
