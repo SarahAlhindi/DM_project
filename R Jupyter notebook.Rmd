@@ -962,8 +962,6 @@ rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=ma
 
 Based on the provided sensitivity, specificity, precision, and accuracy values there isn't a clear indication of the superiority of one fold over another for Information Gain model .we may need to consider additional factors or conduct further analysis to make a well-informed decision. as can be seen in the table the 10 folds has the best Specificity and Precision, meanwhile the 5 folds has the best Sensitivity and Accuracy.
 
-
-
 ## Clustering
 
 Data clustering is a process to partition data into groups or clusters,it is an unsupervised learning process, which is excuted without knowing the class label of the training data. The data in the same group "cluster" are similar to one another and different from data in other clusters. And for this data mining task We will utilize k-means clustering.
@@ -1331,23 +1329,11 @@ print(
 
 ```
 
-
-
-
 The gain ratio evaluated with 10-fold cross-validation appears to have the best performance among all the decision tree models. This might be because the gain ratio tends to favor unbalanced splits, where one partition is significantly smaller than the others. In our dataset, if an attribute has a rare value, the gain ratio may prioritize splitting on this attribute, despite the resulting imbalance.
 
 Despite the superiority of the 10-fold cross-validation, the performance metrics of all three fold sizes (3-fold, 5-fold, and 10-fold) using the Gini index, gain ratio, and information gain are relatively similar. This suggests that all three measures are robust within the context of this dataset. A likely contributing factor to this performance consistency is the balanced distribution of class labels in the dataset. When classes are balanced, each splitting criterion is more or less equally likely to encounter informative splits, which helps to decrease performance variability across different splitting methods.
 
 It can be noticed that all nine trees have selected the attribute "Experience Level" as the first splitting attribute, indicating that it is the strongest predictor in reducing uncertainty among all other predictors and the most informative in our case.
-
-
-
-
-
-
-
-
-
 
 ## Clustering results
 
@@ -1381,18 +1367,18 @@ Considering this metrics, we can conclude that K = 2 is the optimal k and perfor
 
 ## Findings
 
-At the onset, our focus was on a dataset representing cyber security professionals' information to predict salary probabilities. The intent was to empower individuals with insights for negotiating better compensation and guiding career decisions in this field.
-To ensure accurate and efficient results, we initiated several preprocessing techniques to refine the data. Employing tools like box plots and histograms, we visually analyzed the dataset to comprehend its nuances better. Through this exploration, we identified and subsequently removed anything that could potentially skew our analysis as outliers. Moreover, we conducted data transformations, normalizing and discretizing certain attributes. This step aimed to standardize attributes, granting them equal weightage, and simplifying data handling during subsequent mining tasks.
-Therefore, we moved forward to implement both classification and clustering as part of our data mining process:
-In the classification we used K-fold Cross-validation method as a dataset partitioning method, for each attribute selection method we used different K size 10,5 and 3. We evaluated each method's effectiveness using Accuracy, Precision, Sensitivity, Specificity metrics.
-our findings led us to determine that among the methods tested, the gain ratio criterion paired with 10-fold cross-validation showcased the most effective performance for our dataset.
+At the onset, our focus was on a dataset representing cyber security professionals' information to predict salary probabilities. The intent was to empower individuals with insights for negotiating better compensation and guiding career decisions in this field. To ensure accurate and efficient results, we initiated several preprocessing techniques to refine the data. Employing tools like box plots and histograms, we visually analyzed the dataset to comprehend its nuances better. Through this exploration, we identified and subsequently removed anything that could potentially skew our analysis as outliers. Moreover, we conducted data transformations, normalizing and discretizing certain attributes. This step aimed to standardize attributes, granting them equal weightage, and simplifying data handling during subsequent mining tasks. Therefore, we moved forward to implement both classification and clustering as part of our data mining process: In the classification we used K-fold Cross-validation method as a dataset partitioning method, for each attribute selection method we used different K size 10,5 and 3. We evaluated each method's effectiveness using Accuracy, Precision, Sensitivity, Specificity metrics. our findings led us to determine that among the methods tested, the gain ratio criterion paired with 10-fold cross-validation showcased the most effective performance for our dataset.
 
-In the clustering process using k-means, we experimented with 3 different cluster numbers—2, 3, and 4—assessing their suitability through the silhouette and elbow methods. Opting for 2 clusters struck a balance between simplicity and complexity. Subsequently, we performed k-means clustering based on these numbers, evaluating the outcomes with various metrics. Our analysis highlighted that k=2 displayed superior performance, standing out for its distinct clusters without overlap. The data within each cluster exhibited significant similarity while being notably dissimilar from the other cluster, affirming k=2 as the optimal choice for this clustering scenario.
+In the clustering process using k-means, we experimented with 3 different cluster numbers---2, 3, and 4---assessing their suitability through the silhouette and elbow methods. Opting for 2 clusters struck a balance between simplicity and complexity. Subsequently, we performed k-means clustering based on these numbers, evaluating the outcomes with various metrics. Our analysis highlighted that k=2 displayed superior performance, standing out for its distinct clusters without overlap. The data within each cluster exhibited significant similarity while being notably dissimilar from the other cluster, affirming k=2 as the optimal choice for this clustering scenario.
 
-Ultimately, both models prove valuable in predicting cybersecurity salaries. The choice between classification and clustering hinges on specific objectives. 
-Classification is advantageous for predicting salary ranges or categories based on known employee attributes, aiding individual compensation decisions. When it is essential to predict salary categories, employing the Gain ratio in classification proves beneficial.
-Clustering aids in identifying natural employee groupings, revealing trends and common characteristics, facilitating market segmentation, and informing broader strategic decisions. Pursuing the goal of uncovering natural groupings in salary data, K=2 clustering stands out for its distinct clusters.
+Ultimately, both models prove valuable in predicting cybersecurity salaries. The choice between classification and clustering hinges on specific objectives. Classification is advantageous for predicting salary ranges or categories based on known employee attributes, aiding individual compensation decisions. When it is essential to predict salary categories, employing the Gain ratio in classification proves beneficial. Clustering aids in identifying natural employee groupings, revealing trends and common characteristics, facilitating market segmentation, and informing broader strategic decisions. Pursuing the goal of uncovering natural groupings in salary data, K=2 clustering stands out for its distinct clusters.
 
 ## Refrences
 
-[1] J. Han, M. Kamber, and J. Pei, "Data Mining: Concepts and Techniques," 3rd ed., The Morgan Kaufmann Series in Data Management Systems. [2] Y. Zhao, "R and Data Mining: Examples and Case Studies," 1st ed. Academic Press, 2012. ISBN: 0123969638. [3] Y. Zhao, "R and Data Mining," RDataMining.com, Available: <https://www.rdatamining.com/>, Accessed on: November 23, 2023. [4] M. Hahsler, "discretize {arules}R Documentation: Convert a Continuous Variable into a Categorical Variable," R Project, Available: <https://search.r-project.org/CRAN/refmans/arules/html/discretize.html>, Accessed on: November 23, 2023.
+[1] J. Han, M. Kamber, and J. Pei, "Data Mining: Concepts and Techniques," 3rd ed., The Morgan Kaufmann Series in Data Management Systems.
+
+[2] Y. Zhao, "R and Data Mining: Examples and Case Studies," 1st ed. Academic Press, 2012. ISBN: 0123969638.
+
+[3] Y. Zhao, "R and Data Mining," RDataMining.com, Available: <https://www.rdatamining.com/>, Accessed on: November 23, 2023.
+
+[4] M. Hahsler, "discretize {arules}R Documentation: Convert a Continuous Variable into a Categorical Variable," R Project, Available: <https://search.r-project.org/CRAN/refmans/arules/html/discretize.html>, Accessed on: November 23, 2023.
