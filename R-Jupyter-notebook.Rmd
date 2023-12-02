@@ -1446,18 +1446,18 @@ Based on these metrics, we can assess the performance of each K value:
 Considering these metrics, we can conclude that K = 2 is the optimal k and performs comparatively better in terms of average silhouette width, BCubed precision, and BCubed recall. It indicates that the clustering with K = 2 leads to well-separated clusters without overlapping between clusters and with relatively good precision and recall. Which means the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster "reflecting high intra-cluster similarity". And the reason for the overlapping and the low average silhouette width , precision, and recall results in K=3 and K=4 is could be duo to presence of outliers or sensitivity to Initial Centroid and high inter-cluster similarity.
 
 
-We can notice that these results that we have obtained from both calssification and clustering are interesting and strongly related to the core of the problem that we are working on, and will be directly reflecting on the solution.
+We can notice that these results that we have obtained from both classification and clustering are interesting and strongly related to the core of the problem that we are working on, and will be directly reflecting on the solution.
 
-Ultimately, both models prove valuable in predicting cybersecurity salaries and grouping the employees based on shared charactristics. The choice between classification and clustering hinges on specific objectives. Classification is advantageous for predicting salary ranges or categories based on known employee attributes, aiding individual compensation decisions. When it is essential to predict salary categories, employing the Gain ratio in classification proves beneficial. Clustering aids in identifying natural employee groupings, revealing trends and common characteristics, facilitating market segmentation, and informing broader strategic decisions. Pursuing the goal of uncovering natural groupings in salary data, K=2 clustering stands out for its distinct clusters.
+Ultimately, both models prove valuable in predicting cybersecurity salaries and grouping the employees based on shared characteristics. The choice between classification and clustering hinges on specific objectives. Classification is advantageous for predicting salary ranges or categories based on known employee attributes, aiding individual compensation decisions. When it is essential to predict salary categories, employing the Gain ratio in classification proves beneficial. Clustering aids in identifying natural employee groupings, revealing trends and common characteristics, facilitating market segmentation, and informing broader strategic decisions. Pursuing the goal of uncovering natural groupings in salary data, K=2 clustering stands out for its distinct clusters.
  
-In conclusion, both techniques are important and suitable for our dataset, duo to their ability to acheive our data mining tasks (predicting employees salaries and grouping them based on similarties). Thus both are critical to solve the problem introduced in this project, and both will help achieve our goals such as market segmentation, striking fairness among employees and increase their loyality. 
+However, classification out advantage clustering since the class label is available in our dataset, so supervised learning would be more relatable and could provide more accurate results, and its performance was generally better. Using classification would help achieve our goals such as market segmentation, striking fairness among employees and increase their loyality. 
 
-In consequence, our solution is composed of two main parts that will help achieve our goals: 
+In conclusion, our solution is composed of two main parts that will help achieve our goals: 
 1- Use classification to predict employees' salaries (using 10-fold gain ratio method)
-2- Use clustering to group employees based on their similarties (using k-means with 2 clusters)
+2- Use clustering to group employees based on their similarities (using k-means with 2 clusters)
 
-By addressing the issues,  we can solve them such as unfairness, losing candidates to other companies that provide better privilages, and poor understanding of employees' needs.
-Finally, by solving these problems, we can ensure the cybersecurity employees are satisfied and pleased with the salary they get, leading to a better performance at their jobs and better securing the organization's data and valuable digital assets.
+By addressing the issues,  we can solve them such as unfairness, losing candidates to other companies that provide better privileges, and poor understanding of employees' needs.
+Finally, by solving these problems, we can ensure the cybersecurity employees are satisfied and pleased with the salary they get, leading to a better performance at their jobs and better securing the organization's data and valuable digital assets. 
 
 
 
