@@ -1319,7 +1319,7 @@ we can conclude from the graph and the results where k=4 is that the performance
 
 
 
-## Clustering results
+#### Clustering results
 
 This table displays the results of clustering using various methods for each K.
 
@@ -1336,6 +1336,11 @@ This table displays the results of clustering using various methods for each K.
 +----------------------------------------+-------------------+----------------+-----------------------------+
 | **Visualization**                      | ![](images/k2-01) | ![](images/k3) | ![](images/k4){width="145"} |
 +----------------------------------------+-------------------+----------------+-----------------------------+
+
+This table indicates that k=2 is the optimal Number of clusters since it has the highest Silhouette width, BCubed precision and recall and ideal clustering graphs showing no overlapping between the two clusters, The WSS is high though, which could be duo to presence of outliers or sensitivity to certain values.
+As for k=3, the evaluation results are considered acceptable, with Acceptable Silhouette width, BCubed precision and recall and overlapped clusters in the graph.
+Finally, k=4 shows the worst performance, showing low Silhouette width, BCubed precision and recall and much overlapped clusters. As for the WSS, it shows a low value which could be duo to size of the clusters.
+This table will be justified even more in the next section. i.e: findings.
 
 
 
