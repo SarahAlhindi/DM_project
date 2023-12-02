@@ -521,13 +521,26 @@ balanced_dataset <- SMOTE(salary_in_usd ~ ., dataset2, perc.over = 300, perc.und
 
 ## Data mining techniques
 
-## Classification
 
-The goal of all preceding steps is to properly prepare the dataset for the classification and later clustering phase, which constitutes one of our primary mining objectives. In this section, we will employ various attribute selection methods such as the Gini index, Gain ratio, and information gain to construct a decision tree model. We will thoroughly evaluate its performance, and if it proves effective, it can subsequently be utilized to classify new instances with unknown class labels.
+The goal of all preceding steps is to properly prepare the dataset for the classification and clustering, which constitutes one of our primary mining objectives. In this section, we will employ various attribute selection methods such as the Gini index, Gain ratio, and information gain to construct a decision tree model. We will thoroughly evaluate its performance, and if it proves effective, it can subsequently be utilized to classify new instances with unknown class labels. The process to predict is as follow, divide the data into training and data sets then training the model using the training set and test its performance using the test set.
 
 since our dataset is small, we decided to use K-fold Cross-validation as a dataset partioning method. for each attribute selection method we will try different K size (10,5, and 3)
 
-in all this section we will be using train and trainControl functions of caret package to produce decision trees. for Gini index the method will be "rpart" and for Gain ratio it's "j48" as for information gain the method is "C5.0".
+in all this section we will be using train and trainControl functions of caret package to produce decision trees. for Gini index the method will be "rpart” from "rpart"  package and for Gain ratio it's "j48" from "RWeka" package as for information gain the method is "C5.0" from "C50" package  .
+
+
+
+Data clustering is a process to partition data into groups or clusters,it is an unsupervised learning process, which is excuted without knowing the class label of the training data. The data in the same group "cluster" are similar to one another and different from data in other clusters. And for this data mining task We will utilize k-means clustering. 
+We will use the method "fviz_nbclust"  of the package "factoextra" to find the number of clusters based on the elbow method and the Silhouette coefficient. To use the kmeans clustering we will utilize the method “kmeans” of the package “stats”. To visualize the clusters, we will use the method “fviz_cluster” from the package “factoextra”. And finally to find the average silhouette for each cluster the method “silhouette” from the package “cluster” will be used. 
+
+
+## Evaluation and Comparison
+
+
+
+### Classification
+
+
 
 the following function will be used to compute average sensitivity and Specificity:
 
@@ -574,11 +587,11 @@ macro = function(matrix){
 
 ```
 
-### Gini index
+#### Gini index
 
 Gini index measures the impurity of the dataset. The partitioning that yields the most substantial reduction in impurity is selected as the splitting attribute. To apply the Gini index, we will employ the "rpart" method, which utilizes the Gini index as the criteria for splitting.
 
-#### 10 Folds
+##### 10 Folds
 
 The tree of the gini index using 10 folds
 
@@ -610,7 +623,7 @@ prp(giniIndex10$finalModel, box.palette = "Reds", tweak = 1.2, varlen = 20)
 
 the "experince level" attribute was selected as the first splitting attribute meaning that it has the largest impurity reduction.
 
-##### Confusion matrix of 10 folds using Gini Index
+###### Confusion matrix of 10 folds using Gini Index
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
@@ -624,7 +637,7 @@ giniIndex10cm
 
 the metrics shown for each class indicate the value of that metric when treating this class as the positive class and the other classes as the negative class. here the classifier showed best performance when using the "very high" class as the positive class but this value in its own doesn't hold much value since all classes should be taken into consideration.
 
-#### 5 Folds
+##### 5 Folds
 
 The tree of the gini index using 5 folds
 
@@ -650,7 +663,7 @@ prp(giniIndex5$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 this tree has the same structure as the previous tree that used 10 folds. so in this tree as well "experience level" was choose as the first splitting attribute
 
-##### Confusion matrix of 5 folds using Gini Index
+###### Confusion matrix of 5 folds using Gini Index
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
@@ -663,7 +676,7 @@ giniIndex5cm
 
 the results are very close to the 10 folds tree, so here as well the classifier shows better performance when dealing with the "very high"
 
-#### 3 Folds
+##### 3 Folds
 
 The tree of the gini index using 3 folds
 
@@ -689,7 +702,7 @@ prp(giniIndex3$finalModel, box.palette = "Reds", tweak = 1.5, varlen = 10, cex =
 
 The tree shows similar structure as the two previous two trees, whether it's in its choose of the splitting attributes or the leaves.
 
-##### Confusion matrix of 3 folds using Gini Index
+###### Confusion matrix of 3 folds using Gini Index
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
@@ -703,7 +716,7 @@ giniIndex3cm
 
 here as well the "very high" class has the best overall performance
 
-##### Analysis of the gini index classification
+###### Analysis of the gini index classification
 
 All three trees seem to be alike in their arrangement and form.
 
@@ -717,7 +730,7 @@ All three trees seem to be alike in their arrangement and form.
     -   If experience level is \>=2: The next attribute examined is "experience level."
     -   If experience level is NOT \>=2: The next attribute also will examined is "experience level."
 
-##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gini Index
+###### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gini Index
 
 ```{r}
 rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=macro(giniIndex3cm)  ) 
@@ -725,13 +738,13 @@ rbind("10 Folds"=macro(giniIndex10cm), "5 Folds"=macro(giniIndex5cm), "3 Folds"=
 
 The higher values for sensitivity, specificity, precision, and accuracy in the 10-fold case indicate better overall performance according to these metrics. so,Gini Index model performs better with a 10-fold cross-validation compared to 5 and 3 folds.
 
-### Gain ratio
+#### Gain ratio
 
 The gain ratio, a normalized measure of information gain, is calculated by dividing information gain by the split information. The attribute that yields the highest gain ratio is chosen as the splitting attribute. The C4.5 algorithm employs the gain ratio.
 
 The J48 is the Java-based open-source implementation of the C4.5 algorithm, and it is included in the Weka package. This implementation allows users to conveniently apply the C4.5 decision tree.
 
-#### 10 Folds
+##### 10 Folds
 
 The tree of the gain ratio using 10 folds
 
@@ -744,7 +757,7 @@ plot(gainRatio10$finalModel)
 
 the first splitting attribute that was choosen is the "Expeirence level" attribute meaning that it probably has a high information gain and low splitInfo(Entropy of distribution of tuples into partition)
 
-##### Confusion matrix of 10 folds using Gain ratio
+###### Confusion matrix of 10 folds using Gain ratio
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
@@ -758,7 +771,7 @@ gainRatio10cm
 
 here the classifier shows better performance when treating "very high" and "very low" attributes as positive class. since the "very high" class is better in Sensitivity and "very low" is better in Specificity and precision (Pos Pred Value)
 
-#### 5 Folds
+##### 5 Folds
 
 The tree of the gain ratio using 5 folds
 
@@ -771,7 +784,7 @@ plot(gainRatio5$finalModel)
 
 the tree is similar to the tree that was resulted from 10 folds. it has choose "Experience level" as the first splitting attribute and and seem to show similar behavior.
 
-##### Confusion matrix of 5 folds using Gain ratio
+###### Confusion matrix of 5 folds using Gain ratio
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
@@ -785,7 +798,7 @@ gainRatio5cm
 
 unlike the 10 folds, here the classifier has the best overall performance when considering the "very high" as the positive class.
 
-#### 3 Folds
+##### 3 Folds
 
 The tree of the gain ratio using 3 folds
 
@@ -798,7 +811,7 @@ plot(gainRatio3$finalModel)
 
 the tree shows similar behavior as the previous 2 trees that resulted from using 10 and 5 folds.
 
-##### Confusion matrix of 3 folds using Gain ratio
+###### Confusion matrix of 3 folds using Gain ratio
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
@@ -811,7 +824,7 @@ gainRatio3cm
 
 similar to teh 5 folds, the "very high" class has the best metrics.
 
-##### Analysis of the gain ratio classification
+###### Analysis of the gain ratio classification
 
 The observed structure of the three decision trees seems to be the same and it can be summarized as follows:
 
@@ -827,7 +840,7 @@ The observed structure of the three decision trees seems to be the same and it c
 
 The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
 
-##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gain ratio
+###### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Gain ratio
 
 ```{r}
 rbind("10 Folds"=macro(gainRatio10cm), "5 Folds"=macro(gainRatio5cm), "3 Folds"=macro(gainRatio3cm)  ) 
@@ -839,11 +852,11 @@ A detailed examination of the results from the 10-fold cross-validation reveals 
 
 However, possessing high specificity alone does not guarantee the overall effectiveness of the model, as a well-rounded model also requires balanced performance across other metrics. In this case, its ability to capture and classify instances that do belong to the positive class (as measured by sensitivity) is not as robust. For a model to be considered truly effective, it would need to demonstrate strong performance in all metrics specificity and sensitivity, ensuring it can accurately distinguish both negative and positive instances as well as accuracy precision.
 
-### Information gain
+#### Information gain
 
 Information Gain is a metric used to decide which attribute to choose for splitting the data at each node in the decision tree. For a given dataset, the Information Gain of an attribute is calculated by comparing the entropy before and after the dataset is split based on that attribute. The attribute with the highest Information Gain is chosen as the splitting attribute.
 
-#### 10 Folds
+##### 10 Folds
 
 The tree of the information gain using 10 folds
 
@@ -864,7 +877,7 @@ plot(c5model)
 
 from the tree, the "experince level" attribute was the first selected splitting attribute meaning that it has the highest information gain among all attributes
 
-##### Confusion matrix of 10 folds using Information gain
+###### Confusion matrix of 10 folds using Information gain
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
@@ -877,7 +890,7 @@ infoGain10cm
 
 similar to the trees from the gini index and gain ratio, the classifier seem to have better performance when treating the "very high" class as the positive class
 
-#### 5 Folds
+##### 5 Folds
 
 The tree of the information gain using 5 folds
 
@@ -898,7 +911,7 @@ plot(c5model)
 
 the tree has similar behavior as the 10 folds information gain tree
 
-##### Confusion matrix of 5 folds using Information gain
+###### Confusion matrix of 5 folds using Information gain
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
@@ -911,7 +924,7 @@ infoGain5cm
 
 the classifier shows very close performance to the 10 folds information gain model
 
-#### 3 Folds
+##### 3 Folds
 
 The tree of the information gain using 3 folds
 
@@ -932,7 +945,7 @@ plot(c5model)
 
 the visisble parts of the tree seem to behave the same as the prevoius 2 fold sizes- 10 and 5.
 
-##### Confusion matrix of 3 folds using Information gain
+###### Confusion matrix of 3 folds using Information gain
 
 The following confusion Matrix will show the performance of the classifier using the predicted class labels and the actual class labels of our dataset
 
@@ -945,7 +958,7 @@ infoGain3cm
 
 since the tree is essentially similar to the previous two information gain trees the results that this tree shows is very close in performance to them as well.
 
-##### Analysis of the information gain classification
+###### Analysis of the information gain classification
 
 The observed structure of the three decision trees seems to be the same and it can be summarized as follows:
 
@@ -960,7 +973,7 @@ The observed structure of the three decision trees seems to be the same and it c
 
 The decision tree continues to select the most appropriate attributes for splitting at each node, progressively refining the decision process until it reaches the leaves, where final class labels are assigned to the instances.
 
-##### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Information gain
+###### Sensitivity, Accuracy, Specifity and precision of all 3,5 and 10 folds using Information gain
 
 ```{r}
 rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=macro(infoGain3cm)  ) 
@@ -968,11 +981,11 @@ rbind("10 Folds"=macro(infoGain10cm), "5 Folds"=macro(infoGain5cm), "3 Folds"=ma
 
 Based on the provided sensitivity, specificity, precision, and accuracy values there isn't a clear indication of the superiority of one fold over another for Information Gain model .we may need to consider additional factors or conduct further analysis to make a well-informed decision. as can be seen in the table the 10 folds has the best Specificity and Precision, meanwhile the 5 folds has the best Sensitivity and Accuracy.
 
-## Clustering
+### Clustering
 
 Data clustering is a process to partition data into groups or clusters,it is an unsupervised learning process, which is excuted without knowing the class label of the training data. The data in the same group "cluster" are similar to one another and different from data in other clusters. And for this data mining task We will utilize k-means clustering.
 
-### 1- prepreocessing
+#### 1- prepreocessing
 
 we will encode the rest of factor columns to transform them into numeric types before clustering, enabling meaningful distance calculations using kmeans and other formulas, and allowing for maximum flexibility in data processing and interpretation. we will also remove the class label from the dataset as clustering is an unsupervised learning process, and we will preserve this class label in an attribute for later use. lastly, we will scale all numeric attributes in the dataset so they will be standarized.
 
@@ -1035,15 +1048,15 @@ dataset3 <- scale(dataset3)
 
 ```
 
-### 2- K-means
+#### 2- K-means
 
 After preprocessing the data, now we are ready to perform the clustering process, we will use the k-means clustering, it is a clustering method that aims to minimize the sum of squared distances between each data point and the centroid of its assigned cluster by iteratively updating cluster assignments and centroids.
 
-### 3- Choosing number of clusters (k)
+#### 3- Choosing number of clusters (k)
 
 We will choose 3 different numbers to perform the k-means clustering on, one of the numbers should be relatevily large, the second should be in the middle and the last should be small. This way we will cover the possible outcomes and clustering results.
 
-#### a- Silhouette method
+##### a- Silhouette method
 
 Now we will apply Silhouette method to find the optimal number of clusters k, we will also plot a graph where x-axis represent the number of clusters and y-axis represent the average Silhouette coefficient
 
@@ -1056,7 +1069,7 @@ fviz_nbclust(dataset3, kmeans, method = "silhouette")+
 
 as seen by the graph, the number of clusters k that maximizes the average Silhouette coefficient is 2, so we will use it for clustering.
 
-#### b- Elbow method
+##### b- Elbow method
 
 This method determines the number of clusters according to the turning point in a curve, the curve is plotted using the total within-cluster sum of square (WSS) as in y-axis , and No. clusters in x-axis
 
@@ -1072,11 +1085,11 @@ As shown, the number of clusters k that represents the turning point in the curv
 
 Lastly, we will use k=3 since it acheives the second highest average Silhouette coefficient, and since it's in the middle between 2 and 4 it will strike a balance between having too few clusters (k=2), and having several clusters (k=4), Thus, this choice will have an acceptable acuuracy.
 
-### k-means clustering, visualization and evaluation
+#### k-means clustering, visualization and evaluation
 
 In this section, we will perform k-means clustering and visualize its result using three different k's that have been chosen beforehand, then we will compute WSS and Bcubed preceision and recall and average silhouette for each cluster as methods of evaluating clustering results.
 
-#### k=2
+##### k=2
 
 ```{r}
 
@@ -1153,7 +1166,7 @@ cat("BCubed Recall is:", recall, "\n")
 
 we can conclude from the graph and the results that the k=2 is the optimal k, since there is no overlapping between the two clusters, the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster. Also, the recall is relatively high (0.71) and is the highest among the k's chosen, the Precision is low (0.28) which could be duo to presence of outliers or sensitivity to Initial Centroid. We can also note that the WSS is 7287.657, indicating a good compactness of clusters, and that objects in a cluster are similar to one another noting that the higher the k, the lower the WSS. Lastly, the average silhouette width is 0.34 which is considered high reflecting high intra-cluster similarity.
 
-#### k=3
+##### k=3
 
 ```{r}
 
@@ -1228,7 +1241,7 @@ cat("BCubed Recall is:", recall, "\n")
 
 we can conclude from the graph and the results where k=3 is that the performance is good but worse than k=2, because there is overlapping between clusters. In addition, the recall is relatively low (0.45), However, the Precision is low (0.31) which could be duo to presence of outliers or sensitivity to Initial Centroid. We can also note that the WSS is 6451.51, indicating an intermidiate compactness of clusters, and that objects in a cluster are to some extent similar to one another. Lastly, the average silhouette width is 0.19 which reflects high inter-cluster similarity.
 
-#### k=4
+##### k=4
 
 ```{r}
 #Use seed to guarantee replicability of random processes
@@ -1304,12 +1317,50 @@ cat("BCubed Recall is:", recall, "\n")
 we can conclude from the graph and the results where k=4 is that the performance is worse than k=2 and k=3, because there is a noticeable overlapping between clusters. Also, the clusers' space is pretty wide which results in a large distance between objects in the same cluster. In addition, the recall is relatively low (0.43) which might be a result of the overlapping and large distances between data objects. Furthermore, the Precision is low (0.29) which could be duo to presence of outliers or sensitivity to Initial Centroid. We can also note that the WSS is 5911.05 indicating a lower compactness of clusters. Lastly, the average silhouette width is 0.22 which is low reflecting high inter-cluster similarity.
 
 
-# Phase 4
-
-## Evaluation and Comparison
 
 
-## Classification results
+## Clustering results
+
+This table displays the results of clustering using various methods for each K.
+
++----------------------------------------+-------------------+----------------+-----------------------------+
+|                                        | K=2               | K=3            | K=4                         |
++:======================================:+:=================:+:==============:+:===========================:+
+| **Average Silhouette width**           | 0.34              | 0.31           | 0.2                         |
++----------------------------------------+-------------------+----------------+-----------------------------+
+| **total within-cluster sum of square** | 7295.548          | 6778.046       | 5915.724                    |
++----------------------------------------+-------------------+----------------+-----------------------------+
+| **BCubed precision**                   | 0.2812713         | 0.2807635      | 0.2895803                   |
++----------------------------------------+-------------------+----------------+-----------------------------+
+| **BCubed recall**                      | 0.7064208         | 0.6786707      | 0.401187                    |
++----------------------------------------+-------------------+----------------+-----------------------------+
+| **Visualization**                      | ![](images/k2-01) | ![](images/k3) | ![](images/k4){width="145"} |
++----------------------------------------+-------------------+----------------+-----------------------------+
+
+Based on these metrics, we can assess the performance of each K value:
+
+-   Average Silhouette Width: The highest value is achieved at K = 2 (0.34), indicating that the clusters are relatively well-separated (not sparse) compared to the other K values.
+
+-   Total Within-Cluster Sum of Squares: The lowest value is observed at K = 4 (5915.724), indicating better cluster compactness compared to K= 2 and K = 3.
+
+-   BCubed Precision and Recall: Both precision and recall values are highest at K = 2, suggesting a better match between the clustering assignments and the ground truth or desired clustering structure.
+
+-   Visualization: At K = 3 and K = 4, there is an overlap between the clusters, unlike K = 2, which provides two pure clusters indicating better grouping of objects.
+
+Considering these metrics, we can conclude that K = 2 is the optimal k and performs comparatively better in terms of average silhouette width, BCubed precision, and BCubed recall. It indicates that the clustering with K = 2 leads to well-separated clusters without overlapping between clusters and with relatively good precision and recall. Which means the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster "reflecting high intra-cluster similarity". And the reason for the overlapping and the low average silhouette width , precision, and recall results in K=3 and K=4 is could be duo to presence of outliers or sensitivity to Initial Centroid and high inter-cluster similarity.
+
+
+
+
+## Phase 4
+
+
+
+
+## Findings
+
+While working on this project, we have prepared the data to actually implement data mining techniques on it, i.e: classification and clustering. As discussed in the previous section,
+
 
 this table displays all results of the three classification algorithms (Gini index, information gain and gain ratio) with 3 different fold sizes (k=3,5,10)
 
@@ -1348,6 +1399,7 @@ It can be noticed that all nine trees have selected the attribute "Experience Le
 
 
 
+
 so, this is the model that we have chosen as our classification model (gain ratio with 10-folds)
 
 ```{r , fig.height=70, fig.width=90}
@@ -1356,40 +1408,7 @@ plot(gainRatio10$finalModel)
 
 
 
-## Clustering results
 
-This table displays the results of clustering using various methods for each K.
-
-+----------------------------------------+-------------------+----------------+-----------------------------+
-|                                        | K=2               | K=3            | K=4                         |
-+:======================================:+:=================:+:==============:+:===========================:+
-| **Average Silhouette width**           | 0.34              | 0.31           | 0.2                         |
-+----------------------------------------+-------------------+----------------+-----------------------------+
-| **total within-cluster sum of square** | 7295.548          | 6778.046       | 5915.724                    |
-+----------------------------------------+-------------------+----------------+-----------------------------+
-| **BCubed precision**                   | 0.2812713         | 0.2807635      | 0.2895803                   |
-+----------------------------------------+-------------------+----------------+-----------------------------+
-| **BCubed recall**                      | 0.7064208         | 0.6786707      | 0.401187                    |
-+----------------------------------------+-------------------+----------------+-----------------------------+
-| **Visualization**                      | ![](images/k2-01) | ![](images/k3) | ![](images/k4){width="145"} |
-+----------------------------------------+-------------------+----------------+-----------------------------+
-
-Based on these metrics, we can assess the performance of each K value:
-
--   Average Silhouette Width: The highest value is achieved at K = 2 (0.34), indicating that the clusters are relatively well-separated (not sparse) compared to the other K values.
-
--   Total Within-Cluster Sum of Squares: The lowest value is observed at K = 4 (5915.724), indicating better cluster compactness compared to K= 2 and K = 3.
-
--   BCubed Precision and Recall: Both precision and recall values are highest at K = 2, suggesting a better match between the clustering assignments and the ground truth or desired clustering structure.
-
--   Visualization: At K = 3 and K = 4, there is an overlap between the clusters, unlike K = 2, which provides two pure clusters indicating better grouping of objects.
-
-Considering these metrics, we can conclude that K = 2 is the optimal k and performs comparatively better in terms of average silhouette width, BCubed precision, and BCubed recall. It indicates that the clustering with K = 2 leads to well-separated clusters without overlapping between clusters and with relatively good precision and recall. Which means the data in a cluster are close "similar" to each other and dissimilar to data in the other cluster "reflecting high intra-cluster similarity". And the reason for the overlapping and the low average silhouette width , precision, and recall results in K=3 and K=4 is could be duo to presence of outliers or sensitivity to Initial Centroid and high inter-cluster similarity.
-
-
-## Findings
-
-While working on this project, we have prepared the data to actually implement data mining techniques on it, i.e: classification and clustering. As discussed in the previous section, for classification, using K-fold Cross-validation to partition the data, gain ratio with k=10 showcased the most effective performance for our dataset based on Accuracy, Precision, Sensitivity and Specificity metrics.
 As for clustering, using k-means method with k=2, the analysis highlighted that k=2 displayed superior performance, standing out for its distinct clusters without overlap. The data within each cluster exhibited significant similarity while being notably dissimilar from the other cluster, affirming k=2 as the optimal choice for this clustering scenario based on evaluation methods like BCubed Precision and Recall, Average Silhouette Width and based on graphs.
 
 We can notice that these results that we have obtained from both calssification and clustering are interesting and strongly related to the core of the problem that we are working on, and will be directly reflecting on the solution.
