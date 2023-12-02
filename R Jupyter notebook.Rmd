@@ -1377,12 +1377,24 @@ print(
 
 ```
 
-if we look at each fold's results separately we can notice that the gain ratio trees on all folds (10, 5, and 3) has the best overall performance according to all 4 metrics (accuracy, precision, sensitivity and specificity). 
-and if we were to choose one among them it will be the 10-fold gain ratio. The gain ratio evaluated with 10-fold cross-validation appears to have the best performance among all the decision tree models. This might be because the gain ratio tends to favor unbalanced splits, where one partition is significantly smaller than the others. In our dataset, if an attribute has a rare value, the gain ratio may prioritize splitting on this attribute, despite the resulting imbalance.
+Based of this metrics we can further assess the performance of each method as follows:
+-	Accuracy: the accuracy of gain ratio 10 folds is 63% which is higher than the others meaning that the model has successfully classified 63% of the instances. And comes after it the Gain ratio model with 5 folds with 62% accuracy. The worst was 3-fold gini index with only 56% accuracy
+
+-	Precision: the higher precision was achieved in gain ratio 10 folds with 63% as well, this indicates that among the all the instances that the model has classified as positive 63% of them were correct. And comes right after it the 5 folds gain ratio with precision=61.9%. as for the worst performance based on Precision it was the 3 folds gini index with only 55% precision.
+
+-	specificity: this time many models have achieved high performance but the highr was 10 folds gini index with 90.9% specificity, which means that among the instance that are negative (classes other than the positive one) it has correctly classified 90% of them. As noted before, the performance was high in many models like the 5 folds gain ration with 90.6% and 3 folds gain ratio with 90.5% and finally the 10 and 5 folds information gain with 90.2%. The worst performance was in the 3 folds gini index with 89% which is still considered high.
+
+-	Sensitivity: the higher sensitivity was in 10-folds gain ratio with 63% meaning that among the positives the model has correctly classified 63% of them. The one right after it 5 folds gain ratio with 61%. As for the worst it’s the 3-folds gini index with 54% sensitivity.
+
+
+If we look at each fold separately, we notice that the gain ratio has the best performance according to all 4 metrics (accuracy, precision, sensitivity and specificity), so for the 10, 5, and 3 folds the gain ratio is the best. It can also be noticed that the 3-folds gini index was the worst in all aspects but the differences with the other models isn’t that high in most of the metrics.
+
+So if we were to choose one among them it will be the 10-fold gain ratio. The gain ratio evaluated with 10-fold cross-validation appears to have the best performance among all the decision tree models. This might be because the gain ratio tends to favor unbalanced splits, where one partition is significantly smaller than the others. In our dataset, if an attribute has a rare value, the gain ratio may prioritize splitting on this attribute, despite the resulting imbalance.
 
 Despite the superiority of the 10-fold cross-validation, the performance metrics of all three fold sizes (3-fold, 5-fold, and 10-fold) using the Gini index, gain ratio, and information gain are relatively similar. with the gain ratio giving best performance in each partition. This suggests that all three measures are robust within the context of this dataset. A likely contributing factor to this performance consistency is the balanced distribution of class labels in the dataset. When classes are balanced, each splitting criterion is more or less equally likely to encounter informative splits, which helps to decrease performance variability across different splitting methods.
 
-It can be noticed that all nine trees have selected the attribute "Experience Level" as the first splitting attribute, indicating that it is the strongest predictor in reducing uncertainty among all other predictors and the most informative in our case.
+It can also be noticed that all nine trees have selected the attribute "Experience Level" as the first splitting attribute, indicating that it is the strongest predictor in reducing uncertainty among all other predictors and the most informative in our case.
+
 
 
 
