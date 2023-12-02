@@ -557,6 +557,7 @@ macro = function(matrix){
   
   
   avgSen = sumSen/5
+  avgSen=round(avgSen,4)
   
   sumSpec=0
   
@@ -564,7 +565,7 @@ macro = function(matrix){
    sumSpec = sumSpec + matrix$byClass[i,2] 
   }
   avgSpec = sumSpec/5
-  
+  avgSpec=round(avgSpec,4)
   
   
   
@@ -574,12 +575,13 @@ macro = function(matrix){
    sumPrec = sumPrec + matrix$byClass[i,3] 
   }
   avgPrec = sumPrec/5
+  avgPrec=round(avgPrec,4)
   
+ 
+   acc <- round(matrix$overall[1], 4)
   
-  
-  
-  avgs = data.frame(Sensitivity=avgSen , Specificity=avgSpec, Precision=avgPrec ,Accuracy= unname( matrix$overall[1]) )
-  print(avgs)
+  avgs = data.frame(Sensitivity=avgSen , Specificity=avgSpec, Precision=avgPrec ,Accuracy= unname( acc) )
+ 
   
   
 }
@@ -1387,7 +1389,7 @@ Based of this metrics we can further assess the performance of each method as fo
 
 -	Precision: the higher precision was achieved in gain ratio 10 folds with 63% as well, this indicates that among the all the instances that the model has classified as positive 63% of them were correct. And comes right after it the 5 folds gain ratio with precision=61.9%. as for the worst performance based on Precision it was the 3 folds gini index with only 55% precision.
 
--	specificity: this time many models have achieved high performance but the highr was 10 folds gini index with 90.9% specificity, which means that among the instance that are negative (classes other than the positive one) it has correctly classified 90% of them. As noted before, the performance was high in many models like the 5 folds gain ration with 90.6% and 3 folds gain ratio with 90.5% and finally the 10 and 5 folds information gain with 90.2%. The worst performance was in the 3 folds gini index with 89% which is still considered high.
+-	specificity: this time many models have achieved high performance but the highr was 10 folds gini index with 90.9% specificity, which means that among the instance that are negative (classes other than the positive one) it has correctly classified 90.9% of them. As noted before, the performance was high in many models like the 5 folds gain ration with 90.6% and 3 folds gain ratio with 90.5% and finally the 10 and 5 folds information gain with 90.2%. The worst performance was in the 3 folds gini index with 89% which is still considered high.
 
 -	Sensitivity: the higher sensitivity was in 10-folds gain ratio with 63% meaning that among the positives the model has correctly classified 63% of them. The one right after it 5 folds gain ratio with 61%. As for the worst it’s the 3-folds gini index with 54% sensitivity.
 
@@ -1467,4 +1469,4 @@ Finally, by solving these problems, we can ensure the cybersecurity employees ar
 
 [3] Y. Zhao, "R and Data Mining," RDataMining.com, Available: <https://www.rdatamining.com/>, Accessed on: November 23, 2023.
 
-[4] M. Hahsler, "discretize {arules}R Documentation: Convert a Continuous Variable into a Categorical Variable," R Project, Available: <https://search.r-project.org/CRAN/refmans/arules/html/discretize.html>, Accessed on: November 23, 2023.
+[4] M. Hahsler, "discretize {arules}R Documentation: Convert a Continuous Variable into a Categorical Variable," R Project, Available: <https://search.r-project.org/CRAN/refmans/arules/html/discretize.html>, Accessed on: November 23, 2023. 
