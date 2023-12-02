@@ -150,3 +150,12 @@ So we chose 2 , 3 and 4 as numbers of clusters.
 Then we performed k-means clustering and visualize its result using three different k’s that have been chosen beforehand, and we compute WSS and Bcubed preceision and recall and average silhouette for each cluster as methods of evaluating clustering results. 
 
 We can conclude from the graph and the results where k=2 is that the performance is the best, better than k=3 and k=4 because k=2 is the optimal k, since there is no overlapping between the two clusters, and the data in a cluster are close “similar” to each other and dissimilar to data in the other cluster.
+
+
+### Findings
+
+classification out advantage clustering since the class label is available in our dataset, so supervised learning would be more relatable and could provide more accurate results, and its performance was generally better. Using classification would help achieve our goals such as market segmentation, striking fairness among employees and increase their loyality.
+
+In conclusion, our solution is composed of two main parts that will help achieve our goals: 1- Use classification to predict employees’ salaries (using 10-fold gain ratio method) 2- Use clustering to group employees based on their similarities (using k-means with 2 clusters)
+
+By addressing the issues, we can solve them such as unfairness, losing candidates to other companies that provide better privileges, and poor understanding of employees’ needs. Finally, by solving these problems, we can ensure the cybersecurity employees are satisfied and pleased with the salary they get, leading to a better performance at their jobs and better securing the organization’s data and valuable digital assets.
